@@ -1,49 +1,38 @@
 const mongoose = require("mongoose")
+const ObjectId = mongoose.Schema.Types.ObjectId
+const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Inclinde Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises" ]
 
-const workOutSchema = new mongoose.Schema ({
-    name: String,
-    exercises: [
+const exerciseSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        enum: workouts
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    warmUps: [
         {
-            _id: FILLIN,
-            name: String,
-            date: Date,
-            warmUps: [
-                {
-                    percent: Number,
-                    reps: Number
-                }
-            ],
-            sets: [
-                {
-                    highReps: Number,
-                    lowReps: Number,
-                    actualReps: Number,
-                    weight: Number
-                }
-            ]
+            done: Boolean
+        }
+    ],
+    sets: [
+        {
+            reps: Number,
+            weight: Number
         }
     ]
 })
 
-const Workouts = mongoose.model("Post", postSchema)
-
-const userSchema = new mongoose.Schema ({
-    email: String,
-    name: String,
-    posts: [postSchema]
+const bodyWeightSchema = new mongoose.Schema ({
+    weight: Number,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
-const User = mongoose.model("User", userSchema)
+module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
 
-const newUser = new User ({
-    email: "joe@gmail.com",
-    name: "Joe",
-    posts: [{
-        title: "Great title!",
-        body: "Great body"
-    }]
-})
-
-
-
-module.exports 
+module.exports.BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
+module.exports.workouts = workouts
