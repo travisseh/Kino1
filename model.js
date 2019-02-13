@@ -35,4 +35,3 @@ const bodyWeightSchema = new mongoose.Schema ({
 module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
 
 module.exports.BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
-module.exports.workouts = workouts

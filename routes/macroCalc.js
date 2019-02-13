@@ -1,12 +1,24 @@
 const express = require("express")
+const Exercise = require("../model").Exercise
+const BodyWeight = require("../model").BodyWeight
 const router = express.Router()
 
 router.get("/", function(req, res, next){
-    res.render("macroCalc")
+    BodyWeight.findOne({}).sort('-date').exec(function(err, foundWeight){
+        if (err){
+            console.log(err)
+        } else {
+            res.render("macroCalc", {weight: foundWeight.weight})
+        }
+    })
 })
 
 router.post("/", function(req, res, next){
-    //save the new weight to the db
+    const weight = req.body.weight
+    const newBodyWeight = new BodyWeight ({
+        weight: weight
+    })
+    newBodyWeight.save()
     //show success messsage
     res.redirect("/macroCalc")
 })

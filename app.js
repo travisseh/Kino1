@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
 
 const newBodyWeight = new BodyWeight ({
-  weight: 148
+  weight: null
 })
 
 // newBodyWeight.save()
