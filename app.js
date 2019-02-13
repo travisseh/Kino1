@@ -16,7 +16,7 @@ const dashboard = require("./routes/dashboard")
 const selectPackage = require("./routes/selectPackage")
 const index = require("./routes/index")
 // const dynamicWorkouts = require("./routes/:workout")
-const weightCalc = require("./routes/weightCalc")
+const macroCalc = require("./routes/macroCalc")
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -65,7 +65,7 @@ app.use("/dashboard", dashboard)
 app.use("/selectPackage", selectPackage)
 app.use("/login", login)
 app.use("/signup", signup)
-app.use("/weightCalc", weightCalc)
+app.use("/macrocalc", macroCalc)
 
 //dynamic routes
 app.get("/:workout", function(req, res, next){
