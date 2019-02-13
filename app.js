@@ -10,7 +10,13 @@ const app = express()
 const port = 8080
 const Exercise = require("./model").Exercise
 const BodyWeight = require("./model").BodyWeight
-const workouts = require("./model").workouts
+const login = require("./routes/login")
+const signup = require("./routes/signup")
+const dashboard = require("./routes/dashboard")
+const selectPackage = require("./routes/selectPackage")
+const index = require("./routes/index")
+// const dynamicWorkouts = require("./routes/:workout")
+const weightCalc = require("./routes/weightCalc")
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -53,6 +59,18 @@ const newExercise = new Exercise ({
 })
 
 // newExercise.save()
+
+app.use("/", index)
+app.use("/dashboard", dashboard)
+app.use("/selectPackage", selectPackage)
+app.use("/login", login)
+app.use("/signup", signup)
+app.use("/weightCalc", weightCalc)
+
+//dynamic routes
+app.get("/:workout", function(req, res, next){
+  res.send(`Here the ${req.params.workout} page will be rendered`)
+})
 
 
 app.listen(port, function(){
