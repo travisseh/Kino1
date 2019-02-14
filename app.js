@@ -15,8 +15,8 @@ const signup = require("./routes/signup")
 const dashboard = require("./routes/dashboard")
 const selectPackage = require("./routes/selectPackage")
 const index = require("./routes/index")
-// const dynamicWorkouts = require("./routes/:workout")
 const macroCalc = require("./routes/macroCalc")
+const warriorWorkouts = require("./modules/storedWorkouts").warriorWorkouts
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -67,11 +67,13 @@ app.use("/login", login)
 app.use("/signup", signup)
 app.use("/macrocalc", macroCalc)
 
-//dynamic routes
-app.get("/:workout", function(req, res, next){
-  res.send(`Here the ${req.params.workout} page will be rendered`)
+app.get("/workouts/:workout", function(req, res, next){
+  res.send(`The ${req.params.workout} page will render here`)
 })
 
+app.get("*", function(req, res, next){
+  res.redirect("/")
+})
 
 app.listen(port, function(){
     console.log(`listening on port ${port}`)

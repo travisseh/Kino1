@@ -2,7 +2,37 @@
 
 <h1>Dashboard</h1>
 
-<h2>array of workouts</h2>
+<h3><%= warriorWorkouts[0].name %> </h3>
+<h3>workout image</h3>
+<h3>link to workout</h3>
+
+<div class="row">
+        
+<% warriorWorkouts.forEach(function(workout){ %>
+    <div class="col-lg">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<%= workout.image %>" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><%= workout.name %></h5>
+                <p class="card-text"><%= workout.description %></p>
+                <p class="card-text">Duration: <%= workout.duration %> minutes</p>
+                <a href="<%= workout.url %>" class="btn btn-primary">Start Workout <%=workout.nameShort%></a>
+            </div>
+        </div>
+    </div>
+<% }) %>
+
+
+
+
+        
+</div>
+
+
+
+
+
+
 
 <br>
 <br>
