@@ -32,6 +32,16 @@ const bodyWeightSchema = new mongoose.Schema ({
     }
 })
 
+const packageSchema = new mongoose.Schema ({
+    name: {
+        type: String,
+        enum: ["warrior_shredded", "aggressive_fat_loss", "greek_god", "greek_god_advanced", "superhero_bulking", "bodyweight_mastery", "kinobooty", "cardio_abs_mobility"]
+    },
+    selected: Boolean
+})
+
 module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
 
 module.exports.BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
+
+module.exports.Package = mongoose.model("Package", packageSchema)
