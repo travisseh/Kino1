@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const Exercise = require("./model").Exercise
 const BodyWeight = require("./model").BodyWeight
 const Package = require("./model").Package
+const packages = require("../modules/storedWorkouts").packages
 
 
 const newBodyWeight = new BodyWeight ({
@@ -35,11 +36,11 @@ const newExercise = new Exercise ({
     ]
   })
   
-const packages = ["warrior_shredded", "aggressive_fat_loss", "greek_god", "greek_god_advanced", "superhero_bulking", "bodyweight_mastery", "kinobooty", "cardio_abs_mobility"]
+
 
 function packageCreator(packagesArray){
 packagesArray.forEach(function(package){
-    Package.create({name: package})
+    Package.create({name: package, active: false})
 })
 }
 

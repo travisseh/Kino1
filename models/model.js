@@ -37,7 +37,10 @@ const packageSchema = new mongoose.Schema ({
         type: String,
         enum: ["warrior_shredded", "aggressive_fat_loss", "greek_god", "greek_god_advanced", "superhero_bulking", "bodyweight_mastery", "kinobooty", "cardio_abs_mobility"]
     },
-    selected: Boolean
+    active: {
+        type: Boolean,
+        required: true
+    }
 })
 
 module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)

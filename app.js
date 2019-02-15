@@ -19,7 +19,8 @@ const dashboard = require("./routes/dashboard")
 const selectPackage = require("./routes/selectPackage")
 const index = require("./routes/index")
 const macroCalc = require("./routes/macroCalc")
-const warriorWorkouts = require("./modules/storedWorkouts").warriorWorkouts
+const warrior_shredded = require("./modules/storedWorkouts").warrior_shredded
+const _ = require("lodash")
 
 //GLOBAL SETTINGS
 app.use(express.static("public"));
@@ -44,10 +45,10 @@ app.use("/signup", signup)
 app.use("/macrocalc", macroCalc)
 
 app.get("/:package/:workout", function(req, res, next){
-  if (req.params.package = currentPackage) {
-
-  }
-  res.send(`The ${req.params.workout} page will render here`)
+  //get the package and then get the workout
+  const package = req.params.package
+  const workout = req.params.workout
+  res.render("workout", {warrior_shredded: warrior_shredded})
 })
 
 app.get("*", function(req, res, next){

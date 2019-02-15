@@ -2,7 +2,21 @@
 
 <h1>Exercises</h1>
 
-<h2>array of exercises</h2>
+<%warrior_shredded[0].exercises.forEach(function(exercise){%>
+    <h3><%= exercise.name %> </h3>
+    <%exercise.warmUps.forEach(function(warmUp){%>
+        <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at weight</strong></p>
+    <%})%>
+    <form>
+    <%exercise.sets.forEach(function(set, index){%>
+        <h6>Set <%=index + 1%></h6>
+        <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps">
+        at
+        <input type="number" placeholder="lbs">
+    <%})%>
+    <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+<%})%>
 
 
 <%- include("partials/footer.ejs") -%>
