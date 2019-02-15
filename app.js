@@ -48,7 +48,13 @@ app.get("/:package/:workout", function(req, res, next){
   //get the package and then get the workout
   const package = req.params.package
   const workout = req.params.workout
-  res.render("workout", {warrior_shredded: warrior_shredded})
+  res.render("workout", {warrior_shredded: warrior_shredded.workouts, warrior_shredded2: warrior_shredded})
+})
+
+app.post("/:package/:workout", function(req, res, next){
+  const package = req.params.package
+  const workout = req.params.workout
+  res.redirect(`/${package}/${workout}`)
 })
 
 app.get("*", function(req, res, next){

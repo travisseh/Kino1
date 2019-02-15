@@ -2,13 +2,13 @@
 
 <h1>Dashboard</h1>
 
-<h3><%= warriorWorkouts[0].name %> </h3>
+<h3><%= warriorWorkouts.workouts[0].name %> </h3>
 <h3>workout image</h3>
 <h3>link to workout</h3>
 
 <div class="row">
         
-<% warriorWorkouts.forEach(function(workout){ %>
+<% warriorWorkouts.workouts.forEach(function(workout){ %>
     <div class="col-lg">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="<%= workout.image %>" alt="Card image cap">

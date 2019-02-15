@@ -5,7 +5,8 @@ const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable R
 const exerciseSchema = new mongoose.Schema({
     name: {
         type: String,
-        enum: workouts
+        enum: workouts,
+        required: true
     },
     date: {
         type: Date,
