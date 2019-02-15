@@ -12,11 +12,6 @@ const exerciseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    warmUps: [
-        {
-            done: Boolean
-        }
-    ],
     sets: [
         {
             reps: Number,

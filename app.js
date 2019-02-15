@@ -21,6 +21,7 @@ const index = require("./routes/index")
 const macroCalc = require("./routes/macroCalc")
 const warrior_shredded = require("./modules/storedWorkouts").warrior_shredded
 const _ = require("lodash")
+const setsCreator = require("./modules/functions").setsCreator
 
 //GLOBAL SETTINGS
 app.use(express.static("public"));
@@ -52,9 +53,18 @@ app.get("/:package/:workout", function(req, res, next){
 })
 
 app.post("/:package/:workout", function(req, res, next){
-  const package = req.params.package
-  const workout = req.params.workout
-  res.redirect(`/${package}/${workout}`)
+  const formReps = req.body.reps
+  const formWeight = req.body.weight
+  const sets = []
+  setsCreator(sets, formReps, formWeight)
+  
+  const newExercise = new Exercise ({
+    name: req.body.exerciseName,
+    sets: sets
+  })
+  newExercise.save()
+
+  res.redirect(`/${req.params.package}/${req.params.workout}`)
 })
 
 app.get("*", function(req, res, next){

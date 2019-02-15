@@ -1,0 +1,19 @@
+const express = require("express")
+
+function setsCreator(setsArray, repsArray, weightsArray) {
+    for (let i = 0; i < repsArray.length; i++){
+      setsArray.push(
+        {
+          reps: repsArray[i],
+          weight: weightsArray[i]
+        }
+        )
+    }
+  }
+
+function test(){
+    console.log("hello world")
+}
+
+
+module.exports.setsCreator = setsCreator

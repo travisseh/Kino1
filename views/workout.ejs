@@ -1,19 +1,22 @@
 <%- include("partials/header.ejs") -%>
+<% include ../modules/functions %>
 
 <h1>Exercises</h1>
+<h1><% test() %></h1>
 
 <%warrior_shredded[0].exercises.forEach(function(exercise){%>
     <h3><%= exercise.name %> </h3>
     <%exercise.warmUps.forEach(function(warmUp){%>
         <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at weight</strong></p>
     <%})%>
-    <form action="/<%=warrior_shredded2.url%>/<%=warrior_shredded.nameShort%>">
+    <form action="/<%=warrior_shredded2.url%>/<%=warrior_shredded2.workouts[0].nameShort%>" method="POST">
     <%exercise.sets.forEach(function(set, index){%>
         <h6>Set <%=index + 1%></h6>
-        <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="set<%=index+1%>Reps">
+        <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
         at
-        <input type="number" placeholder="lbs" name="set<%=index+1%>Weight">
+        <input type="number" placeholder="lbs" name="weight[]">
     <%})%>
+    <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <button type="submit" class="btn btn-primary">Save</button>
     </form>
 <%})%>
