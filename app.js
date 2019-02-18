@@ -22,13 +22,14 @@ const macroCalc = require("./routes/macroCalc")
 const warrior_shredded = require("./modules/storedWorkouts").warrior_shredded
 const _ = require("lodash")
 const setsCreator = require("./modules/functions").setsCreator
+const functions = require("./modules/functions")
 
 //GLOBAL SETTINGS
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
-}));
+}))
 
 //DB CONNECTION
 mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
@@ -49,7 +50,7 @@ app.get("/:package/:workout", function(req, res, next){
   //get the package and then get the workout
   const package = req.params.package
   const workout = req.params.workout
-  res.render("workout", {warrior_shredded: warrior_shredded.workouts, warrior_shredded2: warrior_shredded})
+  res.render("workout", {warrior_shredded: warrior_shredded.workouts, warrior_shredded2: warrior_shredded, functions: functions})
 })
 
 app.post("/:package/:workout", function(req, res, next){

@@ -37,8 +37,12 @@ const warrior_shredded =
                 {
                     low: 6,
                     high: 7
+                },
+                {
+                    low: 7,
+                    high: 8
                 }
-            ]
+                ]
             },
             {
                 name: "Flat Dumbbell Bench Press",

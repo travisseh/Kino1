@@ -1,8 +1,6 @@
 <%- include("partials/header.ejs") -%>
-<% include ../modules/functions %>
 
 <h1>Exercises</h1>
-<h1><% test() %></h1>
 
 <%warrior_shredded[0].exercises.forEach(function(exercise){%>
     <h3><%= exercise.name %> </h3>
