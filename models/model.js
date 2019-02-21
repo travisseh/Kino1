@@ -8,6 +8,15 @@ const exerciseSchema = new mongoose.Schema({
         enum: workouts,
         required: true
     },
+    workout: {
+        type: String,
+        enum: ["A", "B", "C"],
+        required: true
+    },
+    package: {
+        type: String,
+        enum: []
+    },
     date: {
         type: Date,
         default: Date.now
@@ -28,15 +37,52 @@ const bodyWeightSchema = new mongoose.Schema ({
     }
 })
 
-const packageSchema = new mongoose.Schema ({
-    name: {
+const templateWarmUpsSchema = new mongoose.Schema({
+    percent: Number,
+    reps: Number
+})
+
+const templateSetsSchema = mongoose.Schema({
+    low: Number,
+    high: Number
+})
+
+const templateExerciseSchema = new mongoose.Schema({
+    name: String,
+    videoLink: String,
+    instructions: String,
+    type: {
         type: String,
-        enum: ["warrior_shredded", "aggressive_fat_loss", "greek_god", "greek_god_advanced", "superhero_bulking", "bodyweight_mastery", "kinobooty", "cardio_abs_mobility"]
+        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold"]
     },
+    warmUps: [templateWarmUpsSchema],
+    sets: [templateSetsSchema]
+})
+
+const workoutSchema = new mongoose.Schema ({
+    name: String,
+    nameShort: {
+        type: String,
+        enum: ["A", "B", "C", "D"]
+    },
+    image: String,
+    description: String,
+    duration: Number,
+    exercises: [templateExerciseSchema]
+})
+
+const packageSchema = new mongoose.Schema ({
+    name: String,
+    url: String,
     active: {
         type: Boolean,
         required: true
-    }
+    },
+    purchased: {
+        type: Boolean,
+        required: true
+    },
+    workouts: [workoutSchema] 
 })
 
 module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
@@ -44,3 +90,11 @@ module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
 module.exports.BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
 
 module.exports.Package = mongoose.model("Package", packageSchema)
+
+module.exports.Workout = mongoose.model("Workout", workoutSchema)
+
+module.exports.TemplateExercise = mongoose.model("TemplateExercise", templateExerciseSchema)
+
+module.exports.TemplateWarmUp = mongoose.model("TemplateWarmUp", templateWarmUpsSchema)
+
+module.exports.TemplateSet = mongoose.model("TemplateSet", templateSetsSchema)

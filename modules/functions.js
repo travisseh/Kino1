@@ -117,32 +117,4 @@ function displaySetsCreator(templateSets, lastSets) {
   }
 }
 
-displaySetsCreator(templateSetsReal, lastSetsReal)
-
-console.log(displaySets)
-
-//logic
- 
-
-// } else if (lastReps >= highReps){
-//   weightOutput = lastWeight + 5
-//   displayReps = templateReps
-// } else if ((lastReps + 1) === highReps) {
-//   weightOutput = lastWeight
-//   displayReps = highReps
-// } else {
-//   weightOutput = lastWeight
-//   displayReps = `${lastReps + 1} - ${highReps}`
-// }
-
-// //show result
-// console.log(`Display Reps: ${displayReps}`)
-// console.log(`Weight Output: ${weightOutput}`)
-
-
-//FAT ARROW FUNCTION PRACTICE 
-// const test = ()=> console.log("test")
-
-// test()
-
-module.exports = {setsCreator}
+module.exports = {setsCreator, round, increaseWeight, determineSetIncrease, displaySetsCreator}

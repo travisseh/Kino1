@@ -8,6 +8,7 @@ const warrior_shredded =
 {
     name: "Warrior Shredded",
     url: "warrior_shredded",
+    active: true,
     workouts: [{
         name: "A: Chest and Shoulder",
         nameShort: "A",
@@ -30,18 +31,18 @@ const warrior_shredded =
                     }
                 ],
                 sets: [
-                {
-                    low: 5,
-                    high: 6
-                },
-                {
-                    low: 6,
-                    high: 7
-                },
-                {
-                    low: 7,
-                    high: 8
-                }
+                    {
+                        low: 5,
+                        high: 6
+                    },
+                    {
+                        low: 6,
+                        high: 7
+                    },
+                    {
+                        low: 7,
+                        high: 8
+                    }
                 ]
             },
             {
