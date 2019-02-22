@@ -1,8 +1,7 @@
 const mongoose = require("mongoose")
-const ObjectId = mongoose.Schema.Types.ObjectId
 const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Inclinde Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises" ]
 
-
+//BodyWeight
 const bodyWeightSchema = new mongoose.Schema ({
     weight: Number,
     date: {
@@ -10,17 +9,23 @@ const bodyWeightSchema = new mongoose.Schema ({
         default: Date.now
     }
 })
+const BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
 
+//TemplateWarmUp
 const templateWarmUpsSchema = new mongoose.Schema({
     percent: Number,
     reps: Number
 })
+const TemplateWarmUp = mongoose.model("TemplateWarmUp", templateWarmUpsSchema)
 
+//TemplateSet
 const templateSetsSchema = mongoose.Schema({
     low: Number,
     high: Number
 })
+const TemplateSet = mongoose.model("TemplateSet", templateSetsSchema)
 
+//TemplateExercise
 const templateExerciseSchema = new mongoose.Schema({
     name: String,
     videoLink: String,
@@ -32,9 +37,9 @@ const templateExerciseSchema = new mongoose.Schema({
     warmUps: [templateWarmUpsSchema],
     sets: [templateSetsSchema]
 })
-
 const TemplateExercise = mongoose.model("TemplateExercise", templateExerciseSchema)
 
+//Workout
 const workoutSchema = new mongoose.Schema ({
     name: String,
     nameShort: {
@@ -46,7 +51,9 @@ const workoutSchema = new mongoose.Schema ({
     duration: Number,
     exercises: [templateExerciseSchema]
 })
+const Workout = mongoose.model("Workout", workoutSchema)
 
+//Package
 const packageSchema = new mongoose.Schema ({
     name: String,
     url: String,
@@ -60,7 +67,9 @@ const packageSchema = new mongoose.Schema ({
     },
     workouts: [workoutSchema] 
 })
+const Package = mongoose.model("Package", packageSchema)
 
+//Exercise
 const exerciseSchema = new mongoose.Schema({
     templateExercise: [{
         type: mongoose.Schema.Types.ObjectId, 
@@ -90,17 +99,14 @@ const exerciseSchema = new mongoose.Schema({
         }
     ]
 })
+const Exercise = mongoose.model("Exercise", exerciseSchema)
 
-module.exports.Exercise = mongoose.model("Exercise", exerciseSchema)
 
-module.exports.BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
-
-module.exports.Package = mongoose.model("Package", packageSchema)
-
-module.exports.Workout = mongoose.model("Workout", workoutSchema)
-
+//EXPORTS
+module.exports.Exercise = Exercise
+module.exports.BodyWeight = BodyWeight 
+module.exports.Package = Package
+module.exports.Workout = Workout
 module.exports.TemplateExercise = TemplateExercise
-
-module.exports.TemplateWarmUp = mongoose.model("TemplateWarmUp", templateWarmUpsSchema)
-
-module.exports.TemplateSet = mongoose.model("TemplateSet", templateSetsSchema)
+module.exports.TemplateWarmUp = TemplateWarmUp 
+module.exports.TemplateSet = TemplateSet

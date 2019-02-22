@@ -117,4 +117,6 @@ function displaySetsCreator(templateSets, lastSets) {
   }
 }
 
+// displaySetsCreator(templateSetsReal, lastSetsReal)
+
 module.exports = {setsCreator, round, increaseWeight, determineSetIncrease, displaySetsCreator}

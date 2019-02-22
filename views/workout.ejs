@@ -7,7 +7,7 @@
     <%exercise.warmUps.forEach(function(warmUp){%>
         <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at weight</strong></p>
     <%})%>
-    <form action="/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
+    <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     <%exercise.sets.forEach(function(set, index){%>
         <h6>Set <%=index + 1%></h6>
         <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">

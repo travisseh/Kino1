@@ -13,10 +13,6 @@ const newSet = new Set(8, 50)
 
 const test = "test"
 
-function test1(){
-    console.log(this.test)
-}
-
 // test1()
 
 const person3 = {
