@@ -2,8 +2,24 @@
 
 <h1>Select Package</h1>
 
-<h2>array of packages</h2>
 
-<h3>modal that ask you to put in the product number from your receipt</h3>
+<div class="row">
+<%packages.forEach(function(package){ %>
+    <form action="/selectPackage" method="POST">
+    <div class="col-lg">
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= package.name %> </h5>
+          <p class="card-text">Description - add later</p>
+          <button class="btn btn-primary" type="submit" name="package_id" value="<%=package._id%>">Activate</button>
+        </div>
+      </div>
+    </div>
+    </form>
+
+<% }) %>
+</div>
+
+<h3>modal that asks you to put in the product number from your receipt</h3>
 
 <%- include("partials/footer.ejs") -%>
