@@ -52,25 +52,25 @@ app.use("/macrocalc", macroCalc)
 app.get("/:package/:workout", function(req, res, next){
   //get the package and then get the workout
   //get each list of templatesets
-  const package = req.params.package
+  const packageUrl = req.params.package
   const workout = req.params.workout
 
-  Package.findOne({url: package}, {workouts: {$elemMatch: {nameShort: workout}}}, function(err, foundPackage){
+  Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: workout}}}, function(err, foundPackage){
     if (err) {
       console.log(err)
     } else {
       const exercises = JSON.parse(JSON.stringify(foundPackage.workouts[0].exercises))
-      const package = foundPackage
       const workout = JSON.parse(JSON.stringify(foundPackage.workouts[0]))
       //get each list of lastsets
       //calculate display sets
-      res.render("workout", {exercises: exercises, package: package, workout: workout})
+      res.render("workout", {exercises: exercises, packageUrl: packageUrl, workout: workout})
     }
   })
   const displaySets = []
 })
 
 app.post("/:package/:workout", function(req, res, next){
+  console.log(req.body.templateId)
   const formReps = req.body.reps
   const formWeight = req.body.weight
   const sets = []
@@ -78,7 +78,10 @@ app.post("/:package/:workout", function(req, res, next){
   
   const newExercise = new Exercise ({
     name: req.body.exerciseName,
-    sets: sets
+    sets: sets,
+    templateExercise: [req.body.templateId],
+    packageUrl: req.body.packageUrl,
+    workout: req.body.workout
   })
   newExercise.save()
 
