@@ -52,12 +52,22 @@ app.use("/macrocalc", macroCalc)
 app.get("/:package/:workout", function(req, res, next){
   //get the package and then get the workout
   //get each list of templatesets
-  //get each list of lastsets
-  Exercise.find
-  //return true or false about if they should increase weight
-  //perform logic to get displaysets
+  const package = req.params.package
+  const workout = req.params.workout
+
+  Package.findOne({url: package}, {workouts: {$elemMatch: {nameShort: workout}}}, function(err, foundPackage){
+    if (err) {
+      console.log(err)
+    } else {
+      const exercises = JSON.parse(JSON.stringify(foundPackage.workouts[0].exercises))
+      const package = foundPackage
+      const workout = JSON.parse(JSON.stringify(foundPackage.workouts[0]))
+      //get each list of lastsets
+      //calculate display sets
+      res.render("workout", {exercises: exercises, package: package, workout: workout})
+    }
+  })
   const displaySets = []
-  res.render("workout", {warrior_shredded: warrior_shredded.workouts, warrior_shredded2: warrior_shredded, functions: functions})
 })
 
 app.post("/:package/:workout", function(req, res, next){

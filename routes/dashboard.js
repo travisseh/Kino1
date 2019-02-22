@@ -4,21 +4,23 @@ const Exercise = require("../models/model").Exercise
 const BodyWeight = require("../models/model").BodyWeight
 const Package = require("../models/model").Package
 const warrior_shredded = require("../modules/storedWorkouts").warrior_shredded
-const router = express.Router()
+const dashboard = express.Router()
 
 
-router.get("/", function(req, res,next){
+dashboard.get("/", function(req, res,next){
     //check to see if logged in
     Package.findOne({active: true}, function(err, foundPackage){
         if (err){
             console.log(err)
+        } else if (foundPackage === null) {
+            res.redirect("/selectPackage")
         } else {
-            console.log(foundPackage.name)
-            res.render("dashboard", {warriorWorkouts: warrior_shredded, package: foundPackage.name})
+            res.render("dashboard", {package: foundPackage})
         }
     })
 })
 
 
 
-module.exports = router
+
+module.exports = dashboard
