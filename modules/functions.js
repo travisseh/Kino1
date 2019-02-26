@@ -137,7 +137,7 @@ const sumArray = function(array){
 function checkSets (templateSets, lastSets) {
   const array = []
   lastSets.forEach(function(set, i){
-     if (set.reps === templateSets[i].high) {
+     if (set.reps >= templateSets[i].high) {
          array.push(0)
      } else {
          array.push(1)

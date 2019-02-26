@@ -19,10 +19,10 @@
         <% if (displayExercises[index][i].weight < 1) { %> 
             <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
             at
-            <input type="number" placeholder="max weight" name="weight[]">
+            <input type="number" placeholder="max weight" name="weight[]" step="5" min="0">
         <% } else { %>
             <input type="number" placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps" name="reps[]"> at 
-            <input type="number" placeholder="<%= displayExercises[index][i].weight%>" name="weight[]">
+            <input type="number" placeholder="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
         <% } %> 
     <%})%>
 

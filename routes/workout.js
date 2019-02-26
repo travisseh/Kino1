@@ -8,7 +8,7 @@ const workout = express.Router()
 // const increaseWeight = require("../modules/functions").increaseWeight
 
 
-const displayExercises = []
+
 
 workout.get("/:package/:workout", function(req, res, next){
     //get each list of templatesets
@@ -31,14 +31,13 @@ workout.get("/:package/:workout", function(req, res, next){
                 console.log(err)
             } else {
                 const lastExercises = foundExercises
-                console.log(lastExercises)
     
     //create displaySets from lastSets and templateSets
-                for (let i = 0; i < exercises.length; i++){
+                    const displayExercises = []
+                    for (let i = 0; i < exercises.length; i++){
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
                     global.displaySets = []
-
                     functions.displaySetsCreator(templateSets, lastSets)
                     displayExercises.push(displaySets)
                 }
