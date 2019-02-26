@@ -2,25 +2,38 @@
 
 <h1>Exercises</h1>
 
-<%exercises.forEach(function(exercise){%>
+<%#LOOP FOR OVER ALL EXERCISE%>
+<%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
+
+    <%#WARMUPS LOOP%>
     <%exercise.warmUps.forEach(function(warmUp){%>
         <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at weight</strong></p>
     <%})%>
+
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
-    <%exercise.sets.forEach(function(set, index){%>
-        <h6>Set <%=index + 1%></h6>
-        <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
-        at
-        <input type="number" placeholder="lbs" name="weight[]">
+    
+    <%#SETS LOOP%>
+    <%exercise.sets.forEach(function(set, i){%>
+        <h6>Set <%=i + 1%></h6>
+        <% if (displayExercises[index][i].weight < 1) { %> 
+            <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
+            at
+            <input type="number" placeholder="max weight" name="weight[]">
+        <% } else { %>
+            <input type="number" placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps" name="reps[]"> at 
+            <input type="number" placeholder="<%= displayExercises[index][i].weight%>" name="weight[]">
+        <% } %> 
     <%})%>
+
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input type="hidden" name="templateId" value="<%= exercise._id %>">
-    <input type="hidden" name="package" value="<%= packageUrl %>">
+    <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
+    <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary">Save</button>
     </form>
-<%})%>
 
+<%})%>
 
 <%- include("partials/footer.ejs") -%>

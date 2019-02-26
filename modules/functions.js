@@ -17,7 +17,6 @@ function round(number, roundToNumber)
     return Math.round(number/roundToNumber)*roundToNumber;
 }
 
-
 //LOGIC TEST FOR DISPLAY REPS AND WEIGHTS
 
 //get these from database
@@ -51,11 +50,21 @@ const templateSetsReal = [
   }
   ]
 
+function sumLast(lastSets){
+  let result = 0
+  lastSets.forEach(function(set){
+    result = result + set.reps
+  })
+  return result
+}
 
-const displaySets = []
-
-const summedLastReps = _.sumBy(lastSetsReal, "reps")
-const summedTemplateReps = _.sumBy(templateSetsReal, "high")
+function sumTemplate(templateSets){
+  let result = 0
+  templateSets.forEach(function(set){
+    result = result + set.high
+  })
+  return result
+}
 
 function increaseWeight (templateSets, lastSets) {
   for (let i = 0; i < templateSets.length; i++){
@@ -110,13 +119,36 @@ function determineSetIncrease (templateSets, lastSets) {
 }
 
 function displaySetsCreator(templateSets, lastSets) {
-  if (summedLastReps === summedTemplateReps) {
-    increaseWeight(templateSets, lastSets)
+  if (checkSets(templateSets,lastSets)){
+  increaseWeight(templateSets, lastSets)
   } else {
-    determineSetIncrease(templateSets, lastSets)
+  determineSetIncrease(templateSets, lastSets)
   }
 }
 
+const sumArray = function(array){
+  let sum = 0
+  array.forEach(function(element){
+      sum = sum + element
+  })
+  return sum
+}
+
+function checkSets (templateSets, lastSets) {
+  const array = []
+  lastSets.forEach(function(set, i){
+     if (set.reps === templateSets[i].high) {
+         array.push(0)
+     } else {
+         array.push(1)
+     }
+  })
+  if (sumArray(array) === 0) {
+      return true
+  } else {
+      return false
+  }
+}
 // displaySetsCreator(templateSetsReal, lastSetsReal)
 
-module.exports = {setsCreator, round, increaseWeight, determineSetIncrease, displaySetsCreator}
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets}

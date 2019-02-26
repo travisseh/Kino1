@@ -48,6 +48,7 @@ packagesArray.forEach(function(package){
 })
 }
 
+
 function seedDB(){
   Exercise.collection.drop()
   BodyWeight.collection.drop()
@@ -910,11 +911,136 @@ const goddess_toning = new Package (
   }
 )
 
-console.log(Exercise.constructor)
+
 
 // warrior_shredded.save()
 
 // goddess_toning.save()
+
+
+
+const incline_barbell_bench_press = new Exercise ({
+    name: "Incline Barbell Bench Press",
+    sets: [
+        {
+            reps: 3,
+            weight: 150
+        },
+        {
+            reps: 6,
+            weight: 135
+        },
+        {
+            reps: 7,
+            weight: 120
+        }
+    ],
+    order: 0,
+    packageUrl: "warrior_shredded",
+    workout: "A"
+  })
+
+const flat_dumbbell_bench_press = new Exercise ({
+    name: "Flat Dumbbell Bench Press",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "warrior_shredded",
+    workout: "A"
+  })
+
+const incline_dumbbell_curls = new Exercise ({
+    name: "Incline Dumbbell Curls",
+    sets: [
+        {
+            reps: 6,
+            weight: 30
+        },
+        {
+            reps: 5,
+            weight: 35
+        },
+        {
+            reps: 7,
+            weight: 25
+        }
+    ],
+    order: 2,
+    packageUrl: "warrior_shredded",
+    workout: "A"
+  })
+
+const rope_hammer_curls = new Exercise ({
+    name: "Rope Hammer Curls",
+    sets: [
+        {
+            reps: 8,
+            weight: 50
+        },
+        {
+            reps: 10,
+            weight: 42
+        }
+    ],
+    order: 3,
+    packageUrl: "warrior_shredded",
+    workout: "A"
+  })
+
+const bent_over_flyes = new Exercise ({
+    name: "Bent Over Flyes",
+    sets: [
+        {
+            reps: 15,
+            weight: 15
+        },
+        {
+            reps: 5,
+            weight: 15
+        },
+        {
+            reps: 4,
+            weight: 15
+        },
+        {
+            reps: 4,
+            weight: 15
+        }
+    ],
+    order: 4,
+    packageUrl: "warrior_shredded",
+    workout: "A"
+  })
+
+// incline_barbell_bench_press.save(function(err){
+//     if (err) {
+//         console.log(err)
+//     }
+// })
+// flat_dumbbell_bench_press.save(function(err){
+//     if (err) {
+//         console.log(err)
+//     }
+// })
+// incline_dumbbell_curls.save(function(err){
+//     if (err) {
+//         console.log(err)
+//     }
+// })
+// rope_hammer_curls.save(function(err){
+//     if (err) {
+//         console.log(err)
+//     }
+// })
+// bent_over_flyes.save()
 
 
 module.exports = seedDB

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Inclinde Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises" ]
+const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold"]
 
 //BodyWeight
 const bodyWeightSchema = new mongoose.Schema ({
@@ -28,6 +28,10 @@ const TemplateSet = mongoose.model("TemplateSet", templateSetsSchema)
 //TemplateExercise
 const templateExerciseSchema = new mongoose.Schema({
     name: String,
+    order: {
+        type: Number,
+        required: true
+    },
     videoLink: String,
     instructions: String,
     type: {
@@ -80,13 +84,17 @@ const exerciseSchema = new mongoose.Schema({
         enum: workouts,
         required: true
     },
+    order: {
+        type: Number,
+        required: true
+    },
     workout: {
         type: String,
         required: true
     },
     packageUrl: {
         type: String,
-        enum: []
+        require: true
     },
     date: {
         type: Date,

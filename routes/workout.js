@@ -1,52 +1,68 @@
 const express = require("express")
 const Exercise = require("../models/model").Exercise
-const BodyWeight = require("../models/model").BodyWeight
 const Package = require("../models/model").Package
-const Workout = require("../models/model").Workout
-const TemplateExercise = require("../models/model").TemplateExercise
-const TemplateWarmUp = require("../models/model").TemplateWarmUp
-const TemplateSet = require("../models/model").TemplateSet
-const _ = require("lodash")
-const setsCreator = require("../modules/functions").setsCreator
 const functions = require("../modules/functions")
 const workout = express.Router()
+// const displaySetsCreator = require("../modules/functions").displaySetsCreator
+// const determineSetIncrease = require("../modules/functions").determineSetIncrease
+// const increaseWeight = require("../modules/functions").increaseWeight
 
+
+const displayExercises = []
 
 workout.get("/:package/:workout", function(req, res, next){
-    //get the package and then get the workout
     //get each list of templatesets
     const packageUrl = req.params.package
-    const workout = req.params.workout
-  
-    Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: workout}}}, function(err, foundPackage){
+    const nameShort = req.params.workout
+    Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: nameShort}}}, function(err, foundPackage){
       if (err) {
         console.log(err)
       } else {
         const exercises = JSON.parse(JSON.stringify(foundPackage.workouts[0].exercises))
         const workout = JSON.parse(JSON.stringify(foundPackage.workouts[0]))
-        //get each list of lastsets
-        Exercise.distinct("name", function(err, names){
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(names)
-            res.render("workout", {exercises: exercises, packageUrl: packageUrl, workout: workout})
-          }
+        
+    //get each list of lastsets
+        Exercise.aggregate([
+            {$match: {packageUrl: packageUrl, workout: nameShort}},
+            {$sort: {order: -1}},
+            {$group: {_id: "$name", sets: {$last: "$sets"}}}
+        ]).exec(function (err, foundExercises){
+            if (err) {
+                console.log(err)
+            } else {
+                const lastExercises = foundExercises
+                console.log(lastExercises)
+    
+    //create displaySets from lastSets and templateSets
+                for (let i = 0; i < exercises.length; i++){
+                    let templateSets = exercises[i].sets
+                    let lastSets = lastExercises[i].sets
+                    global.displaySets = []
+
+                    functions.displaySetsCreator(templateSets, lastSets)
+                    displayExercises.push(displaySets)
+                }
+
+                res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout})
+            }
         })
-        //calculate display sets
       }
     })
   })
 
+
+
   workout.post("/:package/:workout", function(req, res, next){
     const formReps = req.body.reps
     const formWeight = req.body.weight
+    const order = req.body.order
     const sets = []
-    setsCreator(sets, formReps, formWeight)
+    functions.setsCreator(sets, formReps, formWeight)
     
     const newExercise = new Exercise ({
       name: req.body.exerciseName,
       sets: sets,
+      order: order,
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
       workout: req.body.workout
