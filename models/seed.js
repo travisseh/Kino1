@@ -13,52 +13,9 @@ const TemplateSet = require("./model").TemplateSet
 const newBodyWeight = new BodyWeight ({
     weight: null
   })
-  
-const newExercise = new Exercise ({
-    name: "Triceps Rope Pushdown",
-    warmUps: [
-        {
-            done: true
-        },
-        {
-            done: true
-        }
-    ],
-    sets: [
-        {
-            reps: 10,
-            weight: 58
-        },
-        {
-          reps: 10,
-          weight: 52
-        },
-        {
-          reps: 11,
-          weight: 45
-        }
-    ]
-  })
-  
 
 
-function packageCreator(packagesArray){
-packagesArray.forEach(function(package){
-    Package.create({name: package, active: false})
-})
-}
-
-
-function seedDB(){
-  Exercise.collection.drop()
-  BodyWeight.collection.drop()
-  Package.collection.drop()
-  packageCreator(packages)
-  newExercise.save()
-  newBodyWeight.save()
-}
-
-
+//PACKAGES
 const warrior_shredded = new Package (
   {
     name: "Warrior Shredded",
@@ -75,6 +32,7 @@ const warrior_shredded = new Package (
             {
                 name: "Incline Barbell Bench Press",
                 videoLink: "https://my.kinobody.com/courses/66901/lectures/5059620",
+                order: 0,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 warmUps: [
@@ -105,6 +63,7 @@ const warrior_shredded = new Package (
             {
                 name: "Flat Dumbbell Bench Press",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589076",
+                order: 1,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 warmUps: [],
@@ -116,16 +75,13 @@ const warrior_shredded = new Package (
                     {
                         low: 10,
                         high: 12
-                    },
-                    {
-                        low: 10,
-                        high: 12
                     }
                 ]
             },
             {
                 name: "Incline Dumbbell Curls",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
+                order: 2,
                 instructions: "Reverse Pyramid - reduce weight by 5lbs per dumbbell for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 warmUps: [
@@ -152,6 +108,7 @@ const warrior_shredded = new Package (
             {
                 name: "Rope Hammer Curls",
                 videoLink: "https://www.google.com/",
+                order: 3,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 warmUps: [],
@@ -169,6 +126,7 @@ const warrior_shredded = new Package (
             {
                 name: "Bent Over Flyes",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
+                order: 4,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 warmUps: [],
@@ -203,6 +161,7 @@ const warrior_shredded = new Package (
           {
               name: "Bulgarian Split Squats",
               videoLink: "https://www.google.com/",
+              order: 0,
               instructions: "Reverse Pyramid - reduce weight by 10lbs per dumbbell for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [
@@ -233,6 +192,7 @@ const warrior_shredded = new Package (
           {
               name: "Romanian Deadlifts",
               videoLink: "https://www.google.com/",
+              order: 1,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [
@@ -263,6 +223,7 @@ const warrior_shredded = new Package (
           {
               name: "Leg Extensions",
               videoLink: "https://www.google.com/",
+              order: 2,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [],
@@ -284,6 +245,7 @@ const warrior_shredded = new Package (
           {
               name: "Hanging Weighted Knee Raises",
               videoLink: "https://www.google.com/",
+              order: 3,
               instructions: "Same weight for all sets, start with 5lbs on feet",
               type: "Standard Pyramid",
               warmUps: [],
@@ -314,6 +276,7 @@ const warrior_shredded = new Package (
           {
               name: "Standing Barbell Press",
               videoLink: "https://www.google.com/",
+              order: 0,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [
@@ -344,6 +307,7 @@ const warrior_shredded = new Package (
           {
               name: "Weighted Chin-ups",
               videoLink: "https://www.google.com/",
+              order: 1,
               instructions: "Reverse Pyramid - reduce weight by 10lbs for second set. Increase weight by 2.5lbs each time.",
               type: "Reverse Pyramid",
               warmUps: [
@@ -370,6 +334,7 @@ const warrior_shredded = new Package (
           {
               name: "Seated Cable Rows",
               videoLink: "https://www.google.com/",
+              order: 2,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [],
@@ -387,6 +352,7 @@ const warrior_shredded = new Package (
           {
               name: "Triceps Rope Pushdown",
               videoLink: "https://www.google.com/",
+              order: 3,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 2 minutes between each set.",
               type: "Reverse Pyramid",
               warmUps: [],
@@ -408,6 +374,7 @@ const warrior_shredded = new Package (
           {
             name: "Lateral Raises",
             videoLink: "https://www.google.com/",
+            order: 4,
             instructions: "Rest Pause - 10 second rest between each.",
             type: "Rest Pause",
             warmUps: [],
@@ -451,6 +418,7 @@ const goddess_toning = new Package (
             {
                 name: "Sumo Deadlift Squats",
                 videoLink: "https://my.kinobody.com/courses/66901/lectures/5059620",
+                order: 0,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
                 warmUps: [
@@ -481,6 +449,7 @@ const goddess_toning = new Package (
             {
                 name: "Dumbbell Forward Lunges",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589076",
+                order: 1,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
                 warmUps: [],
@@ -502,6 +471,7 @@ const goddess_toning = new Package (
             {
                 name: "Seated Dumbbell Shoulder Press",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
+                order: 2,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
                 warmUps: [
@@ -532,6 +502,7 @@ const goddess_toning = new Package (
             {
                 name: "Lateral Raises",
                 videoLink: "https://www.google.com/",
+                order: 3,
                 instructions: "Same weight for all sets except the last. Pause 30-60 seconds between sets.",
                 type: "Standard Pyramid",
                 warmUps: [],
@@ -561,6 +532,7 @@ const goddess_toning = new Package (
             {
                 name: "Lying Leg Raises",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
+                order: 4,
                 instructions: "Same weight for all sets. 1 minute between sets",
                 type: "Standard Pyramid",
                 warmUps: [],
@@ -582,6 +554,7 @@ const goddess_toning = new Package (
             {
               name: "Plank Hold",
               videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
+              order: 5,
               instructions: "none",
               type: "Hold",
               warmUps: [],
@@ -599,6 +572,7 @@ const goddess_toning = new Package (
             {
               name: "Hip Bridge Hold",
               videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
+              order: 6,
               instructions: "none",
               type: "Hold",
               warmUps: [],
@@ -620,6 +594,7 @@ const goddess_toning = new Package (
       exercises: [
           {
               name: "Incline Dumbbell Bench Press",
+              order: 0,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
               videoLink: "https://www.google.com/",
@@ -651,6 +626,7 @@ const goddess_toning = new Package (
           {
               name: "Lat Pull Downs",
               videoLink: "https://www.google.com/",
+              order: 1,
               instructions: "Hands facing toward or away. Work toward chin being up",
               type: "Standard Pyramid",
               warmUps: [],
@@ -672,6 +648,7 @@ const goddess_toning = new Package (
           {
               name: "Pushups",
               videoLink: "https://www.google.com/",
+              order: 2,
               instructions: "Knees, then elevated hands, then regular, then feet raised",
               type: "Standard Pyramid",
               warmUps: [],
@@ -693,6 +670,7 @@ const goddess_toning = new Package (
           {
               name: "Cable Rows",
               videoLink: "https://www.google.com/",
+              order: 3,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
               warmUps: [],
@@ -714,6 +692,7 @@ const goddess_toning = new Package (
           {
             name: "Bent Over Flyes",
             videoLink: "https://www.google.com/",
+            order: 4,
             instructions: "Same weight for all sets except the last. Pause 30 seconds between sets. ",
             type: "Standard Pyramid",
             warmUps: [],
@@ -752,6 +731,7 @@ const goddess_toning = new Package (
           {
               name: "Goblet Box Squats",
               videoLink: "https://www.google.com/",
+              order: 0,
               instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
               warmUps: [
@@ -780,8 +760,9 @@ const goddess_toning = new Package (
               ]
           },
           {
-              name: "Step-Ups ",
+              name: "Step-Ups",
               videoLink: "https://www.google.com/",
+              order: 1,
               instructions: "Start with weaker foot, keep foot on bench. Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
               type: "Standard Pyramid",
               warmUps: [],
@@ -803,6 +784,7 @@ const goddess_toning = new Package (
           {
               name: "Alternating Dumbbell Curls",
               videoLink: "https://www.google.com/",
+              order: 2,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
               warmUps: [
@@ -833,6 +815,7 @@ const goddess_toning = new Package (
           {
               name: "Triceps Rope Pushdown",
               videoLink: "https://www.google.com/",
+              order: 3,
               instructions: "Rest 2 minutes between each set. Reduce by 10% each time.",
               type: "Reverse Pyramid",
               warmUps: [],
@@ -854,6 +837,7 @@ const goddess_toning = new Package (
           {
             name: "Hanging Knee Raises",
             videoLink: "https://www.google.com/",
+            order: 4,
             instructions: "Same weight for all sets. 1 minute between sets.",
             type: "Standard Pyramid",
             warmUps: [],
@@ -875,6 +859,7 @@ const goddess_toning = new Package (
           {
             name: "Side Plank Hold",
             videoLink: "https://www.google.com/",
+            order: 5,
             instructions: "2x per side",
             type: "Hold",
             warmUps: [],
@@ -892,6 +877,7 @@ const goddess_toning = new Package (
           {
             name: "Hip Bridge Hold",
             videoLink: "https://www.google.com/",
+            order: 6,
             instructions: "none",
             type: "Hold",
             warmUps: [],
@@ -907,28 +893,24 @@ const goddess_toning = new Package (
   }
 )
 
+const packages_array = [warrior_shredded, goddess_toning]
 
 
-// warrior_shredded.save()
-
-// goddess_toning.save()
-
-
-
+//WARRIOR A DAY
 const incline_barbell_bench_press = new Exercise ({
     name: "Incline Barbell Bench Press",
     sets: [
         {
-            reps: 3,
-            weight: 150
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 6,
-            weight: 135
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 7,
-            weight: 120
+            reps: 0,
+            weight: 0
         }
     ],
     order: 0,
@@ -957,16 +939,16 @@ const incline_dumbbell_curls = new Exercise ({
     name: "Incline Dumbbell Curls",
     sets: [
         {
-            reps: 6,
-            weight: 30
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 5,
-            weight: 35
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 7,
-            weight: 25
+            reps: 0,
+            weight: 0
         }
     ],
     order: 2,
@@ -978,12 +960,12 @@ const rope_hammer_curls = new Exercise ({
     name: "Rope Hammer Curls",
     sets: [
         {
-            reps: 8,
-            weight: 50
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 10,
-            weight: 42
+            reps: 0,
+            weight: 0
         }
     ],
     order: 3,
@@ -995,48 +977,26 @@ const bent_over_flyes = new Exercise ({
     name: "Bent Over Flyes",
     sets: [
         {
-            reps: 15,
-            weight: 15
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 5,
-            weight: 15
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 4,
-            weight: 15
+            reps: 0,
+            weight: 0
         },
         {
-            reps: 4,
-            weight: 15
+            reps: 0,
+            weight: 0
         }
     ],
     order: 4,
     packageUrl: "warrior_shredded",
     workout: "A"
   })
-
-// incline_barbell_bench_press.save(function(err){
-//     if (err) {
-//         console.log(err)
-//     }
-// })
-// flat_dumbbell_bench_press.save(function(err){
-//     if (err) {
-//         console.log(err)
-//     }
-// })
-// incline_dumbbell_curls.save(function(err){
-//     if (err) {
-//         console.log(err)
-//     }
-// })
-// rope_hammer_curls.save(function(err){
-//     if (err) {
-//         console.log(err)
-//     }
-// })
-// bent_over_flyes.save()
 
 
 //WARRIOR B DAY
@@ -1124,12 +1084,6 @@ const bulgarian_split_squats = new Exercise ({
     packageUrl: "warrior_shredded",
     workout: "B"
   })
-
-//   bulgarian_split_squats.save()
-//   romanian_deadlifts.save()
-//   leg_extensions.save()
-//   hanging_weighted_knee_raises.save()
-
 
 //WARRIOR C DAY
 
@@ -1235,11 +1189,466 @@ const lateral_raises = new Exercise ({
     workout: "C"
     })
 
-// standing_barbell_press.save()
-// weighted_chinups.save()
-// seated_cable_rows.save()
-// triceps_rope_pushdown.save()
-// lateral_raises.save()
+const warrior_shredded_array = [
+    incline_barbell_bench_press,
+    flat_dumbbell_bench_press,
+    incline_dumbbell_curls,
+    rope_hammer_curls,
+    bent_over_flyes,
+    bulgarian_split_squats,
+    romanian_deadlifts,
+    leg_extensions,
+    hanging_weighted_knee_raises,
+    standing_barbell_press,
+    weighted_chinups,
+    seated_cable_rows,
+    triceps_rope_pushdown,
+    lateral_raises]
+
+
+
+//GODDESS TONING
+
+//a day
+
+const sumo_deadlift_squats = new Exercise ({
+    name: "Sumo Deadlift Squats",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 0,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const dumbbell_forward_lunges = new Exercise ({
+    name: "Dumbbell Forward Lunges",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const seated_dumbbell_shoulder_press = new Exercise ({
+    name: "Seated Dumbbell Shoulder Press",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 2,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const lateral_raises_gt = new Exercise ({
+    name: "Lateral Raises",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 3,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const lying_leg_raises = new Exercise ({
+    name: "Lying Leg Raises",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 4,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const plank_hold = new Exercise ({
+    name: "Plank Hold",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 5,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+const hip_bridge_hold = new Exercise ({
+    name: "Hip Bridge Hold",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 6,
+    packageUrl: "goddess_toning",
+    workout: "A"
+    })
+
+//b day
+
+const incline_dumbbell_bench_press = new Exercise ({
+    name: "Incline Dumbbell Bench Press",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 0,
+    packageUrl: "goddess_toning",
+    workout: "B"
+    })
+
+const lat_pull_downs = new Exercise ({
+    name: "Lat Pull Downs",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "goddess_toning",
+    workout: "B"
+    })
+
+const pushups = new Exercise ({
+    name: "Pushups",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 2,
+    packageUrl: "goddess_toning",
+    workout: "B"
+    })
+
+const cable_rows = new Exercise ({
+    name: "Cable Rows",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 3,
+    packageUrl: "goddess_toning",
+    workout: "B"
+    })
+
+const bent_over_flyes_gt = new Exercise ({
+    name: "Bent Over Flyes",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 4,
+    packageUrl: "goddess_toning",
+    workout: "B"
+    })
+
+//c day
+
+const goblet_box_squats = new Exercise ({
+    name: "Goblet Box Squats",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 0,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const step_ups = new Exercise ({
+    name: "Step-Ups",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const alternating_dumbbell_curls = new Exercise ({
+    name: "Alternating Dumbbell Curls",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 2,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const triceps_rope_pushdown_gt = new Exercise ({
+    name: "Triceps Rope Pushdown",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 3,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const hanging_knee_raises = new Exercise ({
+    name: "Hanging Knee Raises",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 4,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const side_plank_hold = new Exercise ({
+    name: "Side Plank Hold",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 5,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+const hip_bridge_hold_2 = new Exercise ({
+    name: "Hip Bridge Hold",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 6,
+    packageUrl: "goddess_toning",
+    workout: "C"
+    })
+
+//array 
+const goddess_toning_array =[sumo_deadlift_squats,dumbbell_forward_lunges,
+seated_dumbbell_shoulder_press,
+lateral_raises_gt,
+lying_leg_raises,
+plank_hold,
+hip_bridge_hold,
+incline_dumbbell_bench_press,
+lat_pull_downs,
+pushups,
+cable_rows,
+bent_over_flyes_gt,
+goblet_box_squats,
+step_ups,
+alternating_dumbbell_curls,
+triceps_rope_pushdown_gt,
+hanging_knee_raises,
+side_plank_hold,
+hip_bridge_hold_2,]
+
+
+function seedDB(){
+    Exercise.collection.drop()
+    BodyWeight.collection.drop()
+    Package.collection.drop()
+    newBodyWeight.save()
+    Package.create(packages_array, function(err){
+        if (err){
+            console.log(err)
+        }
+    })
+    Exercise.create(warrior_shredded_array,function(err){
+    if (err) {
+        console.log(err)
+    }
+    })
+    Exercise.create(goddess_toning_array,function(err){
+        if (err) {
+            console.log(err)
+        }
+    })
+}
+
 
 
 module.exports = seedDB
