@@ -31,7 +31,6 @@ workout.get("/:package/:workout", function(req, res, next){
                 console.log(err)
             } else {
                 const lastExercises = foundExercises
-                console.log(lastExercises)
     
     //create displaySets from lastSets and templateSets
                     const displayExercises = []

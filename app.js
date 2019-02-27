@@ -41,7 +41,9 @@ app.use(bodyParser.urlencoded({
 }))
 
 //DB CONNECTION
-mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+// mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+
+mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true});
 
 //SEED DB
 // seedDB()
