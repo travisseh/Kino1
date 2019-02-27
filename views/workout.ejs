@@ -21,7 +21,13 @@
             at
             <input type="number" placeholder="max weight" name="weight[]" step="5" min="0">
         <% } else { %>
-            <input type="number" placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps" name="reps[]"> at 
+            <input type="number" 
+            <% if (displayExercises[index][i].low === null) { %>
+                placeholder="<%=displayExercises[index][i].high%> reps"
+            <% } else { %>
+                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps"
+            <% } %>
+            name="reps[]"> at 
             <input type="number" placeholder="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
         <% } %> 
     <%})%>
