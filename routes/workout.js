@@ -24,13 +24,14 @@ workout.get("/:package/:workout", function(req, res, next){
     //get each list of lastsets
         Exercise.aggregate([
             {$match: {packageUrl: packageUrl, workout: nameShort}},
-            {$sort: {order: -1}},
-            {$group: {_id: "$name", sets: {$last: "$sets"}}}
+            {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}}},
+            {$sort: {"_id.order" : 1}}
         ]).exec(function (err, foundExercises){
             if (err) {
                 console.log(err)
             } else {
                 const lastExercises = foundExercises
+                console.log(lastExercises)
     
     //create displaySets from lastSets and templateSets
                     const displayExercises = []

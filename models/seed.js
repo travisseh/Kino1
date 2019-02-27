@@ -364,10 +364,6 @@ const warrior_shredded = new Package (
                 {
                     low: 4,
                     high: 6
-                },
-                {
-                    low: 4,
-                    high: 6
                 }
               ]
           },
@@ -1041,6 +1037,209 @@ const bent_over_flyes = new Exercise ({
 //     }
 // })
 // bent_over_flyes.save()
+
+
+//WARRIOR B DAY
+
+const bulgarian_split_squats = new Exercise ({
+    name: "Bulgarian Split Squats",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 0,
+    packageUrl: "warrior_shredded",
+    workout: "B"
+  })
+
+  const romanian_deadlifts = new Exercise ({
+    name: "Romanian Deadlifts",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "warrior_shredded",
+    workout: "B"
+  })
+
+  const leg_extensions = new Exercise ({
+    name: "Leg Extensions",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 2,
+    packageUrl: "warrior_shredded",
+    workout: "B"
+  })
+
+  const hanging_weighted_knee_raises = new Exercise ({
+    name: "Hanging Weighted Knee Raises",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 3,
+    packageUrl: "warrior_shredded",
+    workout: "B"
+  })
+
+//   bulgarian_split_squats.save()
+//   romanian_deadlifts.save()
+//   leg_extensions.save()
+//   hanging_weighted_knee_raises.save()
+
+
+//WARRIOR C DAY
+
+const standing_barbell_press = new Exercise ({
+    name: "Standing Barbell Press",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 0,
+    packageUrl: "warrior_shredded",
+    workout: "C"
+  })
+
+
+const weighted_chinups = new Exercise ({
+    name: "Weighted Chin-ups",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 1,
+    packageUrl: "warrior_shredded",
+    workout: "C"
+    })
+
+const seated_cable_rows = new Exercise ({
+    name: "Seated Cable Rows",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 2,
+    packageUrl: "warrior_shredded",
+    workout: "C"
+    })
+
+const triceps_rope_pushdown = new Exercise ({
+    name: "Triceps Rope Pushdown",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 3,
+    packageUrl: "warrior_shredded",
+    workout: "C"
+    })
+
+const lateral_raises = new Exercise ({
+    name: "Lateral Raises",
+    sets: [
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        },
+        {
+            reps: 0,
+            weight: 0
+        }
+    ],
+    order: 4,
+    packageUrl: "warrior_shredded",
+    workout: "C"
+    })
+
+// standing_barbell_press.save()
+// weighted_chinups.save()
+// seated_cable_rows.save()
+// triceps_rope_pushdown.save()
+// lateral_raises.save()
 
 
 module.exports = seedDB
