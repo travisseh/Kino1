@@ -63,6 +63,6 @@ app.get("*", function(req, res, next){
 
 
 //PORT LISTENER
-app.listen(port, function(){
+app.listen(process.env.PORT || port, function(){
     console.log(`listening on port ${port}`)
 })

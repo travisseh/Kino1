@@ -8,6 +8,9 @@
   },
   "author": "Travisse Hansen",
   "license": "ISC",
+  "engines": {
+    "node": "11.2.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
