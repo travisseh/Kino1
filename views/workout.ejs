@@ -35,7 +35,7 @@
                 placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps"
             <% } %>
             name="reps[]"> at 
-            <input type="number" placeholder="<%= displayExercises[index][i].weight%> lbs" name="weight[]" step="5" min="0">
+            <input type="number" value="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
         <% } %> 
     <%})%>
 
