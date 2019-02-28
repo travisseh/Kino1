@@ -8,7 +8,7 @@
 
     <%#WARMUPS LOOP%>
     <%exercise.warmUps.forEach(function(warmUp){%>
-        <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at weight</strong></p>
+        <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= displayExercises[index][0].weight * (warmUp.percent/100) %> </strong></p>
     <%})%>
 
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
