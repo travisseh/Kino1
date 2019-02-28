@@ -17,6 +17,17 @@ function round(number, roundToNumber)
     return Math.round(number/roundToNumber)*roundToNumber;
 }
 
+//max weight thing
+
+function maxWeightText (index){
+  let percent = (10-index)*10 
+  if (percent === 100){
+    return (`max weight`)
+  }else {
+    return (`${percent}% max weight`)}
+}
+
+
 //LOGIC TEST FOR DISPLAY REPS AND WEIGHTS
 
 //get these from database
@@ -151,4 +162,4 @@ function checkSets (templateSets, lastSets) {
 }
 // displaySetsCreator(templateSetsReal, lastSetsReal)
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets}
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText}

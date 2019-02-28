@@ -7,8 +7,15 @@
     <h3><%= exercise.name %> </h3>
 
     <%#WARMUPS LOOP%>
-    <%exercise.warmUps.forEach(function(warmUp){%>
-        <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= displayExercises[index][0].weight * (warmUp.percent/100) %> </strong></p>
+    <%exercise.warmUps.forEach(function(warmUp, ind){%>
+        
+        <% if (warmUp.percent === 0) { %>
+            <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at bodyweight </strong></p>
+        <%  } else if (displayExercises[index][0].weight === 0) { %>
+            <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight </strong></p>
+        <% } else { %>
+            <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= functions.round(displayExercises[index][0].weight * (warmUp.percent/100),5) %> lbs </strong></p>
+        <%  } %>
     <%})%>
 
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
@@ -19,7 +26,7 @@
         <% if (displayExercises[index][i].weight < 1) { %> 
             <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
             at
-            <input type="number" placeholder="max weight" name="weight[]" step="5" min="0">
+            <input type="number" placeholder="<%=functions.maxWeightText(i)%>" name="weight[]" step="5" min="0">
         <% } else { %>
             <input type="number" 
             <% if (displayExercises[index][i].low === null) { %>
@@ -28,7 +35,7 @@
                 placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps"
             <% } %>
             name="reps[]"> at 
-            <input type="number" placeholder="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
+            <input type="number" placeholder="<%= displayExercises[index][i].weight%> lbs" name="weight[]" step="5" min="0">
         <% } %> 
     <%})%>
 

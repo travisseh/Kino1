@@ -42,7 +42,7 @@ workout.get("/:package/:workout", function(req, res, next){
                     displayExercises.push(displaySets)
                 }
 
-                res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout})
+                res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
             }
         })
       }
