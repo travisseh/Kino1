@@ -1628,9 +1628,9 @@ hip_bridge_hold_2,]
 
 
 function seedDB(){
-    Exercise.collection.drop()
-    BodyWeight.collection.drop()
-    Package.collection.drop()
+    // Exercise.collection.drop()
+    // BodyWeight.collection.drop()
+    // Package.collection.drop()
     newBodyWeight.save()
     Package.create(packages_array, function(err){
         if (err){
