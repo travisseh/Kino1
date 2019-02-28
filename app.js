@@ -45,8 +45,6 @@ app.use(bodyParser.urlencoded({
 
 mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
 
-//SEED DB
-// seedDB()
 
 //ROUTES
 app.use("/", index)
