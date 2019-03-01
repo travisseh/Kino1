@@ -77,25 +77,120 @@ function sumTemplate(templateSets){
   return result
 }
 
-function increaseWeight (templateSets, lastSets) {
+function increaseWeight (templateSets, lastSets, type, special) {
   for (let i = 0; i < templateSets.length; i++){
-    if (i === 0) {
-      displaySets.push(
-        {
-          low: templateSets[i].low,
-          high: templateSets[i].high,
-          weight: lastSets[i].weight + 5
-        }
-        )
-    } else if (i > 0) {
-      displaySets.push(
-        {
-          low: templateSets[i].low,
-          high: templateSets[i].high,
-          weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), 5)) 
-        }
-        )
-    } 
+    
+    switch (type) {
+      case "Standard Pyramid":
+        if (i === 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: lastSets[i].weight + 5
+            }
+            )
+        } else if (i > 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: displaySets[i-1].weight
+            }
+            )
+        } 
+        break
+
+      case "Standard Pyramid Tweaked":
+        if (i < templateSets.length -1) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: lastSets[i].weight + 5
+            }
+            )
+        } else {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: displaySets[i-1].weight - 5
+            }
+            )
+        } 
+        break
+
+      case "Hold":
+        if (i === 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: -1
+            }
+            )
+        } else if (i > 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), 5)) 
+            }
+            )
+        } 
+        break
+
+      case "Reverse Pyramid":
+        if (i === 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: lastSets[i].weight + 5
+            }
+            )
+        } else if (i > 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), 5)) 
+            }
+            )
+        } 
+        break
+
+      case "Rest Pause":
+        if (i === 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: lastSets[i].weight + 5
+            }
+            )
+        } else if (i > 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: displaySets[i-1].weight
+            }
+            )
+        } 
+        break
+
+      default:
+
+
+    }
+    
+    
+    
+    
+    
+    
   }
 }
 
@@ -129,9 +224,9 @@ function determineSetIncrease (templateSets, lastSets) {
   }
 }
 
-function displaySetsCreator(templateSets, lastSets) {
+function displaySetsCreator(templateSets, lastSets, type, special) {
   if (checkSets(templateSets,lastSets)){
-  increaseWeight(templateSets, lastSets)
+  increaseWeight(templateSets, lastSets, type, special)
   } else {
   determineSetIncrease(templateSets, lastSets)
   }

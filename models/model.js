@@ -36,7 +36,17 @@ const templateExerciseSchema = new mongoose.Schema({
     instructions: String,
     type: {
         type: String,
-        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold"]
+        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold", "Standard Pyramid Tweaked"]
+    },
+    pauseDuration: {
+        type: Number,
+        required: true
+    },
+    useBar: Boolean,
+    special: {
+        type: Number,
+        enum: [0, 2.5, 15, 20, 57]
+        //0= bodyweight, 2.5 = pullups, 15 = 15 increment, 20= 20 increment, 57 = weird five lb increment
     },
     warmUps: [templateWarmUpsSchema],
     sets: [templateSetsSchema]

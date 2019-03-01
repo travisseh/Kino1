@@ -35,6 +35,8 @@ const warrior_shredded = new Package (
                 order: 0,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
+                pauseDuration: 150,
+                useBar: true,
                 warmUps: [
                     {
                         percent: 60,
@@ -66,6 +68,7 @@ const warrior_shredded = new Package (
                 order: 1,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
+                pauseDuration: 150,
                 warmUps: [],
                 sets: [
                     {
@@ -84,6 +87,7 @@ const warrior_shredded = new Package (
                 order: 2,
                 instructions: "Reverse Pyramid - reduce weight by 5lbs per dumbbell for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
+                pauseDuration: 150,
                 warmUps: [
                     {
                         percent: 50,
@@ -111,6 +115,7 @@ const warrior_shredded = new Package (
                 order: 3,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
+                pauseDuration: 150,
                 warmUps: [],
                 sets: [
                     {
@@ -129,6 +134,7 @@ const warrior_shredded = new Package (
                 order: 4,
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
+                pauseDuration: 10,
                 warmUps: [],
                 sets: [
                     {
@@ -164,6 +170,7 @@ const warrior_shredded = new Package (
               order: 0,
               instructions: "Reverse Pyramid - reduce weight by 10lbs per dumbbell for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
               warmUps: [
                   {
                       percent: 0,
@@ -195,6 +202,8 @@ const warrior_shredded = new Package (
               order: 1,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              useBar: true,
               warmUps: [
                 {
                   percent: 60,
@@ -226,6 +235,8 @@ const warrior_shredded = new Package (
               order: 2,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              special: 15,
               warmUps: [],
               sets: [
                   {
@@ -248,6 +259,7 @@ const warrior_shredded = new Package (
               order: 3,
               instructions: "Same weight for all sets, start with 5lbs on feet",
               type: "Standard Pyramid",
+              pauseDuration: 60,
               warmUps: [],
               sets: [
                   {
@@ -279,6 +291,8 @@ const warrior_shredded = new Package (
               order: 0,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              useBar: true,
               warmUps: [
                   {
                       percent: 60,
@@ -310,6 +324,8 @@ const warrior_shredded = new Package (
               order: 1,
               instructions: "Reverse Pyramid - reduce weight by 10lbs for second set. Increase weight by 2.5lbs each time.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              special: 2.5,
               warmUps: [
                 {
                   percent: 0,
@@ -337,6 +353,8 @@ const warrior_shredded = new Package (
               order: 2,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              special: 20,
               warmUps: [],
               sets: [
                   {
@@ -355,6 +373,8 @@ const warrior_shredded = new Package (
               order: 3,
               instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 2 minutes between each set.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              special: 57,
               warmUps: [],
               sets: [
                   {
@@ -377,6 +397,7 @@ const warrior_shredded = new Package (
             order: 4,
             instructions: "Rest Pause - 10 second rest between each.",
             type: "Rest Pause",
+            pauseDuration: 10,
             warmUps: [],
             sets: [
                 {
@@ -421,6 +442,7 @@ const goddess_toning = new Package (
                 order: 0,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
+                pauseDuration: 150,
                 warmUps: [
                     {
                         percent: 60,
@@ -452,6 +474,7 @@ const goddess_toning = new Package (
                 order: 1,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
+                pauseDuration: 150,
                 warmUps: [],
                 sets: [
                     {
@@ -474,6 +497,7 @@ const goddess_toning = new Package (
                 order: 2,
                 instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
                 type: "Standard Pyramid",
+                pauseDuration: 150,
                 warmUps: [
                     {
                         percent: 60,
@@ -504,7 +528,8 @@ const goddess_toning = new Package (
                 videoLink: "https://www.google.com/",
                 order: 3,
                 instructions: "Same weight for all sets except the last. Pause 30-60 seconds between sets.",
-                type: "Standard Pyramid",
+                type: "Standard Pyramid Tweaked",
+                pauseDuration: 60,
                 warmUps: [],
                 sets: [
                     {
@@ -535,6 +560,7 @@ const goddess_toning = new Package (
                 order: 4,
                 instructions: "Same weight for all sets. 1 minute between sets",
                 type: "Standard Pyramid",
+                pauseDuration: 60,
                 warmUps: [],
                 sets: [
                     {
@@ -557,6 +583,7 @@ const goddess_toning = new Package (
               order: 5,
               instructions: "none",
               type: "Hold",
+              pauseDuration: 60,
               warmUps: [],
               sets: [
                   {
@@ -575,6 +602,7 @@ const goddess_toning = new Package (
               order: 6,
               instructions: "none",
               type: "Hold",
+              pauseDuration: 60,
               warmUps: [],
               sets: [
                   {
@@ -597,6 +625,7 @@ const goddess_toning = new Package (
               order: 0,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
+              pauseDuration: 150,
               videoLink: "https://www.google.com/",
               warmUps: [
                   {
@@ -629,6 +658,8 @@ const goddess_toning = new Package (
               order: 1,
               instructions: "Hands facing toward or away. Work toward chin being up",
               type: "Standard Pyramid",
+              pauseDuration: 150,
+              special: 57,
               warmUps: [],
               sets: [
                 {
@@ -651,6 +682,7 @@ const goddess_toning = new Package (
               order: 2,
               instructions: "Knees, then elevated hands, then regular, then feet raised",
               type: "Standard Pyramid",
+              pauseDuration: 120,
               warmUps: [],
               sets: [
                   {
@@ -673,6 +705,8 @@ const goddess_toning = new Package (
               order: 3,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
+              pauseDuration: 150,
+              special: 20,
               warmUps: [],
               sets: [
                   {
@@ -694,7 +728,8 @@ const goddess_toning = new Package (
             videoLink: "https://www.google.com/",
             order: 4,
             instructions: "Same weight for all sets except the last. Pause 30 seconds between sets. ",
-            type: "Standard Pyramid",
+            type: "Standard Pyramid Tweaked",
+            pauseDuration: 30,
             warmUps: [],
             sets: [
                 {
@@ -734,6 +769,7 @@ const goddess_toning = new Package (
               order: 0,
               instructions: "Rest 2-3 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
+              pauseDuration: 150,
               warmUps: [
                   {
                       percent: 60,
@@ -765,6 +801,7 @@ const goddess_toning = new Package (
               order: 1,
               instructions: "Start with weaker foot, keep foot on bench. Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
               type: "Standard Pyramid",
+              pauseDuration: 150,
               warmUps: [],
               sets: [
                 {
@@ -787,6 +824,7 @@ const goddess_toning = new Package (
               order: 2,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
+              pauseDuration: 150,
               warmUps: [
                   {
                       percent: 60,
@@ -818,6 +856,8 @@ const goddess_toning = new Package (
               order: 3,
               instructions: "Rest 2 minutes between each set. Reduce by 10% each time.",
               type: "Reverse Pyramid",
+              pauseDuration: 150,
+              special: 57,
               warmUps: [],
               sets: [
                   {
@@ -840,6 +880,7 @@ const goddess_toning = new Package (
             order: 4,
             instructions: "Same weight for all sets. 1 minute between sets.",
             type: "Standard Pyramid",
+            pauseDuration: 60,
             warmUps: [],
             sets: [
                 {
@@ -862,6 +903,7 @@ const goddess_toning = new Package (
             order: 5,
             instructions: "2x per side",
             type: "Hold",
+            pauseDuration: 60,
             warmUps: [],
             sets: [
                 {
@@ -880,6 +922,7 @@ const goddess_toning = new Package (
             order: 6,
             instructions: "none",
             type: "Hold",
+            pauseDuration: 60,
             warmUps: [],
             sets: [
                 {
@@ -1648,6 +1691,17 @@ function seedDB(){
         }
     })
 }
+
+function seedPackages(){
+    Package.collection.drop()
+    Package.create(packages_array, function(err){
+        if (err){
+            console.log(err)
+        }
+    })
+}
+
+// seedPackages()
 
 
 

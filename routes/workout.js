@@ -37,8 +37,11 @@ workout.get("/:package/:workout", function(req, res, next){
                     for (let i = 0; i < exercises.length; i++){
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
+                    let type = exercises[i].type
+                    let special = exercises[i].special
                     global.displaySets = []
-                    functions.displaySetsCreator(templateSets, lastSets)
+                    
+                    functions.displaySetsCreator(templateSets, lastSets, type, special)
                     displayExercises.push(displaySets)
                 }
 
