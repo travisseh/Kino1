@@ -10,15 +10,6 @@ const passport = require("passport")
 const passportLocalMongoose = require("passport-local-mongoose")
 const app = express()
 const port = 8080
-    //Models
-const Exercise = require("./models/model").Exercise
-const BodyWeight = require("./models/model").BodyWeight
-const Package = require("./models/model").Package
-const Workout = require("./models/model").Workout
-const TemplateExercise = require("./models/model").TemplateExercise
-const TemplateWarmUp = require("./models/model").TemplateWarmUp
-const TemplateSet = require("./models/model").TemplateSet
-const seedDB = require("./models/seed")
     //Route Handlers
 const login = require("./routes/login")
 const signup = require("./routes/signup")
@@ -27,11 +18,6 @@ const selectPackage = require("./routes/selectPackage")
 const index = require("./routes/index")
 const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
-    //JS Functions
-const warrior_shredded = require("./modules/storedWorkouts").warrior_shredded
-const _ = require("lodash")
-const setsCreator = require("./modules/functions").setsCreator
-const functions = require("./modules/functions")
 
 //GLOBAL SETTINGS
 app.use(express.static("public"));

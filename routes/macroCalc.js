@@ -1,5 +1,4 @@
 const express = require("express")
-const Exercise = require("../models/model").Exercise
 const BodyWeight = require("../models/model").BodyWeight
 const router = express.Router()
 

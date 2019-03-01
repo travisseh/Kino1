@@ -1,9 +1,5 @@
 const express = require("express")
-const mongoose = require("mongoose")
-const Exercise = require("../models/model").Exercise
-const BodyWeight = require("../models/model").BodyWeight
 const Package = require("../models/model").Package
-const warrior_shredded = require("../modules/storedWorkouts").warrior_shredded
 const dashboard = express.Router()
 
 
