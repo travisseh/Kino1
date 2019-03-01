@@ -685,6 +685,7 @@ const goddess_toning = new Package (
               instructions: "Knees, then elevated hands, then regular, then feet raised",
               type: "Standard Pyramid",
               pauseDuration: 120,
+              dropDown: ["Kneeling", "Standard", "Feet Elevated"],
               warmUps: [],
               sets: [
                   {

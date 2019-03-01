@@ -2,13 +2,13 @@
 
 <h1>Exercises</h1>
 
+
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
 
     <%#WARMUPS LOOP%>
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
-        
         <% if (warmUp.percent === 0) { %>
             <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at bodyweight </strong></p>
         <%  } else if (displayExercises[index][0].weight === 0) { %>
@@ -23,23 +23,25 @@
     <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
         <h6>Set <%=i + 1%></h6>
+        <% let unit = "reps" %>  
+        <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
         <% if (displayExercises[index][i].weight < 1) { %> 
-            <input type="number" placeholder="<%=set.low%> - <%=set.high%> reps" name="reps[]">
+            <input type="number" placeholder="<%=set.low%> - <%=set.high%> <%=unit%>" name="reps[]">
             at
             <input type="number" placeholder="<%=functions.maxWeightText(i)%>" name="weight[]" step="5" min="0">
         <% } else { %>
             <input type="number" 
             <% if (displayExercises[index][i].low === null) { %>
-                placeholder="<%=displayExercises[index][i].high%> reps"
+                placeholder="<%=displayExercises[index][i].high%> <%=unit%>"
             <% } else { %>
-                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps"
+                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> <%=unit%>"
             <% } %>
             name="reps[]"> at 
             <% if (exercise.dropDown.length > 0){ %>
                 <select name="weight[]">
                 <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
-                    <option value="<%= inde + 1 %>" 
-                    <% if (displayExercises[index][i].weight === inde + 1){ %>
+                    <option value="<%= inde %>" 
+                    <% if (displayExercises[index][i].weight === inde ){ %>
                         selected
                     <% } %> >
                     <%=dropDownOption%></option>
