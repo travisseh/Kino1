@@ -1,22 +1,10 @@
-//CALLBACKS TEST
+//TESTS
 
-const test = [1,2,3,4]
 
-// test.forEach(function(number){
-//     switch (number) {
-//         case 1 : 
-//             console.log("log 1")
-//             break
-//         case 2 :
-//             console.log("log 2")
-//             break
-//         case 3 :
-//             console.log("log 3")
-//             break
-//         default: 
-//             console.log("default log")
-//     }
+const x = 3
 
-// })
-
-console.log(test.length)
+if (x === (3 || 5)){
+    console.log("true")
+} else {
+    console.log("false")
+}
