@@ -122,12 +122,13 @@ function increaseWeight (templateSets, lastSets, type, special) {
         break
 
       case "Hold":
+        case "Standard Pyramid":
         if (i === 0) {
           displaySets.push(
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: -1
+              weight: lastSets[i].weight + 1
             }
             )
         } else if (i > 0) {
@@ -135,7 +136,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), 5)) 
+              weight: displaySets[i-1].weight
             }
             )
         } 
@@ -255,6 +256,55 @@ function checkSets (templateSets, lastSets) {
       return false
   }
 }
-// displaySetsCreator(templateSetsReal, lastSetsReal)
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText}
+function optionMapper(name, number){
+  switch (name) {
+    case "Pushups":
+        switch(number){
+          case 1:
+            return "Kneeling"
+          case 2:
+            return "Standard"
+          case 3:
+            return "Feet Elevated"
+          case 4: 
+            return "5lbs on Back"
+          case 5: 
+            return "10lbs on Back"
+          case 6: 
+            return "15lbs on Back"
+          default: 
+            return "you beat the game"
+        }
+    case "Hip Bridge Hold":
+      switch(number){
+        case 1:
+          return "Hip Brigdge Hold"
+        case 2:
+          return "Full Bridge Hold"
+        case 3:
+          return "Full Bridge w/ 5lbs"
+        case 4:
+          return "Full Bridge w/ 10lbs"
+        default: 
+          console.log("error with hip bridge hold!!!!")
+          return "you beat the game"
+      }
+    case "Plank Hold":
+      switch(number){
+        case 1:
+          return "Plank Hold"
+        case 2:
+          return "Long Lever Plank"
+        case 3:
+          return "Full Bridge w/ Band"
+        default: 
+          console.log("error with hip bridge hold!!!!")
+          return "you beat the game"
+      }
+      
+  }
+}
+
+
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper}

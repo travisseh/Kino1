@@ -19,11 +19,12 @@ const templateWarmUpsSchema = new mongoose.Schema({
 const TemplateWarmUp = mongoose.model("TemplateWarmUp", templateWarmUpsSchema)
 
 //TemplateSet
-const templateSetsSchema = mongoose.Schema({
+const templateSetsSchema = new mongoose.Schema({
     low: Number,
     high: Number
 })
 const TemplateSet = mongoose.model("TemplateSet", templateSetsSchema)
+
 
 //TemplateExercise
 const templateExerciseSchema = new mongoose.Schema({
@@ -48,6 +49,7 @@ const templateExerciseSchema = new mongoose.Schema({
         enum: [0, 2.5, 15, 20, 57]
         //0= bodyweight, 2.5 = pullups, 15 = 15 increment, 20= 20 increment, 57 = weird five lb increment
     },
+    dropDown: [String],
     warmUps: [templateWarmUpsSchema],
     sets: [templateSetsSchema]
 })

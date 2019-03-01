@@ -35,7 +35,20 @@
                 placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> reps"
             <% } %>
             name="reps[]"> at 
-            <input type="number" value="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
+            <% if (exercise.dropDown.length > 0){ %>
+                <select name="weight[]">
+                <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
+                    <option value="<%= inde + 1 %>" 
+                    <% if (displayExercises[index][i].weight === inde + 1){ %>
+                        selected
+                    <% } %> >
+                    <%=dropDownOption%></option>
+                <% }) %>
+                </select>    
+            <% } else { %>
+                <input type="number" value="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
+        <% } %>
+
         <% } %> 
     <%})%>
 

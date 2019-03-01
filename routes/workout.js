@@ -3,9 +3,6 @@ const Exercise = require("../models/model").Exercise
 const Package = require("../models/model").Package
 const functions = require("../modules/functions")
 const workout = express.Router()
-// const displaySetsCreator = require("../modules/functions").displaySetsCreator
-// const determineSetIncrease = require("../modules/functions").determineSetIncrease
-// const increaseWeight = require("../modules/functions").increaseWeight
 
 
 
@@ -40,7 +37,7 @@ workout.get("/:package/:workout", function(req, res, next){
                     let type = exercises[i].type
                     let special = exercises[i].special
                     global.displaySets = []
-                    
+
                     functions.displaySetsCreator(templateSets, lastSets, type, special)
                     displayExercises.push(displaySets)
                 }
@@ -59,6 +56,7 @@ workout.get("/:package/:workout", function(req, res, next){
     const formWeight = req.body.weight
     const order = req.body.order
     const sets = []
+    console.log(`form Reps: ${formReps} form Weight ${formWeight}`)
     functions.setsCreator(sets, formReps, formWeight)
     
     const newExercise = new Exercise ({

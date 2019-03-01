@@ -584,6 +584,7 @@ const goddess_toning = new Package (
               instructions: "none",
               type: "Hold",
               pauseDuration: 60,
+              dropDown: ["Regular", "Long Lever Plank", "Long Lever + 5 lbs", "Long Lever + 10 lbs", "Long Lever + 15 lbs",],
               warmUps: [],
               sets: [
                   {
@@ -603,6 +604,7 @@ const goddess_toning = new Package (
               instructions: "none",
               type: "Hold",
               pauseDuration: 60,
+              dropDown: ["Regular", "Full Bridge Hold", "Full Bridge w/ Band"],
               warmUps: [],
               sets: [
                   {
