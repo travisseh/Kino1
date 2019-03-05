@@ -25,7 +25,7 @@ const warrior_shredded = new Package (
     workouts: [{
         name: "A: Chest and Shoulder",
         nameShort: "A",
-        image: "https://source.unsplash.com/dMWL8V7L8G4",
+        image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
         description: "5 workouts to strengthen chest and shoulders.",
         duration: 60,
         exercises: [
@@ -160,7 +160,7 @@ const warrior_shredded = new Package (
     {
       name: "B: Legs & Bum",
       nameShort: "B",
-      image: "https://source.unsplash.com/dMWL8V7L8G4",
+      image: "https://source.unsplash.com/WvDYdXDzkhs/286x190",
       description: "4 workouts to strengthen your legs and bum.",
       duration: 60,
       exercises: [
@@ -279,9 +279,9 @@ const warrior_shredded = new Package (
       ]
     },
     {
-      name: "C: Triceps, Back, and Biceps",
+      name: "C: Tri's, Back, and Bi's",
       nameShort: "C",
-      image: "https://source.unsplash.com/dMWL8V7L8G4",
+      image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
       description: "5 workouts to strengthen your triceps, back, and biceps",
       duration: 60,
       exercises: [
@@ -432,7 +432,7 @@ const goddess_toning = new Package (
     workouts: [{
         name: "A: Legs, Shoulders, Abs",
         nameShort: "A",
-        image: "https://source.unsplash.com/dMWL8V7L8G4",
+        image: "https://source.unsplash.com/DC5akQJyH4I/286x190",
         description: "7 workouts to strengthen legs, shoulders, and Abs.",
         duration: 60,
         exercises: [
@@ -618,7 +618,7 @@ const goddess_toning = new Package (
     {
       name: "B: Chest & Back",
       nameShort: "B",
-      image: "https://source.unsplash.com/dMWL8V7L8G4",
+      image: "https://source.unsplash.com/CN-6UcL7z2Y/286x190",
       description: "5 workouts to strengthen your chest and back",
       duration: 60,
       exercises: [
@@ -762,7 +762,7 @@ const goddess_toning = new Package (
     {
       name: "C: Legs & Arms",
       nameShort: "C",
-      image: "https://source.unsplash.com/dMWL8V7L8G4",
+      image: "https://source.unsplash.com/T-hBGkb3-xQ/286x190",
       description: "7 workouts to strengthen your legs and arms.",
       duration: 60,
       exercises: [
@@ -1251,8 +1251,6 @@ const warrior_shredded_array = [
     triceps_rope_pushdown,
     lateral_raises]
 
-
-
 //GODDESS TONING
 
 //a day
@@ -1674,9 +1672,9 @@ hip_bridge_hold_2,]
 
 
 function seedDB(){
-    // Exercise.collection.drop()
-    // BodyWeight.collection.drop()
-    // Package.collection.drop()
+    Exercise.collection.drop()
+    BodyWeight.collection.drop()
+    Package.collection.drop()
     newBodyWeight.save()
     Package.create(packages_array, function(err){
         if (err){
@@ -1696,16 +1694,21 @@ function seedDB(){
 }
 
 function seedPackages(){
-    Package.collection.drop()
-    Package.create(packages_array, function(err){
-        if (err){
-            console.log(err)
+    Package.collection.drop(function(err, result){
+        if (err) {
+            console.log (err)
+        }
+        if (result) {
+            Package.create(packages_array, function(err){
+                if (err){
+                    console.log(err)
+                }
+            })
         }
     })
 }
 
-// seedPackages()
 
 
 
-module.exports = seedDB
+module.exports = {seedDB, seedPackages}

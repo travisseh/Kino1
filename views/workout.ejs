@@ -7,6 +7,8 @@
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
 
+    <%const firstDisplayWeight = displayExercises[index][0].weight%>
+
     <%#WARMUPS LOOP%>
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
         <% if (warmUp.percent === 0) { %>
@@ -14,7 +16,13 @@
         <%  } else if (displayExercises[index][0].weight === 0) { %>
             <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight </strong></p>
         <% } else { %>
-            <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= functions.round(displayExercises[index][0].weight * (warmUp.percent/100),5) %> lbs </strong></p>
+            <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
+            <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
+            
+            <%if (exercise.useBar === true) { %>
+                <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+            <% } %>
+            
         <%  } %>
     <%})%>
 
@@ -23,9 +31,11 @@
     <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
         <h6>Set <%=i + 1%></h6>
+        <% const weight = displayExercises[index][i].weight %>
         <% let unit = "reps" %>  
+
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
-        <% if (displayExercises[index][i].weight < 1) { %> 
+        <% if (weight < 1) { %> 
             <input type="number" placeholder="<%=set.low%> - <%=set.high%> <%=unit%>" name="reps[]">
             at
             <input type="number" placeholder="<%=functions.maxWeightText(i)%>" name="weight[]" step="5" min="0">
@@ -48,7 +58,10 @@
                 <% }) %>
                 </select>    
             <% } else { %>
-                <input type="number" value="<%= displayExercises[index][i].weight%>" name="weight[]" step="5" min="0">
+                <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0">
+                <%if (exercise.useBar === true) { %>
+                <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+            <% } %>
         <% } %>
 
         <% } %> 

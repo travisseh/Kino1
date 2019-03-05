@@ -307,4 +307,20 @@ function optionMapper(name, number){
 }
 
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper}
+
+function barCalc(disPlayWeight) {
+    const barWeight = 45
+    let weightMinusBar = disPlayWeight - barWeight
+    const weights = [90, 70, 50, 20, 10, 5]
+    let weightsOutPut = []
+    for (let i = 0; i < weights.length; i++){
+      //set weightsoutput to the dividend of input and specific weight
+      weightsOutPut[i] = Math.floor(weightMinusBar / weights[i])
+      //find remainder and set it to the evaluated value
+      weightMinusBar = weightMinusBar % weights[i] 
+    }
+    return weightsOutPut
+}
+
+
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper, barCalc}
