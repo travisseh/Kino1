@@ -3,14 +3,18 @@ const Package = require("../models/model").Package
 const selectPackage = express.Router()
 
 selectPackage.get("/", function(req,res,next){
-    //check if logged in
-    Package.find({}, function(err, foundPackages){
-        if (err) {
-            console.log(err)
-        } else {
-            res.render("selectPackage", {packages: foundPackages})
-        }
-    })
+    if(req.isAuthenticated()){
+        Package.find({}, function(err, foundPackages){
+            if (err) {
+                console.log(err)
+            } else {
+                res.render("selectPackage", {packages: foundPackages})
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
+    
 })
 
 selectPackage.post("/", function(req, res, next){
