@@ -11,6 +11,7 @@ const path = require("path")
     //DB
 const mongoose = require("mongoose")
 const seedPackages = require("./models/seed").seedPackages
+const User = require("./models/model").User
 
     //Auth
 const session = require('express-session')
@@ -21,8 +22,6 @@ const findOrCreate = require('mongoose-findorcreate')
 
     //Route Handlers
 const auth = require("./routes/auth")
-const login = require("./routes/login")
-const signup = require("./routes/signup")
 const dashboard = require("./routes/dashboard")
 const selectPackage = require("./routes/selectPackage")
 const index = require("./routes/index")
@@ -53,19 +52,7 @@ mongoose.set("useCreateIndex", true)
 
 //AUTHENTICATION
 
-const userSchema = new mongoose.Schema ({
-  email: String,
-  password: String,
-  fname: String,
-  lname: String,
-  googleId: String,
-  photoUrl: String
-})
 
-userSchema.plugin(passportLocalMongoose)
-userSchema.plugin(findOrCreate)
-
-const User = new mongoose.model("User", userSchema)
 
 passport.use(User.createStrategy())
 passport.serializeUser(function(user, done) {
@@ -103,8 +90,6 @@ function(accessToken, refreshToken, profile, cb) {
 app.use("/", index)
 app.use("/dashboard", dashboard)
 app.use("/selectPackage", selectPackage)
-app.use("/login", login)
-app.use("/signup", signup)
 app.use("/macrocalc", macroCalc)
 app.use("/workout", workout)
 // app.use("/auth/google", auth)

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+const findOrCreate = require('mongoose-findorcreate')
+const passportLocalMongoose = require("passport-local-mongoose")
 const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold", "Incline Dumbbell Bench Press", "Lat Pull Downs", "Pushups", "Cable Rows", "Goblet Box Squats", "Step-Ups", "Alternating Dumbbell Curls", "Hanging Knee Raises", "Side Plank Hold", "Hip Bridge Hold",]
 
 //BodyWeight
@@ -91,6 +93,10 @@ const exerciseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'TemplateExercise'
     }],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
     name: {
         type: String,
         enum: workouts,
@@ -121,12 +127,26 @@ const exerciseSchema = new mongoose.Schema({
 })
 const Exercise = mongoose.model("Exercise", exerciseSchema)
 
+const userSchema = new mongoose.Schema ({
+    email: String,
+    password: String,
+    fname: String,
+    lname: String,
+    googleId: String,
+    photoUrl: String,
+    exercises: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Exercise"
+      }
+    ]
+  })
+  
+  userSchema.plugin(passportLocalMongoose)
+  userSchema.plugin(findOrCreate)
+  
+  const User = new mongoose.model("User", userSchema)
+
 
 //EXPORTS
-module.exports.Exercise = Exercise
-module.exports.BodyWeight = BodyWeight 
-module.exports.Package = Package
-module.exports.Workout = Workout
-module.exports.TemplateExercise = TemplateExercise
-module.exports.TemplateWarmUp = TemplateWarmUp 
-module.exports.TemplateSet = TemplateSet
+module.exports = {Exercise, BodyWeight, Package, Workout, TemplateExercise, TemplateWarmUp, TemplateSet, User}
