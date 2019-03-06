@@ -4,11 +4,15 @@ const router = express.Router()
 
 router.get("/", function(req, res, next){
     if (req.isAuthenticated()){
-        BodyWeight.findOne({}).sort('-date').exec(function(err, foundWeight){
+        BodyWeight.findOne({userId: req.user._id}).sort('-date').exec(function(err, foundWeight){
             if (err){
                 console.log(err)
             } else {
-                res.render("macroCalc", {weight: foundWeight.weight})
+                if (foundWeight != null) {
+                    res.render("macroCalc", {weight: foundWeight.weight})
+                } else {
+                    res.render("macroCalc", {weight: null})
+                }
             }
         })
     } else {
@@ -21,7 +25,8 @@ router.get("/", function(req, res, next){
 router.post("/", function(req, res, next){
     const weight = req.body.weight
     const newBodyWeight = new BodyWeight ({
-        weight: weight
+        weight: weight,
+        userId: req.user._id
     })
     newBodyWeight.save()
     //show success messsage

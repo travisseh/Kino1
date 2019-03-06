@@ -29,9 +29,9 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 
 // DB CONNECTION
-// mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
 
-mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
+// mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
 
 // seedPackages()
 
@@ -72,10 +72,10 @@ passport.use(new GoogleStrategy({
   useProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb) {
-  console.log(profile)
 
   User.findOrCreate({ 
     googleId: profile.id,
+    email: profile.emails[0].value,
     fname: profile.name.givenName,
     lname: profile.name.familyName,
     photoUrl: profile.photos[0].value
@@ -94,7 +94,8 @@ app.use("/macrocalc", macroCalc)
 app.use("/workout", workout)
 // app.use("/auth/google", auth)
 
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile"]})
+app.get("/auth/google", passport.authenticate("google", { scope: ['https://www.googleapis.com/auth/userinfo.profile',
+'https://www.googleapis.com/auth/userinfo.email']})
 )
 
 app.get('/auth/google/kino1', 

@@ -2,6 +2,8 @@ const express = require("express")
 const Exercise = require("../models/model").Exercise
 const Package = require("../models/model").Package
 const functions = require("../modules/functions")
+const fakeLastExercise = require("../modules/objects").fakeLastExercise
+const fakeLastExercises = require("../modules/objects").fakeLastExercises
 const workout = express.Router()
 
 
@@ -21,14 +23,35 @@ workout.get("/:package/:workout", function(req, res, next){
           
       //get each list of lastsets
           Exercise.aggregate([
-              {$match: {packageUrl: packageUrl, workout: nameShort}},
+              {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort}},
               {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}}},
               {$sort: {"_id.order" : 1}}
           ]).exec(function (err, foundExercises){
               if (err) {
                   console.log(err)
               } else {
-                  const lastExercises = foundExercises
+                  let lastExercises
+                  if (foundExercises.length != exercises.length){
+                    // lastExercises = fakeLastExercises
+                    const orderArray = []
+                    // console.log(foundExercises[0]._id.order)
+                    for (let i = 0; i < exercises.length; i++){
+                      if (foundExercises[i] === undefined){
+                        orderArray.push(null)
+                      } else if (foundExercises[i]._id.order === i) {
+                        orderArray.push(i)
+                      } else {
+                        orderArray.push(null)
+                      }
+                    }
+                    orderArray.forEach(function(el, i){
+                      if (el === null) {
+                        foundExercises.splice(i,0, fakeLastExercise)
+                      }
+                    })
+                    lastExercises = foundExercises
+                  } else {
+                    lastExercises = foundExercises}
       
       //create displaySets from lastSets and templateSets
                       const displayExercises = []
@@ -71,7 +94,8 @@ workout.get("/:package/:workout", function(req, res, next){
       order: order,
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
-      workout: req.body.workout
+      workout: req.body.workout,
+      userId: req.user._id
     })
     newExercise.save()
   

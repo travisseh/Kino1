@@ -9,7 +9,11 @@ const bodyWeightSchema = new mongoose.Schema ({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
 })
 const BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
 
@@ -93,7 +97,7 @@ const exerciseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'TemplateExercise'
     }],
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
@@ -129,7 +133,6 @@ const Exercise = mongoose.model("Exercise", exerciseSchema)
 
 const userSchema = new mongoose.Schema ({
     email: String,
-    password: String,
     fname: String,
     lname: String,
     googleId: String,

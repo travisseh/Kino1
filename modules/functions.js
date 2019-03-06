@@ -241,10 +241,13 @@ const sumArray = function(array){
   return sum
 }
 
+// lastSets.forEach(function(set, i){
+//   if (set.reps >= templateSets[i].high) {
+
 function checkSets (templateSets, lastSets) {
   const array = []
-  lastSets.forEach(function(set, i){
-     if (set.reps >= templateSets[i].high) {
+  templateSets.forEach(function(set, i){
+     if (lastSets[i].reps >= set.high) {
          array.push(0)
      } else {
          array.push(1)
@@ -305,8 +308,6 @@ function optionMapper(name, number){
       
   }
 }
-
-
 
 function barCalc(disPlayWeight) {
     const barWeight = 45
