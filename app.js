@@ -26,9 +26,9 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 
 // DB CONNECTION
-mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+// mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
 
-// mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
+mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
 
 // seedPackages()
 
@@ -56,7 +56,6 @@ app.use("/macrocalc", macroCalc)
 app.use("/workout", workout)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
-
 
 
 // app.get("*", function(req, res, next){
