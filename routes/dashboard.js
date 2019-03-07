@@ -4,9 +4,11 @@ const dashboard = express.Router()
 
 
 dashboard.get("/", function(req, res,next){
-    //check to see if logged in
     if(req.isAuthenticated()){
-        Package.findOne({active: true}, function(err, foundPackage){
+        if (req.user.selectedPackage === undefined){
+            res.redirect("/selectPackage")
+        } else {
+        Package.findOne({_id: req.user.selectedPackage}, function(err, foundPackage){
             if (err){
                 console.log(err)
             } else if (foundPackage === null) {
@@ -15,6 +17,7 @@ dashboard.get("/", function(req, res,next){
                 res.render("dashboard", {package: foundPackage})
             }
         })
+        }
     } else {
         res.redirect("/")
     }

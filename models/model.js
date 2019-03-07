@@ -137,6 +137,10 @@ const userSchema = new mongoose.Schema ({
     lname: String,
     googleId: String,
     photoUrl: String,
+    selectedPackage: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Package"
+    },
     exercises: [
       {
         type: mongoose.Schema.Types.ObjectId,

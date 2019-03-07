@@ -1,5 +1,6 @@
 const express = require("express")
 const Package = require("../models/model").Package
+const User = require("../models/model").User
 const selectPackage = express.Router()
 
 selectPackage.get("/", function(req,res,next){
@@ -21,13 +22,11 @@ selectPackage.post("/", function(req, res, next){
     //return modal that asks for the product number from their receipt - if it hasn't been entered yet
     //flash success message
     const package_id = req.body.package_id
-    Package.updateMany({active: false}, function(err, result){
-        if (err) {
+    User.findOneAndUpdate({_id: req.user._id}, {selectedPackage: package_id}, function(err,raw){
+        if(err){
             console.log(err)
         } else {
-            Package.updateOne({_id: package_id}, {active: true}, function(err, raw){
-                res.redirect("/dashboard")
-            })
+            res.redirect("/dashboard")
         }
     })
 })
