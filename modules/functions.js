@@ -323,5 +323,33 @@ function barCalc(disPlayWeight) {
     return weightsOutPut
 }
 
+function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, fakeLastExercise){
+  exercisesArray.forEach(function(exercise){
+    lastExercisesArray.push(fakeLastExercise)
+  })
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper, barCalc}
+  foundExercisesArray.forEach(function(foundExercise, i){
+    lastExercisesArray.splice(foundExercise._id.order,1,foundExercise)
+  })
+}
+
+function fillExercises2(exercisesArray, foundExercisesArray, fakeLastExercise){
+  const orderArray = []
+  for (let i = 0; i < exercisesArray.length; i++){
+    if (foundExercisesArray[i] === undefined){
+      orderArray.push(null)
+    } else if (foundExercisesArray[i]._id.order === i) {
+      orderArray.push(i)
+    } else {
+      orderArray.push(null)
+    }
+  }
+  orderArray.forEach(function(el, i){
+    if (el === null) {
+      foundExercisesArray.splice(i,0, fakeLastExercise)
+    }
+  })
+}
+
+
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper, barCalc, fillExercises}

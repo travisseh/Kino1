@@ -30,26 +30,9 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
           if (err) {
               console.log(err)
           } else {
-              let lastExercises
+              let lastExercises = []
               if (foundExercises.length != exercises.length){
-                // lastExercises = fakeLastExercises
-                const orderArray = []
-                // console.log(foundExercises[0]._id.order)
-                for (let i = 0; i < exercises.length; i++){
-                  if (foundExercises[i] === undefined){
-                    orderArray.push(null)
-                  } else if (foundExercises[i]._id.order === i) {
-                    orderArray.push(i)
-                  } else {
-                    orderArray.push(null)
-                  }
-                }
-                orderArray.forEach(function(el, i){
-                  if (el === null) {
-                    foundExercises.splice(i,0, fakeLastExercise)
-                  }
-                })
-                lastExercises = foundExercises
+                functions.fillExercises(lastExercises,exercises,foundExercises,fakeLastExercise)
               } else {
                 lastExercises = foundExercises}
 
@@ -65,7 +48,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                   functions.displaySetsCreator(templateSets, lastSets, type, special)
                   displayExercises.push(displaySets)
               }
-
+              //render the page with all the above info
               res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
       })

@@ -51,9 +51,6 @@ app.use(passport.session())
 mongoose.set("useCreateIndex", true)
 
 //AUTHENTICATION
-
-
-
 passport.use(User.createStrategy())
 passport.serializeUser(function(user, done) {
   done(null, user.id);
