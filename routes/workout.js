@@ -64,7 +64,6 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
     const formWeight = req.body.weight
     const order = req.body.order
     const sets = []
-    console.log(`form Reps: ${formReps} form Weight ${formWeight}`)
     functions.setsCreator(sets, formReps, formWeight)
     
     const newExercise = new Exercise ({
