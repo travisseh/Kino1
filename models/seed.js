@@ -478,16 +478,16 @@ const goddess_toning = new Package (
                 warmUps: [],
                 sets: [
                     {
-                        low: 6,
-                        high: 10
+                        low: 3,
+                        high: 5
                     },
                     {
-                        low: 6,
-                        high: 10
+                        low: 3,
+                        high: 5
                     },
                     {
-                        low: 6,
-                        high: 10
+                        low: 3,
+                        high: 5
                     }
                 ]
             },
@@ -504,7 +504,7 @@ const goddess_toning = new Package (
                         reps: 5
                     },
                     {
-                        percent: 60,
+                        percent: 80,
                         reps: 5
                     }
                 ],

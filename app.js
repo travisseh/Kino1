@@ -29,9 +29,9 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 
 // DB CONNECTION
-// mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
 
-mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
+// mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
 
 // seedPackages()
 
@@ -68,8 +68,8 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  // callbackURL: "http://localhost:8080/auth/google/kino1",
-  callbackURL: "https://kinohelper.herokuapp.com/auth/google/kino1",
+  callbackURL: "http://localhost:8080/auth/google/kino1",
+  // callbackURL: "https://kinohelper.herokuapp.com/auth/google/kino1",
   useProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb) {

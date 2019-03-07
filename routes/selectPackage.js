@@ -1,10 +1,10 @@
 const express = require("express")
 const Package = require("../models/model").Package
 const User = require("../models/model").User
+const middleware = require("../middleware")
 const selectPackage = express.Router()
 
-selectPackage.get("/", function(req,res,next){
-    if(req.isAuthenticated()){
+selectPackage.get("/", middleware.isLoggedIn,function(req,res,next){
         Package.find({}, function(err, foundPackages){
             if (err) {
                 console.log(err)
@@ -12,13 +12,10 @@ selectPackage.get("/", function(req,res,next){
                 res.render("selectPackage", {packages: foundPackages})
             }
         })
-    } else {
-        res.redirect("/")
-    }
-    
+
 })
 
-selectPackage.post("/", function(req, res, next){
+selectPackage.post("/", middleware.isLoggedIn,function(req, res, next){
     //return modal that asks for the product number from their receipt - if it hasn't been entered yet
     //flash success message
     const package_id = req.body.package_id

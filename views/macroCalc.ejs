@@ -9,23 +9,23 @@
 
 <% const stableCals = weight * 15 %> 
 <% const deficitCals = weight * 12 %> 
-<% const dailyProtein = deficitCals * .27 %> 
-<% const dailyCarbs = deficitCals * .4 %> 
-<% const dailyFats = deficitCals * .33 %> 
+<% const dailyProtein = (deficitCals * .27)/4  %> 
+<% const dailyCarbs = (deficitCals * .4)/4 %> 
+<% const dailyFats = (deficitCals * .33)/9 %> 
 <% const perMealProtein = dailyProtein/3 %> 
 <% const perMealCarbs = dailyCarbs/3 %> 
 <% const perMealFats = dailyFats/3 %> 
 
 <% if (weight != null) { %>
-    <p>Current Weight: <%= weight%></p>
-    <p>Stable Cals: <%=stableCals.toFixed(0)%></p>
-    <p>Deficit Cals: <%=deficitCals.toFixed(0)%></p>
-    <p>Daily Protein = <%= dailyProtein.toFixed(0) %></p>
-    <p>Per Meal Protein = <%= perMealProtein.toFixed(0)%></p>
-    <p>Daily Carbs = <%= dailyCarbs.toFixed(0) %></p>
-    <p>Per Meal Carbs = <%= perMealCarbs.toFixed(0)%></p>
-    <p>Daily Fats = <%= dailyFats.toFixed(0) %></p>
-    <p>Per Meal Fats = <%= perMealFats.toFixed(0) %></p>
+    <p><strong>Current Weight:</strong> <%= weight%></p>
+    <p><strong>Stable Cals:</strong> <%=stableCals.toFixed(0)%></p>
+    <p><strong>Deficit Cals:</strong> <%=deficitCals.toFixed(0)%></p>
+    <p><strong>Daily Protein: </strong><%= dailyProtein.toFixed(0)%> grams</p>
+    <p><strong>Per Meal Protein: </strong><%= perMealProtein.toFixed(0)%> grams</p>
+    <p><strong>Daily Carbs: </strong><%= dailyCarbs.toFixed(0) %> grams</p>
+    <p><strong>Per Meal Carbs: </strong><%= perMealCarbs.toFixed(0)%> grams</p>
+    <p><strong>Daily Fats: </strong><%= dailyFats.toFixed(0) %> grams</p>
+    <p><strong>Per Meal Fats: </strong><%= perMealFats.toFixed(0) %> grams</p>
 <% } %> 
 
 
