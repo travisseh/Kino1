@@ -22,7 +22,7 @@ passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
 //   callbackURL: "http://localhost:8080/auth/google/kino1",
-  callbackURL: "https://kinohelper.herokuapp.com/auth/google/kino1",
+  callbackURL: process.env.GOOGLE_CALLBACK_URL,
   useProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb) {
