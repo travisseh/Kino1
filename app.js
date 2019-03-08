@@ -26,7 +26,7 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 
 // DB CONNECTION
-// mongoose.connect("mongodb://localhost:27017/Kino1", {useNewUrlParser: true})
+// mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
 
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 

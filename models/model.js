@@ -49,7 +49,16 @@ const templateExerciseSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    useBar: Boolean,
+    weightIncrement: {
+        type: Number,
+        enum: [5, 10, 15, 20, 25, 30]
+    },
+    startWeight: Number,
+    weightType: 
+        {
+            type: String,
+            enum: ["bar","barWeights","dumbbells","dumbbell","body","cable", "rope"]
+        },
     special: {
         type: Number,
         enum: [0, 2.5, 15, 20, 57]

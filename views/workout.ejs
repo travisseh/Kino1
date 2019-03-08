@@ -6,6 +6,11 @@
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
+    <% if(exercise.weightType === "dumbbells") {%>
+        <small class="text-muted">Enter your total weight lifted, not per barbell</small>
+        <br>
+        <br>
+    <%}%>
 
     <%const firstDisplayWeight = displayExercises[index][0].weight%>
 
@@ -19,7 +24,7 @@
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
             <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
             
-            <%if (exercise.useBar === true) { %>
+            <%if (exercise.weightType === "bar") { %>
                 <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
             <% } %>
             
@@ -58,8 +63,8 @@
                 <% }) %>
                 </select>    
             <% } else { %>
-                <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0">
-                <%if (exercise.useBar === true) { %>
+                <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0"> lbs
+                <%if (exercise.weightType === "bar") { %>
                 <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
             <% } %>
         <% } %>
