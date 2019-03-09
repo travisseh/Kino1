@@ -195,9 +195,56 @@ function increaseWeight (templateSets, lastSets, type, special) {
   }
 }
 
-function determineSetIncrease (templateSets, lastSets) {
+function determineSetIncrease (templateSets, lastSets, type) {
   for (let i = 0; i < templateSets.length; i ++) {
-    if (lastSets[i].reps >= templateSets[i].high) {
+    if (lastSets[i].reps === null){
+        //account for standard pyramid as the else and then reverse and standard tweaked as their own - and turn it into a function at the end
+        if (type === "Reverse Pyramid"){
+          if (i === 0) {
+            displaySets.push(
+              {
+                low: templateSets[i].low,
+                high: templateSets[i].high,
+                weight: "max weight"
+              }
+              )
+          } else if (i > 0) {
+            displaySets.push(
+              {
+                low: templateSets[i].low,
+                high: templateSets[i].high,
+                weight: `${(10-i)*10}% of ${displaySets[i-1].weight}`
+              }
+              )
+          } 
+        } else if (type === "Standard Pyramid Tweaked"){
+          if (i < templateSets.length -1) {
+            displaySets.push(
+              {
+                low: templateSets[i].low,
+                high: templateSets[i].high,
+                weight: "max weight"
+              }
+              )
+          } else {
+            displaySets.push(
+              {
+                low: templateSets[i].low,
+                high: templateSets[i].high,
+                weight: displaySets[i-1].weight + " - 5"
+              }
+              )
+          } 
+        } else {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: "max weight"
+            }
+            )
+        }
+    } else if (lastSets[i].reps >= templateSets[i].high) {
       displaySets.push(
         {
           low: null,
@@ -229,7 +276,7 @@ function displaySetsCreator(templateSets, lastSets, type, special) {
   if (checkSets(templateSets,lastSets)){
   increaseWeight(templateSets, lastSets, type, special)
   } else {
-  determineSetIncrease(templateSets, lastSets)
+  determineSetIncrease(templateSets, lastSets, type)
   }
 }
 
@@ -241,8 +288,7 @@ const sumArray = function(array){
   return sum
 }
 
-// lastSets.forEach(function(set, i){
-//   if (set.reps >= templateSets[i].high) {
+
 
 function checkSets (templateSets, lastSets) {
   const array = []
@@ -330,24 +376,6 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
 
   foundExercisesArray.forEach(function(foundExercise, i){
     lastExercisesArray.splice(foundExercise._id.order,1,foundExercise)
-  })
-}
-
-function fillExercises2(exercisesArray, foundExercisesArray, fakeLastExercise){
-  const orderArray = []
-  for (let i = 0; i < exercisesArray.length; i++){
-    if (foundExercisesArray[i] === undefined){
-      orderArray.push(null)
-    } else if (foundExercisesArray[i]._id.order === i) {
-      orderArray.push(i)
-    } else {
-      orderArray.push(null)
-    }
-  }
-  orderArray.forEach(function(el, i){
-    if (el === null) {
-      foundExercisesArray.splice(i,0, fakeLastExercise)
-    }
   })
 }
 

@@ -42,6 +42,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                   let templateSets = exercises[i].sets
                   let lastSets = lastExercises[i].sets
                   let type = exercises[i].type
+                  // console.log(`name: ${exercises[i].name} type: ${type}`)
                   let special = exercises[i].special
                   global.displaySets = []
 

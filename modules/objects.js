@@ -203,27 +203,28 @@ const fakeLastExercises = [
     },
 ]
 
+
 const fakeLastExercise = {
     name: "one",
     sets: [
         {
-            reps: 0,
+            reps: null,
             weight: 0
         },
         {
-            reps: 0,
+            reps: null,
             weight: 0
         },
         {
-            reps: 0,
+            reps: null,
             weight: 0
         },
         {
-            reps: 0,
+            reps: null,
             weight: 0
         },
         {
-            reps: 0,
+            reps: null,
             weight: 0
         },
     ]

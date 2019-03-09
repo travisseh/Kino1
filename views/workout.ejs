@@ -7,27 +7,36 @@
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
     <% if(exercise.weightType === "dumbbells") {%>
-        <small class="text-muted">Enter your total weight lifted, not per barbell</small>
+        <small class="text-muted">Enter per dumbbell weight, not total weight</small>
         <br>
         <br>
     <%}%>
 
+    <%#WARMUPS LOOP%>
+
+    <%#WEIGHT FROM FIRST SET FOR WARMUP CALC%>
     <%const firstDisplayWeight = displayExercises[index][0].weight%>
 
-    <%#WARMUPS LOOP%>
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
+        
+        <%#HANDLE BODY-WEIGHT WARMUPS%>
         <% if (warmUp.percent === 0) { %>
             <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at bodyweight </strong></p>
-        <%  } else if (displayExercises[index][0].weight === 0) { %>
+
+        <%#HANDLE NO PREVIOUS EXERCISES%>    
+        <%  } else if (typeof(firstDisplayWeight) === "string") { %>
             <p>Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight </strong></p>
         <% } else { %>
+
+            <%#DECLARE WEIGHT FOR EACH WARMUP%>
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
+
+            <%#SHOW NORMAL WARMUP WEIGHT%>
             <p><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
             
             <%if (exercise.weightType === "bar") { %>
                 <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
             <% } %>
-            
         <%  } %>
     <%})%>
 
@@ -36,15 +45,22 @@
     <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
         <h6>Set <%=i + 1%></h6>
+
+        <%#DECLARE WEIGHT FOR EACH SET%>
         <% const weight = displayExercises[index][i].weight %>
         <% let unit = "reps" %>  
 
+        <%#CHANGE UNIT FOR SELECT EXERCISES%>
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
+
+        <%#HANDLE MAX WEIGHT CURRENTLY%>
         <% if (weight < 1) { %> 
             <input type="number" placeholder="<%=set.low%> - <%=set.high%> <%=unit%>" name="reps[]">
             at
             <input type="number" placeholder="<%=functions.maxWeightText(i)%>" name="weight[]" step="5" min="0">
         <% } else { %>
+
+            <%#HANDLE REPS%>
             <input type="number" 
             <% if (displayExercises[index][i].low === null) { %>
                 placeholder="<%=displayExercises[index][i].high%> <%=unit%>"
@@ -52,6 +68,8 @@
                 placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> <%=unit%>"
             <% } %>
             name="reps[]"> at 
+            
+            <%#HANDLE DROPDOWN OPTIONS%>
             <% if (exercise.dropDown.length > 0){ %>
                 <select name="weight[]">
                 <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
@@ -61,11 +79,24 @@
                     <% } %> >
                     <%=dropDownOption%></option>
                 <% }) %>
-                </select>    
+                </select>
+                
             <% } else { %>
-                <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0"> lbs
-                <%if (exercise.weightType === "bar") { %>
-                <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+
+                <%#HANDLE NO PREVIOUS EXERCISE%>
+                <%if (typeof(weight) === "string"){%>
+                    <%#console.log(`name: ${exercise.name}, type: ${exercise.type}`)%>
+                    <input type="number" placeholder="<%= weight %>" name="weight[]" step="5" min="0"> lbs
+                    <%if (exercise.weightType === "bar") { %>
+                    <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+                    <%}%>
+                <%} else {%>
+
+                <%#HANDLE NORMAL WEIGHTS%>
+                    <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0"> lbs
+                    <%if (exercise.weightType === "bar") { %>
+                    <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+                <%}%>
             <% } %>
         <% } %>
 
