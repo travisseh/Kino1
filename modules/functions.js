@@ -77,7 +77,7 @@ function sumTemplate(templateSets){
   return result
 }
 
-function increaseWeight (templateSets, lastSets, type, special) {
+function increaseWeight (templateSets, lastSets, type, weightIncrement, special) {
   for (let i = 0; i < templateSets.length; i++){
     
     switch (type) {
@@ -87,7 +87,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: lastSets[i].weight + 5
+              weight: lastSets[i].weight + weightIncrement
             }
             )
         } else if (i > 0) {
@@ -107,7 +107,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: lastSets[i].weight + 5
+              weight: lastSets[i].weight + weightIncrement
             }
             )
         } else {
@@ -128,7 +128,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: lastSets[i].weight + 1
+              weight: lastSets[i].weight + weightIncrement
             }
             )
         } else if (i > 0) {
@@ -148,7 +148,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: lastSets[i].weight + 5
+              weight: lastSets[i].weight + weightIncrement
             }
             )
         } else if (i > 0) {
@@ -168,7 +168,7 @@ function increaseWeight (templateSets, lastSets, type, special) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: lastSets[i].weight + 5
+              weight: lastSets[i].weight + weightIncrement
             }
             )
         } else if (i > 0) {
@@ -213,7 +213,7 @@ function determineSetIncrease (templateSets, lastSets, type) {
               {
                 low: templateSets[i].low,
                 high: templateSets[i].high,
-                weight: `${(10-i)*10}% of ${displaySets[i-1].weight}`
+                weight: `${(10-i)*10}% of max weight`
               }
               )
           } 
@@ -272,9 +272,9 @@ function determineSetIncrease (templateSets, lastSets, type) {
   }
 }
 
-function displaySetsCreator(templateSets, lastSets, type, special) {
+function displaySetsCreator(templateSets, lastSets, type, weightIncrement, special) {
   if (checkSets(templateSets,lastSets)){
-  increaseWeight(templateSets, lastSets, type, special)
+  increaseWeight(templateSets, lastSets, type, weightIncrement, special)
   } else {
   determineSetIncrease(templateSets, lastSets, type)
   }
@@ -306,55 +306,6 @@ function checkSets (templateSets, lastSets) {
   }
 }
 
-function optionMapper(name, number){
-  switch (name) {
-    case "Pushups":
-        switch(number){
-          case 1:
-            return "Kneeling"
-          case 2:
-            return "Standard"
-          case 3:
-            return "Feet Elevated"
-          case 4: 
-            return "5lbs on Back"
-          case 5: 
-            return "10lbs on Back"
-          case 6: 
-            return "15lbs on Back"
-          default: 
-            return "you beat the game"
-        }
-    case "Hip Bridge Hold":
-      switch(number){
-        case 1:
-          return "Hip Brigdge Hold"
-        case 2:
-          return "Full Bridge Hold"
-        case 3:
-          return "Full Bridge w/ 5lbs"
-        case 4:
-          return "Full Bridge w/ 10lbs"
-        default: 
-          console.log("error with hip bridge hold!!!!")
-          return "you beat the game"
-      }
-    case "Plank Hold":
-      switch(number){
-        case 1:
-          return "Plank Hold"
-        case 2:
-          return "Long Lever Plank"
-        case 3:
-          return "Full Bridge w/ Band"
-        default: 
-          console.log("error with hip bridge hold!!!!")
-          return "you beat the game"
-      }
-      
-  }
-}
-
 function barCalc(disPlayWeight) {
     const barWeight = 45
     let weightMinusBar = disPlayWeight - barWeight
@@ -380,4 +331,4 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
 }
 
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, optionMapper, barCalc, fillExercises}
+module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, barCalc, fillExercises}
