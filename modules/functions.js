@@ -77,7 +77,7 @@ function sumTemplate(templateSets){
   return result
 }
 
-function increaseWeight (templateSets, lastSets, type, weightIncrement, special) {
+function increaseWeight (templateSets, lastSets, type, weightIncrement) {
   for (let i = 0; i < templateSets.length; i++){
     
     switch (type) {
@@ -272,9 +272,9 @@ function determineSetIncrease (templateSets, lastSets, type) {
   }
 }
 
-function displaySetsCreator(templateSets, lastSets, type, weightIncrement, special) {
+function displaySetsCreator(templateSets, lastSets, type, weightIncrement) {
   if (checkSets(templateSets,lastSets)){
-  increaseWeight(templateSets, lastSets, type, weightIncrement, special)
+  increaseWeight(templateSets, lastSets, type, weightIncrement)
   } else {
   determineSetIncrease(templateSets, lastSets, type)
   }

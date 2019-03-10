@@ -258,7 +258,6 @@ const warrior_shredded = new Package (
               startWeight: 0,
               weightType: "cable",
               pauseDuration: 150,
-              special: 15,
               warmUps: [],
               sets: [
                   {
@@ -355,7 +354,6 @@ const warrior_shredded = new Package (
               startWeight: 0,
               weightType: "barWeights",
               pauseDuration: 150,
-              special: 2.5,
               warmUps: [
                 {
                   percent: 0,
@@ -387,7 +385,6 @@ const warrior_shredded = new Package (
               startWeight: 0,
               weightType: "cable",
               pauseDuration: 150,
-              special: 20,
               warmUps: [],
               sets: [
                   {
@@ -410,7 +407,6 @@ const warrior_shredded = new Package (
               startWeight: 2.5,
               weightType: "rope",
               pauseDuration: 150,
-              special: 57,
               warmUps: [],
               sets: [
                   {
@@ -728,7 +724,6 @@ const goddess_toning = new Package (
               startWeight: 0,
               weightType: "cable",
               pauseDuration: 150,
-              special: 57,
               warmUps: [],
               sets: [
                 {
@@ -782,7 +777,6 @@ const goddess_toning = new Package (
               startWeight: 2.5,
               weightType: "cable",
               pauseDuration: 150,
-              special: 20,
               warmUps: [],
               sets: [
                   {
@@ -948,7 +942,6 @@ const goddess_toning = new Package (
               startWeight: 2.5,
               weightType: "rope",
               pauseDuration: 150,
-              special: 57,
               warmUps: [],
               sets: [
                   {

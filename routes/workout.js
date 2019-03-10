@@ -43,10 +43,9 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                   let lastSets = lastExercises[i].sets
                   let type = exercises[i].type
                   let weightIncrement = exercises[i].weightIncrement
-                  let special = exercises[i].special
                   global.displaySets = []
 
-                  functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement, special)
+                  functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
                   displayExercises.push(displaySets)
               }
               //render the page with all the above info
