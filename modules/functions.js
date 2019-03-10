@@ -1,80 +1,47 @@
 const express = require("express")
 const _ = require("lodash")
 
-function setsCreator(setsArray, repsArray, weightsArray) {
-    for (let i = 0; i < repsArray.length; i++){
-      setsArray.push(
-        {
-          reps: repsArray[i],
-          weight: weightsArray[i]
-        }
-        )
-    }
-  }
-
+//GENERALIZED FUNCTIONS
 function round(number, roundToNumber)
 {
     return Math.round(number/roundToNumber)*roundToNumber;
 }
 
-//max weight thing
-
-function maxWeightText (index){
-  let percent = (10-index)*10 
-  if (percent === 100){
-    return (`max weight`)
-  }else {
-    return (`${percent}% max weight`)}
+const sumArray = function(array){
+  let sum = 0
+  array.forEach(function(element){
+      sum = sum + element
+  })
+  return sum
 }
 
 
-//LOGIC TEST FOR DISPLAY REPS AND WEIGHTS
-
-//get these from database
-const lastSetsReal = [
-  {
-    reps: 6,
-    weight: 150 
-  },
-  {
-    reps: 7,
-    weight: 135
-  },
-  {
-    reps: 8,
-    weight: 120
+//FUNCTIONS FOR WORKOUT.JS
+function setsCreator(setsArray, repsArray, weightsArray) {
+  for (let i = 0; i < repsArray.length; i++){
+    setsArray.push(
+      {
+        reps: repsArray[i],
+        weight: weightsArray[i]
+      }
+      )
   }
-]
-
-const templateSetsReal = [
-  {
-      low: 5,
-      high: 6
-  },
-  {
-      low: 6,
-      high: 7
-  },
-  {
-      low: 7,
-      high: 8
-  }
-  ]
-
-function sumLast(lastSets){
-  let result = 0
-  lastSets.forEach(function(set){
-    result = result + set.reps
-  })
-  return result
 }
 
-function sumTemplate(templateSets){
-  let result = 0
-  templateSets.forEach(function(set){
-    result = result + set.high
+function checkSets (templateSets, lastSets) {
+  const array = []
+  templateSets.forEach(function(set, i){
+     if (lastSets[i].reps >= set.high) {
+         array.push(0)
+     } else {
+         array.push(1)
+     }
   })
-  return result
+  if (sumArray(array) === 0) {
+      return true
+  } else {
+      return false
+  }
 }
 
 function increaseWeight (templateSets, lastSets, type, weightIncrement) {
@@ -280,32 +247,6 @@ function displaySetsCreator(templateSets, lastSets, type, weightIncrement) {
   }
 }
 
-const sumArray = function(array){
-  let sum = 0
-  array.forEach(function(element){
-      sum = sum + element
-  })
-  return sum
-}
-
-
-
-function checkSets (templateSets, lastSets) {
-  const array = []
-  templateSets.forEach(function(set, i){
-     if (lastSets[i].reps >= set.high) {
-         array.push(0)
-     } else {
-         array.push(1)
-     }
-  })
-  if (sumArray(array) === 0) {
-      return true
-  } else {
-      return false
-  }
-}
-
 function barCalc(disPlayWeight) {
     const barWeight = 45
     let weightMinusBar = disPlayWeight - barWeight
@@ -324,11 +265,10 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
   exercisesArray.forEach(function(exercise){
     lastExercisesArray.push(fakeLastExercise)
   })
-
   foundExercisesArray.forEach(function(foundExercise, i){
     lastExercisesArray.splice(foundExercise._id.order,1,foundExercise)
   })
 }
 
 
-module.exports = {setsCreator, round, sumTemplate, sumLast, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, maxWeightText, barCalc, fillExercises}
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises}
