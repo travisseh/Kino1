@@ -53,7 +53,7 @@
         <%#CHANGE UNIT FOR SELECT EXERCISES%>
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
-            <%#HANDLE REPS%>
+        <%#HANDLE REPS%>
             <input type="number" 
             <% if (displayExercises[index][i].low === null) { %>
                 placeholder="<%=displayExercises[index][i].high%> <%=unit%>"
@@ -61,6 +61,8 @@
                 placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> <%=unit%>"
             <% } %>
             name="reps[]"> at 
+
+        <%#HANDLE WEIGHTS%>
             
             <%#HANDLE DROPDOWN OPTIONS%>
             <% if (exercise.dropDown.length > 0){ %>
@@ -76,21 +78,24 @@
                 
             <% } else { %>
 
-                <%#HANDLE NO PREVIOUS EXERCISE%>
-                <%if (typeof(weight) === "string"){%>
-                    <%#console.log(`name: ${exercise.name}, type: ${exercise.type}`)%>
-                    <input type="number" placeholder="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
-                    <%if (exercise.weightType === "bar") { %>
-                    <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
-                    <%}%>
-                <%} else {%>
+            <%#HANDLE NORMAL WEIGHT INPUTS%>
+                <input type="number" 
 
-                <%#HANDLE NORMAL WEIGHTS%>
-                    <input type="number" value="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
-                    <%if (exercise.weightType === "bar") { %>
-                    <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
-                <%}%>
-            <% } %>
+                <%#NO PREVIOUS EXERCISES%>
+                <%if (typeof(weight) === "string"){%>
+                    placeholder="<%= weight %>" 
+
+                <%#NORMAL EXERCISES%>
+                    <%} else {%>
+                    value="<%= weight %>"
+                    <% } %>
+                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
+
+            <%#HANDLE BAR CALC IF BAR%>
+            <%if (exercise.weightType === "bar") { %>
+            <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+
+            <%}%>
         <% } %>
     <%})%>
 
