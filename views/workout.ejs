@@ -79,14 +79,14 @@
                 <%#HANDLE NO PREVIOUS EXERCISE%>
                 <%if (typeof(weight) === "string"){%>
                     <%#console.log(`name: ${exercise.name}, type: ${exercise.type}`)%>
-                    <input type="number" placeholder="<%= weight %>" name="weight[]" step="5" min="0"> lbs
+                    <input type="number" placeholder="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
                     <%if (exercise.weightType === "bar") { %>
                     <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
                     <%}%>
                 <%} else {%>
 
                 <%#HANDLE NORMAL WEIGHTS%>
-                    <input type="number" value="<%= weight %>" name="weight[]" step="5" min="0"> lbs
+                    <input type="number" value="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
                     <%if (exercise.weightType === "bar") { %>
                     <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
                 <%}%>

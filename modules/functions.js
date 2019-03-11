@@ -16,7 +16,9 @@ const sumArray = function(array){
 }
 
 
-//FUNCTIONS FOR WORKOUT.JS
+//WORKOUT.JS
+
+    //Save Exercise Helper
 function setsCreator(setsArray, repsArray, weightsArray) {
   for (let i = 0; i < repsArray.length; i++){
     setsArray.push(
@@ -28,6 +30,8 @@ function setsCreator(setsArray, repsArray, weightsArray) {
   }
 }
 
+
+    //Displaysets Creator
 function checkSets (templateSets, lastSets) {
   const array = []
   templateSets.forEach(function(set, i){
@@ -247,20 +251,7 @@ function displaySetsCreator(templateSets, lastSets, type, weightIncrement) {
   }
 }
 
-function barCalc(disPlayWeight) {
-    const barWeight = 45
-    let weightMinusBar = disPlayWeight - barWeight
-    const weights = [90, 70, 50, 20, 10, 5]
-    let weightsOutPut = []
-    for (let i = 0; i < weights.length; i++){
-      //set weightsoutput to the dividend of input and specific weight
-      weightsOutPut[i] = Math.floor(weightMinusBar / weights[i])
-      //find remainder and set it to the evaluated value
-      weightMinusBar = weightMinusBar % weights[i] 
-    }
-    return weightsOutPut
-}
-
+    //Logic for When No LastExercises
 function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, fakeLastExercise){
   exercisesArray.forEach(function(exercise){
     lastExercisesArray.push(fakeLastExercise)
@@ -268,6 +259,22 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
   foundExercisesArray.forEach(function(foundExercise, i){
     lastExercisesArray.splice(foundExercise._id.order,1,foundExercise)
   })
+}
+
+
+//WORKOUT.EJS
+function barCalc(disPlayWeight) {
+  const barWeight = 45
+  let weightMinusBar = disPlayWeight - barWeight
+  const weights = [90, 70, 50, 20, 10, 5]
+  let weightsOutPut = []
+  for (let i = 0; i < weights.length; i++){
+    //set weightsoutput to the dividend of input and specific weight
+    weightsOutPut[i] = Math.floor(weightMinusBar / weights[i])
+    //find remainder and set it to the evaluated value
+    weightMinusBar = weightMinusBar % weights[i] 
+  }
+  return weightsOutPut
 }
 
 

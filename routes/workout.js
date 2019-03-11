@@ -38,18 +38,19 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
 
   //create displaySets from lastSets and templateSets
                   const displayExercises = []
-                  for (let i = 0; i < exercises.length; i++){
-                  let templateSets = exercises[i].sets
-                  let lastSets = lastExercises[i].sets
-                  let type = exercises[i].type
-                  let weightIncrement = exercises[i].weightIncrement
-                  global.displaySets = []
 
-                  functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
-                  displayExercises.push(displaySets)
-              }
-              //render the page with all the above info
-              res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
+                  for (let i = 0; i < exercises.length; i++){
+                    let templateSets = exercises[i].sets
+                    let lastSets = lastExercises[i].sets
+                    let type = exercises[i].type
+                    let weightIncrement = exercises[i].weightIncrement
+                    global.displaySets = []
+
+                    functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
+                    displayExercises.push(displaySets)
+                  }
+                  //render the page with all the above info
+                  res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
       })
     }
