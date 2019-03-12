@@ -866,8 +866,8 @@ const goddess_toning = new Package (
                       high: 8
                   },
                   {
-                      low: 8,
-                      high: 10
+                      low: 6,
+                      high: 8
                   }
               ]
           },

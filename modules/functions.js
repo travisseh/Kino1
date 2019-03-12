@@ -19,12 +19,13 @@ const sumArray = function(array){
 //WORKOUT.JS
 
     //Save Exercise Helper
-function setsCreator(setsArray, repsArray, weightsArray) {
+function setsCreator(setsArray, repsArray, weightsArray, notesArray) {
   for (let i = 0; i < repsArray.length; i++){
     setsArray.push(
       {
         reps: repsArray[i],
-        weight: weightsArray[i]
+        weight: weightsArray[i],
+        note: notesArray[i]
       }
       )
   }

@@ -90,13 +90,25 @@
                     value="<%= weight %>"
                     <% } %>
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
+        <% } %>
+        
+        <%#HANDLE NOTES%>
+            <input type="text" name="note[]" placeholder="note about your set" maxlength="140">
 
-            <%#HANDLE BAR CALC IF BAR%>
+        <%#HANDLE BAR CALC IF BAR%>
             <%if (exercise.weightType === "bar") { %>
             <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
-
             <%}%>
-        <% } %>
+
+        <%#HANDLE LAST WEEKS SETS%>
+        <%const lastWeight = lastExercises[index].sets[i].weight%>
+        <%const lastReps = lastExercises[index].sets[i].reps%>
+        <%const lastNote = lastExercises[index].sets[i].note%>
+        <%if (lastReps != null){ %>
+            <p>Last time: <%=lastReps%> <%=unit%> at <%=lastWeight%> lbs<% if (lastNote) {%>, <%=lastNote%>
+            <%}%>
+            </p>
+        <%} %>
     <%})%>
 
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">

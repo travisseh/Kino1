@@ -49,6 +49,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                     functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
                     displayExercises.push(displaySets)
                   }
+
                   //render the page with all the above info
                   res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
@@ -63,9 +64,10 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
   workout.post("/:package/:workout", middleware.isLoggedIn, function(req, res, next){
     const formReps = req.body.reps
     const formWeight = req.body.weight
+    const formNotes = req.body.note
     const order = req.body.order
     const sets = []
-    functions.setsCreator(sets, formReps, formWeight)
+    functions.setsCreator(sets, formReps, formWeight, formNotes)
     
     const newExercise = new Exercise ({
       name: req.body.exerciseName,

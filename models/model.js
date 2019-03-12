@@ -134,7 +134,11 @@ const exerciseSchema = new mongoose.Schema({
     sets: [
         {
             reps: Number,
-            weight: Number
+            weight: Number,
+            note: {
+                type: String,
+                maxlength: 140
+            }
         }
     ]
 })
