@@ -104,9 +104,12 @@
         <%const lastWeight = lastExercises[index].sets[i].weight%>
         <%const lastReps = lastExercises[index].sets[i].reps%>
         <%const lastNote = lastExercises[index].sets[i].note%>
+        <%const exerciseName = lastExercises[index]._id.name%>
         <%if (lastReps != null){ %>
-            <p>Last time: <%=lastReps%> <%=unit%> at <%=lastWeight%> lbs<% if (lastNote) {%>, <%=lastNote%>
-            <%}%>
+            <p>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
+            <%=functions.optionMapper(exerciseName, lastWeight)%>
+        <%} else {%>
+            <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
             </p>
         <%} %>
     <%})%>

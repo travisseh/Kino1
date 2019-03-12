@@ -205,7 +205,9 @@ const fakeLastExercises = [
 
 
 const fakeLastExercise = {
-    name: "one",
+    _id: {
+        name: "one"
+    },
     sets: [
         {
             reps: null,
@@ -227,7 +229,8 @@ const fakeLastExercise = {
             reps: null,
             weight: 0
         },
-    ]
+    ]    
+        
 }
 
 

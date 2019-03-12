@@ -31,6 +31,57 @@ function setsCreator(setsArray, repsArray, weightsArray, notesArray) {
   }
 }
 
+    //optionMapper
+
+function optionMapper(name, number){
+  switch (name) {
+    case "Pushups":
+        switch(number){
+          case 0:
+            return "Kneeling"
+          case 1:
+            return "Standard"
+          case 2:
+            return "Feet Elevated"
+          case 3: 
+            return "5lbs on Back"
+          case 4: 
+            return "10lbs on Back"
+          case 5: 
+            return "15lbs on Back"
+          default: 
+            return "you beat the game"
+        }
+    case "Hip Bridge Hold":
+      switch(number){
+        case 0:
+          return "Hip Brigdge Hold"
+        case 1:
+          return "Full Bridge Hold"
+        case 2:
+          return "Full Bridge w/ 5lbs"
+        case 3:
+          return "Full Bridge w/ 10lbs"
+        default: 
+          console.log("error with hip bridge hold!!!!")
+          return "you beat the game"
+      }
+    case "Plank Hold":
+      switch(number){
+        case 0:
+          return "Plank Hold"
+        case 1:
+          return "Long Lever Plank"
+        case 2:
+          return "Full Bridge w/ Band"
+        default: 
+          console.log("error with hip bridge hold!!!!")
+          return "you beat the game"
+      }
+      
+  }
+}
+
 
     //Displaysets Creator
 function checkSets (templateSets, lastSets) {
@@ -279,4 +330,4 @@ function barCalc(disPlayWeight) {
 }
 
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises}
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises, optionMapper}
