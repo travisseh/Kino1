@@ -12,3 +12,12 @@
     margin-right:-4px;
     text-align: center;
 }
+
+.container-fluid {
+    padding: 3% 10%
+}
+
+
+title {
+    display: none;
+  }

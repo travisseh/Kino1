@@ -33,10 +33,6 @@ function setsCreator(setsArray, repsArray, weightsArray, notesArray) {
 
     //optionMapper
 
-    const name = "Pushups"
-
-    console.log(optionMapper(name, 0))
-
 function optionMapper(name, number){
   switch (name) {
     case "Pushups":

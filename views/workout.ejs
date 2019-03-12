@@ -1,7 +1,10 @@
 <%- include("partials/header.ejs") -%>
 
-<h1>Exercises</h1>
+<div class="container">
+    
 
+
+<h1>Exercises</h1>
 
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
@@ -56,11 +59,11 @@
         <%#HANDLE REPS%>
             <input type="number" 
             <% if (displayExercises[index][i].low === null) { %>
-                placeholder="<%=displayExercises[index][i].high%> <%=unit%>"
+                placeholder="<%=displayExercises[index][i].high%>"
             <% } else { %>
-                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%> <%=unit%>"
+                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%>"
             <% } %>
-            name="reps[]"> at 
+            name="reps[]" min="0" max="99999"> <%=unit%> at
 
         <%#HANDLE WEIGHTS%>
             
@@ -89,7 +92,7 @@
                     <%} else {%>
                     value="<%= weight %>"
                     <% } %>
-                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>"> lbs
+                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999"> lbs
         <% } %>
         
         <%#HANDLE NOTES%>
@@ -123,5 +126,8 @@
     </form>
 
 <%})%>
+
+
+</div>
 
 <%- include("partials/footer.ejs") -%>
