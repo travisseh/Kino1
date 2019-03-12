@@ -33,6 +33,10 @@ function setsCreator(setsArray, repsArray, weightsArray, notesArray) {
 
     //optionMapper
 
+    const name = "Pushups"
+
+    console.log(optionMapper(name, 0))
+
 function optionMapper(name, number){
   switch (name) {
     case "Pushups":
@@ -55,32 +59,55 @@ function optionMapper(name, number){
     case "Hip Bridge Hold":
       switch(number){
         case 0:
-          return "Hip Brigdge Hold"
+          return "Regular"
         case 1:
           return "Full Bridge Hold"
         case 2:
-          return "Full Bridge w/ 5lbs"
+          return "Full Bridge w/ Band"
         case 3:
-          return "Full Bridge w/ 10lbs"
+          return "Full Bridge w/ 5lbs"
+        default: 
+          console.log("error with hip bridge hold!!!!")
+          return "you beat the game"
+      }
+    case "Side Plank Hold":
+      switch(number){
+        case 0:
+          return "Regular"
+        case 1:
+          return "Arm Straightened"
+        case 2:
+          return "Outer Leg Lifted"
+        case 3: 
+          return "Feet Elevated"
+        case 4:
+          return "Holding 10 lbs"
+        case 5:
+          return "Holding 20 lbs"
         default: 
           console.log("error with hip bridge hold!!!!")
           return "you beat the game"
       }
     case "Plank Hold":
-      switch(number){
-        case 0:
-          return "Plank Hold"
-        case 1:
-          return "Long Lever Plank"
-        case 2:
-          return "Full Bridge w/ Band"
-        default: 
-          console.log("error with hip bridge hold!!!!")
-          return "you beat the game"
-      }
+    switch(number){
+      case 0:
+        return "Regular"
+      case 1:
+        return "Long Lever Plank"
+      case 2:
+        return "Long Lever + 5 lbs"
+      case 3: 
+        return "Long Lever + 10 lbs"
+      case 4:
+        return "Long Lever + 15 lbs"
+      default: 
+        console.log("error with hip bridge hold!!!!")
+        return "you beat the game"
+    }
       
   }
 }
+
 
 
     //Displaysets Creator
