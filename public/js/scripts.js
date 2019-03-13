@@ -10,6 +10,15 @@
 
 $(document).ready(function () {
 
+let scroll = localStorage.getItem('scroll-pos', 0)
+let referrer = document.referrer
+let currentUrl = window.location.href
+if (scroll && referrer === currentUrl){
+    $(window).scrollTop(scroll)
+}
+    
+
+console.log(document.referrer)
 
 $(".addNote").on("click", function (e) { 
     e.preventDefault()
@@ -23,13 +32,22 @@ $(".addNote").on("click", function (e) {
 
 // $(".removeNote").on("click", function (e) { 
 //     e.preventDefault()
-//     const appendId = $(this).attr("id").substring(7)
-//     console.log(appendId)
-//     const id = ("note"+appendId)
-//     console.log(id)
-//     $(`#${id}`).attr("type", "hidden")
-//     $(this).attr("class", "addNote")
-//     $(this).text("Add Note")
+//     // const appendId = $(this).attr("id").substring(7)
+//     // console.log(appendId)
+//     // const id = ("note"+appendId)
+//     // console.log(id)
+//     // $(`#${id}`).attr("type", "hidden")
+//     // $(this).attr("class", "addNote")
+//     // $(this).text("Add Note")
 // })
+
+
+$(".workout-button").on("click", function(){
+    localStorage.setItem('scroll-pos', $(window).scrollTop())
+})
+
+
+
+
 
 })
