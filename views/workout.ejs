@@ -94,9 +94,6 @@
                     <% } %>
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999"> lbs
         <% } %>
-        
-        <%#HANDLE NOTES%>
-            <input type="text" name="note[]" placeholder="note about your set" maxlength="140">
 
         <%#HANDLE BAR CALC IF BAR%>
             <%if (exercise.weightType === "bar") { %>
@@ -109,12 +106,19 @@
         <%const lastNote = lastExercises[index].sets[i].note%>
         <%const exerciseName = lastExercises[index]._id.name%>
         <%if (lastReps != null){ %>
-            <p>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
+            <br>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
             <%=functions.optionMapper(exerciseName, lastWeight)%>
         <%} else {%>
             <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
-            </p>
+            </br>
         <%} %>
+
+        <%#HANDLE NOTES%>
+        <input type="hidden" class="note" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
+        <a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a>
+        <br>
+        <br>
+
     <%})%>
 
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
