@@ -43,6 +43,8 @@ cursor: pointer;
 margin: 0;
 position: relative;
 }
+
+/* plus and minus buttons */
 .number-input button:before,
 .number-input button:after {
 display: inline-block;
@@ -61,19 +63,27 @@ text-align: center;
 /* Outer box of counter */
 .number-input.number-input {
 border: 1px solid #ced4da;
-width: 149px;
+width: 145px;
 border-radius: .25rem;
 }
+/* .number-input.number-input button {
+width: 25px;
+height: 10px;
+} */
+
 .number-input.number-input button {
-width: 2.6em;
-height: .7em;
+    width: 2.6em;
+    height: .7em;
 }
+
 .number-input.number-input button.minus {
-padding-left: 10px;
+padding-left: 20px;
 }
+
+/* size of the "+" and "-" signs */
 .number-input.number-input button:before,
 .number-input.number-input button:after {
-width: .7em;
+width: .7rem;
 background-color: #495057;
 }
 

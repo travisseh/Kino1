@@ -54,14 +54,21 @@
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
         <%#HANDLE REPS%>
+             <%=unit%>:
+            <div class="def-number-input number-input">
+            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
 
-        <input type="number"
+            <input type="number" class=quantity
             <% if (displayExercises[index][i].low === null) { %>
-                placeholder="<%=displayExercises[index][i].high%>"
+                value="<%=displayExercises[index][i].high%>"
             <% } else { %>
-                placeholder="<%=displayExercises[index][i].low%> - <%=displayExercises[index][i].high%>"
+                value="<%=displayExercises[index][i].low%>"
             <% } %>
-            name="reps[]" min="0" max="99999"> <%=unit%> at
+            name="reps[]" min="0" max="999">
+            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+            
+            
 
         <%#HANDLE WEIGHTS%>
             
@@ -80,6 +87,7 @@
             <% } else { %>
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
+                lbs:
                 <div class="def-number-input number-input">
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                 
