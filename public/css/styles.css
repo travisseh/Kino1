@@ -73,9 +73,11 @@ padding-left: 10px;
 }
 .number-input.number-input button:before,
 .number-input.number-input button:after {
-width: .7rem;
+width: .7em;
 background-color: #495057;
 }
+
+/* Inner number box of the counter */
 .number-input.number-input input[type=number] {
 max-width: 4rem;
 padding: .5rem;
