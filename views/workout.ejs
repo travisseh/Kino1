@@ -43,6 +43,7 @@
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%#SETS LOOP%>
+    <div class="form-group">
     <%exercise.sets.forEach(function(set, i){%>
         <h6>Set <%=i + 1%></h6>
 
@@ -124,6 +125,7 @@
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
     <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary workout-button">Save</button>
+    </div>
     </form>
 
 <%})%>
