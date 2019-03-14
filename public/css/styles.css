@@ -57,14 +57,16 @@ transform: translate(-50%, -50%) rotate(90deg);
 .number-input input[type=number] {
 text-align: center;
 }
+
+/* Outer box of counter */
 .number-input.number-input {
 border: 1px solid #ced4da;
 width: 149px;
 border-radius: .25rem;
 }
 .number-input.number-input button {
-width: 2.6rem;
-height: .7rem;
+width: 2.6em;
+height: .7em;
 }
 .number-input.number-input button.minus {
 padding-left: 10px;
@@ -82,4 +84,5 @@ border-width: 0 1px;
 font-size: 1rem;
 height: 2rem;
 color: #495057;
+border-radius: 0rem
 }
