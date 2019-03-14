@@ -43,7 +43,6 @@
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%#SETS LOOP%>
-    <div class="form-group">
     <%exercise.sets.forEach(function(set, i){%>
         <h6>Set <%=i + 1%></h6>
 
@@ -55,7 +54,8 @@
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
         <%#HANDLE REPS%>
-            <input type="number" 
+
+        <input type="number"
             <% if (displayExercises[index][i].low === null) { %>
                 placeholder="<%=displayExercises[index][i].high%>"
             <% } else { %>
@@ -80,7 +80,10 @@
             <% } else { %>
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
-                <input type="number" 
+                <div class="def-number-input number-input">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                
+                <input type="number" class="quantity"
 
                 <%#NO PREVIOUS EXERCISES%>
                 <%if (typeof(weight) === "string"){%>
@@ -91,6 +94,10 @@
                     value="<%= weight %>"
                     <% } %>
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999"> lbs
+                
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+
         <% } %>
 
         <%#HANDLE BAR CALC IF BAR%>
