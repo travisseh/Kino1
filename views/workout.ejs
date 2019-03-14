@@ -3,6 +3,8 @@
 
 <h1>Exercises</h1>
 
+<div class="container-fluid">
+<div class="column"
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
@@ -81,7 +83,7 @@
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
                 <div class="def-number-input number-input">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                 
                 <input type="number" class="quantity"
 
@@ -93,9 +95,9 @@
                     <%} else {%>
                     value="<%= weight %>"
                     <% } %>
-                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999"> lbs
+                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999">
                 
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
 
         <% } %>
@@ -136,6 +138,9 @@
     </form>
 
 <%})%>
+
+</div>
+</div>
 
 
 <%- include("partials/footer.ejs") -%>
