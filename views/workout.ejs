@@ -58,7 +58,7 @@
             <div class="def-number-input number-input">
             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
 
-            <input type="number" class=quantity
+            <input type="number" class=quantity required
             <% if (displayExercises[index][i].low === null) { %>
                 value="<%=displayExercises[index][i].high%>"
             <% } else { %>
@@ -74,7 +74,7 @@
             
             <%#HANDLE DROPDOWN OPTIONS%>
             <% if (exercise.dropDown.length > 0){ %>
-                <select name="weight[]">
+                <select name="weight[]" required>
                 <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
                     <option value="<%= inde %>" 
                     <% if (displayExercises[index][i].weight === inde ){ %>
@@ -91,7 +91,7 @@
                 <div class="def-number-input number-input">
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                 
-                <input type="number" class="quantity"
+                <input type="number" class="quantity" required
 
                 <%#NO PREVIOUS EXERCISES%>
                 <%if (typeof(weight) === "string"){%>
