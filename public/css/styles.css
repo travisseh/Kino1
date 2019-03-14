@@ -31,7 +31,7 @@ title {
 -webkit-appearance: none;
 }
 .number-input {
-margin-bottom: 3rem;
+margin: .5rem 0rem;
 }
 .number-input button {
 -webkit-appearance: none;

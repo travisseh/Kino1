@@ -16,9 +16,7 @@ let currentUrl = window.location.href
 if (scroll && referrer === currentUrl){
     $(window).scrollTop(scroll)
 }
-    
 
-console.log(document.referrer)
 
 $(".addNote").on("click", function (e) { 
     e.preventDefault()

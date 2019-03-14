@@ -3,8 +3,6 @@
 
 <h1>Exercises</h1>
 
-<div class="container-fluid">
-<div class="column"
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
@@ -99,8 +97,7 @@
                 
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
-
-        <% } %>
+            <% } %>
 
         <%#HANDLE BAR CALC IF BAR%>
             <%if (exercise.weightType === "bar") { %>
@@ -121,7 +118,7 @@
         <%} %>
 
         <%#HANDLE NOTES%>
-        <input type="hidden" class="note" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
+        <input type="hidden" class="form-control" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
         <a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a>
         <br>
         <br>
@@ -134,12 +131,10 @@
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
     <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary workout-button">Save</button>
-    </div>
     </form>
 
 <%})%>
 
-</div>
 </div>
 
 
