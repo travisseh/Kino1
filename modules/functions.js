@@ -432,8 +432,6 @@ function barCalc2(previousWeight, disPlayWeight) {
   const currentWeights = weightCalc(currentWeightMinusBar,currentWeightsOutPut, weights)
   const lastWeights = weightCalc(lastWeightMinusBar, lastWeightsOutPut, weights)
   const finalResult = []
-  console.log(lastWeights)
-  console.log(currentWeights)
 
   for (let i = 0; i < weights.length; i++){
     finalResult.push(currentWeights[i] - lastWeights[i])
@@ -443,7 +441,6 @@ function barCalc2(previousWeight, disPlayWeight) {
 
 }
 
-console.log(barCalc2(85, 150))
 
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises, optionMapper}
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises, optionMapper, barCalc2}
