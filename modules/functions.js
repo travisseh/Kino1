@@ -363,19 +363,65 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
   return holderArray
 }
 
-function finalResultInterpreter(finalResultArray, weightsArray){
-    let statement = ""
-    finalResultArray.forEach(function(result, i){
-        if(result < 0){
-          statement += `Remove ${Math.abs(result)} ${weightsArray[i]/2}'s, `
-        }else if (result > 0){
-          statement += `Add ${result} ${weightsArray[i]/2}'s, `
-        }
+
+function addAnd(array){
+  if (array.length > 1){
+    for (let i = 0; i < array.length; i++ ){
+      if(i % 2 === 1){
+        array.splice(i,0,"and")
+      }
+    }
+    return array
+    } else {
+      return array
+    }
+  }
+
+function sentenceCreator(array){
+  let sentence = ""
+    array.forEach(function(phrase){
+      sentence += " " + phrase
     })
-    return statement
+  return sentence
 }
 
-function barCalc2(disPlayWeight, previousWeight) {
+function finalResultInterpreter(finalResultArray, weightsArray){
+    let removes = []
+    let adds = []
+    //negative values
+    finalResultArray.forEach(function(result, i){
+        let s
+        if (Math.abs(result) > 1){
+          s = "'s"
+        } else {
+          s = ""
+        }
+        if(result < 0){
+          removes.push(`${Math.abs(result)} ${weightsArray[i]/2}${s}`)
+        }else if (result > 0){
+          adds.push(`${result} ${weightsArray[i]/2}${s}`)
+        }
+    })
+    
+    addAnd(removes)
+    addAnd(adds)
+
+    let fullSentence = ""
+    if (removes.length > 0 && adds.length > 0){
+      fullSentence = `On each side remove${sentenceCreator(removes)} then add${sentenceCreator(adds)}.`
+    } else if (adds.length > 0) {
+      fullSentence = `On each side add ${sentenceCreator(adds)}.`
+    } else if (removes.length > 0){
+      fullSentence = `One each side remove ${sentenceCreator(removes)}.`
+    } else {
+      fullSentence = `No weights to add!`
+    }
+   
+    return fullSentence
+  
+}
+
+function barCalc2(previousWeight, disPlayWeight) {
   const barWeight = 45
   const weights = [90, 70, 50, 20, 10, 5]
   let currentWeightMinusBar = disPlayWeight - barWeight
@@ -397,7 +443,7 @@ function barCalc2(disPlayWeight, previousWeight) {
 
 }
 
-console.log(barCalc2(100, 90))
+console.log(barCalc2(85, 150))
 
 
 module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises, optionMapper}
