@@ -353,4 +353,51 @@ function barCalc(disPlayWeight) {
 }
 
 
+function weightCalc(weightMinusBar, holderArray, weightsArray){
+  for (let i = 0; i < weightsArray.length; i++){
+    //set weightsoutput to the dividend of input and specific weight
+    holderArray[i] = Math.floor(weightMinusBar / weightsArray[i])
+    //find remainder and set it to the evaluated value
+    weightMinusBar = weightMinusBar % weightsArray[i] 
+  }
+  return holderArray
+}
+
+function finalResultInterpreter(finalResultArray, weightsArray){
+    let statement = ""
+    finalResultArray.forEach(function(result, i){
+        if(result < 0){
+          statement += `Remove ${Math.abs(result)} ${weightsArray[i]/2}'s, `
+        }else if (result > 0){
+          statement += `Add ${result} ${weightsArray[i]/2}'s, `
+        }
+    })
+    return statement
+}
+
+function barCalc2(disPlayWeight, previousWeight) {
+  const barWeight = 45
+  const weights = [90, 70, 50, 20, 10, 5]
+  let currentWeightMinusBar = disPlayWeight - barWeight
+  let lastWeightMinusBar = previousWeight - barWeight
+  let lastWeightsOutPut = []
+  let currentWeightsOutPut = []
+
+  const currentWeights = weightCalc(currentWeightMinusBar,currentWeightsOutPut, weights)
+  const lastWeights = weightCalc(lastWeightMinusBar, lastWeightsOutPut, weights)
+  const finalResult = []
+  console.log(lastWeights)
+  console.log(currentWeights)
+
+  for (let i = 0; i < weights.length; i++){
+    finalResult.push(currentWeights[i] - lastWeights[i])
+  }
+
+  return finalResultInterpreter(finalResult, weights)
+
+}
+
+console.log(barCalc2(100, 90))
+
+
 module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, barCalc, fillExercises, optionMapper}
