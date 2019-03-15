@@ -3,6 +3,10 @@
 
 <h1>Exercises</h1>
 
+<div class="removeNote">
+    Test
+</div>
+
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <h3><%= exercise.name %> </h3>
@@ -126,7 +130,7 @@
         <%} %>
 
         <%#HANDLE NOTES%>
-        <input type="hidden" class="form-control" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
+        <input type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
         <a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a>
         <br>
         <br>

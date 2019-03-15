@@ -18,26 +18,20 @@ if (scroll && referrer === currentUrl){
 }
 
 
-$(".addNote").on("click", function (e) { 
+$(".addNote").on("click", function(e){
     e.preventDefault()
     const appendId = $(this).attr("id").substring(7)
     const id = ("note"+appendId)
-    $(`#${id}`).attr("type", "text")
-    $(this).remove()
-    // $(this).attr("class", "removeNote")
-    // $(this).text("Remove Note")
+    $(`#${id}`).toggle()
+    if ($(this).text() === "Remove Note"){
+        $(`#${id}`).val("")
+        $(this).text("Add Note")
+    } else {
+        $(this).text("Remove Note")
+    }
+    
 })
 
-// $(".removeNote").on("click", function (e) { 
-//     e.preventDefault()
-//     // const appendId = $(this).attr("id").substring(7)
-//     // console.log(appendId)
-//     // const id = ("note"+appendId)
-//     // console.log(id)
-//     // $(`#${id}`).attr("type", "hidden")
-//     // $(this).attr("class", "addNote")
-//     // $(this).text("Add Note")
-// })
 
 
 $(".workout-button").on("click", function(){
