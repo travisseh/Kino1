@@ -41,7 +41,32 @@ $(".workout-button").on("click", function(){
 
 //get the id of the Barcalc
 
-//look up 
+//warmup weight BarCalc
+$(".barCalcWarmUp").text(function(){
+    //get id of barCalc
+    const appendId = $(this).attr("id").substring(6,10)
+    console.log("appendid: " + appendId)
+    const lastCharacter = $(this).attr("id").substring(10)
+    console.log("lastCharacter: " + lastCharacter)
+    const newLastCharacter = lastCharacter - 1
+
+    let lastWeight
+    //Handle if this is the first warmup
+    if (newLastCharacter < 0) {
+        lastWeight = 45
+    } else {
+        const lastWeightId = ("weight" + appendId + newLastCharacter)
+        lastWeight = $(`#${lastWeightId}`).val()
+    }
+    const currentWeightId = ("weight" + appendId + lastCharacter)
+    const currentWeight = $(`#${currentWeightId}`).val()
+    console.log("lastWeightWarm: " + lastWeight)
+    console.log("currentWeightWarm: " + currentWeight)
+    return barCalc2(lastWeight,currentWeight)
+})
+
+
+//Normal weight BarCalc
 $(".barCalc").text(function(){
     //get id of barCalc
     const appendId = $(this).attr("id").substring(7,10)
@@ -53,10 +78,10 @@ $(".barCalc").text(function(){
     if (newLastCharacter < 0) {
         //Handle if there are warmups and set it to the last warmup
         if ($(".weightWarmUp").length > 0){
-            dataId = $(this).parent().parent().data("exercise")
-            console.log("dataid: " + dataId)
-            lastweight = $(`${dataId} > .weightWarmup`).last().data("weight")
+            id = $(this).parent().parent().attr("id")
+            lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
         } else {
+            //handle if there aren't any warm-ups
             lastWeight = 45
         }
     } else {

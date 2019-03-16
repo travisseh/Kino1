@@ -9,7 +9,7 @@
 
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
-    <div data-exercise="#<%=index%>" id="test">
+    <div id="E<%=index%>">
     <h3><%= exercise.name %> </h3>
     <% if(exercise.weightType === "dumbbells") {%>
         <small class="text-muted">Enter per dumbbell weight, not total weight</small>
@@ -40,7 +40,7 @@
             <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
             
             <%if (exercise.weightType === "bar") { %>
-                <small class="text-muted"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+                <small class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
             <% } %>
         <%  } %>
     <%})%>
@@ -57,6 +57,24 @@
 
         <%#CHANGE UNIT FOR SELECT EXERCISES%>
         <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
+
+        <%#HANDLE BAR CALC IF BAR%>
+            <%if (exercise.weightType === "bar") { %>
+            <small class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+            <%}%>
+
+            <%#HANDLE LAST WEEKS SETS%>
+            <%const lastWeight = lastExercises[index].sets[i].weight%>
+            <%const lastReps = lastExercises[index].sets[i].reps%>
+            <%const lastNote = lastExercises[index].sets[i].note%>
+            <%const exerciseName = lastExercises[index]._id.name%>
+            <%if (lastReps != null){ %>
+                <br>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
+                <%=functions.optionMapper(exerciseName, lastWeight)%>
+            <%} else {%>
+                <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
+                </br>
+            <%} %>
 
         <%#HANDLE REPS%>
              <%=unit%>:
@@ -111,24 +129,6 @@
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
             <% } %>
-
-        <%#HANDLE BAR CALC IF BAR%>
-            <%if (exercise.weightType === "bar") { %>
-            <small class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
-            <%}%>
-
-        <%#HANDLE LAST WEEKS SETS%>
-        <%const lastWeight = lastExercises[index].sets[i].weight%>
-        <%const lastReps = lastExercises[index].sets[i].reps%>
-        <%const lastNote = lastExercises[index].sets[i].note%>
-        <%const exerciseName = lastExercises[index]._id.name%>
-        <%if (lastReps != null){ %>
-            <br>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
-            <%=functions.optionMapper(exerciseName, lastWeight)%>
-        <%} else {%>
-            <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
-            </br>
-        <%} %>
 
         <%#HANDLE NOTES%>
         <input type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
