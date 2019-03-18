@@ -120,40 +120,34 @@ $(".quantity").change(function(){
         return barCalc2(lastWeight,currentWeight)
     })
 
-})
-
-
-
-
-//Normal weight BarCalc
-$(".quantity").change(function(){
-
     $(".barCalc").text(function(){
-    //get id of barCalc
-    const appendId = $(this).attr("id").substring(7,10)
-    const lastCharacter = $(this).attr("id").substring(10)
-    const newLastCharacter = lastCharacter - 1
-
-    let lastWeight
-    //Handle if this is the first exercise 
-    if (newLastCharacter < 0) {
-        //Handle if there are warmups and set it to the last warmup
-        if ($(".weightWarmUp").length > 0){
-            id = $(this).parent().parent().attr("id")
-            lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
+        //get id of barCalc
+        const appendId = $(this).attr("id").substring(7,10)
+        const lastCharacter = $(this).attr("id").substring(10)
+        const newLastCharacter = lastCharacter - 1
+    
+        let lastWeight
+        //Handle if this is the first exercise 
+        if (newLastCharacter < 0) {
+            //Handle if there are warmups and set it to the last warmup
+            if ($(".weightWarmUp").length > 0){
+                id = $(this).parent().parent().attr("id")
+                lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
+            } else {
+                //handle if there aren't any warm-ups
+                lastWeight = 45
+            }
         } else {
-            //handle if there aren't any warm-ups
-            lastWeight = 45
+            const lastWeightId = ("weight" + appendId + newLastCharacter)
+            lastWeight = $(`#${lastWeightId}`).val()
         }
-    } else {
-        const lastWeightId = ("weight" + appendId + newLastCharacter)
-        lastWeight = $(`#${lastWeightId}`).val()
-    }
-    const currentWeightId = ("weight" + appendId + lastCharacter)
-    const currentWeight = $(`#${currentWeightId}`).val()
-    return barCalc2(lastWeight,currentWeight)
+        const currentWeightId = ("weight" + appendId + lastCharacter)
+        const currentWeight = $(`#${currentWeightId}`).val()
+        return barCalc2(lastWeight,currentWeight)
+        })
+
 })
-})
+
 
 
 
