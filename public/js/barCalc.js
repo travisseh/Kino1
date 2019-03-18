@@ -1,9 +1,4 @@
-
-
-
-//core logic
-
-
+//BARCALC LOGIC
 function weightCalc(weightMinusBar, holderArray, weightsArray){
     for (let i = 0; i < weightsArray.length; i++){
       //set weightsoutput to the dividend of input and specific weight
@@ -93,37 +88,47 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
   }
 
 
-
-
-//implement in jquery
+//PASS VALUES TO BARCALC
 
 $(document).ready(function () {
+
+$(window).on("load", function(){
+    $(".quantity").trigger("change")
+})
     
 //warmup weight BarCalc
-$(".barCalcWarmUp").text(function(){
-    //get id of barCalc
-    const appendId = $(this).attr("id")
-    .substring(7,10)
-    const lastCharacter = $(this).attr("id").substring(10)
-    const newLastCharacter = lastCharacter - 1
-    let lastWeight
-    //Handle if this is the first warmup
-    if (newLastCharacter < 0) {
-        lastWeight = 45
-    } else {
-        //find the corresponding lastweight from the warmup <p>
-        const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
-        lastWeight = $(`#${lastWarmUpId}`).data("weight")
-    }
-    //find the corresponding currenweight from warmup <p>
-    const currentWarmUpId = ("warmup" + appendId + lastCharacter)
-    const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-    return barCalc2(lastWeight,currentWeight)
+$(".quantity").change(function(){
+
+    $(".barCalcWarmUp").text(function(){
+        //get id of barCalc
+        const appendId = $(this).attr("id")
+        .substring(7,10)
+        const lastCharacter = $(this).attr("id").substring(10)
+        const newLastCharacter = lastCharacter - 1
+        let lastWeight
+        //Handle if this is the first warmup
+        if (newLastCharacter < 0) {
+            lastWeight = 45
+        } else {
+            //find the corresponding lastweight from the warmup <p>
+            const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
+            lastWeight = $(`#${lastWarmUpId}`).data("weight")
+        }
+        //find the corresponding currenweight from warmup <p>
+        const currentWarmUpId = ("warmup" + appendId + lastCharacter)
+        const currentWeight = $(`#${currentWarmUpId}`).data("weight")
+        return barCalc2(lastWeight,currentWeight)
+    })
+
 })
 
 
+
+
 //Normal weight BarCalc
-$(".barCalc").text(function(){
+$(".quantity").change(function(){
+
+    $(".barCalc").text(function(){
     //get id of barCalc
     const appendId = $(this).attr("id").substring(7,10)
     const lastCharacter = $(this).attr("id").substring(10)
@@ -148,7 +153,15 @@ $(".barCalc").text(function(){
     const currentWeight = $(`#${currentWeightId}`).val()
     return barCalc2(lastWeight,currentWeight)
 })
+})
 
 
 
+
+
+
+
+
+
+//END JQUERY.READY
 });
