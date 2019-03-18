@@ -41,7 +41,7 @@
             
             <%#WARMUP BARCALC%>
             <%if (exercise.weightType === "bar") { %>
-                <small class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+                <small class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></small>
             <% } %>
         <%  } %>
     <%})%>
@@ -61,7 +61,7 @@
 
         <%#HANDLE BAR CALC IF BAR%>
             <%if (exercise.weightType === "bar") { %>
-            <small class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
+            <small class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"></small>
             <%}%>
 
             <%#HANDLE LAST WEEKS SETS%>
