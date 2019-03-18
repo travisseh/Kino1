@@ -3,14 +3,13 @@
 
 <h1>Exercises</h1>
 
-<div class="removeNote">
-    Test
-</div>
+<br>
 
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <div id="E<%=index%>">
     <h3><%= exercise.name %> </h3>
+    <br>
     <% if(exercise.weightType === "dumbbells") {%>
         <small class="text-muted">Enter per dumbbell weight, not total weight</small>
         <br>
@@ -78,8 +77,8 @@
             <%} %>
 
         <%#HANDLE REPS%>
-             <%=unit%>:
-            <div class="def-number-input number-input">
+             
+            <div class="def-number-input number-input inline-block">
             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
 
             <input type="number" class=quantity required id="reps_<%=index%>_<%=i%>"
@@ -90,15 +89,14 @@
             <% } %>
             name="reps[]" min="0" max="999">
             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-            </div>
-            
-            
+            </div> <%=unit%> 
+            <br>
 
         <%#HANDLE WEIGHTS%>
             
             <%#HANDLE DROPDOWN OPTIONS%>
             <% if (exercise.dropDown.length > 0){ %>
-                <select name="weight[]" required>
+                <select name="weight[]" required class="browser-default custom-select">
                 <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
                     <option value="<%= inde %>" 
                     <% if (displayExercises[index][i].weight === inde ){ %>
@@ -111,8 +109,7 @@
             <% } else { %>
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
-                lbs:
-                <div class="def-number-input number-input">
+                <div class="def-number-input number-input inline-block">
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                 
                 <input type="number" class="quantity" required id="weight_<%=index%>_<%=i%>"
@@ -128,7 +125,8 @@
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="999">
                 
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                </div>
+                </div> lbs
+                <br>
             <% } %>
 
         <%#HANDLE NOTES%>

@@ -48,6 +48,10 @@ margin: 0;
 position: relative;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 /* plus and minus buttons */
 .number-input button:before,
 .number-input button:after {

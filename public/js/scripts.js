@@ -40,7 +40,8 @@ $(".addNote").on("click", function(e){
 
 
 
-
+//initiatlize dropdowns
+$('.mdb-select').materialSelect()
 
 
 
