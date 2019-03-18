@@ -39,6 +39,7 @@
             <%#SHOW NORMAL WARMUP WEIGHT%>
             <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
             
+            <%#WARMUP BARCALC%>
             <%if (exercise.weightType === "bar") { %>
                 <small class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"> Bar Weights: 45's (<%=functions.barCalc(weight)[0]%>), 35's (<%=functions.barCalc(weight)[1]%>), 25's (<%=functions.barCalc(weight)[2]%>), 10's (<%=functions.barCalc(weight)[3]%>), 5's (<%=functions.barCalc(weight)[4]%>) 2.5's (<%=functions.barCalc(weight)[5]%>)</small>
             <% } %>

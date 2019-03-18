@@ -44,24 +44,22 @@ $(".workout-button").on("click", function(){
 //warmup weight BarCalc
 $(".barCalcWarmUp").text(function(){
     //get id of barCalc
-    const appendId = $(this).attr("id").substring(6,10)
-    console.log("appendid: " + appendId)
+    const appendId = $(this).attr("id")
+    .substring(7,10)
     const lastCharacter = $(this).attr("id").substring(10)
-    console.log("lastCharacter: " + lastCharacter)
     const newLastCharacter = lastCharacter - 1
-
     let lastWeight
     //Handle if this is the first warmup
     if (newLastCharacter < 0) {
         lastWeight = 45
     } else {
-        const lastWeightId = ("weight" + appendId + newLastCharacter)
-        lastWeight = $(`#${lastWeightId}`).val()
+        //find the corresponding lastweight from the warmup <p>
+        const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
+        lastWeight = $(`#${lastWarmUpId}`).data("weight")
     }
-    const currentWeightId = ("weight" + appendId + lastCharacter)
-    const currentWeight = $(`#${currentWeightId}`).val()
-    console.log("lastWeightWarm: " + lastWeight)
-    console.log("currentWeightWarm: " + currentWeight)
+    //find the corresponding currenweight from warmup <p>
+    const currentWarmUpId = ("warmup" + appendId + lastCharacter)
+    const currentWeight = $(`#${currentWarmUpId}`).data("weight")
     return barCalc2(lastWeight,currentWeight)
 })
 
@@ -90,8 +88,6 @@ $(".barCalc").text(function(){
     }
     const currentWeightId = ("weight" + appendId + lastCharacter)
     const currentWeight = $(`#${currentWeightId}`).val()
-    console.log("lastWeight: " + lastWeight)
-    console.log("currentWeight: " + currentWeight)
     return barCalc2(lastWeight,currentWeight)
 })
 
@@ -103,10 +99,7 @@ $(".barCalc").text(function(){
 
 
 
-//function - learn how to import this later
-
-
-
+//functions - learn how to import this later
 function weightCalc(weightMinusBar, holderArray, weightsArray){
     for (let i = 0; i < weightsArray.length; i++){
       //set weightsoutput to the dividend of input and specific weight
