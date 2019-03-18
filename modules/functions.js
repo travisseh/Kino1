@@ -336,6 +336,24 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
   })
 }
 
+function secondsToMinutes(secondsInput){
+  if (secondsInput >= 60){
+    const seconds = secondsInput % 60
+    const minutes = Math.floor(secondsInput / 60)
+    let ms = ""
+    let ss = ""
+    if (minutes > 1){
+      ms = "s"
+    }
+    if (seconds > 1){
+      ss = "s"
+    }
+    return `${minutes} minute${ms}, ${seconds} second${ss}`
+  } else {
+    return `${secondsInput} seconds`
+  }
+}
 
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper}
+
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes}

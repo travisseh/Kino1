@@ -9,12 +9,37 @@
 <%exercises.forEach(function(exercise, index){%>
     <div id="E<%=index%>">
     <h3><%= exercise.name %> </h3>
-    <br>
-    <% if(exercise.weightType === "dumbbells") {%>
-        <small class="text-muted">Enter per dumbbell weight, not total weight</small>
-        <br>
-        <br>
-    <%}%>
+
+<small class="text-muted"><a href="#" data-toggle="modal" data-target="#basicExampleModal">Exercise Instructions</a></small>
+
+<!-- Modal -->
+        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Exercise Instructions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Rest <%=functions.secondsToMinutes(exercise.pauseDuration)%> between each set</p>
+                <p class="text-muted"><%=exercise.instructions%></p>
+                <% if(exercise.weightType === "dumbbells") {%>
+                    
+                    <p class="text-muted">Enter per dumbbell weight, not total weight</p>
+                    <%}%>
+                <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    
 
     <%#WARMUPS LOOP%>
 
@@ -44,12 +69,13 @@
             <% } %>
         <%  } %>
     <%})%>
+    <br>
 
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
-        <h6>Set <%=i + 1%></h6>
+        <br><h6>Set <%=i + 1%></h6>
 
         <%#DECLARE WEIGHT FOR EACH SET%>
         <% const weight = displayExercises[index][i].weight %>
@@ -144,6 +170,8 @@
     <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary workout-button">Save</button>
     </form>
+    <br>
+    <br>
 
     </div>
 

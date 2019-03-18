@@ -52,6 +52,10 @@ position: relative;
     display: inline-block;
 }
 
+small {
+    font-weight: 300;
+}
+
 /* plus and minus buttons */
 .number-input button:before,
 .number-input button:after {
