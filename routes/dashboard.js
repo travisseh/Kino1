@@ -4,10 +4,7 @@ const middleware = require("../middleware")
 const dashboard = express.Router()
 
 
-dashboard.get("/", middleware.isLoggedIn,function(req, res,next){
-    if (req.user.selectedPackage === undefined){
-        res.redirect("/selectPackage")
-    } else {
+dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, function(req, res,next){
     Package.findOne({_id: req.user.selectedPackage}, function(err, foundPackage){
         if (err){
             console.log(err)
@@ -17,7 +14,6 @@ dashboard.get("/", middleware.isLoggedIn,function(req, res,next){
             res.render("dashboard", {package: foundPackage})
         }
     })
-    }
 })
 
 

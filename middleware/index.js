@@ -7,6 +7,13 @@ function isLoggedIn(req, res, next){
     res.redirect("/")
 }
 
+function hasPackageSelected (req, res, next){
+    if (req.user.selectedPackage != undefined){
+        return next()
+    }
+    res.redirect("/selectPackage")
+}
 
 
-module.exports = {isLoggedIn}
+
+module.exports = {isLoggedIn, hasPackageSelected}
