@@ -354,6 +354,58 @@ function secondsToMinutes(secondsInput){
   }
 }
 
+//DASHBOARD
+
+function nextDay(letter, numberOfExercises){
+  const number = numberLetterConverter("number", letter)
+  const newNumber = number + 1
+  let nextLetter
+  let nextNumber
+  if(newNumber > numberOfExercises){
+    nextLetter = "A"
+    nextNumber = 0
+  } else {
+    nextLetter = numberLetterConverter("letter", newNumber)
+    nextNumber = newNumber
+  }
+  return [nextLetter, nextNumber]
+}
+
+function numberLetterConverter(desiredOutPut, input){
+  let result
+  if (desiredOutPut === "number"){
+    result = letterToNumber(input)
+  } else if (desiredOutPut === "letter") {
+    result = NumberToLetter(input)
+  } else {
+    console.log("wrong input")
+  }
+  return result
+}
+
+function letterToNumber(letter){
+  const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+  const lowerCaseLetter = _.toLower(letter)
+
+  let number
+  alphabet.forEach(function(el, i){
+    if (el === lowerCaseLetter){
+      number = i
+    }
+  })
+  return number
+}
+
+function NumberToLetter(number){
+  const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+  let letter
+  alphabet.forEach(function(el, i){
+    if (i === number){
+      letter = alphabet[i]
+    }
+  })
+  return letter
+}
 
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes}
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber}

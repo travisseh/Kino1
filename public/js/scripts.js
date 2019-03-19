@@ -38,12 +38,14 @@ $(".addNote").on("click", function(e){
     
 })
 
-
-
 //initiatlize dropdowns
 $('.mdb-select').materialSelect()
 
-
+//convert lastDate on Dashboard page
+$(".relative-date").text(function(){
+    const currentDate = moment($(this).data("date")).fromNow()
+    return "Last completed " + currentDate
+})
 
 
 

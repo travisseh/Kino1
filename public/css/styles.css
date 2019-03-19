@@ -56,6 +56,11 @@ small {
     font-weight: 300;
 }
 
+.card {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
 /* plus and minus buttons */
 .number-input button:before,
 .number-input button:after {
@@ -109,4 +114,8 @@ font-size: 1rem;
 height: 2rem;
 color: #495057;
 border-radius: 0rem
+}
+
+.p-button {
+
 }
