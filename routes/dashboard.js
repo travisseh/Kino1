@@ -11,6 +11,8 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
         if (err){
             console.log(err)
             console.log("hello")
+        } else if (foundPackage === null) {
+            res.redirect("/selectPackage") 
         } else {
             console.log("found package " + foundPackage) 
             console.log("hello")
@@ -22,7 +24,6 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
                 const nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
                 res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate})
             })
-            
         }
     })
 })
