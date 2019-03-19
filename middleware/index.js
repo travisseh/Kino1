@@ -8,7 +8,7 @@ function isLoggedIn(req, res, next){
 }
 
 function hasPackageSelected (req, res, next){
-    if (req.user.selectedPackage != undefined){
+    if (req.user.selectedPackage != undefined || req.user.selectedPackage != null){
         return next()
     }
     res.redirect("/selectPackage")
