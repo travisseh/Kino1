@@ -10,10 +10,12 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
     Package.findOne({_id: req.user.selectedPackage}, function(err, foundPackage){
         if (err){
             console.log(err)
+            console.log("hello")
         } else {
             Exercise.find({userId: req.user._id}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
                 const currentDay = foundExercise[0].workout
-                const numberOfWorkouts = foundPackage.workouts.length -1  
+                const numberOfWorkouts = foundPackage.workouts.length -1
+                console.log("found package " + foundPackage)  
                 const nextDayLastDate = new Date(foundExercise[0].date)
                 const nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
                 res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate})
