@@ -489,7 +489,7 @@ const goddess_toning = new Package (
                     },
                     {
                         percent: 80,
-                        reps: 3
+                        reps: 5
                     }
                 ],
                 sets: [
@@ -773,7 +773,7 @@ const goddess_toning = new Package (
               order: 3,
               instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
               type: "Standard Pyramid",
-              weightIncrement: 5,
+              weightIncrement: 2.5,
               startWeight: 2.5,
               weightType: "cable",
               pauseDuration: 150,
@@ -938,7 +938,7 @@ const goddess_toning = new Package (
               order: 3,
               instructions: "Rest 2 minutes between each set. Reduce by 10% each time.",
               type: "Reverse Pyramid",
-              weightIncrement: 5,
+              weightIncrement: 2.5,
               startWeight: 2.5,
               weightType: "rope",
               pauseDuration: 150,

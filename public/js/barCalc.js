@@ -117,7 +117,7 @@ $(".quantity").change(function(){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-        return barCalc2(lastWeight,currentWeight)
+        return "Bar: " + barCalc2(lastWeight,currentWeight)
     })
 
     $(".barCalc").text(function(){
@@ -143,7 +143,7 @@ $(".quantity").change(function(){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        return barCalc2(lastWeight,currentWeight)
+        return "Bar: " + barCalc2(lastWeight,currentWeight)
         })
 
 })
