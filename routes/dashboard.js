@@ -17,11 +17,17 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
             console.log("found package " + foundPackage) 
             console.log("hello")
             Exercise.find({userId: req.user._id}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
-                const currentDay = foundExercise[0].workout
-                const numberOfWorkouts = foundPackage.workouts.length -1
-                 
-                const nextDayLastDate = new Date(foundExercise[0].date)
-                const nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
+                let nextDayArray
+                let nextDayLastDate
+                if (foundExercise === null){
+                    nextDayArray = ["A", 0]
+                    nextDayLastDate = null
+                } else {
+                    const currentDay = foundExercise[0].workout
+                    const numberOfWorkouts = foundPackage.workouts.length -1
+                    nextDayLastDate = new Date(foundExercise[0].date)
+                    nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
+                }
                 res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate})
             })
         }
