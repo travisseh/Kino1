@@ -8,7 +8,7 @@
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
     <div id="E<%=index%>">
-    <h3><%= exercise.name %> </h3>
+    <h2><%= exercise.name %> </h2>
 
 <small class="text-muted"><a href="#" data-toggle="modal" data-target="#basicExampleModal">Exercise Instructions</a></small>
 
@@ -48,20 +48,21 @@
 
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
         
+        <h6>Warm-up <%= ind + 1 %><h6>
         <%#HANDLE BODY-WEIGHT WARMUPS%>
-        <% if (warmUp.percent === 0) { %>
-            <p id="warmup_<%=index%>_<%=ind%>">Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at bodyweight </strong></p>
+        <% if (warmUp.percent === 0) { %> 
+        <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at bodyweight </p>
 
         <%#HANDLE NO PREVIOUS EXERCISES%>    
         <%  } else if (typeof(firstDisplayWeight) === "string") { %>
-            <p id="warmup_<%=index%>_<%=ind%>">Warm Up <%= ind + 1 %>: <strong><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight </strong></p>
+            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight</p>
         <% } else { %>
 
             <%#DECLARE WEIGHT FOR EACH WARMUP%>
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
 
             <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.percent %> % Warm Up: <strong><%= warmUp.reps %>  reps at <%= weight%> lbs </strong> </p> 
+            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at <%= weight%> lbs</p> 
             
             <%#WARMUP BARCALC%>
             <%if (exercise.weightType === "bar") { %>

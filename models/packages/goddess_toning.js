@@ -1,0 +1,676 @@
+const express = require("express")
+const mongoose = require("mongoose")
+const Package = require("../model").Package
+const Workout = require("../model").Workout
+const TemplateExercise = require("../model").TemplateExercise
+const TemplateWarmUp = require("../model").TemplateWarmUp
+const TemplateSet = require("../model").TemplateSet
+
+const goddess_toning = new Package (
+    {
+      name: "Goddess Toning",
+      url: "goddess_toning",
+      active: false,
+      purchased: false,
+      workouts: [{
+          name: "A: Legs, Shoulders, Abs",
+          nameShort: "A",
+          image: "https://source.unsplash.com/DC5akQJyH4I/286x190",
+          description: "This will focus on strengthening your legs with an emphasis on glutes, plus your shoulders",
+          duration: 60,
+          exercises: [
+              {
+                  name: "Sumo Deadlift Squats",
+                  videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                  order: 0,
+                  instructions: `Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.The sumo deadlift is performed by assuming a sumo stance (feet wide apart), and lifting a barbell off the ground with straight arms.
+                  
+                  Notes from course:
+                  
+                  This movement hits your legs, butt and lower back. It will really build the posterior chain the most - hamstrings, butt and lower back. Sumo deadlifts are one of the best movements to strengthen the posterior chain. This is a tough lift, but if you work hard at it, you will build an incredible butt.
+
+                Furthermore, the sumo deadlift is a highly functional movement that will assist you in life. The ability to lift an object off the ground is about as functional as it gets.
+
+                What’s more, learning the sumo deadlift will teach you how to safely pick up objects. This is because the sumo deadlift teaches you how to keep your back flat and engaged.
+
+                When people get injured from lifting objects off the ground, it’s because they lift with a rounded back.`,
+                  type: "Standard Pyramid",
+                  weightIncrement: 5,
+                  startWeight: 0,
+                  weightType: "dumbbell",
+                  pauseDuration: 150,
+                  warmUps: [
+                      {
+                          percent: 60,
+                          reps: 5
+                      },
+                      {
+                          percent: 80,
+                          reps: 5
+                      }
+                  ],
+                  sets: [
+                      {
+                          low: 4,
+                          high: 6
+                      },
+                      {
+                          low: 4,
+                          high: 6
+                      },
+                      {
+                          low: 4,
+                          high: 6
+                      }
+                  ]
+              },
+              {
+                  name: "Dumbbell Forward Lunges",
+                  videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                  order: 1,
+                  instructions: `Instructions: 
+                  
+                  Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.
+                  
+                  Notes from course: 
+                  
+                  Forward lunges or step-ups are great exercises to do because they build single leg strength and stability.
+
+                It forces you to keep both legs of equal strength. Moreover, these two exercises hit the butt very hard, if you do them correctly.
+
+                The key is to keep the weight on the heel of the foot. This will activate the glutes the hardest.
+
+                Goblet box squats, sumo deadlifts and lunges/step-ups will build an incredible fit and sexy looking lower body.
+
+                Combine that with a focus on incline presses, lat pull downs and shoulder press and you will have an amazing physique.`,
+                  type: "Standard Pyramid",
+                  weightIncrement: 5,
+                  startWeight: 0,
+                  weightType: "dumbbells",
+                  pauseDuration: 150,
+                  warmUps: [],
+                  sets: [
+                      {
+                          low: 3,
+                          high: 5
+                      },
+                      {
+                          low: 3,
+                          high: 5
+                      },
+                      {
+                          low: 3,
+                          high: 5
+                      }
+                  ]
+              },
+              {
+                  name: "Seated Dumbbell Shoulder Press",
+                  videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                  order: 2,
+                  instructions: `Instructions: 
+                  
+                  Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.
+                  
+                  Notes from course: 
+                  
+                  The shoulder press is a great movement to strengthen your shoulders and triceps (back of the arms). The shoulder press will also help support your v shape from your shoulders to your waist.
+
+                  As well, you will develop more tone in your shoulders and arms. You will also create a little separation between your shoulders and arms.
+
+                  This will make you look more fit and toned, instead of just skinny.`,
+                  type: "Standard Pyramid",
+                  weightIncrement: 5,
+                  startWeight: 0,
+                  weightType: "dumbbells",
+                  pauseDuration: 150,
+                  warmUps: [
+                      {
+                          percent: 60,
+                          reps: 5
+                      },
+                      {
+                          percent: 80,
+                          reps: 5
+                      }
+                  ],
+                  sets: [
+                      {
+                          low: 6,
+                          high: 10
+                      },
+                      {
+                          low: 6,
+                          high: 10
+                      },
+                      {
+                          low: 6,
+                          high: 10
+                      }
+                  ]
+              },
+              {
+                  name: "Lateral Raises",
+                  videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                  order: 3,
+                  instructions: "Each workout you want to try and finish with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight.",
+                  type: "Standard Pyramid Tweaked",
+                  weightIncrement: 5,
+                  startWeight: 0,
+                  weightType: "dumbbell",
+                  pauseDuration: 60,
+                  warmUps: [],
+                  sets: [
+                      {
+                          low: null,
+                          high: 12
+                      },
+                      {
+                          low: null,
+                          high: 10
+                      },
+                      {
+                          low: null,
+                          high: 8
+                      },
+                      {
+                          low: null,
+                          high: 6
+                      },
+                      {
+                          low: 12,
+                          high: 15
+                      }
+                  ]
+              },
+              {
+                  name: "Lying Leg Raises",
+                  videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                  order: 4,
+                  instructions: `Notes from course: 
+                  
+                  Lying leg raises and hanging knee raises will strengthen your entire core, from top to bottom.
+
+                As well, you’ll build flexibility along the back of your legs. Leg raise variations also promote a strong low back.`,
+                  type: "Standard Pyramid",
+                  weightIncrement: 5,
+                  startWeight: 0,
+                  weightType: "body",
+                  pauseDuration: 60,
+                  warmUps: [],
+                  sets: [
+                      {
+                          low: 10,
+                          high: 20
+                      },
+                      {
+                          low: 10,
+                          high: 20
+                      },
+                      {
+                          low: 10,
+                          high: 20
+                      }
+                  ]
+              },
+              {
+                name: "Plank Hold",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 5,
+                instructions: `Notes from course: 
+                
+                Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.
+
+                As well, a strong TVA will injury-proof your body and improve your posture.`,
+                type: "Hold",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "body",
+                pauseDuration: 60,
+                dropDown: ["Regular", "Long Lever Plank", "Long Lever + 5 lbs", "Long Lever + 10 lbs", "Long Lever + 15 lbs",],
+                warmUps: [],
+                sets: [
+                    {
+                        low: 30,
+                        high: 90
+                    },
+                    {
+                        low: 30,
+                        high: 90
+                    }
+                ]
+              },
+              {
+                name: "Hip Bridge Hold",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 6,
+                instructions: `Notes from course: 
+                
+                I recommend including a hip bridge to promote great posture, teach your butt how to fire and to develop solid flexibility through your quads, hip flexors and abs. If you get really good at this and build strength, you can even work up to a full bridge.
+                
+                A great abs workout is as simple as performing a few sets of lying leg raises or hanging knee raises and 2 sets of a plank hold and finishing off with a one minute hip bridge.`,
+                type: "Hold",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "body",
+                pauseDuration: 60,
+                dropDown: ["Regular", "Full Bridge Hold", "Full Bridge w/ Band"],
+                warmUps: [],
+                sets: [
+                    {
+                        low: null,
+                        high: 60
+                    }
+                ]
+              }
+          ]
+      }, 
+      {
+        name: "B: Chest & Back",
+        nameShort: "B",
+        image: "https://source.unsplash.com/CN-6UcL7z2Y/286x190",
+        description: "This workout will improve your posture and strengthen your major upper body muscles.",
+        duration: 60,
+        exercises: [
+            {
+                name: "Incline Dumbbell Bench Press",
+                order: 0,
+                instructions: `Instructions: 
+                
+                Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets
+                
+                Notes from course: 
+
+                Incline bench and flat bench are the primary movements to build your entire chest. Strengthening your pectorals is a key strategy to give your bust a little lift.
+
+                By increasing chest strength, you will increase the muscle and shape under your bust, giving them more support.
+
+                You may notice they hold a little higher and they are slightly more prominent.
+                `,
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                warmUps: [
+                    {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 5
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 10
+                    },
+                    {
+                        low: 6,
+                        high: 10
+                    },
+                    {
+                        low: 6,
+                        high: 10
+                    }
+                ]
+            },
+            {
+                name: "Lat Pull Downs",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 1,
+                instructions: `Instructions: 
+                
+  
+                Notes from course: 
+                
+                Lat pull down is a great exercise to build your upper back and biceps. Eventually you may want to work up to full chin ups, but the first step is to get strong on the lat pull down.
+  
+                You can do this with hands facing away or hands facing you. Both variations are great!
+                
+                Building up your strength on lat pull downs will help support a nice V shape from your waist to your shoulders. Having a slight V shape will make you look slim, athletic and attractive.
+                
+                Jessica Biel is an example of a girl with a great V shape. She looks feminine and sexy, not overdone.
+                
+                Chin-ups or lat pull downs will help build this beautifully.`,
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "cable",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                  {
+                      low: 6,
+                      high: 10
+                  },
+                  {
+                      low: 6,
+                      high: 10
+                  },
+                  {
+                      low: 6,
+                      high: 10
+                  }
+                ]
+            },
+            {
+                name: "Pushups",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 2,
+                instructions: "For push-ups you will be doing a quality set. This simply means stop about 1-2 reps before complete failure. Do a pushup variation that you can do for 8-15 reps. This might be kneeling push-ups, standard push-ups or feet elevated on a bench push-ups (the hardest variation).",
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "body",
+                pauseDuration: 120,
+                dropDown: ["Kneeling", "Standard", "Feet Elevated"],
+                warmUps: [],
+                sets: [
+                    {
+                        low: 10,
+                        high: 15
+                    },
+                    {
+                        low: 10,
+                        high: 15
+                    },
+                    {
+                        low: 10,
+                        high: 15
+                    }
+                ]
+            },
+            {
+                name: "Cable Rows",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 3,
+                instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
+                type: "Standard Pyramid",
+                weightIncrement: 2.5,
+                startWeight: 2.5,
+                weightType: "cable",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 12
+                    },
+                    {
+                        low: 8,
+                        high: 12
+                    },
+                    {
+                      low: 8,
+                      high: 12
+                    }
+                ]
+            },
+            {
+              name: "Bent Over Flyes",
+              videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+              order: 4,
+              instructions: "Same weight for all sets except the last. Each workout you want to try and finish this with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight.",
+              type: "Standard Pyramid Tweaked",
+              weightIncrement: 5,
+              startWeight: 0,
+              weightType: "dumbbells",
+              pauseDuration: 30,
+              warmUps: [],
+              sets: [
+                  {
+                      low: null,
+                      high: 12
+                  },
+                  {
+                      low: null,
+                      high: 10
+                  },
+                  {
+                      low: null,
+                      high: 8
+                  },
+                  {
+                      low: null,
+                      high: 6
+                  },
+                  {
+                      low: 12,
+                      high: 15
+                  }
+              ]
+            }
+        ]
+      },
+      {
+        name: "C: Legs & Arms",
+        nameShort: "C",
+        image: "https://source.unsplash.com/T-hBGkb3-xQ/286x190",
+        description: "This will hit your legs and butt plus arms - making them firmer and more toned",
+        duration: 60,
+        exercises: [
+            {
+                name: "Goblet Box Squats",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 0,
+                instructions: `Instructions: 
+                
+                Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets. The goblet squat is performed by holding a single dumbbell in front of your chest. This forces you to keep your chest up. Sitting onto a box forces you to use your butt and hamstring muscles to sit back onto the box.
+                
+                Notes from course: 
+
+                A goblet squat onto a box is a way to ensure optimal squatting technique and great butt development without as much work onto the quads. Many girls want to keep their legs fit and toned without adding much size to their legs.
+
+                This workout program will focus on a variety of lower body movements that hit the butt the hardest. This will accomplish the goal of having slim fit and athletic legs combined with a great booty.`,
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "dumbbell",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 5
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    }
+                ]
+            },
+            {
+                name: "Step-Ups",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 1,
+                instructions: "Start with weaker foot, keep foot on bench. Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.",
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                  {
+                      low: 6,
+                      high: 10
+                  },
+                  {
+                      low: 6,
+                      high: 10
+                  },
+                  {
+                      low: 6,
+                      high: 10
+                  }
+                ]
+            },
+            {
+                name: "Alternating Dumbbell Curls",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 2,
+                instructions: "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets",
+                type: "Standard Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 5
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 10
+                    },
+                    {
+                        low: 6,
+                        high: 10
+                    },
+                    {
+                        low: 6,
+                        high: 10
+                    }
+                ]
+            },
+            {
+                name: "Triceps Rope Pushdown",
+                videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+                order: 3,
+                instructions: "Rest 2 minutes between each set. Reduce by 10% each time.",
+                type: "Reverse Pyramid",
+                weightIncrement: 2.5,
+                startWeight: 2.5,
+                weightType: "rope",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 12
+                    },
+                    {
+                        low: 8,
+                        high: 12
+                    },
+                    {
+                      low: 8,
+                      high: 12
+                    }
+                ]
+            },
+            {
+              name: "Hanging Knee Raises",
+              videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+              order: 4,
+              instructions: "Same weight for all sets. 1 minute between sets.",
+              type: "Standard Pyramid",
+              weightIncrement: 5,
+              startWeight: 0,
+              weightType: "body",
+              pauseDuration: 60,
+              warmUps: [],
+              sets: [
+                  {
+                      low: 6,
+                      high: 12
+                  },
+                  {
+                      low: 6,
+                      high: 12
+                  },
+                  {
+                      low: 6,
+                      high: 12
+                  }
+              ]
+            },
+            {
+              name: "Side Plank Hold",
+              videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+              order: 5,
+              instructions: `Instructions: 2x per side
+              
+              Notes from course: 
+              
+              Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.
+
+            As well, a strong TVA will injury-proof your body and improve your posture.`,
+              type: "Hold",
+              weightIncrement: 5,
+              startWeight: 0,
+              weightType: "body",
+              pauseDuration: 60,
+              dropDown: ["Regular", "Arm Straightened", "Outer Leg Lifted", "Feet Elevated", "Holding 10 lbs", "Holding 20 lbs"],
+              warmUps: [],
+              sets: [
+                  {
+                      low: 20,
+                      high: 40
+                  },
+                  {
+                      low: 20,
+                      high: 40
+                  }
+              ]
+            },
+            {
+              name: "Hip Bridge Hold",
+              videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
+              order: 6,
+              instructions: "none",
+              type: "Hold",
+              weightIncrement: 5,
+              startWeight: 0,
+              weightType: "body",
+              pauseDuration: 60,
+              dropDown: ["Regular", "Full Bridge Hold", "Full Bridge w/ Band"],
+              warmUps: [],
+              sets: [
+                  {
+                      low: null,
+                      high: 60
+                  }
+              ]
+            }
+        ]
+    }]
+    }
+  )
+
+
+
+function createGodessToning(){
+      Package.create(goddess_toning,function(err){
+      if (err){
+          console.log(err)
+      }
+  })
+}
+
+
+  module.exports = {goddess_toning, createGodessToning}

@@ -10,7 +10,6 @@ const path = require("path")
 
     //DB
 const mongoose = require("mongoose")
-const seedPackages = require("./models/seed").seedPackages
 
     //Auth
 const session = require('express-session')
@@ -26,11 +25,7 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 
 // DB CONNECTION
-// mongoose.connect("mongodb+srv://admin-travisse:test123@cluster0-vd7zd.mongodb.net/Kino1", {useNewUrlParser: true})
-
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
-
-// seedPackages()
 
 //GLOBAL SETTINGS
 app.use(express.static(path.join(__dirname, "public")))

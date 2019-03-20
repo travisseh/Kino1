@@ -89,12 +89,10 @@ const packageSchema = new mongoose.Schema ({
     name: String,
     url: String,
     active: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     purchased: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     workouts: [workoutSchema] 
 })
