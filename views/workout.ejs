@@ -7,10 +7,14 @@
 
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
-    <div id="E<%=index%>">
-    <h2><%= exercise.name %> </h2>
+<div class="card">
+<div class="card-body">
 
-<small class="text-muted"><a href="#" data-toggle="modal" data-target="#basicExampleModal">Exercise Instructions</a></small>
+
+    <div id="E<%=index%>">
+    <h2 class="card-title"><%= exercise.name %> </h2>
+
+<p class="text-muted"><a href="#" data-toggle="modal" data-target="#basicExampleModal">Exercise Instructions</a></p>
 
 <!-- Modal -->
         <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -48,35 +52,35 @@
 
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
         
-        <h6>Warm-up <%= ind + 1 %><h6>
+        <h4>Warm-up <%= ind + 1 %><h4>
         <%#HANDLE BODY-WEIGHT WARMUPS%>
         <% if (warmUp.percent === 0) { %> 
-        <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at bodyweight </p>
+        <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
 
         <%#HANDLE NO PREVIOUS EXERCISES%>    
         <%  } else if (typeof(firstDisplayWeight) === "string") { %>
-            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at <%=warmUp.percent%>% max weight</p>
+            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <%=warmUp.percent%>% max weight</p>
         <% } else { %>
 
             <%#DECLARE WEIGHT FOR EACH WARMUP%>
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
 
-            <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at <%= weight%> lbs</p> 
-            
             <%#WARMUP BARCALC%>
             <%if (exercise.weightType === "bar") { %>
-                <small class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></small>
+                <p class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></p>
             <% } %>
+
+            <%#SHOW NORMAL WARMUP WEIGHT%>
+            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <%= weight%> lbs</p> 
+            
         <%  } %>
     <%})%>
     <br>
-
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
-        <br><h6>Set <%=i + 1%></h6>
+        <h4>Set <%=i + 1%></h4>
 
         <%#DECLARE WEIGHT FOR EACH SET%>
         <% const weight = displayExercises[index][i].weight %>
@@ -87,7 +91,7 @@
 
         <%#HANDLE BAR CALC IF BAR%>
             <%if (exercise.weightType === "bar") { %>
-            <small class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"></small>
+            <p class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"></p>
             <%}%>
 
             <%#HANDLE LAST WEEKS SETS%>
@@ -96,11 +100,11 @@
             <%const lastNote = lastExercises[index].sets[i].note%>
             <%const exerciseName = lastExercises[index]._id.name%>
             <%if (lastReps != null){ %>
-                <br>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
+                <p>Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
                 <%=functions.optionMapper(exerciseName, lastWeight)%>
             <%} else {%>
                 <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
-                </br>
+                </p>
             <%} %>
 
         <%#HANDLE REPS%>
@@ -158,9 +162,7 @@
 
         <%#HANDLE NOTES%>
         <input type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
-        <a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a>
-        <br>
-        <br>
+        <p><a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a></p>
 
     <%})%>
 
@@ -171,10 +173,11 @@
     <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary workout-button">Save</button>
     </form>
-    <br>
-    <br>
 
     </div>
+
+    </div>
+</div>
 
 <%})%>
 

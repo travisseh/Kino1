@@ -14,6 +14,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
             res.redirect("/selectPackage") 
         } else {
             Exercise.find({userId: req.user._id}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
+                //get the last date for all
                 let nextDayArray
                 let nextDayLastDate
                 if (foundExercise[0] === null || foundExercise[0] === undefined){

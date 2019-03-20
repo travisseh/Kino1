@@ -11,7 +11,7 @@
 }
 
 .container-fluid {
-    padding: 3% 10%
+    padding: 5% 5%
 }
 
 .startHidden {
@@ -22,6 +22,10 @@
 title {
     display: none;
   }
+
+p {
+    font-size: 1rem;
+}
 
   
 /* Stuff from mdbootstrap */
@@ -80,7 +84,7 @@ text-align: center;
 /* Outer box of counter */
 .number-input.number-input {
 border: 1px solid #ced4da;
-width: 145px;
+/* width: 145px; */
 border-radius: .25rem;
 }
 /* .number-input.number-input button {
