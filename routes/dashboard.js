@@ -10,16 +10,13 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
     Package.findOne({_id: req.user.selectedPackage}, function(err, foundPackage){
         if (err){
             console.log(err)
-            console.log("hello")
         } else if (foundPackage === null) {
             res.redirect("/selectPackage") 
         } else {
-            console.log("found package " + foundPackage) 
-            console.log("hello")
             Exercise.find({userId: req.user._id}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
                 let nextDayArray
                 let nextDayLastDate
-                if (foundExercise === null){
+                if (foundExercise[0] === null || foundExercise[0] === undefined){
                     nextDayArray = ["A", 0]
                     nextDayLastDate = null
                 } else {

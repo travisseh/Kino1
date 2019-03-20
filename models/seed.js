@@ -60,4 +60,4 @@ function seedPackages(){
 
 
 
-module.exports = {seedPackages, createPackages}
+module.exports = {seedPackages}

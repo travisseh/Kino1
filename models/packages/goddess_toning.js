@@ -23,17 +23,13 @@ const goddess_toning = new Package (
                   name: "Sumo Deadlift Squats",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 0,
-                  instructions: `Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.The sumo deadlift is performed by assuming a sumo stance (feet wide apart), and lifting a barbell off the ground with straight arms.
+                  instructions: `<p>Instructions: Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.The sumo deadlift is performed by assuming a sumo stance (feet wide apart), and lifting a barbell off the ground with straight arms.</p>
                   
-                  Notes from course:
+                  <p>Notes from course:</p>
                   
-                  This movement hits your legs, butt and lower back. It will really build the posterior chain the most - hamstrings, butt and lower back. Sumo deadlifts are one of the best movements to strengthen the posterior chain. This is a tough lift, but if you work hard at it, you will build an incredible butt.
+                  <p>This movement hits your legs, butt and lower back. It will really build the posterior chain the most - hamstrings, butt and lower back. Sumo deadlifts are one of the best movements to strengthen the posterior chain. This is a tough lift, but if you work hard at it, you will build an incredible butt.</p>
 
-                Furthermore, the sumo deadlift is a highly functional movement that will assist you in life. The ability to lift an object off the ground is about as functional as it gets.
-
-                What’s more, learning the sumo deadlift will teach you how to safely pick up objects. This is because the sumo deadlift teaches you how to keep your back flat and engaged.
-
-                When people get injured from lifting objects off the ground, it’s because they lift with a rounded back.`,
+                <p>Furthermore, the sumo deadlift is a highly functional movement that will assist you in life. The ability to lift an object off the ground is about as functional as it gets. What’s more, learning the sumo deadlift will teach you how to safely pick up objects. This is because the sumo deadlift teaches you how to keep your back flat and engaged. When people get injured from lifting objects off the ground, it’s because they lift with a rounded back.</p>`,
                   type: "Standard Pyramid",
                   weightIncrement: 5,
                   startWeight: 0,

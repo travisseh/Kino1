@@ -10,6 +10,7 @@ const path = require("path")
 
     //DB
 const mongoose = require("mongoose")
+const seedPackages = require("./models/seed").seedPackages
 
     //Auth
 const session = require('express-session')
@@ -26,6 +27,8 @@ const workout = require("./routes/workout")
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
+
+seedPackages()
 
 //GLOBAL SETTINGS
 app.use(express.static(path.join(__dirname, "public")))
