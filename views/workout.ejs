@@ -53,7 +53,7 @@
 
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
         
-        <h4>Warm-up <%= ind + 1 %><h4>
+        <h4>Warm-up <%= ind + 1 %></h4>
         <%#HANDLE BODY-WEIGHT WARMUPS%>
         <% if (warmUp.percent === 0) { %> 
         <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
