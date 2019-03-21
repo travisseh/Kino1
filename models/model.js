@@ -41,6 +41,7 @@ const templateExerciseSchema = new mongoose.Schema({
     },
     videoLink: String,
     instructions: [String],
+    notesFromCourse: [String],
     type: {
         type: String,
         enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold", "Standard Pyramid Tweaked"]

@@ -28,16 +28,36 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
                 <p class="text-muted">Rest <%=functions.secondsToMinutes(exercise.pauseDuration)%> between each set</p>
                 <% if(exercise.weightType === "dumbbells") {%>
                     
                     <p class="text-muted">Enter per dumbbell weight, not total weight</p>
                     <%}%>
                 <%#HANDLE ALL THE PARAGRAPHS%>
-                <%exercise.instructions.forEach(function(paragraph){%>
-                    <p class="text-muted"><%=paragraph%></p>
-                <%})%>
-                <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
+                <%if (exercise.instructions != null) {%>
+                    <%exercise.instructions.forEach(function(paragraph, index1){%>
+                        <p class="text-muted">  
+                            <%if (index1 === 0){%>
+                                <strong><%=paragraph%></strong>
+                            <%} else {%>
+                                <%=paragraph%>
+                            <%}%>
+                        </p>
+                    <%})%>
+                <%}%>
+                <%#HANDLE IF NOTES FROM COURSE%>
+                <%if (exercise.notesFromCourse != null){%>
+                    <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
+                        <p class="text-muted">  
+                            <%if (index2 === 0){%>
+                                <strong><%=paragraph%></strong>
+                            <%} else {%>
+                                <%=paragraph%>
+                            <%}%>
+                        </p>
+                    <%})%>
+                <%}%>
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
