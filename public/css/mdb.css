@@ -10257,7 +10257,7 @@ a.btn:not([href]):not([tabindex]):hover {
 
 .double-nav a {
   font-size: 15px;
-  color: #fff; }
+ }
 
 .double-nav .breadcrumb-dn p {
   margin: 0;

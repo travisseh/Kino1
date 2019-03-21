@@ -27,6 +27,10 @@ p {
     font-size: 1rem;
 }
 
+/* Only for snippet */
+.double-nav .breadcrumb-dn {
+    color: #fff;
+  }
   
 /* Stuff from mdbootstrap */
 .number-input input[type="number"] {
@@ -122,4 +126,28 @@ border-radius: 0rem
 
 .p-button {
 
+}
+
+/* Nav stuff */
+.breadcrumb-dn{
+    color: red;
+}
+
+.side-nav {
+    background-color: #fff;
+}
+
+.side-nav .collapsible a {
+    color: #000;
+    font-weight: 300;
+    font-size: 0.8rem;
+    height: 36px;
+    line-height: 36px;
+}
+
+.fas {
+    font-weight: 900;
+    /* color: red; */
+    color: #212529;
+    /* color: #747373; */
 }
