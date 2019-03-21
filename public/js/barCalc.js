@@ -133,8 +133,10 @@ $(".quantity").change(function(){
         if (newLastCharacter < 0) {
             //Handle if there are warmups and set it to the last warmup
             if ($(".weightWarmUp").length > 0){
-                id = $(this).parent().parent().attr("id")
-                lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
+                //traverse up to get the per workout div id - something like E0 or E1
+                id = $(this).parent().parent().parent().attr("id")
+                //traverse down and find the warmups if there are any
+                lastWeight = $(`#${id}`).children("h4").children(".weightWarmUp").last().data("weight")
             } else {
                 //handle if there aren't any warm-ups
                 lastWeight = 45
