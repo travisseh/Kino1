@@ -23,7 +23,7 @@ $(".workout-button").on("click", function(){
 })
 
 
-//ADD/REMOVE NOTE 
+//ADD-REMOVE NOTE 
 $(".addNote").on("click", function(e){
     e.preventDefault()
     const appendId = $(this).attr("id").substring(7)

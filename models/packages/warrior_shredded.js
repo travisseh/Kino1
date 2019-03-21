@@ -246,7 +246,7 @@ const warrior_shredded = new Package (
                 instructions: "Reverse Pyramid - reduce weight by 10% for reach additional set. Rest 3 minutes between each set.",
                 type: "Reverse Pyramid",
                 weightIncrement: 15,
-                startWeight: 0,
+                startWeight: 10,
                 weightType: "cable",
                 pauseDuration: 150,
                 warmUps: [],

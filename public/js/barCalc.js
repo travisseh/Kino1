@@ -96,9 +96,10 @@ $(window).on("load", function(){
     $(".quantity").trigger("change")
 })
     
-//warmup weight BarCalc
+
 $(".quantity").change(function(){
 
+    //warmup weight BarCalc
     $(".barCalcWarmUp").text(function(){
         //get id of barCalc
         const appendId = $(this).attr("id")
@@ -120,6 +121,7 @@ $(".quantity").change(function(){
         return "Bar: " + barCalc2(lastWeight,currentWeight)
     })
 
+    //Normal weight BarCalc
     $(".barCalc").text(function(){
         //get id of barCalc
         const appendId = $(this).attr("id").substring(7,10)
