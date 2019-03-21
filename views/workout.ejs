@@ -19,7 +19,7 @@
 <!-- Modal -->
         <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Exercise Instructions</h5>
@@ -29,11 +29,14 @@
             </div>
             <div class="modal-body">
                 <p class="text-muted">Rest <%=functions.secondsToMinutes(exercise.pauseDuration)%> between each set</p>
-                <p class="text-muted"><%=exercise.instructions%></p>
                 <% if(exercise.weightType === "dumbbells") {%>
                     
                     <p class="text-muted">Enter per dumbbell weight, not total weight</p>
                     <%}%>
+                <%#HANDLE ALL THE PARAGRAPHS%>
+                <%exercise.instructions.forEach(function(paragraph){%>
+                    <p class="text-muted"><%=paragraph%></p>
+                <%})%>
                 <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
             </div>
             <div class="modal-footer justify-content-center">
