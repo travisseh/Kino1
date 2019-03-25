@@ -22,22 +22,22 @@
   </head>
 
   <body>    
-    
-  <div class="container sticky-alert">
-        <%if (success && success.length > 0){%>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <%=success%>
-        </div>
-        <%}%>
+  
+    <div class="container sticky-alert">
+      <%if (success && success.length > 0){%>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%=success%>
+      </div>
+    <%}%>
 
-        <%if (error && error.length > 0){%>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <%=error%>
-        </div>
-        <%}%>
-    </div>
+    <%if (error && error.length > 0){%>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%=error%>
+      </div>
+    <%}%>
+  </div>
   
   <div class="container-fluid">
 
