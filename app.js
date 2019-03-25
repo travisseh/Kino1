@@ -5,7 +5,7 @@ const express = require("express")
 const bodyParser = require("body-parser");
 const ejs = require("ejs")
 const app = express()
-const port = 8080
+const port = 3000
 const path = require("path")
 const flash = require('connect-flash')
 
