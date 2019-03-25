@@ -12,6 +12,8 @@ const goddess_toning = require("./packages/goddess_toning")
 const createGodessToning = require("./packages/goddess_toning").createGodessToning
 const warrior_shredded = require("./packages/warrior_shredded")
 const createWarriorShredded = require("./packages/warrior_shredded").createWarriorShredded
+const createAFL = require("./packages/aggressive_fat_loss_").createAFL
+const aggressive_fat_loss = require("./packages/aggressive_fat_loss_").aggressive_fat_loss
 
 
 const newBodyWeight = new BodyWeight ({
@@ -52,6 +54,7 @@ function seedPackages(){
         if (result) {
             createGodessToning()
             createWarriorShredded()
+            createAFL()
         }
     })
 }

@@ -7,6 +7,7 @@ const ejs = require("ejs")
 const app = express()
 const port = 8080
 const path = require("path")
+const flash = require('connect-flash')
 
     //DB
 const mongoose = require("mongoose")
@@ -36,6 +37,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+app.use(flash())
 app.use(session({
   secret: "Our little secret.",
   resave: false,
@@ -44,6 +46,12 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 mongoose.set("useCreateIndex", true)
+
+app.use(function(req, res, next){
+    res.locals.error = req.flash('error')
+    res.locals.success = req.flash('success')
+})
+
 
 
 //ROUTES

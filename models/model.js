@@ -76,7 +76,7 @@ const workoutSchema = new mongoose.Schema ({
     name: String,
     nameShort: {
         type: String,
-        enum: ["A", "B", "C", "D"]
+        enum: ["A", "B", "C", "D", "A2", "B2", "C2", "A3", "B3", "C3"]
     },
     image: String,
     description: String,
