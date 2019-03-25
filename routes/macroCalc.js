@@ -9,9 +9,9 @@ router.get("/", middleware.isLoggedIn,function(req, res, next){
             console.log(err)
         } else {
             if (foundWeight != null) {
-                res.render("macroCalc", {weight: foundWeight.weight})
+                res.render("macroCalc", {weight: foundWeight.weight, success: req.flash('success'), error: req.flash('error')})
             } else {
-                res.render("macroCalc", {weight: null})
+                res.render("macroCalc", {weight: null, success: req.flash('success'), error: req.flash('error')})
             }
         }
     })
@@ -24,7 +24,7 @@ router.post("/", middleware.isLoggedIn,function(req, res, next){
         userId: req.user._id
     })
     newBodyWeight.save()
-    //show success messsage
+    req.flash("success", "Weight saved!")
     res.redirect("/macroCalc")
 })
 

@@ -9,7 +9,7 @@ selectPackage.get("/", middleware.isLoggedIn,function(req,res,next){
             if (err) {
                 console.log(err)
             } else {
-                res.render("selectPackage", {packages: foundPackages})
+                res.render("selectPackage", {packages: foundPackages, success: req.flash('success'), error: req.flash('error')})
             }
         })
 

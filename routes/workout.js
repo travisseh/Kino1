@@ -51,7 +51,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                   }
 
                   //render the page with all the above info
-                  res.render("workout", {exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
+                  res.render("workout", {success: req.flash('success'), error: req.flash('error'), exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
       })
     }
@@ -79,7 +79,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
       userId: req.user._id
     })
     newExercise.save()
-  
+    req.flash('success', 'Exercise Saved!')
     res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
   })
 

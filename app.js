@@ -5,7 +5,7 @@ const express = require("express")
 const bodyParser = require("body-parser");
 const ejs = require("ejs")
 const app = express()
-const port = 3000
+const port = 8080
 const path = require("path")
 const flash = require('connect-flash')
 
@@ -47,10 +47,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 mongoose.set("useCreateIndex", true)
 
-app.use(function(req, res, next){
-    res.locals.error = req.flash('error')
-    res.locals.success = req.flash('success')
-})
+
+
+// app.use(function(req, res, next){
+//     res.locals.error = req.flash('error')
+//     res.locals.success = req.flash('success')
+// })
 
 
 

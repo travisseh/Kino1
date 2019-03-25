@@ -3,7 +3,9 @@ const router = express.Router()
 
 
 router.get("/", function(req, res,next){
-    res.render("index")
+    const error = req.flash("error")
+    const success = req.flash("success")
+    res.render("index", {success: success, error: error})
 })
 
 

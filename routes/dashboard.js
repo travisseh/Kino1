@@ -26,7 +26,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasPackageSelected, functio
                     nextDayLastDate = new Date(foundExercise[0].date)
                     nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
                 }
-                res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate})
+                res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate, success: req.flash('success'), error: req.flash('error')})
             })
         }
     })

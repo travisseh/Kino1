@@ -22,6 +22,9 @@ $(".workout-button").on("click", function(){
     localStorage.setItem('scroll-pos', $(window).scrollTop())
 })
 
+setTimeout(function(){
+    $(".alert").slideUp(500)
+}, 3000)
 
 //ADD-REMOVE NOTE 
 $(".addNote").on("click", function(e){
@@ -38,6 +41,7 @@ $(".addNote").on("click", function(e){
     
 })
 
+
 //initiatlize dropdowns
 $('.mdb-select').materialSelect()
 
@@ -47,7 +51,6 @@ $('.mdb-select').materialSelect()
 //     return "Last completed " + currentDate
 // })
 
-
 // SideNav Button Initialization
 $(".button-collapse").sideNav();
 // SideNav Scrollbar Initialization
@@ -55,8 +58,12 @@ var sideNavScrollbar = document.querySelector('.custom-scrollbar');
 Ps.initialize(sideNavScrollbar);
 
 
+
+
+
 //END DOC.READY
 })
+
 
 
 
