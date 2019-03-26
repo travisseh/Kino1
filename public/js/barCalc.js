@@ -54,13 +54,13 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
   
       let fullSentence = ""
       if (removes.length > 0 && adds.length > 0){
-        fullSentence = `On each side remove${sentenceCreator(removes)} then add${sentenceCreator(adds)}.`
+        fullSentence = `on each side remove${sentenceCreator(removes)} then add${sentenceCreator(adds)}.`
       } else if (adds.length > 0) {
-        fullSentence = `On each side add ${sentenceCreator(adds)}.`
+        fullSentence = `on each side add ${sentenceCreator(adds)}.`
       } else if (removes.length > 0){
-        fullSentence = `One each side remove ${sentenceCreator(removes)}.`
+        fullSentence = `on each side remove ${sentenceCreator(removes)}.`
       } else {
-        fullSentence = `No weights to add!`
+        fullSentence = `no weights to add`
       }
      
       return fullSentence
@@ -100,7 +100,7 @@ $(window).on("load", function(){
 $(".quantity").change(function(){
 
     //warmup weight BarCalc
-    $(".barCalcWarmUp").text(function(){
+    $(".barCalcWarmUp").html(function(){
         //get id of barCalc
         const appendId = $(this).attr("id")
         .substring(7,10)
@@ -118,11 +118,11 @@ $(".quantity").change(function(){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-        return "Bar: " + barCalc2(lastWeight,currentWeight)
+        return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
     })
 
     //Normal weight BarCalc
-    $(".barCalc").text(function(){
+    $(".barCalc").html(function(){
         //get id of barCalc
         const appendId = $(this).attr("id").substring(7,10)
         const lastCharacter = $(this).attr("id").substring(10)
@@ -147,7 +147,8 @@ $(".quantity").change(function(){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        return "Bar: " + barCalc2(lastWeight,currentWeight)
+        // const barCalcPlusIcon = "<i class='fas fa-dumbbell'></i> " + barCalc2(lastWeight,currentWeight)
+        return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
         })
 
 })
