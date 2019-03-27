@@ -7,7 +7,7 @@ $(".viewPast").on("click", function(){
 
     console.log(`https://kinohelper.herokuapp.com/workout/warrior_shredded/A/exercise/${templateExerciseId}`)
 
-    $.get(`https://kinohelper.herokuapp.com//workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
+    $.get(`https://kinohelper.herokuapp.com/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             return `
