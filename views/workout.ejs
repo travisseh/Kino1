@@ -14,10 +14,11 @@
     <div id="E<%=index%>">
     <h2 class="card-title"><%= exercise.name %> </h2>
 
-<p class="text-muted"><a href="#" data-toggle="modal" data-target="#basicExampleModal">Exercise Instructions</a></p>
+<p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal">Exercise Instructions</a></p> | 
+<p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">Previous Weeks</a></p>
 
 <!-- Modal -->
-        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -66,6 +67,29 @@
         </div>
         </div>
     <!-- /Modal -->
+
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="pastExercisesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Previous Weeks</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body past-exercises" data-exericse="<%=index%>">
+
+        </div>
+        <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+<!-- /Modal2 -->
 
     
 
@@ -191,7 +215,7 @@
     <%})%>
 
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
-    <input type="hidden" name="templateId" value="<%= exercise._id %>">
+    <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
     <input type="hidden" name="order" value="<%= exercise.order %>">

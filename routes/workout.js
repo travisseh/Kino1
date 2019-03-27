@@ -5,6 +5,7 @@ const functions = require("../modules/functions")
 const middleware = require("../middleware")
 const fakeLastExercise = require("../modules/objects").fakeLastExercise
 const fakeLastExercises = require("../modules/objects").fakeLastExercises
+const exercise = require('./exercise')
 const workout = express.Router()
 
 
@@ -61,6 +62,8 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
 
 
 
+
+
   workout.post("/:package/:workout", middleware.isLoggedIn, function(req, res, next){
     const formReps = req.body.reps
     const formWeight = req.body.weight
@@ -82,5 +85,13 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
     req.flash('success', 'Exercise Saved!')
     res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
   })
+
+
+  workout.use("/:package/:workout/exercise", function(req, res, next){
+    req.workout = req.params.workout
+    req.package = req.params.package
+    next()
+  }, exercise)
+
 
 module.exports = workout
