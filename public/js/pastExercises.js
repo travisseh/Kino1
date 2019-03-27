@@ -5,7 +5,7 @@ $(".viewPast").on("click", function(){
     const exercise = $(this).data("exercise")
     const templateExerciseId = $("input[name='templateId']")[exercise].value
 
-    console.log(`https://kinohelper.herokuapp.com//workout/warrior_shredded/A/exercise/${templateExerciseId}`)
+    console.log(`https://kinohelper.herokuapp.com/workout/warrior_shredded/A/exercise/${templateExerciseId}`)
 
     $.get(`https://kinohelper.herokuapp.com//workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
         //open a div and fill it with content
