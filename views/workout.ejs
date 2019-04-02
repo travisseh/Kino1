@@ -21,7 +21,7 @@
     <h2 class="card-title"><%= exercise.name %> </h2>
 
 <p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal">Exercise Instructions</a></p> | 
-<p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">Previous Weeks</a></p>
+<p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">History</a></p>
 
 
 <!-- Modal -->
@@ -82,7 +82,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Previous Weeks</h5>
+            <h5 class="modal-title" id="exampleModalLabel">History</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -167,12 +167,8 @@
         <%#HANDLE BODY-WEIGHT WARMUPS%>
         <% if (warmUp.percent === 0) { %> 
         <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
-
-        <%#HANDLE NO PREVIOUS EXERCISES%>    
-        <%  } else if (typeof(firstDisplayWeight) === "string") { %>
-            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <%=warmUp.percent%>% max weight</p>
+        
         <% } else { %>
-
             <%#DECLARE WEIGHT FOR EACH WARMUP%>
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
 
@@ -250,16 +246,7 @@
                 <div class="def-number-input number-input inline-block">
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                 
-                <input type="number" class="quantity" required id="weight_<%=index%>_<%=i%>"
-
-                <%#NO PREVIOUS EXERCISES%>
-                <%if (typeof(weight) === "string"){%>
-                    placeholder="<%= weight %>" 
-
-                <%#NORMAL EXERCISES%>
-                    <%} else {%>
-                    value="<%= weight %>"
-                    <% } %>
+                <input type="number" class="quantity" required id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
                 
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
