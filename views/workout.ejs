@@ -7,6 +7,12 @@
 
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
+
+<% let unit = "reps" %>  
+
+<%#CHANGE UNIT FOR SELECT EXERCISES%>
+<% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold" | exercise.name === "Lying Leg Raises") {unit = "seconds"}%>
+
 <div class="card">
 <div class="card-body">
 
@@ -93,10 +99,11 @@
 <!-- /Modal2 -->
 
     <%#HANDLE IF FIRST TIME ON EXERCISE%>
-    <%if (lastExercises[index].sets[0].reps === null){ %>
+    <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" | exercise.name != "Side Plank Hold" | exercise.name != "Hip Bridge Hold" | exercise.name != "Lying Leg Raises"){ %>
+    
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
                 <div>
-                <div>Enter your best guess of your max weight for <%=displayExercises[index][0].low%> reps of this exercise and we'll calculate the rest of your set!</div>
+                <div>Enter your best guess of your max weight for <%=displayExercises[index][0].low%> <%=unit%> of this exercise and we'll calculate the rest of your set!</div>
 
                 <%exercise.sets.forEach(function(set, index3){%>
                     
@@ -188,10 +195,6 @@
 
         <%#DECLARE WEIGHT FOR EACH SET%>
         <% const weight = displayExercises[index][i].weight %>
-        <% let unit = "reps" %>  
-
-        <%#CHANGE UNIT FOR SELECT EXERCISES%>
-        <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
         <%#HANDLE LAST WEEKS SETS%>
         <%const lastWeight = lastExercises[index].sets[i].weight%>
