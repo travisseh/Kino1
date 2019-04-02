@@ -11,7 +11,7 @@
 <% let unit = "reps" %>  
 
 <%#CHANGE UNIT FOR SELECT EXERCISES%>
-<% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold" | exercise.name === "Lying Leg Raises") {unit = "seconds"}%>
+<% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
 <div class="card">
 <div class="card-body">
@@ -99,7 +99,7 @@
 <!-- /Modal2 -->
 
     <%#HANDLE IF FIRST TIME ON EXERCISE%>
-    <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" | exercise.name != "Side Plank Hold" | exercise.name != "Hip Bridge Hold" | exercise.name != "Lying Leg Raises"){ %>
+    <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
     
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
                 <div>
