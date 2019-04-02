@@ -17,6 +17,7 @@
 <p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal">Exercise Instructions</a></p> | 
 <p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">Previous Weeks</a></p>
 
+
 <!-- Modal -->
         <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -35,7 +36,7 @@
                     
                     <p class="text-muted">Enter per dumbbell weight, not total weight</p>
                     <%}%>
-                <%#HANDLE ALL THE PARAGRAPHS%>
+                <!-- Handle all paragraphs -->
                 <%if (exercise.instructions != null) {%>
                     <%exercise.instructions.forEach(function(paragraph, index1){%>
                         <p class="text-muted">  
@@ -47,7 +48,7 @@
                         </p>
                     <%})%>
                 <%}%>
-                <%#HANDLE IF NOTES FROM COURSE%>
+                <%#HANDLE IF NOTES FROM COURSE%> 
                 <%if (exercise.notesFromCourse != null){%>
                     <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
                         <p class="text-muted">  
@@ -91,7 +92,62 @@
     </div>
 <!-- /Modal2 -->
 
-    
+    <%#HANDLE IF FIRST TIME ON EXERCISE%>
+    <%if (lastExercises[index].sets[0].reps === null){ %>
+    <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
+                <div>
+                <div>Enter your best guess of your max weight for <%=displayExercises[index][0].low%> reps of this exercise and we'll calculate the rest of your set!</div>
+
+                <%exercise.sets.forEach(function(set, index3){%>
+                    
+                    <%#HANDLE VISIBLE INPUT%>
+                    <%if(index3 === 0){%>
+                        
+                        <%#HIDDEN INPUTS%>
+                        <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
+                        <input type="hidden" name="note[]">
+
+                        <%#WEIGHT BUTTON%>
+                        <p></p>
+                        <h4>Max Weight</h4>
+                        <div class="def-number-input number-input inline-block">
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        
+                        <input type="number" class="quantity" required
+                        value="0" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
+                        
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div> lbs
+                        <p></p>
+
+                    <%#HANDLE ALL INVISIBLE INPUTS%>
+                    <%} else {%> 
+                        <%#REPS%>
+                        <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
+
+                        <%#WEIGHTS%>
+                        <input type="hidden" name="weight[]" value="<%=null%>">
+
+                        <%#NOTES%>
+                        <input type="hidden" name="note[]">
+
+                    <%}%>
+                <%})%>
+
+    <input type="hidden" name="isFirstTime" value="true">
+    <input type="hidden" name="step" value="<%=exercise.weightIncrement%>">
+    <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
+    <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
+    <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
+    <input type="hidden" name="workout" value="<%= workout.nameShort %>">
+    <input type="hidden" name="order" value="<%= exercise.order %>">
+        <div>
+        <button type="submit" class="btn btn-primary workout-button" style="margin-left:0px">Create Sets</button>
+        </div>
+    </form>
+
+    </div>
+    <%} else { %>
 
     <%#WARMUPS LOOP%>
 
@@ -213,7 +269,7 @@
         <p><a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a></p>
 
     <%})%>
-
+    <input type="hidden" name="isFirstTime" value="false">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
@@ -221,6 +277,8 @@
     <input type="hidden" name="order" value="<%= exercise.order %>">
     <button type="submit" class="btn btn-primary workout-button">Save</button>
     </form>
+
+    <%}%>
 
     </div>
 

@@ -69,7 +69,13 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
     const formWeight = req.body.weight
     const formNotes = req.body.note
     const order = req.body.order
+    const step = req.body.step
+    const isFirstTime = req.body.isFirstTime
     const sets = []
+    const newFirstWeight = formWeight[0] - step
+    if (isFirstTime === 'true'){
+      formWeight.splice(0, 1, newFirstWeight)
+    }
     functions.setsCreator(sets, formReps, formWeight, formNotes)
     
     const newExercise = new Exercise ({
@@ -82,7 +88,11 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
       userId: req.user._id
     })
     newExercise.save()
-    req.flash('success', 'Exercise Saved!')
+    if (isFirstTime === 'true'){
+      req.flash('success', 'Sets Created! You can now begin this exercise')
+    } else {
+      req.flash('success', 'Exercise Saved!')
+    }
     res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
   })
 
