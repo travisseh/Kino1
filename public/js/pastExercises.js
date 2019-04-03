@@ -28,7 +28,6 @@ $(".viewPast").on("click", function(){
                         if (set.note != "" && set.note != null && set.note != undefined){
                             note = `, ${set.note}`
                         }
-                        console.log(set.note)
                         return `<p>Set ${i + 1}: ${set.reps} at ${set.weight} lbs${note}</p>`
                     }).join('')}
                     <br>`
