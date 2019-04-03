@@ -8,6 +8,9 @@
 //   }
 // }
 
+const localUrl = 'http://localhost:8080'
+const prodUrl = 'https://kinohelper.herokuapp.com'
+
 $(document).ready(function () {
 
 //AUTO-SCROLL TO WHERE BUTTON WAS CLICKED 
@@ -49,7 +52,7 @@ if ($('#askAboutMacro').data('ask-about-macro') === false){
 //Save askAboutMacro Status OnClick
 
 $(".ask-about-macro-button").on("click", function(){
-    $.post("http://localhost:8080/dashboard", function(err, data){
+    $.post(`${prodUrl}/dashboard`, function(err, data){
         if (err){
             console.log(err)
         } else {

@@ -16,7 +16,9 @@ $(".viewPast").on("click", function(){
             } else {
                 return `
                 ${data.map(function(el){
-                    //make the date relative to now
+                    //ignore NUX generated exercise
+                    if (el.sets[1].weight != null) {
+                        //make the date relative to now
                     const daysFromNow = moment(el.date).fromNow()
                     //return the date
                     return `<h5>${daysFromNow}</h5>
@@ -25,6 +27,7 @@ $(".viewPast").on("click", function(){
                         return `<p>Set ${i + 1}: ${set.reps} at ${set.weight} lbs</p>`
                     }).join('')}
                     <br>`
+                    }
                 }).join('')}
             `  
             }
