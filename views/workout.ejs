@@ -244,12 +244,12 @@
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
                 <div class="def-number-input number-input inline-block">
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus weight-button"></button>
                 
                 <input type="number" class="quantity" required id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
                 name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
                 
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus weight-button"></button>
                 </div> lbs
                 <br>
             <% } %>

@@ -154,7 +154,60 @@ $(".quantity").change(function(){
 })
 
 
+$(".weight-button").on("click", function(){
+  //warmup weight BarCalc
+  $(".barCalcWarmUp").html(function(){
+    //get id of barCalc
+    const appendId = $(this).attr("id")
+    .substring(7,10)
+    const lastCharacter = $(this).attr("id").substring(10)
+    const newLastCharacter = lastCharacter - 1
+    let lastWeight
+    //Handle if this is the first warmup
+    if (newLastCharacter < 0) {
+        lastWeight = 45
+    } else {
+        //find the corresponding lastweight from the warmup <p>
+        const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
+        lastWeight = $(`#${lastWarmUpId}`).data("weight")
+    }
+    //find the corresponding currenweight from warmup <p>
+    const currentWarmUpId = ("warmup" + appendId + lastCharacter)
+    const currentWeight = $(`#${currentWarmUpId}`).data("weight")
+    return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
+})
 
+//Normal weight BarCalc
+$(".barCalc").html(function(){
+    //get id of barCalc
+    const appendId = $(this).attr("id").substring(7,10)
+    const lastCharacter = $(this).attr("id").substring(10)
+    const newLastCharacter = lastCharacter - 1
+
+    let lastWeight
+    //Handle if this is the first exercise 
+    if (newLastCharacter < 0) {
+        //Handle if there are warmups and set it to the last warmup
+        if ($(".weightWarmUp").length > 0){
+            //traverse up to get the per workout div id - something like E0 or E1
+            id = $(this).parent().parent().attr("id")
+            //traverse down and find the warmups if there are any
+            lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
+        } else {
+            //handle if there aren't any warm-ups
+            lastWeight = 45
+        }
+    } else {
+        const lastWeightId = ("weight" + appendId + newLastCharacter)
+        lastWeight = $(`#${lastWeightId}`).val()
+    }
+    const currentWeightId = ("weight" + appendId + lastCharacter)
+    const currentWeight = $(`#${currentWeightId}`).val()
+    // const barCalcPlusIcon = "<i class='fas fa-dumbbell'></i> " + barCalc2(lastWeight,currentWeight)
+    return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
+    })
+
+})
 
 
 
