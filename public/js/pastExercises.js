@@ -8,7 +8,7 @@ $(".viewPast").on("click", function(){
     const exercise = $(this).data("exercise")
     const templateExerciseId = $("input[name='templateId']")[exercise].value
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
+    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0){
@@ -24,7 +24,12 @@ $(".viewPast").on("click", function(){
                     return `<h5>${daysFromNow}</h5>
                     ${el.sets.map(function(set, i){
                         //return each set
-                        return `<p>Set ${i + 1}: ${set.reps} at ${set.weight} lbs</p>`
+                        let note = ""
+                        if (set.note != "" && set.note != null && set.note != undefined){
+                            note = `, ${set.note}`
+                        }
+                        console.log(set.note)
+                        return `<p>Set ${i + 1}: ${set.reps} at ${set.weight} lbs${note}</p>`
                     }).join('')}
                     <br>`
                     }
