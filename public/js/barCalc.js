@@ -43,9 +43,9 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
             s = ""
           }
           if(result < 0){
-            removes.push(`${Math.abs(result)} ${weightsArray[i]/2}${s}`)
+            removes.push(`${numberToWord(Math.abs(result))} ${weightsArray[i]/2}${s}`)
           }else if (result > 0){
-            adds.push(`${result} ${weightsArray[i]/2}${s}`)
+            adds.push(`${numberToWord(result)} ${weightsArray[i]/2}${s}`)
           }
       })
       
@@ -86,6 +86,29 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     return finalResultInterpreter(finalResult, weights)
   
   }
+
+function numberToWord (number){
+  switch (number){
+    case 1:
+    return "one"
+    case 2:
+    return "two"
+    case 3:
+    return "three"
+    case 4:
+    return "four"
+    case 5: 
+    return "five"
+    case 6:
+    return "six"
+    case 7:
+    return "seven"
+    case 8:
+    return "eight"
+    case 9:
+    return "nine"
+  }
+}
 
 
 //PASS VALUES TO BARCALC
@@ -160,12 +183,15 @@ $(".weight-button").on("click", function(){
     //get id of barCalc
     const appendId = $(this).attr("id")
     .substring(7,10)
+    console.log($(this).attr("id"))
     const lastCharacter = $(this).attr("id").substring(10)
     const newLastCharacter = lastCharacter - 1
+    console.log(newLastCharacter)
     let lastWeight
     //Handle if this is the first warmup
     if (newLastCharacter < 0) {
         lastWeight = 45
+        console.log("last weight happened")
     } else {
         //find the corresponding lastweight from the warmup <p>
         const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
@@ -173,7 +199,9 @@ $(".weight-button").on("click", function(){
     }
     //find the corresponding currenweight from warmup <p>
     const currentWarmUpId = ("warmup" + appendId + lastCharacter)
+    console.log("currentwarmupID: " + currentWarmUpId)
     const currentWeight = $(`#${currentWarmUpId}`).data("weight")
+    console.log("currentWeight: " + currentWeight)
     return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
 })
 
