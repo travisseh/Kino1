@@ -41,6 +41,26 @@ $(".addNote").on("click", function(e){
     
 })
 
+//Open askAboutMacro Modal
+if ($('#askAboutMacro').data('ask-about-macro') === false){
+    $('#askAboutMacro').modal('show')
+}
+
+//Save askAboutMacro Status OnClick
+
+$(".ask-about-macro-button").on("click", function(){
+    $.post("http://localhost:8080/dashboard", function(err, data){
+        if (err){
+            console.log(err)
+        } else {
+            console.log("data: " + data)
+        }
+    }
+    )
+})
+
+
+
 
 //initiatlize dropdowns
 $('.mdb-select').materialSelect()

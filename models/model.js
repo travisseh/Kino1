@@ -149,6 +149,10 @@ const userSchema = new mongoose.Schema ({
     lname: String,
     googleId: String,
     photoUrl: String,
+    askedAboutMacro: {
+        type: Boolean,
+        default: false
+    },
     selectedPackage: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Package"

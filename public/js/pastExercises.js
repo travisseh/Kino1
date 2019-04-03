@@ -8,7 +8,7 @@ $(".viewPast").on("click", function(){
     const exercise = $(this).data("exercise")
     const templateExerciseId = $("input[name='templateId']")[exercise].value
 
-    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0){
