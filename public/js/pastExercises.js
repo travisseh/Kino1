@@ -1,7 +1,9 @@
-const localUrl = 'http://localhost:8080'
-const prodUrl = 'https://kinohelper.herokuapp.com'
+
 
 $(document).ready(function () {
+
+const localUrl = 'http://localhost:8080'
+const prodUrl = 'https://kinohelper.herokuapp.com'
     
 $(".viewPast").on("click", function(){
     //look up the last exercises
