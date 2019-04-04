@@ -263,9 +263,9 @@ const goddess_toning = new Package (
             {
                 name: "Incline Dumbbell Bench Press",
                 order: 0,
-                instructions: ["Instructions: ", "6-10 reps each set",
+                instructions: ["Instructions: ",
                 
-                "Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets"
+                "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets"
                 ],
                 notesFromCourse: ["Notes from course: ",
     
@@ -305,8 +305,6 @@ const goddess_toning = new Package (
                 name: "Lat Pull Downs",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 1,
-                instructions: ["Instructions: ", "6-10 reps each set", "Rest 2 minutes between sets"
-                ],
                 notesFromCourse: 
                 ["Notes from course: ",
                 
@@ -340,8 +338,7 @@ const goddess_toning = new Package (
                 name: "Pushups",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 2,
-                instructions: ["Instructions:", "8-15 reps per set", "Rest 2 minutes between sets"],
-                notesFromCourse: ["Notes from course:", "For push-ups you will be doing a quality set. This simply means stop about 1-2 reps before complete failure. Do a pushup variation that you can do for 8-15 reps."],
+                instructions: ["Instructions:", "For push-ups you will be doing a quality set. This simply means stop about 1-2 reps before complete failure. Do a pushup variation that you can do for 8-15 reps. This might be kneeling push-ups, standard push-ups or feet elevated on a bench push-ups (the hardest variation)."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -368,7 +365,7 @@ const goddess_toning = new Package (
                 name: "Cable Rows",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 3,
-                instructions: ["Instructions:", "8-12 reps per set", "Rest 2 minutes between each set.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
+                instructions: ["Instructions:", "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
                 type: "Standard Pyramid",
                 weightIncrement: 2.5,
                 startWeight: 2.5,
@@ -394,7 +391,7 @@ const goddess_toning = new Package (
               name: "Bent Over Flyes",
               videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
               order: 4,
-              instructions: ["Instructions:", "Set 1: 12 reps", "Set 2: 10 reps", "Set 3: 8 reps", "Set 4: 6 reps", "Set 5: 12-15 reps", "Same weight for all sets except the last. Each workout you want to try and finish this with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight."],
+              instructions: ["Instructions:", "Same weight for all sets except the last. Each workout you want to try and finish this with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight."],
               type: "Standard Pyramid Tweaked",
               weightIncrement: 5,
               startWeight: 0,

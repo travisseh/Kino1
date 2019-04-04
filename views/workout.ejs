@@ -17,19 +17,8 @@
 <div class="card-body">
 
 
-<div id="E<%=index%>">
-<h2 class="card-title"><%= exercise.name %> </h2>
-
-<%#ADD IDEAL SETS%>
-<%if (exercise.name === "Bent Over Flyes") {%>
-    <p><%=exercise.instructions[1]%></p>    
-    <p><%=exercise.instructions[2]%></p>    
-    <p><%=exercise.instructions[3]%></p>    
-    <p><%=exercise.instructions[4]%></p>    
-    <p><%=exercise.instructions[5]%></p>    
-<%} else {%>    
-    <p><%=exercise.instructions[1]%></p>
-<%}%>
+    <div id="E<%=index%>">
+    <h2 class="card-title"><%= exercise.name %> </h2>
 
 <p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal">Exercise Instructions</a></p> | 
 <p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">History</a></p>
@@ -48,16 +37,14 @@
             </div>
             <div class="modal-body">
                 <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
-               <!-- <p class="text-muted">Rest <%=functions.secondsToMinutes(exercise.pauseDuration)%> between each set</p>
+                <p class="text-muted">Rest <%=functions.secondsToMinutes(exercise.pauseDuration)%> between each set</p>
                 <% if(exercise.weightType === "dumbbells") {%>
                     
                     <p class="text-muted">Enter per dumbbell weight, not total weight</p>
-                    <%}%> -->
+                    <%}%>
                 <!-- Handle all paragraphs -->
                 <%if (exercise.instructions != null) {%>
                     <%exercise.instructions.forEach(function(paragraph, index1){%>
-                        <%console.log("name: " + exercise.name)%>
-                        <%console.log("instructions: " + exercise.instructions)%>
                         <p class="text-muted">  
                             <%if (index1 === 0){%>
                                 <strong><%=paragraph%></strong>
@@ -217,7 +204,6 @@
             <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
             </p>
         <%} %>
-
 
         <%#HANDLE BAR CALC IF BAR%>
         <%if (exercise.weightType === "bar") { %>
