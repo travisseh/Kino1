@@ -8,9 +8,11 @@ const prodUrl = 'https://kinohelper.herokuapp.com'
 $(".viewPast").on("click", function(){
     //look up the last exercises
     const exercise = $(this).data("exercise")
-    const templateExerciseId = $("input[name='templateId']")[exercise].value
+    // const templateExerciseId = $("input[name='templateId']")[exercise].value
+    const templateExerciseName = $("input[name='exerciseName']")[exercise].value
+    templateExerciseName.split(' ').join('_')
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseId}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0){

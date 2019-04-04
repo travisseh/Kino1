@@ -10,11 +10,12 @@ router.get("/", function(req, res, next){
 
 
   //View previous specific exercises
-  router.get("/:templateExerciseId", middleware.isLoggedIn, function(req, res, next){
-    templateExerciseId = req.params.templateExerciseId
+  router.get("/:templateExerciseName", middleware.isLoggedIn, function(req, res, next){
+    // templateExerciseId = req.params.templateExerciseId
+    templateExerciseName = req.params.templateExerciseName
 
     //get all exercises where: user = this user, templateExercise = this templateExerciseId, orderby date 
-    Exercise.find({userId: req.user._id, templateExercise: [templateExerciseId]}).sort({date: -1}).exec(function(err, foundExercises){
+    Exercise.find({userId: req.user._id, name: templateExerciseName}).sort({date: -1}).exec(function(err, foundExercises){
       if (err) {
         console.log(err)
       } else {
