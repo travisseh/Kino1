@@ -20,23 +20,12 @@
 <div id="E<%=index%>">
 <h2 class="card-title"><%= exercise.name %> </h2>
 
-<%#ADD IDEAL SETS%>
-<%if (exercise.name === "Bent Over Flyes") {%>
-    <p><%=exercise.instructions[1]%></p>    
-    <p><%=exercise.instructions[2]%></p>    
-    <p><%=exercise.instructions[3]%></p>    
-    <p><%=exercise.instructions[4]%></p>    
-    <p><%=exercise.instructions[5]%></p>    
-<%} else {%>    
-    <p><%=exercise.instructions[1]%></p>
-<%}%>
-
-<p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal">Exercise Instructions</a></p> | 
+<p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal<%=index%>">Exercise Instructions</a></p> | 
 <p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal">History</a></p>
 
 
 <!-- Modal -->
-        <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="instructionsModal<%=index%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
