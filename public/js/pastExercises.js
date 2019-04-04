@@ -14,6 +14,7 @@ $(".viewPast").on("click", function(){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0){
+                console.log("data: " + data)
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
                 return `
