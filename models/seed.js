@@ -47,16 +47,29 @@ const packages_array = [warrior_shredded, goddess_toning]
 // }
 
 function seedPackages(){
-    Package.collection.drop(function(err, result){
-        if (err) {
-            console.log (err)
-        }
-        if (result) {
-            createGodessToning()
-            createWarriorShredded()
-            createAFL()
+    Package.find({}, function(err, foundPackages){
+        if (err){
+            console.log(err)
+        } else {
+            if (foundPackages.length > 0){
+                Package.collection.drop(function(err, result){
+                    if (err) {
+                        console.log (err)
+                    }
+                    if (result) {
+                        createGodessToning()
+                        createWarriorShredded()
+                        createAFL()
+                    }
+                })
+            } else {
+                createGodessToning()
+                createWarriorShredded()
+                createAFL()
+            }
         }
     })
+    
 }
 
 // seedPackages()

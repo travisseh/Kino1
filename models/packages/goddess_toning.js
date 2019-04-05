@@ -236,14 +236,14 @@ const goddess_toning = new Package (
       {
         name: "B: Chest & Back",
         nameShort: "B",
-        image: "https://source.unsplash.com/CN-6UcL7z2Y/286x190",
+        image: "https://source.unsplash.com/QP84K2HuIMY/286x190",
         description: "This workout will improve your posture and strengthen your major upper body muscles.",
         duration: 60,
         exercises: [
             {
                 name: "Incline Dumbbell Bench Press",
                 order: 0,
-                instructions: ["Instructions: ", "6-10 reps each set","Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets" ],
+                instructions: ["6-10 reps each set","Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets" ],
                 notesFromCourse: ["Incline bench and flat bench are the primary movements to build your entire chest. Strengthening your pectorals is a key strategy to give your bust a little lift. By increasing chest strength, you will increase the muscle and shape under your bust, giving it more support."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
@@ -280,7 +280,7 @@ const goddess_toning = new Package (
                 name: "Lat Pull Downs",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 1,
-                instructions: ["Instructions: ", "6-10 reps each set", "Rest 2 minutes between sets"],
+                instructions: ["6-10 reps each set", "Rest 2 minutes between sets"],
                 notesFromCourse:[ "Lat pull down is a great exercise to build your upper back and biceps. Eventually you may want to work up to full chin ups, but the first step is to get strong on the lat pull down.", "You can do this with hands facing away or hands facing you. Both variations are great!", "Building up your strength on lat pull downs will help support a nice V shape from your waist to your shoulders. Having a slight V shape will make you look slim, athletic and attractive. Jessica Biel is an example of a girl with a great V shape. She looks feminine and sexy, not overdone. Chin-ups or lat pull downs will help build this beautifully."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
@@ -396,7 +396,7 @@ const goddess_toning = new Package (
       {
         name: "C: Legs & Arms",
         nameShort: "C",
-        image: "https://source.unsplash.com/T-hBGkb3-xQ/286x190",
+        image: "https://source.unsplash.com/5UbIqV58CW8/286x190",
         description: "This will hit your legs and butt plus arms - making them firmer and more toned",
         duration: 60,
         exercises: [
