@@ -348,7 +348,7 @@ const warrior_shredded = new Package (
                 videoLink: "https://www.google.com/",
                 order: 1,
                 instructions: [ "6 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
-                notesFromCourse: [ "The weighted chinup is a fantastic movement for building your upper back, LATs and biceps. The weighted chinup is so effective, I had to stop doing them as my back was becoming too wide.", "Weighted chinups are superior to any other pulling exercise. If you can’t do chin ups yet, then start with the LAT pulldown machine with hands facing you. As you build strength and lean down, you will eventually be able to do a few bodyweight chinups. Gradually build up to eight unbroken reps before adding weight."],
+                notesFromCourse: [ "The weighted chinup is a fantastic movement for building your upper back, LATs and biceps and is superior to any other pulling exercise. If you can’t do chin ups yet, then start with the LAT pulldown machine with hands facing you. As you build strength and lean down, you will eventually be able to do a few bodyweight chinups. Gradually build up to eight unbroken reps before adding weight."],
                 type: "Reverse Pyramid",
                 weightIncrement: 2.5,
                 startWeight: 0,

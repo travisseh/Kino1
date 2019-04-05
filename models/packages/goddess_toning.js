@@ -94,11 +94,7 @@ const goddess_toning = new Package (
                   instructions: [ 
                   "6-10 reps per set.", "Rest 2-3 minutes between sets.",
                   "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
-                  notesFromCourse: [
-                    
-                    "The shoulder press is a great movement to strengthen your shoulders and triceps (back of the arms). The shoulder press will also help support your v shape from your shoulders to your waist.",
-  
-                    "As well, you will develop more tone in your shoulders and arms. You will also create a little separation between your shoulders and arms. This will make you look more fit and toned, instead of just skinny."],
+                  notesFromCourse: ["The shoulder press is a great movement to strengthen your shoulders and triceps (back of the arms). The shoulder press will also help support your v shape from your shoulders to your waist.", "You will also develop more tone in your shoulders and arms and even create a little separation between them. This will make you look more fit and toned, instead of just skinny."],
                   type: "Standard Pyramid",
                   weightIncrement: 5,
                   startWeight: 0,
@@ -168,11 +164,8 @@ const goddess_toning = new Package (
                   name: "Lying Leg Raises",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 4,
-                  notesFromCourse: [ "10-20 reps per set.", "Rest 1 minute between sets.",
-                  
-                  "Lying leg raises and hanging knee raises will strengthen your entire core, from top to bottom.",
-
-                "As well, you’ll build flexibility along the back of your legs. Leg raise variations also promote a strong low back."],
+                  instructions: ["10-20 reps per set.", "Rest 1 minute between sets."],
+                  notesFromCourse: [ "Lying leg raises and hanging knee raises will strengthen your entire core, from top to bottom.", "As well, you’ll build flexibility along the back of your legs. Leg raise variations also promote a strong low back."],
                   type: "Standard Pyramid",
                   weightIncrement: 5,
                   startWeight: 0,
@@ -198,11 +191,8 @@ const goddess_toning = new Package (
                 name: "Plank Hold",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 5,
-                notesFromCourse: [ "30-90 seconds per set.", "Rest 1 minute between sets.",
-                
-                "Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.",
-
-                "As well, a strong TVA will injury-proof your body and improve your posture."],
+                instructions: ["30-90 seconds per set.", "Rest 1 minute between sets."],
+                notesFromCourse: ["Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.", "As well, a strong TVA will injury-proof your body and improve your posture."],
                 type: "Hold",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -225,7 +215,8 @@ const goddess_toning = new Package (
                 name: "Hip Bridge Hold",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 6,
-                notesFromCourse: ["60 seconds per set, only one set.", "I recommend including a hip bridge to promote great posture, teach your butt how to fire and to develop solid flexibility through your quads, hip flexors and abs. If you get really good at this and build strength, you can even work up to a full bridge.", "A great abs workout is as simple as performing a few sets of lying leg raises or hanging knee raises and 2 sets of a plank hold and finishing off with a one minute hip bridge."],
+                instructions: ["60 seconds per set, only one set."],
+                notesFromCourse: ["I recommend including a hip bridge to promote great posture, teach your butt how to fire and to develop solid flexibility through your quads, hip flexors and abs. If you get really good at this and build strength, you can even work up to a full bridge.", "A great abs workout is as simple as performing a few sets of lying leg raises or hanging knee raises and 2 sets of a plank hold and finishing off with a one minute hip bridge."],
                 type: "Hold",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -252,13 +243,8 @@ const goddess_toning = new Package (
             {
                 name: "Incline Dumbbell Bench Press",
                 order: 0,
-                instructions: ["Instructions: ", "6-10 reps each set",
-                
-                "Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets"
-                ],
-                notesFromCourse: [
-    
-                    "Incline bench and flat bench are the primary movements to build your entire chest. Strengthening your pectorals is a key strategy to give your bust a little lift. By increasing chest strength, you will increase the muscle and shape under your bust, giving it more support."],
+                instructions: ["Instructions: ", "6-10 reps each set","Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets" ],
+                notesFromCourse: ["Incline bench and flat bench are the primary movements to build your entire chest. Strengthening your pectorals is a key strategy to give your bust a little lift. By increasing chest strength, you will increase the muscle and shape under your bust, giving it more support."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -294,16 +280,8 @@ const goddess_toning = new Package (
                 name: "Lat Pull Downs",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 1,
-                instructions: ["Instructions: ", "6-10 reps each set", "Rest 2 minutes between sets"
-                ],
-                notesFromCourse: 
-                [
-                
-                "Lat pull down is a great exercise to build your upper back and biceps. Eventually you may want to work up to full chin ups, but the first step is to get strong on the lat pull down.",
-  
-                "You can do this with hands facing away or hands facing you. Both variations are great!",
-                
-                "Building up your strength on lat pull downs will help support a nice V shape from your waist to your shoulders. Having a slight V shape will make you look slim, athletic and attractive. Jessica Biel is an example of a girl with a great V shape. She looks feminine and sexy, not overdone. Chin-ups or lat pull downs will help build this beautifully."],
+                instructions: ["Instructions: ", "6-10 reps each set", "Rest 2 minutes between sets"],
+                notesFromCourse:[ "Lat pull down is a great exercise to build your upper back and biceps. Eventually you may want to work up to full chin ups, but the first step is to get strong on the lat pull down.", "You can do this with hands facing away or hands facing you. Both variations are great!", "Building up your strength on lat pull downs will help support a nice V shape from your waist to your shoulders. Having a slight V shape will make you look slim, athletic and attractive. Jessica Biel is an example of a girl with a great V shape. She looks feminine and sexy, not overdone. Chin-ups or lat pull downs will help build this beautifully."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -426,7 +404,7 @@ const goddess_toning = new Package (
                 name: "Goblet Box Squats",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 0,
-                instructions: ["6-8 reps per set.", "Rest 2-3 minutes between sets.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets. The goblet squat is performed by holding a single dumbbell in front of your chest. This forces you to keep your chest up. Sitting onto a box forces you to use your butt and hamstring muscles to sit back onto the box."],
+                instructions: ["6-8 reps per set.", "Rest 2-3 minutes between sets.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.", "The goblet squat is performed by holding a single dumbbell in front of your chest. This forces you to keep your chest up. Sitting onto a box forces you to use your butt and hamstring muscles to sit back onto the box."],
                 notesFromCourse: ["A goblet squat onto a box is a way to ensure optimal squatting technique and great butt development without as much work onto the quads. Many girls want to keep their legs fit and toned without adding much size to their legs. This workout program will focus on a variety of lower body movements that hit the butt the hardest. This will accomplish the goal of having slim and athletic legs combined with a great booty."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
