@@ -1,4 +1,6 @@
 //BARCALC LOGIC
+
+//Returns the array of recommended weights
 function weightCalc(weightMinusBar, holderArray, weightsArray){
     for (let i = 0; i < weightsArray.length; i++){
       //set weightsoutput to the dividend of input and specific weight
@@ -9,7 +11,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     return holderArray
   }
   
-  
+  //Adds the word And where appropriate as another array item
   function addAnd(array){
     if (array.length > 1){
       for (let i = 0; i < array.length; i++ ){
@@ -23,6 +25,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
       }
     }
   
+  //turns the array into a properly spaced sentence instead of an array
   function sentenceCreator(array){
     let sentence = ""
       array.forEach(function(phrase){
@@ -31,6 +34,29 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     return sentence
   }
   
+  function numberToWord (number){
+    switch (number){
+      case 1:
+      return "one"
+      case 2:
+      return "two"
+      case 3:
+      return "three"
+      case 4:
+      return "four"
+      case 5: 
+      return "five"
+      case 6:
+      return "six"
+      case 7:
+      return "seven"
+      case 8:
+      return "eight"
+      case 9:
+      return "nine"
+    }
+  }
+
   function finalResultInterpreter(finalResultArray, weightsArray){
       let removes = []
       let adds = []
@@ -49,9 +75,11 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
           }
       })
       
+      //Add the word "Add into the removes and adds arrays"
       addAnd(removes)
       addAnd(adds)
-  
+      
+      //create the full sentence
       let fullSentence = ""
       if (removes.length > 0 && adds.length > 0){
         fullSentence = `on each side remove${sentenceCreator(removes)} then add${sentenceCreator(adds)}.`
@@ -67,18 +95,30 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     
   }
   
-  function barCalc2(previousWeight, disPlayWeight) {
+  function barCalc2(previousWeight, displayWeight) {
     const barWeight = 45
     const weights = [90, 70, 50, 20, 10, 5]
-    let currentWeightMinusBar = disPlayWeight - barWeight
+    let currentWeightMinusBar = displayWeight - barWeight
     let lastWeightMinusBar = previousWeight - barWeight
     let lastWeightsOutPut = []
     let currentWeightsOutPut = []
-  
-    const currentWeights = weightCalc(currentWeightMinusBar,currentWeightsOutPut, weights)
-    const lastWeights = weightCalc(lastWeightMinusBar, lastWeightsOutPut, weights)
+    let currentWeights
+    let lastWeights
+    if (currentWeightMinusBar < 0){
+      currentWeights = [0,0,0,0,0,0]
+    } else {
+      //do weightCalc on displayWeight
+      currentWeights = weightCalc(currentWeightMinusBar,currentWeightsOutPut, weights)
+    }
+    
+    if (lastWeightMinusBar < 0){
+      lastWeights = [0,0,0,0,0,0]
+    } else {
+      //do weightCalc on lastWeight
+      lastWeights = weightCalc(lastWeightMinusBar, lastWeightsOutPut, weights)
+    }
+    
     const finalResult = []
-  
     for (let i = 0; i < weights.length; i++){
       finalResult.push(currentWeights[i] - lastWeights[i])
     }
@@ -86,29 +126,6 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     return finalResultInterpreter(finalResult, weights)
   
   }
-
-function numberToWord (number){
-  switch (number){
-    case 1:
-    return "one"
-    case 2:
-    return "two"
-    case 3:
-    return "three"
-    case 4:
-    return "four"
-    case 5: 
-    return "five"
-    case 6:
-    return "six"
-    case 7:
-    return "seven"
-    case 8:
-    return "eight"
-    case 9:
-    return "nine"
-  }
-}
 
 
 //PASS VALUES TO BARCALC
