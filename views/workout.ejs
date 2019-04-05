@@ -39,8 +39,8 @@
                 <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
                 
                 <!-- Handle all paragraphs -->
-                <%if (exercise.instructions != null) {%>
-                    <strong>Instructions</strong>
+                <%if (exercise.instructions != null | exercise.instructions != undefined) {%>
+                    <h6>Instructions</h6>
                     <% if(exercise.weightType === "dumbbells") {%>
                         <p class="text-muted">Enter per dumbbell weight, not total weight</p>
                     <%}%> 
@@ -49,8 +49,8 @@
                     <%})%>
                 <%}%>
                 <%#HANDLE IF NOTES FROM COURSE%> 
-                <%if (exercise.notesFromCourse != null){%>
-                    <strong>Notes From Course</strong>
+                <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
+                    <h6>Notes From Course</h6>
                     <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
                         <p class="text-muted"><%=paragraph%></p>
                     <%})%>
@@ -110,7 +110,7 @@
                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
                         
                         <input type="number" class="quantity" required
-                        value="0" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
+                        value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
                         
                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div> lbs
@@ -186,7 +186,7 @@
         <%const lastReps = lastExercises[index].sets[i].reps%>
         <%const lastNote = lastExercises[index].sets[i].note%>
         <%const exerciseName = lastExercises[index]._id.name%>
-        <%if (lastReps != null){ %>
+        <%if (lastReps != null && lastExercises[index].sets[1].weight){ %>
             <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
             <%=functions.optionMapper(exerciseName, lastWeight)%>
         <%} else {%>
