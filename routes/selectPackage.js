@@ -9,7 +9,13 @@ selectPackage.get("/", middleware.isLoggedIn,function(req,res,next){
             if (err) {
                 console.log(err)
             } else {
-                res.render("selectPackage", {packages: foundPackages, success: req.flash('success'), error: req.flash('error')})
+                User.findOne({_id: req.user._id}, function (err, foundUser){
+                    if (err){
+                        console.log(err)
+                    } else {
+                        res.render("selectPackage", {packages: foundPackages, user: foundUser, success: req.flash('success'), error: req.flash('error')})
+                    }
+                })
             }
         })
 

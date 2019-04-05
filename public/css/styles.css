@@ -36,11 +36,16 @@ p {
 
 }
 
+.btn {
+    margin-left: 0px;
+}
+
 /* Only for snippet */
 .double-nav .breadcrumb-dn {
     color: #fff;
   }
   
+
 /* Stuff from mdbootstrap */
 .number-input input[type="number"] {
 -webkit-appearance: textfield;

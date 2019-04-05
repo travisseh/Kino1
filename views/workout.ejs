@@ -92,7 +92,7 @@
     
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
                 <div>
-                <div>Enter your best guess of your max weight for <%=displayExercises[index][0].low%> <%=unit%> of this exercise and we'll calculate the rest of your set!</div>
+                <div>Enter your estimated max weight for <%=displayExercises[index][0].low%> <%=unit%> of this exercise and we'll calculate your set!</div>
 
                 <%exercise.sets.forEach(function(set, index3){%>
                     
@@ -245,8 +245,8 @@
             <% } %>
 
         <%#HANDLE NOTES%>
-        <input style="margin-top: 10px; margin-bottom: 10px;" type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="note about your set" maxlength="140">
-        <p><a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add note</a></p>
+        <input style="margin-top: 10px; margin-bottom: 10px;" type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="Note about your set" maxlength="140">
+        <p><a href="#" class="addNote" id="addNote_<%=index%>_<%=i%>">Add Note</a></p>
 
     <%})%>
     <input type="hidden" name="isFirstTime" value="false">
