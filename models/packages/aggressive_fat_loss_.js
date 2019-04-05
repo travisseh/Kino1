@@ -13,6 +13,7 @@ const aggressive_fat_loss = new Package (
       url: "aggressive_fat_loss",
       active: true,
       purchased: true,
+      description: "This program is the MOST effective and sustainable fat loss strategy ever created",
       workouts: [{
           name: "A: Lower Body",
           nameShort: "A",

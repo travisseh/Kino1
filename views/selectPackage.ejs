@@ -5,17 +5,19 @@
 
 <div class="row">
 <%packages.forEach(function(package){ %>
+    <%if (package.name != "Aggressive Fat Loss"){%>
     <form action="/selectPackage" method="POST">
     <div class="col-lg">
         <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><%= package.name %> </h5>
-          <p class="card-text">Description - add later</p>
+          <p class="card-text"><%=package.description%></p>
           <button class="btn btn-primary" type="submit" name="package_id" value="<%=package._id%>">Activate</button>
         </div>
       </div>
     </div>
     </form>
+    <%}%>
 
 <% }) %>
 </div>

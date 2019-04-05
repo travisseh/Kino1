@@ -95,6 +95,7 @@ const packageSchema = new mongoose.Schema ({
     purchased: {
         type: Boolean
     },
+    description: String,
     workouts: [workoutSchema] 
 })
 const Package = mongoose.model("Package", packageSchema)

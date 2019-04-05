@@ -12,6 +12,7 @@ const goddess_toning = new Package (
       url: "goddess_toning",
       active: false,
       purchased: false,
+      description: "This programs shows you how to slim down to a low body fat while developing great-looking shape and muscle tone",
       workouts: [{
           name: "A: Legs, Shoulders, Abs",
           nameShort: "A",
@@ -23,14 +24,8 @@ const goddess_toning = new Package (
                   name: "Sumo Deadlift Squats",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 0,
-                  instructions: ["Instructions:", 
-                  
-                  "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets.The sumo deadlift is performed by assuming a sumo stance (feet wide apart), and lifting a barbell off the ground with straight arms."],
-                  notesFromCourse: [
-                  
-                    "Notes from course:",
-                    
-                    "This movement hits your legs, butt and lower back. It will really build the posterior chain the most - hamstrings, butt and lower back. Sumo deadlifts are one of the best movements to strengthen the posterior chain. This is a tough lift, but if you work hard at it, you will build an incredible butt.",
+                  instructions: ["4-6 reps per set.", "Rest 2-3 minutes between sets.", "Use same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
+                  notesFromCourse: ["This movement hits your legs, butt and lower back. It will really build the posterior chain the most - hamstrings, butt and lower back. Sumo deadlifts are one of the best movements to strengthen the posterior chain. This is a tough lift, but if you work hard at it, you will build an incredible butt.",
   
                   "Furthermore, the sumo deadlift is a highly functional movement that will assist you in life. The ability to lift an object off the ground is about as functional as it gets. What’s more, learning the sumo deadlift will teach you how to safely pick up objects. This is because the sumo deadlift teaches you how to keep your back flat and engaged. When people get injured from lifting objects off the ground, it’s because they lift with a rounded back."],
                   type: "Standard Pyramid",
@@ -67,12 +62,10 @@ const goddess_toning = new Package (
                   name: "Dumbbell Forward Lunges",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 1,
-                  instructions: ["Instructions:", 
-                  
+                  instructions: [ 
+                  "3-5 reps per set.", "Rest 2-3 minutes between sets.",
                   "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
-                  notesFromCourse: ["Notes from course: ",
-                    
-                    "Forward lunges or step-ups are great exercises to do because they build single leg strength and stability. It forces you to keep both legs of equal strength. Moreover, these two exercises hit the butt very hard, if you do them correctly. The key is to keep the weight on the heel of the foot. This will activate the glutes the hardest."],
+                  notesFromCourse: ["Forward lunges or step-ups are great exercises to do because they build single leg strength and stability. It forces you to keep both legs of equal strength. Moreover, these two exercises hit the butt very hard, if you do them correctly. The key is to keep the weight on the heel of the foot. This will activate the glutes the hardest."],
                   type: "Standard Pyramid",
                   weightIncrement: 5,
                   startWeight: 0,
@@ -98,10 +91,10 @@ const goddess_toning = new Package (
                   name: "Seated Dumbbell Shoulder Press",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 2,
-                  instructions: ["Instructions:", 
-                  
+                  instructions: [ 
+                  "6-10 reps per set.", "Rest 2-3 minutes between sets.",
                   "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
-                  notesFromCourse: ["Notes from course: ",
+                  notesFromCourse: [
                     
                     "The shoulder press is a great movement to strengthen your shoulders and triceps (back of the arms). The shoulder press will also help support your v shape from your shoulders to your waist.",
   
@@ -140,7 +133,7 @@ const goddess_toning = new Package (
                   name: "Lateral Raises",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 3,
-                  instructions: ["Instructions:", 
+                  instructions: [ "Set 1: 12 reps", "Set 2: 10 reps", "Set 3: 8 reps", "Set 4: 6 reps", "Set 5: 12-15 reps", "Rest 30-60 seconds between sets.",
                   "Each workout you want to try and finish with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight."],
                   type: "Standard Pyramid Tweaked",
                   weightIncrement: 5,
@@ -175,7 +168,7 @@ const goddess_toning = new Package (
                   name: "Lying Leg Raises",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 4,
-                  notesFromCourse: ["Notes from course: ",
+                  notesFromCourse: [ "10-20 reps per set.", "Rest 1 minute between sets.",
                   
                   "Lying leg raises and hanging knee raises will strengthen your entire core, from top to bottom.",
 
@@ -205,7 +198,7 @@ const goddess_toning = new Package (
                 name: "Plank Hold",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 5,
-                notesFromCourse: ["Notes from course:", 
+                notesFromCourse: [ "30-90 seconds per set.", "Rest 1 minute between sets.",
                 
                 "Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.",
 
@@ -232,11 +225,7 @@ const goddess_toning = new Package (
                 name: "Hip Bridge Hold",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 6,
-                notesFromCourse: ["Notes from course: ",
-                
-                "I recommend including a hip bridge to promote great posture, teach your butt how to fire and to develop solid flexibility through your quads, hip flexors and abs. If you get really good at this and build strength, you can even work up to a full bridge.",
-                
-                "A great abs workout is as simple as performing a few sets of lying leg raises or hanging knee raises and 2 sets of a plank hold and finishing off with a one minute hip bridge."],
+                notesFromCourse: ["60 seconds per set, only one set.", "I recommend including a hip bridge to promote great posture, teach your butt how to fire and to develop solid flexibility through your quads, hip flexors and abs. If you get really good at this and build strength, you can even work up to a full bridge.", "A great abs workout is as simple as performing a few sets of lying leg raises or hanging knee raises and 2 sets of a plank hold and finishing off with a one minute hip bridge."],
                 type: "Hold",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -267,7 +256,7 @@ const goddess_toning = new Package (
                 
                 "Rest 2 minutes between each set", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets"
                 ],
-                notesFromCourse: ["Notes from course: ",
+                notesFromCourse: [
     
                     "Incline bench and flat bench are the primary movements to build your entire chest. Strengthening your pectorals is a key strategy to give your bust a little lift. By increasing chest strength, you will increase the muscle and shape under your bust, giving it more support."],
                 type: "Standard Pyramid",
@@ -308,7 +297,7 @@ const goddess_toning = new Package (
                 instructions: ["Instructions: ", "6-10 reps each set", "Rest 2 minutes between sets"
                 ],
                 notesFromCourse: 
-                ["Notes from course: ",
+                [
                 
                 "Lat pull down is a great exercise to build your upper back and biceps. Eventually you may want to work up to full chin ups, but the first step is to get strong on the lat pull down.",
   
@@ -340,8 +329,8 @@ const goddess_toning = new Package (
                 name: "Pushups",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 2,
-                instructions: ["Instructions:", "8-15 reps per set", "Rest 2 minutes between sets"],
-                notesFromCourse: ["Notes from course:", "For push-ups you will be doing a quality set. This simply means stop about 1-2 reps before complete failure. Do a pushup variation that you can do for 8-15 reps."],
+                instructions: [ "8-15 reps per set", "Rest 2 minutes between sets"],
+                notesFromCourse: [ "For push-ups you will be doing a quality set. This simply means stop about 1-2 reps before complete failure. Do a pushup variation that you can do for 8-15 reps."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -368,7 +357,7 @@ const goddess_toning = new Package (
                 name: "Cable Rows",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 3,
-                instructions: ["Instructions:", "8-12 reps per set", "Rest 2 minutes between each set.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
+                instructions: [ "8-12 reps per set", "Rest 2 minutes between each set.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
                 type: "Standard Pyramid",
                 weightIncrement: 2.5,
                 startWeight: 2.5,
@@ -394,7 +383,7 @@ const goddess_toning = new Package (
               name: "Bent Over Flyes",
               videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
               order: 4,
-              instructions: ["Instructions:", "Set 1: 12 reps", "Set 2: 10 reps", "Set 3: 8 reps", "Set 4: 6 reps", "Set 5: 12-15 reps", "Same weight for all sets except the last. Each workout you want to try and finish this with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight."],
+              instructions: [ "Set 1: 12 reps", "Set 2: 10 reps", "Set 3: 8 reps", "Set 4: 6 reps", "Set 5: 12-15 reps", "Same weight for all sets except the last. Each workout you want to try and finish this with less rest between sets. When you get down to less than 30 seconds rest between sets, increase the weight."],
               type: "Standard Pyramid Tweaked",
               weightIncrement: 5,
               startWeight: 0,
@@ -437,12 +426,8 @@ const goddess_toning = new Package (
                 name: "Goblet Box Squats",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 0,
-                instructions: ["Instructions: ",
-                
-                "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets. The goblet squat is performed by holding a single dumbbell in front of your chest. This forces you to keep your chest up. Sitting onto a box forces you to use your butt and hamstring muscles to sit back onto the box."],
-                notesFromCourse: ["Notes from course:", 
-    
-                    "A goblet squat onto a box is a way to ensure optimal squatting technique and great butt development without as much work onto the quads. Many girls want to keep their legs fit and toned without adding much size to their legs. This workout program will focus on a variety of lower body movements that hit the butt the hardest. This will accomplish the goal of having slim and athletic legs combined with a great booty."],
+                instructions: ["6-8 reps per set.", "Rest 2-3 minutes between sets.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets. The goblet squat is performed by holding a single dumbbell in front of your chest. This forces you to keep your chest up. Sitting onto a box forces you to use your butt and hamstring muscles to sit back onto the box."],
+                notesFromCourse: ["A goblet squat onto a box is a way to ensure optimal squatting technique and great butt development without as much work onto the quads. Many girls want to keep their legs fit and toned without adding much size to their legs. This workout program will focus on a variety of lower body movements that hit the butt the hardest. This will accomplish the goal of having slim and athletic legs combined with a great booty."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -477,7 +462,7 @@ const goddess_toning = new Package (
                 name: "Step-Ups",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 1,
-                instructions: ["Instructions:", "Start with weaker foot, keep foot on bench. Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
+                instructions: [ "6-10 reps per set.", "Rest 2 minutes between sets.", "Start with weaker foot, keep foot on bench. Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -503,7 +488,7 @@ const goddess_toning = new Package (
                 name: "Alternating Dumbbell Curls",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 2,
-                instructions: ["Instructions:", "Rest 2 minutes between each set. Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
+                instructions: [ "6-10 reps per set.", "Rest 2-3 minutes between sets.", "Same weight for each set. Add 5 lbs after completing upper range of reps for all three sets."],
                 type: "Standard Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -538,7 +523,7 @@ const goddess_toning = new Package (
                 name: "Triceps Rope Pushdown",
                 videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                 order: 3,
-                instructions: ["Instructions:", "Rest 2 minutes between each set. Reduce by 10% each time."],
+                instructions: [ "8-12 reps per set.", "Rest 2 minutes between sets.", "Reduce by 10% each time."],
                 type: "Reverse Pyramid",
                 weightIncrement: 2.5,
                 startWeight: 2.5,
@@ -564,7 +549,7 @@ const goddess_toning = new Package (
               name: "Hanging Knee Raises",
               videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
               order: 4,
-              instructions: ["Instructions:", "Same weight for all sets. 1 minute between sets."],
+              instructions: [ "6-10 reps per set.", "Rest 1 minute between sets.", "Same weight for all sets."],
               type: "Standard Pyramid",
               weightIncrement: 5,
               startWeight: 0,
@@ -590,14 +575,8 @@ const goddess_toning = new Package (
               name: "Side Plank Hold",
               videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
               order: 5,
-              instructions: ["Instructions:", 
-              
-              "2x per side"],
-              notesFromCourse: ["Notes from course:", 
-                
-                "Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.",
-  
-              "As well, a strong TVA will injury-proof your body and improve your posture."],
+              instructions: ["20-40 seconds per set.", "Rest 1 minute between sets."],
+              notesFromCourse: ["Planks and side planks will develop your TVA (transversus abdominis muscle). This is your deep core muscle that acts as your inner corset. A weak TVA leads to a sloppy droopy gut. When you become strong at planks your core will be more firm and taut.", "As well, a strong TVA will injury-proof your body and improve your posture."],
               type: "Hold",
               weightIncrement: 5,
               startWeight: 0,
@@ -620,6 +599,7 @@ const goddess_toning = new Package (
               name: "Hip Bridge Hold",
               videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
               order: 6,
+              instructions: ["One set only for 60 seconds. Progress to more difficult holds after holding for 60 seconds"],
               type: "Hold",
               weightIncrement: 5,
               startWeight: 0,
