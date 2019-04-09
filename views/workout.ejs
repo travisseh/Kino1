@@ -202,19 +202,19 @@
 
         <%#HANDLE REPS%>
              
-            <div class="def-number-input number-input inline-block">
-            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-
-            <input type="number" class=quantity required id="reps_<%=index%>_<%=i%>"
-            <% if (displayExercises[index][i].low === null) { %>
-                value="<%=displayExercises[index][i].high%>"
-            <% } else { %>
-                value="<%=displayExercises[index][i].low%>"
-            <% } %>
-            name="reps[]" min="0" max="999">
-            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            <div class="inline-block my-counter-div">
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
+                
+                <input type="number" class="quantity my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
+                <% if (displayExercises[index][i].low === null) { %>
+                    value="<%=displayExercises[index][i].high%>"
+                <% } else { %>
+                    value="<%=displayExercises[index][i].low%>"
+                <% } %>
+                name="reps[]" min="0" max="999">
+                
+                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
             </div> <%=unit%> 
-            <br>
 
         <%#HANDLE WEIGHTS%>
             
@@ -233,19 +233,19 @@
             <% } else { %>
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
-                <div class="def-number-input number-input inline-block">
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus weight-button"></button>
-                
-                <input type="number" class="quantity" required id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
-                name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
-                
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus weight-button"></button>
-                </div> lbs
-                <br>
+                <div class="inline-block my-counter-div">
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
+                    
+                    <input type="number" class="quantity my-counter counter-input" required id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
+                    name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;">
+                    
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
+                </div> lbs 
+
             <% } %>
 
         <%#HANDLE NOTES%>
-        <input style="margin-top: 10px; margin-bottom: 10px;" type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="Note about your set" maxlength="140">
+        <input style="margin-bottom: 10px;" type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="Note about your set" maxlength="140">
         <p><a href="#" class="addNote"  id="addNote_<%=index%>_<%=i%>">Add Note</a></p>
 
     <%})%>
