@@ -1,3 +1,4 @@
+
 //BARCALC LOGIC
 
 //Returns the array of recommended weights
@@ -154,7 +155,6 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     $(".barCalc").html(function(){
         //get id of barCalc
         const appendId = $(this).attr("id").substring(7,10)
-        console.log("secondappendid: " + appendId)
         const lastCharacter = $(this).attr("id").substring(10)
         const newLastCharacter = lastCharacter - 1
     
@@ -177,24 +177,37 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        // const barCalcPlusIcon = "<i class='fas fa-dumbbell'></i> " + barCalc2(lastWeight,currentWeight)
         return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
         })
   }
 
+function updateWarmUps (callback) {
+  if ($(this).data("set-weight") === 0 && $(this).data("has-warmups") === 1) {
+    //traverse back to however many warmups and change their value 
+
+
+    callback()
+  } else {
+    callback()
+  }
+
+}
 
 //PASS VALUES TO BARCALC
 
 $(document).ready(function () {
 
-$(window).on("load", function(){
+  $(".quantity").change(function(){
+    updateWarmUps.call($(this), passBarCalcValues)
+  })
+
+  //other events that should trigger an on-change
+  $(window).on("load", function(){
+      $(".quantity").trigger("change")
+  })
+  $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
-})
-    
-$(".quantity").change(passBarCalcValues)
-
-$(".weight-button").on("click", passBarCalcValues)
-
+  })
 
 
 

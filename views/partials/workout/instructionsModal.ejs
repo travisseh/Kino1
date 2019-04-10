@@ -1,0 +1,37 @@
+<div class="modal fade" id="instructionsModal<%=index%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Instructions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
+        
+        <!-- Handle all paragraphs -->
+        <%if (exercise.instructions != null | exercise.instructions != undefined) {%>
+            <h6>Instructions</h6>
+            <% if(exercise.weightType === "dumbbells") {%>
+                <p class="text-muted">Enter per dumbbell weight, not total weight</p>
+            <%}%> 
+            <%exercise.instructions.forEach(function(paragraph, index1){%>
+                <p class="text-muted"><%=paragraph%></p>
+            <%})%>
+        <%}%>
+        <%#HANDLE IF NOTES FROM COURSE%> 
+        <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
+            <h6>Notes From Course</h6>
+            <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
+                <p class="text-muted"><%=paragraph%></p>
+            <%})%>
+        <%}%>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+    </div>
+</div>
+</div>

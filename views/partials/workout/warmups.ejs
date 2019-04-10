@@ -1,0 +1,26 @@
+<%#WARMUPS LOOP%>
+
+    <%#WEIGHT FROM FIRST SET FOR WARMUP CALC%>
+    <%const firstDisplayWeight = displayExercises[index][0].weight%>
+
+    <%exercise.warmUps.forEach(function(warmUp, ind){%>
+        
+        <h4>Warm-up <%= ind + 1 %></h4>
+        
+        <%#HANDLE BODY-WEIGHT WARMUPS%>
+        <% if (warmUp.percent === 0) { %> 
+            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
+        <% } else { %>
+            <%#DECLARE WEIGHT FOR EACH WARMUP%>
+            <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
+
+            <%#WARMUP BARCALC%>
+            <%if (exercise.weightType === "bar") { %>
+                <p class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></p>
+            <% } %>
+
+            <%#SHOW NORMAL WARMUP WEIGHT%>
+            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <div style="display: inline;" data-percent="<%=warmUp.percent%>" data-warmup="<%=ind%>"><%= weight%></div> lbs</p> 
+            
+        <%  } %>
+    <%})%>

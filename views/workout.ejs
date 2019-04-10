@@ -24,67 +24,12 @@
 <p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal<%=index%>">History</a></p>
 
 
-<!-- Modal -->
-        <div class="modal fade" id="instructionsModal<%=index%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Instructions</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
-                
-                <!-- Handle all paragraphs -->
-                <%if (exercise.instructions != null | exercise.instructions != undefined) {%>
-                    <h6>Instructions</h6>
-                    <% if(exercise.weightType === "dumbbells") {%>
-                        <p class="text-muted">Enter per dumbbell weight, not total weight</p>
-                    <%}%> 
-                    <%exercise.instructions.forEach(function(paragraph, index1){%>
-                        <p class="text-muted"><%=paragraph%></p>
-                    <%})%>
-                <%}%>
-                <%#HANDLE IF NOTES FROM COURSE%> 
-                <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
-                    <h6>Notes From Course</h6>
-                    <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
-                        <p class="text-muted"><%=paragraph%></p>
-                    <%})%>
-                <%}%>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
-        </div>
-    <!-- /Modal -->
+<!-- Instructions Modal -->
+    <%- include("partials/workout/instructionsModal.ejs", {index: index, exercise: exercise}) -%>
 
-
-    <!-- Modal2 -->
-    <div class="modal fade" id="pastExercisesModal<%=index%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">History</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body past-exercises" data-exericse="<%=index%>">
-
-        </div>
-        <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-    </div>
-    </div>
+<!-- History Modal -->
+    <%- include("partials/workout/historyModal.ejs", {index: index, exercise: exercise}) -%>
+    
     <!-- /Modal2 -->
 
     <%#HANDLE IF FIRST TIME ON EXERCISE%>
@@ -110,7 +55,7 @@
                         <div class="inline-block my-counter-div">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
                             
-                            <input type="number" class="quantity my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
+                            <input type="number" class="my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
                             value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
                             
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
@@ -147,32 +92,8 @@
     </div>
     <%} else { %>
 
-    <%#WARMUPS LOOP%>
-
-    <%#WEIGHT FROM FIRST SET FOR WARMUP CALC%>
-    <%const firstDisplayWeight = displayExercises[index][0].weight%>
-
-    <%exercise.warmUps.forEach(function(warmUp, ind){%>
-        
-        <h4>Warm-up <%= ind + 1 %></h4>
-        
-        <%#HANDLE BODY-WEIGHT WARMUPS%>
-        <% if (warmUp.percent === 0) { %> 
-            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
-        <% } else { %>
-            <%#DECLARE WEIGHT FOR EACH WARMUP%>
-            <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
-
-            <%#WARMUP BARCALC%>
-            <%if (exercise.weightType === "bar") { %>
-                <p class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></p>
-            <% } %>
-
-            <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <div style="display: inline;" data-percent="<%=warmUp.percent%>" data-warmup="<%=ind%>"><%= weight%></div> lbs</p> 
-            
-        <%  } %>
-    <%})%>
+    <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
+    
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%#SETS LOOP%>
@@ -206,7 +127,7 @@
             <div class="inline-block my-counter-div">
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
                 
-                <input type="number" class="quantity my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
+                <input type="number" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
                 <% if (displayExercises[index][i].low === null) { %>
                     value="<%=displayExercises[index][i].high%>"
                 <% } else { %>
@@ -235,11 +156,14 @@
             <% } else { %>
 
             <%#HANDLE NORMAL WEIGHT INPUTS%>
+            <% let hasWarmUps%>
+            <% if (exercise.warmUps != undefined && exercise.warmUps != null) {hasWarmUps = 1} else {hasWarmUps = 0} %>    
+
                 <div class="inline-block my-counter-div">
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
                     
-                    <input type="number" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
-                    name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;">
+                    <input type="number" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-has-warmups="<%=hasWarmUps%>" 
+                    id="weight_<%=index%>_<%=i%>" value="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;">
                     
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
                 </div> lbs 
