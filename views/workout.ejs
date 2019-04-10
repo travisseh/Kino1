@@ -153,10 +153,10 @@
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
         
         <h4>Warm-up <%= ind + 1 %></h4>
+        
         <%#HANDLE BODY-WEIGHT WARMUPS%>
         <% if (warmUp.percent === 0) { %> 
-        <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
-        
+            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p>at bodyweight </p>
         <% } else { %>
             <%#DECLARE WEIGHT FOR EACH WARMUP%>
             <% const weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
@@ -167,7 +167,7 @@
             <% } %>
 
             <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <%= weight%> lbs</p> 
+            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <div style="display: inline;" data-percent="<%=warmUp.percent%>" data-warmup="<%=ind%>"><%= weight%></div> lbs</p> 
             
         <%  } %>
     <%})%>
@@ -213,7 +213,8 @@
                 name="reps[]" min="0" max="999">
                 
                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
-            </div> <%=unit%> 
+            </div> <%=unit%>
+            <br>
 
         <%#HANDLE WEIGHTS%>
             
@@ -235,7 +236,7 @@
                 <div class="inline-block my-counter-div">
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
                     
-                    <input type="number" class="quantity my-counter counter-input" required id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
+                    <input type="number" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" id="weight_<%=index%>_<%=i%>" value="<%= weight %>"
                     name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;">
                     
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
