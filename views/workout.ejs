@@ -106,14 +106,16 @@
                         <%#WEIGHT BUTTON%>
                         <p></p>
                         <h4>Max Weight</h4>
-                        <div class="def-number-input number-input inline-block">
-                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                        
-                        <input type="number" class="quantity" required
-                        value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
-                        
-                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                        </div> lbs
+
+                        <div class="inline-block my-counter-div">
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
+                            
+                            <input type="number" class="quantity my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
+                            value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
+                            
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
+
+                        </div> lbs 
                         <p></p>
 
                     <%#HANDLE ALL INVISIBLE INPUTS%>
@@ -189,11 +191,10 @@
         <%if (lastReps != null && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight !=null && lastExercises[index].sets[1].weight != undefined){ %>
             <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
             <%=functions.optionMapper(exerciseName, lastWeight)%>
-        <%} else {%>
+            <%} else {%>
             <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
             </p>
-        <%} %>
-
+            <%} %>
 
         <%#HANDLE BAR CALC IF BAR%>
         <%if (exercise.weightType === "bar") { %>
