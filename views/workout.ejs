@@ -1,4 +1,4 @@
-<%- include("partials/header.ejs") -%>
+<%- include("partials/headerFooter/header.ejs") -%>
     
 
 <h1>Exercises</h1>
@@ -8,9 +8,8 @@
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
 
-<% let unit = "reps" %>  
-
 <%#CHANGE UNIT FOR SELECT EXERCISES%>
+<% let unit = "reps" %>  
 <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
 <div class="card">
@@ -29,74 +28,22 @@
 
 <!-- History Modal -->
     <%- include("partials/workout/historyModal.ejs", {index: index, exercise: exercise}) -%>
-    
-    <!-- /Modal2 -->
 
-    <%#HANDLE IF FIRST TIME ON EXERCISE%>
+<!-- Hande if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
     
-    <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
-                <div>
-                <div>Enter your estimated max weight for <%=displayExercises[index][0].low%> <%=unit%> of this exercise and we'll calculate your set!</div>
+    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
-                <%exercise.sets.forEach(function(set, index3){%>
-                    
-                    <%#HANDLE VISIBLE INPUT%>
-                    <%if(index3 === 0){%>
-                        
-                        <%#HIDDEN INPUTS%>
-                        <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
-                        <input type="hidden" name="note[]">
-
-                        <%#WEIGHT BUTTON%>
-                        <p></p>
-                        <h4>Max Weight</h4>
-
-                        <div class="inline-block my-counter-div">
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
-                            
-                            <input type="number" class="my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
-                            value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
-                            
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
-
-                        </div> lbs 
-                        <p></p>
-
-                    <%#HANDLE ALL INVISIBLE INPUTS%>
-                    <%} else {%> 
-                        <%#REPS%>
-                        <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
-
-                        <%#WEIGHTS%>
-                        <input type="hidden" name="weight[]" value="<%=null%>">
-
-                        <%#NOTES%>
-                        <input type="hidden" name="note[]">
-
-                    <%}%>
-                <%})%>
-
-    <input type="hidden" name="isFirstTime" value="true">
-    <input type="hidden" name="step" value="<%=exercise.weightIncrement%>">
-    <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
-    <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
-    <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
-    <input type="hidden" name="workout" value="<%= workout.nameShort %>">
-    <input type="hidden" name="order" value="<%= exercise.order %>">
-        <div>
-        <button type="submit" class="btn btn-primary workout-button" style="margin-left:0px">Create Sets</button>
-        </div>
-    </form>
-
-    </div>
+<!-- Hande if not first time on exercise -->
     <%} else { %>
 
+<!-- Warmups -->
     <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
-    
+
+
+<!-- Sets -->   
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
-    <%#SETS LOOP%>
     <%exercise.sets.forEach(function(set, i){%>
         <h4>Set <%=i + 1%></h4>
 
@@ -196,4 +143,4 @@
 </div>
 
 
-<%- include("partials/footer.ejs") -%>
+<%- include("partials/headerFooter/footer.ejs") -%>
