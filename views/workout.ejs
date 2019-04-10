@@ -15,7 +15,6 @@
 <div class="card">
 <div class="card-body">
 
-
 <div id="E<%=index%>">
 <h2 class="card-title"><%= exercise.name %> </h2>
 
@@ -23,103 +22,47 @@
 <p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal<%=index%>">History</a></p>
 
 
-<!-- Instructions Modal -->
+    <!-- Instructions Modal -->
     <%- include("partials/workout/instructionsModal.ejs", {index: index, exercise: exercise}) -%>
 
-<!-- History Modal -->
+    <!-- History Modal -->
     <%- include("partials/workout/historyModal.ejs", {index: index, exercise: exercise}) -%>
 
-<!-- Hande if first time on exercise -->
+    <!-- Hande if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
     
     <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
-<!-- Hande if not first time on exercise -->
+    <!-- Hande if not first time on exercise -->
     <%} else { %>
 
-<!-- Warmups -->
+    <!-- Warmups -->
     <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
 
 
-<!-- Sets -->   
+    <!-- Sets -->   
     <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     
     <%exercise.sets.forEach(function(set, i){%>
         <h4>Set <%=i + 1%></h4>
-
-        <%#DECLARE WEIGHT FOR EACH SET%>
         <% const weight = displayExercises[index][i].weight %>
 
-        <%#HANDLE LAST WEEKS SETS%>
-        <%const lastWeight = lastExercises[index].sets[i].weight%>
-        <%const lastReps = lastExercises[index].sets[i].reps%>
-        <%const lastNote = lastExercises[index].sets[i].note%>
-        <%const exerciseName = lastExercises[index]._id.name%>
-
-        <%if (lastReps != null && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight !=null && lastExercises[index].sets[1].weight != undefined){ %>
-            <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
-            <%=functions.optionMapper(exerciseName, lastWeight)%>
-            <%} else {%>
-            <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
-            </p>
-            <%} %>
-
-        <%#HANDLE BAR CALC IF BAR%>
-        <%if (exercise.weightType === "bar") { %>
-        <p class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"><i class="fas fa-dumbbell"></i></p>
-        <%}%>
-
-        <%#HANDLE REPS%>
-             
-            <div class="inline-block my-counter-div">
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
-                
-                <input type="number" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
-                <% if (displayExercises[index][i].low === null) { %>
-                    value="<%=displayExercises[index][i].high%>"
-                <% } else { %>
-                    value="<%=displayExercises[index][i].low%>"
-                <% } %>
-                name="reps[]" min="0" max="999">
-                
-                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
-            </div> <%=unit%>
-            <br>
-
-        <%#HANDLE WEIGHTS%>
+        <!-- Last Week -->   
+        <%- include("partials/workout/lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+    
+        <!-- Bar Calculator -->   
+        <%- include("partials/workout/barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
             
-            <%#HANDLE DROPDOWN OPTIONS%>
-            <% if (exercise.dropDown.length > 0){ %>
-                <select name="weight[]" required class="browser-default custom-select">
-                <% exercise.dropDown.forEach(function(dropDownOption, inde){ %>
-                    <option value="<%= inde %>" 
-                    <% if (displayExercises[index][i].weight === inde ){ %>
-                        selected
-                    <% } %> >
-                    <%=dropDownOption%></option>
-                <% }) %>
-                </select>
+        <!-- Reps -->   
+        <%- include("partials/workout/reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
                 
-            <% } else { %>
+        <br>
 
-            <%#HANDLE NORMAL WEIGHT INPUTS%>
-            <% let hasWarmUps%>
-            <% if (exercise.warmUps != undefined && exercise.warmUps != null) {hasWarmUps = 1} else {hasWarmUps = 0} %>    
-
-                <div class="inline-block my-counter-div">
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
-                    
-                    <input type="number" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-has-warmups="<%=hasWarmUps%>" 
-                    id="weight_<%=index%>_<%=i%>" value="<%= weight %>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;">
-                    
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
-                </div> lbs 
-
-            <% } %>
-
-        <%#HANDLE NOTES%>
-        <input style="margin-bottom: 10px;" type="text" class="form-control startHidden" id="note_<%=index%>_<%=i%>" name="note[]" placeholder="Note about your set" maxlength="140">
-        <p><a href="#" class="addNote"  id="addNote_<%=index%>_<%=i%>">Add Note</a></p>
+        <!-- Weights -->   
+        <%- include("partials/workout/weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+            
+        <!-- Notes -->   
+        <%- include("partials/workout/notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
 
     <%})%>
     <input type="hidden" name="isFirstTime" value="false">

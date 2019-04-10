@@ -1,0 +1,13 @@
+<%#HANDLE LAST WEEKS SETS%>
+<%const lastWeight = lastExercises[index].sets[i].weight%>
+<%const lastReps = lastExercises[index].sets[i].reps%>
+<%const lastNote = lastExercises[index].sets[i].note%>
+<%const exerciseName = lastExercises[index]._id.name%>
+
+<%if (lastReps != null && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight !=null && lastExercises[index].sets[1].weight != undefined){ %>
+    <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
+    <%=functions.optionMapper(exerciseName, lastWeight)%>
+    <%} else {%>
+    <%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
+    </p>
+    <%} %>
