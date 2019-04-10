@@ -194,6 +194,7 @@ function updateWarmUps (newValue, callback) {
       $(this).html(function(){
         const percent = $(this).data("percent")
         const newWarmupWeight = round(((percent * newValue)/100), 5)
+        $(this).data("weight", newWarmupWeight)
         return newWarmupWeight
       })
     }) 
