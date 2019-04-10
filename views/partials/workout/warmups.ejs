@@ -20,7 +20,7 @@
             <% } %>
 
             <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <div style="display: inline;" data-percent="<%=warmUp.percent%>" data-warmup="<%=ind%>"><%= weight%></div> lbs</p> 
+            <p class="weightWarmUp" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps <p> <div class="warmup" style="display: inline;" data-percent="<%=warmUp.percent%>" data-exercise="<%=index%>" data-warmup="<%=ind%>"><%= weight%></div> lbs</p> 
             
         <%  } %>
     <%})%>

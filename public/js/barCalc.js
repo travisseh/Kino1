@@ -1,6 +1,11 @@
 
 //BARCALC LOGIC
 
+function round(number, roundToNumber)
+{
+    return Math.round(number/roundToNumber)*roundToNumber;
+}
+
 //Returns the array of recommended weights
 function weightCalc(weightMinusBar, holderArray, weightsArray){
     for (let i = 0; i < weightsArray.length; i++){
@@ -181,16 +186,21 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         })
   }
 
-function updateWarmUps (callback) {
+function updateWarmUps (newValue, callback) {
   if ($(this).data("set-weight") === 0 && $(this).data("has-warmups") === 1) {
-    //traverse back to however many warmups and change their value 
-
-
+    //traverse back to however many warmups and change their value
+    const exercise = $(this).data("exercise")
+    $.each($(".warmup").filter(`[data-exercise="${exercise}"]`), function(i){
+      $(this).html(function(){
+        const percent = $(this).data("percent")
+        const newWarmupWeight = round(((percent * newValue)/100), 5)
+        return newWarmupWeight
+      })
+    }) 
     callback()
   } else {
     callback()
   }
-
 }
 
 //PASS VALUES TO BARCALC
@@ -198,7 +208,8 @@ function updateWarmUps (callback) {
 $(document).ready(function () {
 
   $(".quantity").change(function(){
-    updateWarmUps.call($(this), passBarCalcValues)
+    const newValue = $(this).val()
+    updateWarmUps.call($(this), newValue, passBarCalcValues)
   })
 
   //other events that should trigger an on-change
