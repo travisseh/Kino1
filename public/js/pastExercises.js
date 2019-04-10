@@ -11,11 +11,22 @@ $(".viewPast").on("click", function(){
     // const templateExerciseId = $("input[name='templateId']")[exercise].value
     const templateExerciseName = $("input[name='exerciseName']")[exercise].value
     templateExerciseName.split(' ').join('_')
+    console.log(templateExerciseName)
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+        $(".modal-body.past-exercises").eq(exercise).html(function(){
+            return "loading history..."
+        })
+    })
+    .fail(function(){
+        $(".modal-body.past-exercises").eq(exercise).html(function(){
+            return "sorry there was a problem loading history - please try refreshing"
+        })
+    })
+    .done(function(data){
         //open a div and fill it with content
         $(".modal-body.past-exercises").eq(exercise).html(function(){
-            if (data === null || data === undefined || data.length === 0){
+            if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
                 console.log("data: " + data)
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
@@ -40,8 +51,6 @@ $(".viewPast").on("click", function(){
                 }).join('')}
             `  
             }
-            
-           
         })
     })
 })
