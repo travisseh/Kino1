@@ -8,6 +8,47 @@
 }
 
 
+/* VIDEO STUFF */
+.video {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.videoCard {
+    padding: 20px;
+    margin: auto;
+    z-index: 3;
+    color: #FFFFFF;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left 0;
+    width: 100%;
+}
+
+.video-color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(89, 31, 196);
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+}
+
+
+
+
+
+
+
 .col-centered {
     display:inline-block;
     float:none;
