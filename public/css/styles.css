@@ -67,8 +67,10 @@ body {
     .header-content {
       margin-top: 25vh;
     }
+    .double-nav .button-collapse {
+        margin-left: 0px;
+    }
   }
-
 
 
 
