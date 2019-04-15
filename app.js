@@ -66,7 +66,9 @@ app.use("/auth/google", auth)
 app.use("/logout", logout)
 
 app.get("/test", function(req, res, next){
-    res.render("test")
+    const error = req.flash("error")
+    const success = req.flash("success")
+    res.render("test", {success: success, error: error})
 })
 
 
