@@ -2,28 +2,8 @@
 
 <h1><%= package.name %> </h1>
 
-<%#MACRO CALC CHECK%>
+<%- include("partials/dashboard/askAboutMacro.ejs") -%>
 
-<div class="modal fade" id="askAboutMacro" tabindex="-1" role="dialog" data-ask-about-macro="<%=askedAboutMacro%>" aria-labelledby="exampleModalLabel"
-    aria-hidden="false">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Getting Started - Macro Calculator</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body past-exercises">
-            Would you like to calculate your macros and calories now?
-        </div>
-        <div class="modal-footer justify-content-between">
-            <a href="#" class="ask-about-macro-button" data-dismiss="modal">I'll do that later</a>
-            <a type="button" href="/macroCalc" class="btn btn-primary ask-about-macro-button">Let's do it!</a>
-        </div>
-        </div>
-    </div>
-    </div>
 
 <%const nextWorkout = package.workouts[nextDayArray[1]]%>
 <%#HANDLE IF NEXT WORKOUT EXISTS%>
