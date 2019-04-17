@@ -10,7 +10,7 @@ $(".viewPast").on("click", function(){
     const templateExerciseName = $("input[name='exerciseName']")[exercise].value
     templateExerciseName.split(' ').join('_')
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             return "loading history..."
         })
@@ -33,16 +33,16 @@ $(".viewPast").on("click", function(){
                         //make the date relative to now
                     const daysFromNow = moment(el.date).fromNow()
                     //return the date
-                    return `<h5>${daysFromNow}</h5>
+                    return `<h6>${daysFromNow}</h6>
                     ${el.sets.map(function(set, i){
                         //return each set
                         let note = ""
                         if (set.note != "" && set.note != null && set.note != undefined){
                             note = `, ${set.note}`
                         }
-                        return `<p>Set ${i + 1}: ${set.reps} at ${set.weight} lbs${note}</p>`
+                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} at ${set.weight} lbs${note}</p>`
                     }).join('')}
-                    <br>`
+                    <div class="spacer-div"></div>`
                     }
                 }).join('')}
             `  
