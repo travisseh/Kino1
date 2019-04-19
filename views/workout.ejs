@@ -12,36 +12,37 @@
 <% let unit = "reps" %>  
 <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
-<div class="card">
-<div class="card-body">
-
-<div id="E<%=index%>">
-
-    <!-- Exercise Header -->
-    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
-
     <!-- Hande if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
-    
-    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
-    <!-- Hande if not first time on exercise -->
+        <div class="card">
+            <div class="card-body">
+                <div id="E<%=index%>">
+                    <!-- Exercise Header -->
+                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                </div>
+            </div>
+        </div>
+
     <%} else { %>
 
-    <!-- Warmups -->
-    <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
+        <div class="card">
+            <div class="card-body">
+                <div id="E<%=index%>">
+                    <!-- Exercise Header -->
+                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
-    <!-- Sets -->
-    <%- include("partials/workout/sets/sets.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                    <!-- Warmups -->
+                    <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
 
+                    <!-- Sets -->
+                    <%- include("partials/workout/sets/sets.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                </div>
+            </div>
+        </div>
 
 <%}%>
-
-
-</div>
-
-</div>
-</div>
 
 <%})%>
 
