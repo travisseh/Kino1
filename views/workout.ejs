@@ -16,17 +16,9 @@
 <div class="card-body">
 
 <div id="E<%=index%>">
-<h2 class="card-title"><%= exercise.name %> </h2>
 
-<p class="text-muted inline-block"><a href="#" data-toggle="modal" data-target="#instructionsModal<%=index%>">Instructions</a></p> | 
-<p class="text-muted inline-block"><a href="#" class="viewPast" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal<%=index%>">History</a></p>
-
-
-    <!-- Instructions Modal -->
-    <%- include("partials/workout/instructionsModal.ejs", {index: index, exercise: exercise}) -%>
-
-    <!-- History Modal -->
-    <%- include("partials/workout/historyModal.ejs", {index: index, exercise: exercise}) -%>
+    <!-- Exercise Header -->
+    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
     <!-- Hande if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
@@ -39,46 +31,16 @@
     <!-- Warmups -->
     <%- include("partials/workout/warmups.ejs", {index: index, exercise: exercise}) -%>
 
+    <!-- Sets -->
+    <%- include("partials/workout/sets/sets.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
-    <!-- Sets -->   
-    <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
-    
-    <%exercise.sets.forEach(function(set, i){%>
-        <h4>Set <%=i + 1%></h4>
-        <% const weight = displayExercises[index][i].weight %>
 
-        <!-- Last Week -->   
-        <%- include("partials/workout/lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
-    
-        <!-- Bar Calculator -->   
-        <%- include("partials/workout/barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
-            
-        <!-- Reps -->   
-        <%- include("partials/workout/reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
-                
-        <br>
+<%}%>
 
-        <!-- Weights -->   
-        <%- include("partials/workout/weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
-            
-        <!-- Notes -->   
-        <%- include("partials/workout/notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
 
-    <%})%>
-    <input type="hidden" name="isFirstTime" value="false">
-    <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
-    <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
-    <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
-    <input type="hidden" name="workout" value="<%= workout.nameShort %>">
-    <input type="hidden" name="order" value="<%= exercise.order %>">
-    <button type="submit" class="btn btn-primary workout-button btn-full-width">Save Exercise</button>
-    </form>
+</div>
 
-    <%}%>
-
-    </div>
-
-    </div>
+</div>
 </div>
 
 <%})%>
