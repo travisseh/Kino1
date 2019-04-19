@@ -28,7 +28,7 @@
     <%} else { %>
 
         <div class="card">
-            <div class="card-body" data-toggle="modal" data-target="#fullExerciseModal<%=index%>">
+            <div class="card-body clickable`" data-toggle="modal" data-target="#fullExerciseModal<%=index%>">
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
