@@ -102,6 +102,10 @@ p {
     margin-left: 1.25rem;
     margin-right: 1.25rem;
 }
+.full-page-modal {
+    margin: 0;
+    border-radius: 0 !important;
+}
 /* End Modal Stuff */
 
 /* Font Awesome */
