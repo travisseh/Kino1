@@ -32,10 +32,11 @@
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
                     <p>Open card body</p>
-                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
                     </div>
+                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
                 </div>
             </div>
         </div>
