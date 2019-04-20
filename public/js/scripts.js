@@ -46,6 +46,17 @@ $(".addNote").on("click", function(e){
     
 })
 
+$(document).on('hidden.bs.modal', function (event) {
+    if ($('.modal:visible').length) {
+      $('body').addClass('modal-open');
+    }
+  });
+
+$('.special-modal').on('click', function(){
+    $('.modal-backdrop2').appendTo($('body')); 
+    // alert("hello!")
+})
+
 //Open askAboutMacro Modal
 if ($('#askAboutMacro').data('ask-about-macro') === false){
     $('#askAboutMacro').modal('show')

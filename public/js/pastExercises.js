@@ -10,7 +10,7 @@ $(".viewPast").on("click", function(){
     const templateExerciseName = $("input[name='exerciseName']")[exercise].value
     templateExerciseName.split(' ').join('_')
 
-    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             return "loading history..."
         })

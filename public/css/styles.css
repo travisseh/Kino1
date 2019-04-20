@@ -129,6 +129,24 @@ p {
     top: 30px;
     right: 30px;
 }
+.special-modal {
+    z-index: 5000;
+}
+/* .modal-backdrop {
+    visibility: hidden !important;
+}
+.modal.in {
+    background-color: rgba(0,0,0,0.5);
+} */
+.modal-backdrop2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4000;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+  }
 /* End Modal Stuff */
 
 /* Font Awesome */
