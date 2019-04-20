@@ -40,7 +40,7 @@ $(".viewPast").on("click", function(){
                         if (set.note != "" && set.note != null && set.note != undefined){
                             note = `, ${set.note}`
                         }
-                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} at ${set.weight} lbs${note}</p>`
+                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
                     }).join('')}
                     <div class="spacer-div"></div>`
                     }
