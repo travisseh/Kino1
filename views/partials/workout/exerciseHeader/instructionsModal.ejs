@@ -8,23 +8,23 @@ aria-hidden="true">
         </img>
     </div>
     <div class="modal-body">
-        <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small class="text-muted"> (this will open a new window)</small></p>
+        <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small> (this will open a new window)</small></p>
         
         <!-- Handle all paragraphs -->
         <%if (exercise.instructions != null | exercise.instructions != undefined) {%>
             <h6>Instructions</h6>
             <% if(exercise.weightType === "dumbbells") {%>
-                <p class="text-muted">Enter per dumbbell weight, not total weight</p>
+                <p>Enter per dumbbell weight, not total weight</p>
             <%}%> 
             <%exercise.instructions.forEach(function(paragraph, index1){%>
-                <p class="text-muted"><%=paragraph%></p>
+                <p><%=paragraph%></p>
             <%})%>
         <%}%>
         <%#HANDLE IF NOTES FROM COURSE%> 
         <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
             <h6>Notes From Course</h6>
             <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
-                <p class="text-muted"><%=paragraph%></p>
+                <p><%=paragraph%></p>
             <%})%>
         <%}%>
     </div>

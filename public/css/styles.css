@@ -71,6 +71,11 @@ p {
 .spacer-div {
     height: 10px;
 }
+.text-muted {
+    font-weight: 300;
+    font-size: 14px;
+}
+
 
 .btn-list-number {
     display: inline-block;
@@ -286,6 +291,9 @@ input[type='number']::-webkit-outer-spin-button {
 
 .inline-block {
     display: inline-block;
+}
+.inline {
+    display: inline;
 }
 
 small {
