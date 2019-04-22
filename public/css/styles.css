@@ -120,11 +120,12 @@ p {
 .full-page-modal {
     margin: 0;
     border-radius: 0 !important;
+    max-height: none;
 }
 .clickable {
     cursor: pointer;
 }
-.close {
+.close-special {
     position: fixed;
     top: 30px;
     right: 30px;
