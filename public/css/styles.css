@@ -100,12 +100,18 @@ p {
 }
 
 /* Modal Stuff */
-.modal-header {
+.modal-header2 {
     border-bottom: none;
     padding: 1.875rem;
     padding-bottom: 0;
     margin: 0;
     background-color: #707070;
+}
+.modal-header {
+    border-bottom: none;
+    padding: 1.875rem;
+    padding-bottom: 0;
+    margin: 0;
 }
 .modal-footer {
     margin: 1.875rem;
@@ -121,6 +127,26 @@ p {
 .modal-body {
     margin: 1.875rem;
     padding: 0;
+}
+.x-circle {
+    display: inline-block;
+    border-radius: 1rem;
+    /* border-color: #707070 !important;
+    background-color: #707070; */
+    border-color: #a1a1a1;
+    background-color: #a1a1a1 ;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: default !important;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    top: 22px;
+    right: 22.52px;
+    position: fixed;
 }
 .modal-dialog {
     margin-left: 1.25rem;
