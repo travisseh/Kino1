@@ -2,11 +2,13 @@
 aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable full-page-modal" role="document">
     <div class="modal-content full-page-modal">
-    <div class="modal-body">
+    <div class="modal-header">
         <img src="/icons/Close.svg" class="close-special" data-dismiss="modal" aria-label="Close">
         </img>
         <!-- Exercise Header -->
-        <%- include("./exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+        <%- include("./exerciseHeader/exerciseHeaderLight.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+    </div>
+    <div class="modal-body">
 
         <!-- Warmups -->
         <%- include("./warmups.ejs", {index: index, exercise: exercise}) -%>

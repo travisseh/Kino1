@@ -40,7 +40,7 @@ h1 h2 h3 h4 h5 h6 {
 .card-title {
     margin-right: 20px;
     font-size: 1.75rem;
-    font-weight: 
+    margin-bottom: 1.25rem;
 }
 h5 {
     font-weight: 700 !important;
@@ -75,6 +75,10 @@ p {
     font-weight: 300;
     font-size: 14px;
 }
+.subheader {
+    font-style: italic;
+    margin-right: 40px;
+}
 
 
 .btn-list-number {
@@ -98,9 +102,10 @@ p {
 /* Modal Stuff */
 .modal-header {
     border-bottom: none;
-    margin: 1.875rem;
-    margin-bottom: 0;
-    padding: 0;
+    padding: 1.875rem;
+    padding-bottom: 0;
+    margin: 0;
+    background-color: #707070;
 }
 .modal-footer {
     margin: 1.875rem;
@@ -115,7 +120,6 @@ p {
 }
 .modal-body {
     margin: 1.875rem;
-    margin-top: 1.25rem;
     padding: 0;
 }
 .modal-dialog {

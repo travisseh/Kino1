@@ -1,0 +1,17 @@
+<div>
+<div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
+<h2 class="card-title white-text"><%= exercise.name %> </h2>
+</div>
+
+<p class="inline-block"><a href="#" class="white-text subheader" data-toggle="modal" data-target="#instructionsModal<%=index%>">Instructions</a></p>
+<p class="inline-block"><a href="#" class="viewPast white-text subheader" data-exercise="<%=index%>" data-toggle="modal" data-target="#pastExercisesModal<%=index%>">History</a></p>
+
+
+    <!-- Instructions Modal -->
+    <%- include("./instructionsModal.ejs", {index: index, exercise: exercise}) -%>
+
+    <!-- History Modal -->
+    <%- include("./historyModal.ejs", {index: index, exercise: exercise}) -%>
+    
+    <div class="spacer-div"></div>
+</div>
