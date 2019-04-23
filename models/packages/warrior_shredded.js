@@ -112,7 +112,7 @@ const warrior_shredded = new Package (
               },
               {
                   name: "Rope Hammer Curls",
-                  videoLink: "https://www.google.com/",
+                  videoLink: "https://www.bodybuilding.com/exercises/cable-hammer-curls-rope-attachment",
                   order: 3,
                   instructions: ["Set 1: 8-10 reps", "Set 2: 10-12 reps","Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                   type: "Reverse Pyramid",
@@ -173,7 +173,7 @@ const warrior_shredded = new Package (
         exercises: [
             {
                 name: "Bulgarian Split Squats",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589122",
                 order: 0,
                 instructions: [ "6-8 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 notesFromCourse: [ "Of course, leg training is pivotal for a well-balanced physique. Two of my favorite movements are front squats and Bulgarian split squats. Both exercises do an amazing job at building strong thighs. Moreover, they both hit the VMO nicely (the teardrop muscle that develops well with training). This gives your legs more thickness near the knee, delivering an aesthetic muscle proportion.", 
@@ -211,7 +211,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Romanian Deadlifts",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589129",
                 order: 1,
                 instructions: ["6-8 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 notesFromCourse: [ "This deadlift variation is my preferred version. It's safer on the lower back and does a great job developing the hamstrings, glutes and low back. In fact, if you want to build a great butt (which, I mean, who doesn't?), then this exercise should definitely be included in your routine."],
@@ -247,7 +247,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Leg Extensions",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://www.youtube.com/watch?v=yR_LqZYSIgM",
                 order: 2,
                 instructions: [ "10-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
@@ -273,7 +273,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Hanging Weighted Knee Raises",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5074474",
                 order: 3,
                 instructions: [ "8-15 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."], 
                 notesFromCourse: ["I recommend lowering your feet slightly in front of you to keep constant tension on your abs, instead of simply dropping them to hanging and losing that tension. Also, lift your knees up as high as you can to make your body curl into a ball. This will hit your abs extremely hard, keeping your core flexed the entire time. When you can do 3 sets of 15 reps, add weight between your feet, starting with 5 pounds"],
@@ -309,7 +309,7 @@ const warrior_shredded = new Package (
         exercises: [
             {
                 name: "Standing Barbell Press",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5064938",
                 order: 0,
                 instructions: [ "Set 1: 6-8 reps", "Set 2: 6-8 reps", "Set 3: 8-10 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 notesFromCourse: [ "This exercise is incredible at developing your shoulders, triceps and even core strength. It’s also one of the toughest exercises known to man. The standing press used to be considered the king of upper-body strength. As you get stronger with this exercise, your shoulders, upper chest and arms will thicken. Also, you will develop a rock-solid and stable core and lower body."],
@@ -345,7 +345,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Weighted Chin-ups",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5064558",
                 order: 1,
                 instructions: [ "6 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 notesFromCourse: [ "The weighted chinup is a fantastic movement for building your upper back, LATs and biceps and is superior to any other pulling exercise. If you can’t do chin ups yet, then start with the LAT pulldown machine with hands facing you. As you build strength and lean down, you will eventually be able to do a few bodyweight chinups. Gradually build up to eight unbroken reps before adding weight."],
@@ -377,7 +377,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Seated Cable Rows",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://www.youtube.com/watch?v=IzoCF_b3cIY",
                 order: 2,
                 instructions: [ "8-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
@@ -399,7 +399,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Triceps Rope Pushdown",
-                videoLink: "https://www.google.com/",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1590659",
                 order: 3,
                 instructions: ["Set 1: 8-10 reps.", "Set 2: 10-12 reps.", "Set 3: 10-12 reps.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
@@ -425,7 +425,7 @@ const warrior_shredded = new Package (
             },
             {
               name: "Lateral Raises",
-              videoLink: "https://www.google.com/",
+              videoLink: "https://my.kinobody.com/courses/108654/lectures/1590520",
               order: 4,
               instructions: [ "Set 1: 12-15 reps.", "Set 2: 4-6 reps.", "Set 3: 4-6 reps.", "Set 4: 4-6 reps", "Rest Pause - 10 second rest between each."],
               type: "Rest Pause",
