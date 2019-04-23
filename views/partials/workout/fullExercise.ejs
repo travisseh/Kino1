@@ -9,12 +9,41 @@ aria-hidden="true">
         <%- include("./exerciseHeader/exerciseHeaderLight.ejs", {index: index, exercise: exercise, unit: unit}) -%>
     </div>
     <div class="modal-body">
+        <div class="tab-content" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <!-- Warmups -->
+                <%- include("./warmups.ejs", {index: index, exercise: exercise}) -%>
 
-        <!-- Warmups -->
-        <%- include("./warmups.ejs", {index: index, exercise: exercise}) -%>
+                <!-- Sets -->
+                <%- include("./sets/sets.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+            </div>
+            <div class="tab-pane fade" id="instructions-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video</a><small> (this will open a new window)</small></p>
+        
+                <!-- Handle all paragraphs -->
+                <%if (exercise.instructions != null | exercise.instructions != undefined) {%>
+                    <h6>Instructions</h6>
+                    <% if(exercise.weightType === "dumbbells") {%>
+                        <p>Enter per dumbbell weight, not total weight</p>
+                    <%}%> 
+                    <%exercise.instructions.forEach(function(paragraph, index1){%>
+                        <p><%=paragraph%></p>
+                    <%})%>
+                <%}%>
+                <!-- Handle if notes from course -->
+                <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
+                    <h6>Notes From Course</h6>
+                    <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
+                        <p><%=paragraph%></p>
+                    <%})%>
+                <%}%>
+            </div>
+            <div class="tab-pane fade" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="modal-body past-exercises" data-exericse="<%=index%>"></div>
+            </div>
+        </div>
 
-        <!-- Sets -->
-        <%- include("./sets/sets.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+        
     </div>
     <img src="/icons/CloseWhite.svg" class="close-special" data-dismiss="modal" aria-label="Close">
         </img>

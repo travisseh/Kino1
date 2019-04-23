@@ -222,12 +222,22 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
 .special-modal {
     z-index: 5000;
 }
-/* .modal-backdrop {
-    visibility: hidden !important;
+.md-tabs {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
 }
-.modal.in {
-    background-color: rgba(0,0,0,0.5);
-} */
+.nav-justified .nav-item {
+    flex-basis: auto;
+}
+.md-tabs .nav-link.active {
+    background-color: rgba(0, 0, 0, 0.12)
+}
+.tab-content {
+    padding: 0;
+}
 .modal-backdrop2 {
     position: fixed;
     top: 0;
@@ -454,6 +464,8 @@ color: #000000;
     padding: 5px;
     width: 50px;
     text-align: center;
+    /* background-color: transparent; */
+
 }
 .counter-input {
     margin: 0 -5px;
