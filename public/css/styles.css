@@ -200,6 +200,7 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
     top: 22px;
     right: 22.52px;
     position: fixed;
+    z-index: 1;
 }
 .modal-dialog {
     margin-left: 1.25rem;
