@@ -121,6 +121,10 @@ p {
 .modal { 
     -webkit-overflow-scrolling: touch; 
 }
+body.modal-open { /* make stop scrolling you to the top in modal*/
+    /* overflow: visible; - StackO said I needed this but I don't think I do */
+    position: inherit;
+}
 .modal-header {
     border-bottom: none;
     padding: 1.875rem;
