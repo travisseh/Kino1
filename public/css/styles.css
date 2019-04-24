@@ -154,7 +154,7 @@ p {
     margin: 0;
     background: #0052D4; 
     background: -webkit-linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  
-    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); ~
+    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); 
     /* background: #fe8c00;  
     background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  
     background: linear-gradient(to right, #fe8c00, #f83600 );  */
