@@ -12,7 +12,7 @@
 <% let unit = "reps" %>  
 <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
-    <!-- Hande if first time on exercise -->
+    <!-- Handle if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
 
         <div class="card">

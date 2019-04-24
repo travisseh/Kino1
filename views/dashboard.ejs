@@ -13,14 +13,14 @@
 
     <div class="row overflow-test">
     <div class="col-lg">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>'">
                 <img class="card-img-top" src="<%= nextWorkout.image %>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
                     <p class="card-text"><%= nextWorkout.description %></p>
                     <p class="card-text">Duration: <%= nextWorkout.duration %> minutes</p>
                     <p class="card-text relative-date" data-date="<%=nextDayLastDate%>"></p>
-                    <a href="/workout/<%=package.url%>/<%=nextWorkout.nameShort%>" class="btn btn-primary btn-full-width">Start Workout <%=nextWorkout.nameShort%></a>
+                    <!--<a href="/workout/<%=package.url%>/<%=nextWorkout.nameShort%>" class="btn btn-primary btn-full-width">Start Workout <%=nextWorkout.nameShort%></a>-->
                 </div>
             </div>
         </div>
@@ -33,13 +33,13 @@
         
 <% package.workouts.forEach(function(workout){ %>
     <div class="col-lg">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>'">
             <img class="card-img-top" src="<%= workout.image %>" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title"><%= workout.name %></h5>
                 <p class="card-text"><%= workout.description %></p>
                 <p class="card-text">Duration: <%= workout.duration %> minutes</p>
-                <a href="/workout/<%=package.url%>/<%=workout.nameShort%>" class="btn btn-primary">Start Workout <%=workout.nameShort%></a>
+                <!--<a href="/workout/<%=package.url%>/<%=workout.nameShort%>" class="btn btn-primary">Start Workout <%=workout.nameShort%></a>-->
             </div>
         </div>
     </div>
