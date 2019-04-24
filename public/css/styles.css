@@ -473,13 +473,14 @@ color: #000000;
     padding: 5px;
     width: 50px;
     text-align: center;
-    /* background-color: #d7d7d7; */
+    background-color: #d7d7d7;
     /* background-color: transparent; */
 
 }
 .counter-input {
     margin: 0 -5px;
     border-radius: 0;
+    background-color: transparent;
 }
 .before-radius {
     border-radius: .25rem 0 0 .25rem;
