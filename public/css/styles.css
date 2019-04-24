@@ -32,9 +32,13 @@ body {
     right: 0;
     left: 0;
     width:calc(100vh + 800px);
-    background: #fe8c00;  
+    background: #0052D4; 
+    background: -webkit-linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  
+    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); 
+
+    /* background: #fe8c00;  
     background: -webkit-linear-gradient(80deg, #fe8c00, #f83600);  
-    background: linear-gradient(130deg, #fe8c00, #f83600 );       
+    background: linear-gradient(130deg, #fe8c00, #f83600 );        */
     transform:skew(70deg);
     z-index: -1;
 }
@@ -148,10 +152,12 @@ p {
     padding: 1.875rem;
     padding-bottom: 0;
     margin: 0;
-    background: #fe8c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fe8c00, #f83600 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /* background-color: #707070; */
+    background: #0052D4; 
+    background: -webkit-linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  
+    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); ~
+    /* background: #fe8c00;  
+    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  
+    background: linear-gradient(to right, #fe8c00, #f83600 );  */
     z-index: 10;
 }
 .modal { 
@@ -467,6 +473,7 @@ color: #000000;
     padding: 5px;
     width: 50px;
     text-align: center;
+    /* background-color: #d7d7d7; */
     /* background-color: transparent; */
 
 }
