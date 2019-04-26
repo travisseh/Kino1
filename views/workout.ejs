@@ -34,6 +34,7 @@
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
+                    <h6>Sets</h6>
                     <%exercise.sets.forEach(function(set, index4){%>
                         <% const weight = displayExercises[index][index4].weight %>
                         <p><button class="btn-list-number"><%=index4 + 1%></button>

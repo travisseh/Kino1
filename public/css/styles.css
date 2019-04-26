@@ -1,8 +1,4 @@
 
-* {
-    box-sizing: border-box;
-  }
-
 .row-centered {
     text-align: center;
 }
@@ -147,34 +143,11 @@ p {
 }
 
 /* horizontal scrolling crap */
-.scrolling-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    .card {
-        display: inline-block;
-    }
-}
-
 .container1 {
     display: flex;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    -webkit-scrollbar {
-        width: 0px;  /* Remove scrollbar space */
-        background: transparent;  /* Optional: just make scrollbar invisible */
-    }
 }
-
-.card1 {
-    min-width: 300px;
-}
-
-/* End hortizontal scrolling stuff */
 
 
 /* Modal Stuff */
@@ -438,6 +411,13 @@ small {
     margin-bottom: 1rem;
     margin-top: 1rem;
     border-radius: .5rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px -1px 8px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px -1px 8px rgba(0, 0, 0, 0.05);
+}
+.card:active {
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25), 0px -2px 8px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25), 0px -2px 8px rgba(0, 0, 0, 0.05);
+    background-color:rgb(247, 247, 247) !important;
 }
 
 
