@@ -124,6 +124,9 @@ p {
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+.my-btn-secondary:active {
+    border-width: 2px;
+}
 .spacer-div {
     height: 10px;
 }
