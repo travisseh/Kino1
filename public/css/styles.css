@@ -57,16 +57,6 @@ body {
     }
   } */
 
-.btn {
-    border-radius: 0.625rem;
-    text-transform: capitalize;
-    font-size: 1rem;
-    padding: 0.625rem 1.25rem;
-    background: #fe8c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fe8c00, #f83600 );
-    
-}
 h6 {
     font-size: 1rem;
     font-weight: 700;
@@ -106,13 +96,33 @@ h1 {
 p {
     margin-bottom: 10px;
 }
+.my-btn {
+    border-radius: 0.625rem;
+    text-transform: capitalize;
+    font-size: 1rem;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+}
 .btn-full-width {
     width: 100%;
     max-width: 500px;
     margin: 10px 0;
 }
-.btn-secondary {
-    background-color: transparent;
+.btn-primary {
+    background: #fe8c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fe8c00, #f83600 );
+}
+.my-btn-secondary {
+    background: transparent !important;
+    color: #fe8c00;  /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #fe8c00, #f83600 );
+    border: 1px solid #fe8c00;
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }
 .spacer-div {
     height: 10px;
