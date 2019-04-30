@@ -23,11 +23,17 @@
         <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
 
     <%})%>
+
+    <!--Calculate Hours Since Last Saved Workout-->
+    <%const lastCompletedDate2 = lastExercises[index].sets[0]._id.getTimestamp()%>
+    <%const now2 = Date.now()%>
+    <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
+
     <input type="hidden" name="isFirstTime" value="false">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
     <input type="hidden" name="order" value="<%= exercise.order %>">
-    <button type="submit" class="btn btn-primary workout-button btn-full-width">Save Exercise</button>
+    <button type="submit" class="btn btn-primary workout-button btn-full-width"><%if (hoursDifference2 < 18){%>Save Edits<%} else {%>Save Exercise<%}%></button>
     </form>
