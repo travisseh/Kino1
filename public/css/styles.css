@@ -28,13 +28,13 @@ body {
     right: 0;
     left: 0;
     width:calc(100vh + 800px);
-    background: #0052D4; 
+    /* background: #0052D4; 
     background: -webkit-linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  
-    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); 
+    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  */
 
-    /* background: #fe8c00;  
+    background: #fe8c00;  
     background: -webkit-linear-gradient(80deg, #fe8c00, #f83600);  
-    background: linear-gradient(130deg, #fe8c00, #f83600 );        */
+    background: linear-gradient(130deg, #fe8c00, #f83600 );       
     transform:skew(70deg);
     z-index: -1;
 }
@@ -194,12 +194,12 @@ p {
     padding: 1.875rem;
     padding-bottom: 0;
     margin: 0;
-    background: #0052D4; 
+    /* background: #0052D4; 
     background: -webkit-linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  
-    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4); 
-    /* background: #fe8c00;  
+    background: linear-gradient(to left, #6FB1FC, #4364F7, #0052D4);  */
+    background: #fe8c00;  
     background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  
-    background: linear-gradient(to right, #fe8c00, #f83600 );  */
+    background: linear-gradient(to right, #fe8c00, #f83600 ); 
     z-index: 10;
 }
 .modal { 
