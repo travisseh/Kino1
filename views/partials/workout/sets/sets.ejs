@@ -1,5 +1,14 @@
 <!-- Sets -->   
-    <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
+    <!--Calculate Hours Since Last Saved Workout-->
+    <%const lastCompletedDate2 = lastExercises[index].lastId.getTimestamp()%>
+    <%const now2 = Date.now()%>
+    <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
+
+    <%if (hoursDifference2 < 18 ){%>
+        <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
+    <%} else {%>
+        <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
+    <%}%>
     
     <%exercise.sets.forEach(function(set, i){%>
         <h4>Set <%=i + 1%></h4>
@@ -24,12 +33,10 @@
 
     <%})%>
 
-    <!--Calculate Hours Since Last Saved Workout-->
-    <%const lastCompletedDate2 = lastExercises[index].id.getTimestamp()%>
-    <%const now2 = Date.now()%>
-    <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
+    
 
     <input type="hidden" name="isFirstTime" value="false">
+    <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">

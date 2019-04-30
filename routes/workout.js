@@ -25,7 +25,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
   //get each list of lastsets
       Exercise.aggregate([
           {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort}},
-          {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, id: {$last: "$_id"}}},
+          {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, lastId: {$last: "$_id"}}},
           {$sort: {"_id.order" : 1}}
       ]).exec(function (err, foundExercises){
           if (err) {
@@ -95,6 +95,39 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
       req.flash('success', 'Exercise Saved!')
     }
     res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
+  })
+
+  workout.post("/:package/:workout/edit", function (req, res, next){
+    const formReps = req.body.reps
+    const formWeight = req.body.weight
+    const formNotes = req.body.note
+    const order = req.body.order
+    const step = req.body.step
+    const isFirstTime = req.body.isFirstTime
+    const sets = []
+    const newFirstWeight = formWeight[0] - step
+    if (isFirstTime === 'true'){
+      formWeight.splice(0, 1, newFirstWeight)
+    }
+    functions.setsCreator(sets, formReps, formWeight, formNotes)
+    
+    lastId = req.body.lastId
+    Exercise.findOne({_id: lastId}, function(err, foundExercise){
+      if (err) {
+        console.log(err)
+      } else {
+        foundExercise.sets = sets
+        foundExercise.order = order
+        foundExercise.save(function(err){
+          if (err) {
+            console.log(err)
+          } else {
+            req.flash('success', 'Edits Saved!')
+            res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
+          }
+        })
+      }
+    })
   })
 
 
