@@ -57,6 +57,16 @@ body {
     }
   } */
 
+a {
+    color: #fe8c00;
+}
+.italic {
+    font-style: italic;
+}
+.diminished {
+    color: #8D8D8D;
+}
+
 h6 {
     font-size: 1rem;
     font-weight: 700;

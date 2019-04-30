@@ -27,6 +27,12 @@
 
     <%} else { %>
 
+<!--Calculate Hours Since Last Saved Workout-->
+<%const lastCompletedDate = lastExercises[index].sets[0]._id.getTimestamp()%>
+<%const now = Date.now()%>
+<%const hoursDifference = Math.abs(lastCompletedDate - now)/36e5%> 
+    
+
         <div class="card">
             <div class="card-body">
                 <div id="E<%=index%>">
@@ -46,7 +52,13 @@
                             <%=unit%> at <%=weight%> lbs
                         </p>
                     <%})%>
-                    <button class="my-btn btn-full-width my-btn-secondary">Start Exercise</button>
+                    <%if (hoursDifference < 18) {%>
+                        <div style="text-align: center;">
+                        <p class="diminished"><img src="/icons/checkMark.svg"> Completed - <a href="#" class="italic">Edit</a></p>
+                        </div>
+                    <%} else {%>
+                        <button class="my-btn btn-full-width my-btn-secondary">Start Exercise</button>
+                    <%}%>
                     </div>
                     <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
                 </div>
