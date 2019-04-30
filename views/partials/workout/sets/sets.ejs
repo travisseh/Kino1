@@ -25,7 +25,7 @@
     <%})%>
 
     <!--Calculate Hours Since Last Saved Workout-->
-    <%const lastCompletedDate2 = lastExercises[index].sets[0]._id.getTimestamp()%>
+    <%const lastCompletedDate2 = lastExercises[index].id.getTimestamp()%>
     <%const now2 = Date.now()%>
     <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
 

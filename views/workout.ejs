@@ -28,9 +28,10 @@
     <%} else { %>
 
 <!--Calculate Hours Since Last Saved Workout-->
-<%const lastCompletedDate = lastExercises[index].sets[0]._id.getTimestamp()%>
+<%const lastCompletedDate = lastExercises[index].id.getTimestamp()%>
 <%const now = Date.now()%>
 <%const hoursDifference = Math.abs(lastCompletedDate - now)/36e5%> 
+
     
 
         <div class="card">

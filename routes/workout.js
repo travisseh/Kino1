@@ -25,7 +25,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
   //get each list of lastsets
       Exercise.aggregate([
           {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort}},
-          {$group: {_id: {order: "$order", name: "$name", _id: "$_id"}, sets: {$last: "$sets"}}},
+          {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, id: {$last: "$_id"}}},
           {$sort: {"_id.order" : 1}}
       ]).exec(function (err, foundExercises){
           if (err) {
@@ -33,7 +33,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
           } else {
               let lastExercises = []
               if (foundExercises.length != exercises.length){
-                functions.fillExercises(lastExercises,exercises,foundExercises,fakeLastExercise)
+                functions.fillExercises(lastExercises, exercises, foundExercises, fakeLastExercise)
               } else {
                 lastExercises = foundExercises}
 
@@ -50,7 +50,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next
                     functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
                     displayExercises.push(displaySets)
                   }
-                  console.log(lastExercises)
+                  
 
                   //render the page with all the above info
                   res.render("workout", {success: req.flash('success'), error: req.flash('error'), exercises: exercises, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
