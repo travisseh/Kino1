@@ -120,10 +120,14 @@ p {
     max-width: 500px;
     margin: 10px 0;
 }
-.btn-primary {
+.my-btn-primary {
     background: #fe8c00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #fe8c00, #f83600 );
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.1), 0px -1px 10px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.1), 0px -1px 10px rgba(0, 0, 0, 0.05);
 }
 .my-btn-secondary {
     background: transparent !important;
