@@ -1,6 +1,6 @@
 <%- include("partials/headerFooter/header.ejs") -%>
 
-<h1><%= package.name %> </h1>
+<h1 class="text-white"><%= package.name %> </h1>
 
 <%- include("partials/dashboard/askAboutMacro.ejs") -%>
 
@@ -9,7 +9,7 @@
 <%#HANDLE IF NEXT WORKOUT EXISTS%>
 
 <%if (nextWorkout != undefined || nextWorkout != null){%>
-    <h3>Next Workout</h3>
+    <h3 class="text-white">Next Workout</h3>
 
     <div class="row overflow-test">
     <div class="col-lg">

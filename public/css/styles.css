@@ -145,6 +145,9 @@ p {
 .my-btn-secondary:active {
     border-width: 2px;
 }
+.btn-link {
+    color: #212529;
+}
 .spacer-div {
     height: 10px;
 }
