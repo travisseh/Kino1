@@ -4,7 +4,7 @@
     <%const now2 = Date.now()%>
     <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
 
-    <%if (hoursDifference2 < 18 ){%>
+    <%if (hoursDifference2 < 18 && lastExercises[index].sets[1].weight != null){%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
