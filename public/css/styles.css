@@ -49,7 +49,9 @@ body {
     box-shadow: none;
     -webkit-box-shadow: none;
 }
-
+li a {
+    font-size: 0.875rem;
+}
 
 /* @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
     html {
@@ -567,12 +569,37 @@ color: #000000;
 }
 
 .side-nav .collapsible a {
-    color: #000;
+    color: #37332F;
     font-weight: 300;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     height: 36px;
     line-height: 36px;
 }
+.side-nav a {
+    display: inline-block;
+    padding-left: 10px;
+}
+/* .side-nav img {
+    transform: translate(-50%,-100%);
+} */
+.icon-container {
+    width: 1rem;
+}
+.margin-left {
+    margin-left: 10px;
+}
+.side-nav ul li {
+    padding-left: 1.25rem;
+}
+.side-nav ul li li{
+    padding-left: 0;
+}
+.navbar-brand {
+    padding: 0px;
+    margin: 1.25rem;
+    margin-left: 0px;
+}
+
 
 
 
