@@ -1,10 +1,16 @@
 <!-- Sets -->   
     <!--Calculate Hours Since Last Saved Workout-->
-    <%const lastCompletedDate2 = lastExercises[index].lastId.getTimestamp()%>
-    <%const now2 = Date.now()%>
-    <%const hoursDifference2 = Math.abs(lastCompletedDate2 - now2)/36e5%> 
 
-    <%if (hoursDifference2 < 18 && lastExercises[index].sets[1].weight != null){%>
+    <%let hoursDifference2%>
+    <%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
+    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
+    <%const now2 = Date.now()%>
+    <%hoursDifference2 = Math.abs(lastCompletedDate - now2)/36e5%>
+    <%} else {%>
+    <%hoursDifference2 = null%>
+    <%}%>  
+
+    <%if (hoursDifference2 != undefined && hoursDifference2 != null && hoursDifference2 < 18 && lastExercises[index].sets[1].weight != null){%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">

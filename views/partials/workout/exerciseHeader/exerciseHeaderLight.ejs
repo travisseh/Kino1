@@ -1,6 +1,20 @@
+<%let hoursDifference4%>
+<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
+    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
+    <%const now4 = Date.now()%>
+    <%hoursDifference4 = Math.abs(lastCompletedDate - now4)/36e5%>
+<%} else {%>
+    <%hoursDifference4 = null%>
+<%}%> 
+
 <div>
 <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
-<h2 class="card-title white-text"><%= exercise.name %> </h2>
+
+<%if (hoursDifference4 != undefined && hoursDifference4 != null && hoursDifference4 < 18 && lastExercises[index].sets[1].weight != null){%>
+    <h2 class="card-title white-text"><%= exercise.name %> - Edit</h2>
+<%} else {%>
+    <h2 class="card-title white-text"><%= exercise.name %></h2>
+<%}%>
 </div>
 
 <ul class="nav nav-tabs nav-justified md-tabs" id="myTabJust" role="tablist">
