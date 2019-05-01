@@ -1,6 +1,6 @@
 <%#HANDLE REPS%>            
 <div class="inline-block my-counter-div">
-    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
+    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
     
     <input type="number" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
     <% if (displayExercises[index][i].low === null) { %>
@@ -10,5 +10,5 @@
     <% } %>
     name="reps[]" min="0" max="999">
     
-    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
+    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><i class="fal fa-plus"></i></button>
 </div> <%=unit%>
