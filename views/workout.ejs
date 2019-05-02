@@ -47,14 +47,18 @@
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
                     <h6>Sets</h6>
                     <%exercise.sets.forEach(function(set, index4){%>
+                        <%const lastWeight3 = lastExercises[index].sets[index4].weight%>
+                        <%const lastReps3 = lastExercises[index].sets[index4].reps%>
                         <% const weight = displayExercises[index][index4].weight %>
+
                         <p><button class="btn-list-number"><%=index4 + 1%></button>
-                            <% if (displayExercises[index][index4].low === null) { %>
-                                <%=displayExercises[index][index4].high%>
+                            <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1].weight != null){%>
+                                <%=lastReps3%> <%=unit%> at <%=weight%> lbs
+                            <%} else if (displayExercises[index][index4].low === null) { %>
+                                <%=displayExercises[index][index4].high%> <%=unit%> at <%=weight%> lbs
                             <% } else { %>
-                                <%=displayExercises[index][index4].low%>
+                                <%=displayExercises[index][index4].low%> <%=unit%> at <%=weight%> lbs
                             <% } %>
-                            <%=unit%> at <%=weight%> lbs
                         </p>
                     <%})%>
                     <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1].weight != null) {%>
