@@ -167,7 +167,12 @@ p {
     font-style: italic;
     margin-right: 40px;
 }
-
+.no-margin {
+    margin: 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.625rem;
+}
 
 .btn-list-number {
     display: inline-block;
