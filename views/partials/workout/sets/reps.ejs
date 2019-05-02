@@ -1,5 +1,7 @@
 <%#HANDLE REPS%>    
 
+<%const lastReps2 = lastExercises[index].sets[i].reps%>
+
 <%let hoursDifference5%>
 <%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
     <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
@@ -13,7 +15,9 @@
     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
     
     <input type="number" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
-    <% if (displayExercises[index][i].low === null) { %>
+    <%if (hoursDifference5 != undefined && hoursDifference5 != null && hoursDifference5 < 18 && lastExercises[index].sets[1].weight != null && lastReps2 != undefined) {%>
+        value="<%=lastReps2%>"
+    <% } else if (displayExercises[index][i].low === null) { %>
         value="<%=displayExercises[index][i].high%>"
     <% } else { %>
         value="<%=displayExercises[index][i].low%>"
