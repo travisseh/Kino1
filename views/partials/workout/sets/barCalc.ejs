@@ -1,4 +1,14 @@
 <%#HANDLE BAR CALC IF BAR%>
-<%if (exercise.weightType === "bar") { %>
+
+<%let hoursDifference8%>
+<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
+    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
+    <%const now8 = Date.now()%>
+    <%hoursDifference8 = Math.abs(lastCompletedDate - now8)/36e5%>
+<%} else {%>
+    <%hoursDifference8 = null%>
+<%}%> 
+
+<%if (exercise.weightType === "bar" && hoursDifference8 != undefined && hoursDifference8 != null && hoursDifference8 >= 18) { %>
 <p class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"><i class="fas fa-dumbbell"></i></p>
 <%}%>
