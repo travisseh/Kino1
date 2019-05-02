@@ -32,7 +32,7 @@ $(".viewPast2").on("click", function(){
                     //ignore NUX generated exercise
                     if (el.sets[1].weight != null) {
                         //make the date relative to now
-                    const daysFromNow = moment(el.date).fromNow()
+                    const daysFromNow = moment(el.date).format('dddd, MMMM Do')
                     //return the date
                     return `<h6>${daysFromNow}</h6>
                     ${el.sets.map(function(set, i){
@@ -60,7 +60,7 @@ $(".viewPast").on("click", function(){
     templateExerciseName.split(' ').join('_')
     console.log("exercise name: " + templateExerciseName)
 
-    $.get(`${localUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             return "loading history..."
         })
