@@ -151,7 +151,10 @@ p {
     -webkit-box-shadow: none;
 }
 .my-btn-secondary:active {
-    border-width: 2px;
+    /* border-width: 1.5px; */
+    color: #f66402; 
+    border-color: #f66402;
+
 }
 .btn-link {
     color: #212529;
@@ -201,6 +204,9 @@ p {
 .container1::-webkit-scrollbar {
     width: .01rem;
     height: .01rem;
+}
+.waves-effect.waves-orange .waves-ripple {
+    background: rgba(236, 219, 197, 0.404);
 }
 
 
