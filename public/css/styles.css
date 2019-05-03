@@ -96,6 +96,14 @@ h1 h2 h3 h4 h5 h6 {
     font-size: 1.75rem;
     margin-bottom: 1.25rem;
 }
+.report-tile-title {
+    font-size: 14px;
+    text-align: center;
+    color: #515151;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 h5 {
     font-weight: 700 !important;
     font-size: 1.3125rem;
@@ -196,12 +204,12 @@ p {
 }
 
 /* horizontal scrolling crap */
-.container1 {
+.horizontal-scroll {
     display: flex;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
-.container1::-webkit-scrollbar {
+.horizontal-scroll::-webkit-scrollbar {
     width: .01rem;
     height: .01rem;
 }
@@ -485,51 +493,39 @@ small {
 
 /* ============================ */
 /* Stuff for Macro Calc Page */
-.macro-header{
-    position: inline-block;
-width: 235px;
-height: 23px;
-left: 28px;
-top: 229px;
-
-margin:10px, 0px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-line-height: normal;
-
-color: #000000;
+.chart-card {
+    height: 200px;
+    width: 200px;
 }
-
-.macro-chart-highlight{
-    position: absolute;
-    width: 235px;
-    height: 76.75px;
-    left: 29px;
-    top: 306.35px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: normal;
+.chart-nmbr-lg {
+    font-size: 30px;
+    font-weight: 700;
     text-align: center;
-
-    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.chart-subtext {
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    color: #515151;
+}
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+.chart-text {
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-block;
+}
+.chart-text-right {
+    float: right;
+}
+.no-padding-bottom {
+    padding-bottom: 0;
 }
 
-.macro-card-body{
-    position: absolute;
-    width: 235px;
-    height: 155px;
-    left: 29px;
-    top: 272px;
 
-    background: #FFFFFF;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-}
 /* End Stuff for Macro Calc Page */
 
 

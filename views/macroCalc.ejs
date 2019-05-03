@@ -1,14 +1,19 @@
 <%- include("partials/headerFooter/header.ejs") -%>
 
-<h1>Macro Calculator</h1>
+<h1 class="white-text">Macro Calculator</h1>
 
-<form action="/macrocalc" method="POST">
-    <div class="md-form">
-    <label for="numberExample">Enter Weight</label>
-    <input type="number" class="form-control"  name="weight" max="9999" required>
-    </div>
-    <button class="btn btn-m btn-primary">Calculate Macros</button>
-</form>
+<div class="card">
+  <div class="card-body">
+    <form action="/macrocalc" method="POST">
+      <div class="md-form">
+        <label for="numberExample">Enter Weight</label>
+        <input type="number" class="form-control"  name="weight" max="9999" required>
+      </div>
+      <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange">Calculate Macros</button>
+    </form>
+    <h3 class="macro-header" style="margin-bottom: 20px; margin-top: 20px;">Weight: <%= weight%></h3>
+  </div>
+</div>
 
 <% const stableCals = weight * 15 %> 
 <% const deficitCals = weight * 12 %> 
@@ -21,250 +26,77 @@
 
 <% if (weight != null) { %>
 
-<h3 class="macro-header" style="margin-bottom: 20px; margin-top: 20px;">Weight: <%= weight%></h3>
-
-<p>Recommended calorie trackers: <a href="https://www.mynetdiary.com/">MyNetDiary</a> and <a href="https://www.myfitnesspal.com/">MyFitnessPal</a></p>
-
-<!-- Card -->
-<div class="card chart-card" style="width: 235px;
-height: 155px;">
-
-  <!-- Card content -->
-  <div class="card-body">
-
-    <!-- Title -->
-    <h4 class="card-title font-weight-bold" style="font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: normal;
-    text-align: center;
-    
-    color: #515151;">Deficit Calories</h4>
-    
-      <p class="display-4 align-self-end" style="font-family: Roboto;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: normal;
-      text-align: center;
-      margin-top: 20px;
-        margin-bottom: 20px;
-      
-      color: #000000;
-      "><%=deficitCals.toLocaleString('en')%></p>
-
-      <!-- Text -->
-    <p class="card-text mb-4" style="font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: normal;
-    text-align: center;
-    
-    color: #515151;">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
-
-  </div>
-
-</div>
-<!-- Card -->
-
-<!-- Card -->
-<div class="card chart-card" style="width: 236px;
-height: 202px;">
-
-  <!-- Card content -->
-  <div class="card-body">
-
-    <!-- Title -->
-    <h4 class="card-title font-weight-bold" style="font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: normal;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
-    color: #515151;">Daily Macros</h4>
-
-    <div style="width: 196px;
-    height: 119px;
-    left: 49px;
-    top: 510px">
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            color: #000000;">Protein:</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            float: right;
-            color: #000000;"><%= dailyProtein.toFixed(0)%> g</p>
-        </div>
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            
-            color: #000000;">Carbs</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            
-            float: right;
-            
-            color: #000000;"><%= dailyCarbs.toFixed(0)%> g</p>
-        </div>
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            
-            color: #000000;">Fats</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            
-            float: right;
-            
-            color: #000000;"><%= dailyFats.toFixed(0)%> g</p>
-        </div>
-        
+  <div class="card">
+    <div class="card-body">
+      <h4 class="report-tile-title">Recommended Calorie Trackers </h4>
+      <p><a href="https://www.mynetdiary.com/">MyNetDiary</a> and <a href="https://www.myfitnesspal.com/">MyFitnessPal</a></p>
     </div>
-    
-     
-
   </div>
 
 </div>
 
+  <div class="horizontal-scroll">
+    <div style="margin-left: 10px;"></div>
 
-
-<!-- Card -->
-<div class="card chart-card" style="width: 236px;
-height: 202px;">
-
-  <!-- Card content -->
-  <div class="card-body">
-
-    <!-- Title -->
-    <h4 class="card-title font-weight-bold" style="font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: normal;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
-    color: #515151;">Per Meal Macros</h4>
-
-    <div style="width: 196px;
-    height: 119px;
-    left: 49px;
-    top: 510px">
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            color: #000000;">Protein:</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            float: right;
-            color: #000000;"><%= perMealProtein.toFixed(0)%> g</p>
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Deficit Calories</h4>
+            <p class="chart-nmbr-lg"><%=deficitCals.toLocaleString('en')%></p>
+          <p class="chart-subtext no-margin-bottom">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
         </div>
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            
-            color: #000000;">Carbs</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            
-            float: right;
-            
-            color: #000000;"><%= perMealCarbs.toFixed(0)%> g</p>
-        </div>
-
-        <div>
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            display: inline-block;
-            
-            color: #000000;">Fats</p>
-
-            <p style="font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: normal;
-            text-align: right;
-            
-            float: right;
-            
-            color: #000000;"><%= perMealFats.toFixed(0)%> g</p>
-        </div>
-        
+      </div>
     </div>
-    
-     
+
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Daily Macros</h4>
+              <div>
+                  <p class="chart-text">Protein:</p>
+                  <p class="chart-text chart-text-right"><%= dailyProtein.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Carbs</p>
+                  <p class="chart-text chart-text-right"><%= dailyCarbs.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Fats</p>
+                  <p class="chart-text chart-text-right"><%= dailyFats.toFixed(0)%> g</p>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Per Meal Macros</h4>
+              <div>
+                  <p class="chart-text">Protein:</p>
+                  <p class="chart-text chart-text-right"><%= perMealProtein.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Carbs</p>
+                  <p class="chart-text chart-text-right"><%= perMealCarbs.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Fats</p>
+                  <p class="chart-text chart-text-right"><%= perMealFats.toFixed(0)%> g</p>
+              </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
-</div>
+<%}%> 
+
+<div class="container-fluid">
 
 <a href="/dashboard">Return to Dashboard</a>
-
-
-<% } %> 
-
 
 <%- include("partials/headerFooter/footer.ejs") -%>
