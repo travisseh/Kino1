@@ -4,14 +4,14 @@
 
 <div class="card">
   <div class="card-body">
+    <h3 class="macro-header">Enter Weight</h3>
     <form action="/macrocalc" method="POST">
-      <div class="md-form">
-        <label for="numberExample">Enter Weight</label>
-        <input type="number" class="form-control"  name="weight" max="9999" required>
-      </div>
-      <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange">Calculate Macros</button>
+        <input type="number" class="main-input inline-block"  name="weight" max="9999" required placeholder="Ex: 187"> lbs
+      <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange inline-block" style="float:right; margin-top: 4px;">Calculate</button>
     </form>
-    <h3 class="macro-header" style="margin-bottom: 20px; margin-top: 20px;">Weight: <%= weight%></h3>
+    <% if (weight != null) {%>
+    <p style="margin-top:10px; margin-bottom: 0;">Past weight: <%= weight%></p>
+    <%}%>
   </div>
 </div>
 
