@@ -10,7 +10,7 @@
       <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange inline-block" style="float:right; margin-top: 4px;">Calculate</button>
     </form>
     <% if (weight != null) {%>
-    <p style="margin-top:10px; margin-bottom: 0;">Past weight: <%= weight%></p>
+    <p style="margin-top:10px; margin-bottom: 0;">Current weight: <%= weight%></p>
     <%}%>
   </div>
 </div>
@@ -29,13 +29,21 @@
   <div class="card">
     <div class="card-body">
       <h4 class="report-tile-title">Recommended Calorie Trackers </h4>
-      <p><a href="https://www.mynetdiary.com/">MyNetDiary</a> and <a href="https://www.myfitnesspal.com/">MyFitnessPal</a></p>
+      <ul>
+        <li>
+            <a href="https://www.mynetdiary.com/">MyNetDiary  <img class="external-link" src="/icons/ExternalLink.svg"></a>
+        </li>
+        <div class="spacer-div"></div>
+        <li>
+            <a href="https://www.myfitnesspal.com/">MyFitnessPal  <img class="external-link" src="/icons/ExternalLink.svg"></a>
+        </li>
+      </ul>
     </div>
   </div>
 
 </div>
 
-  <div class="horizontal-scroll">
+  <div class="horizontal-scroll minus-twenty-top">
     <div style="margin-left: 10px;"></div>
 
     <!-- Card -->

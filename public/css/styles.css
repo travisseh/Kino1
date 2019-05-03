@@ -496,6 +496,7 @@ small {
 .chart-card {
     height: 200px;
     width: 200px;
+    margin-top: 0;
 }
 .chart-nmbr-lg {
     font-size: 30px;
@@ -535,6 +536,15 @@ small {
     padding: 0;
     margin: 10px;
     margin-left: 0;
+}
+li {
+    color: #C4C4C4;
+}
+.external-link {
+    margin-bottom: 7px;
+}
+.minus-twenty-top{
+    margin-top: -20px;
 }
 
 /* End Stuff for Macro Calc Page */
