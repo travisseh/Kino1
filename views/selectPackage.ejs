@@ -2,10 +2,12 @@
 
 
 <% if (user.selectedPackage === null | user.selectedPackage === undefined){ %>
-    <h4><strong>Welcome <%=user.fname%>!</strong></h4> <h4>Select a package below to get started: </h4>
-<%}%>
+    <h3 class="white-text">Welcome <%=user.fname%>! Select a package below to get started</h3>
+<%} else {%>
 
-<h1>Select Package</h1>
+<h1 class="white-text">Select Package</h1>
+
+<%}%>
 
 <div class="row">
 <%packages.forEach(function(package){ %>
