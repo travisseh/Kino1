@@ -11,8 +11,8 @@
 
     <div class="row">
         <div class="col-lg">
-            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/  <%=nextWorkout.nameShort%>'">
-                <img class="card-img-top" src="<%= nextWorkout.image %>" alt="Card image cap">
+            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>'">
+                <img class="card-img-top" src="<%=nextWorkout.image%>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
                     <p class="card-text"><%= nextWorkout.description %></p>
