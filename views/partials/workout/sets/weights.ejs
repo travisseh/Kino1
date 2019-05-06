@@ -33,7 +33,7 @@
                 <div class="inline-block my-counter-div">
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
                     
-                    <input type="number" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-exercise="<%=index%>" data-has-warmups="<%=hasWarmUps%>" 
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-exercise="<%=index%>" data-has-warmups="<%=hasWarmUps%>" 
                     id="weight_<%=index%>_<%=i%>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;"
                     <%if (hoursDifference9 != undefined && hoursDifference9 != null && hoursDifference9 < 18 && lastExercises[index].sets[1].weight != null) {%>
                         value="<%=lastWeight2%>" 
