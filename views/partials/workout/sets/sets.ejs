@@ -20,7 +20,7 @@
     <%hoursDifference2 = null%>
     <%}%>  
 
-    <%if (hoursDifference2 != undefined && hoursDifference2 != null && hoursDifference2 < 18 && lastExercises[index].sets[1].weight != null){%>
+    <%if (hoursDifference2 != undefined && hoursDifference2 != null && hoursDifference2 < 18 && lastExercises[index].sets[1] != undefined &&lastExercises[index].sets[1].weight != null){%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">

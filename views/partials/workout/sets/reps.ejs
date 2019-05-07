@@ -15,7 +15,7 @@
     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
     
     <input type="number" inputmode="numeric" pattern="[0-9]*" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
-    <%if (hoursDifference5 != undefined && hoursDifference5 != null && hoursDifference5 < 18 && lastExercises[index].sets[1].weight != null && lastReps2 != undefined) {%>
+    <%if (hoursDifference5 != undefined && hoursDifference5 != null && hoursDifference5 < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null && lastReps2 != undefined) {%>
         value="<%=lastReps2%>"
     <% } else if (displayExercises[index][i].low === null) { %>
         value="<%=displayExercises[index][i].high%>"

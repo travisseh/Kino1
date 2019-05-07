@@ -52,7 +52,7 @@
                         <% const weight = displayExercises[index][index4].weight %>
 
                         <p><button class="btn-list-number"><%=index4 + 1%></button>
-                            <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1].weight != null){%>
+                            <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null){%>
                                 <%=lastReps3%> <%=unit%> at <%=weight%> lbs
                             <%} else if (displayExercises[index][index4].low === null) { %>
                                 <%=displayExercises[index][index4].high%> <%=unit%> at <%=weight%> lbs
@@ -61,7 +61,7 @@
                             <% } %>
                         </p>
                     <%})%>
-                    <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1].weight != null) {%>
+                    <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null) {%>
                         <div style="text-align: center;">
                         <p class="diminished no-margin"><img src="/icons/checkMark.svg"> Completed - <a href="#" class="italic">Edit</a></p>
                         </div>
