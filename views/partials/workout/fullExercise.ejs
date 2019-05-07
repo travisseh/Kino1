@@ -31,7 +31,8 @@ aria-hidden="true">
                     <%})%>
                 <%}%>
                 <!-- Handle if notes from course -->
-                <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
+                <%console.log(exercise.notesFromCourse)%>
+                <%if (exercise.notesFromCourse.length > 0){%>
                     <h6>Notes From Course</h6>
                     <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
                         <p><%=paragraph%></p>
