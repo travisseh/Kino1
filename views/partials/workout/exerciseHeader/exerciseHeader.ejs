@@ -1,7 +1,9 @@
-<div >
 <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
 <h2 class="card-title"><%= exercise.name %> </h2>
 </div>
-    
 
-</div>
+    <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
+        <p class="inline-block" style="margin-top: -20px;"><a href="#" data-toggle="modal" data-target="#instructionsModal<%=index%>">Instructions</a></p>
+
+        <%- include("./instructionsModal.ejs", {index: index, exercise: exercise}) -%>
+    <%}%>
