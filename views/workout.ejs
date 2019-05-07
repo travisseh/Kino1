@@ -49,11 +49,14 @@
                     <%exercise.sets.forEach(function(set, index4){%>
                         <%const lastWeight3 = lastExercises[index].sets[index4].weight%>
                         <%const lastReps3 = lastExercises[index].sets[index4].reps%>
+                        <%const lastNote = lastExercises[index].sets[index4].note%>
                         <% const weight = displayExercises[index][index4].weight %>
 
                         <p><button class="btn-list-number"><%=index4 + 1%></button>
                             <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null){%>
-                                <%=lastReps3%> <%=unit%> at <%=weight%> lbs
+                                <%=lastReps3%> <%=unit%> at <%=weight%> lbs<%if (lastNote.length > 0){%>
+                                , <%=lastNote%>
+                                <%}%>
                             <%} else if (displayExercises[index][index4].low === null) { %>
                                 <%=displayExercises[index][index4].high%> <%=unit%> at <%=weight%> lbs
                             <% } else { %>
