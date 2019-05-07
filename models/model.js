@@ -154,6 +154,10 @@ const userSchema = new mongoose.Schema ({
         type: Boolean,
         default: false
     },
+    dismissCalTracks: {
+        type: Boolean,
+        default: false
+    },
     selectedPackage: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Package"

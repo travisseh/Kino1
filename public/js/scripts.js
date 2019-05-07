@@ -75,6 +75,15 @@ $(".ask-about-macro-button").on("click", function(){
     )
 })
 
+//save dismissCalTracks status onclick
+
+$("#dismissCalTracks").on("click", function(){
+    $.post(`${localUrl}/macroCalc/dismissCalTracks`, function(err, data){
+        $("#calTracks").hide()
+    }
+    )
+})
+
 
 
 

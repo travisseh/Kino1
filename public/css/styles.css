@@ -122,6 +122,9 @@ h1 {
 p {
     margin-bottom: 10px;
 }
+ul {
+    margin-bottom: 20px;
+}
 .my-btn {
     border-radius: 0.625rem;
     text-transform: capitalize;

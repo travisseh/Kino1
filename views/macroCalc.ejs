@@ -24,22 +24,28 @@
 <% const perMealCarbs = dailyCarbs/3 %> 
 <% const perMealFats = dailyFats/3 %> 
 
+
 <% if (weight != null) { %>
 
-  <div class="card">
-    <div class="card-body">
-      <h4 class="report-tile-title">Recommended Calorie Trackers </h4>
-      <ul>
-        <li>
-            <a target="_blank" href="https://www.mynetdiary.com/">MyNetDiary  <img class="external-link" src="/icons/ExternalLink.svg"></a>
-        </li>
-        <div class="spacer-div"></div>
-        <li>
-            <a target="_blank" href="https://www.myfitnesspal.com/">MyFitnessPal  <img class="external-link" src="/icons/ExternalLink.svg"></a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <%if (dismissCalTracks === undefined || dismissCalTracks === false){%>
+      <div class="card" id="calTracks">
+        <div class="card-body">
+          <h4 class="report-tile-title">Recommended Calorie Trackers </h4>
+          <ul>
+            <li>
+                <a target="_blank" href="https://www.mynetdiary.com/">MyNetDiary  <img class="external-link" src="/icons/ExternalLink.svg"></a>
+            </li>
+            <div class="spacer-div"></div>
+            <li>
+                <a target="_blank" href="https://www.myfitnesspal.com/">MyFitnessPal  <img class="external-link" src="/icons/ExternalLink.svg"></a>
+            </li>
+          </ul>
+          <div id="dismissCalTracks" style="text-align: center; color: #959595; font-style: italic;">
+            Dismiss
+          </div>
+        </div>
+      </div>
+  <%}%>
 
 </div>
 
