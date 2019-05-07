@@ -398,10 +398,6 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
     opacity: .5;
     z-index: 1;
 }
-/* .Center-Container {
-    position: relative;
-    height: 100%;
-} */
   
 .Absolute-Center {
     width: 50%;
