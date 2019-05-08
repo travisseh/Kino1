@@ -1,6 +1,13 @@
 <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
                 <div>
-                <div>Enter your estimated max for <%=displayExercises[index][0].low%> <%=unit%> of this exercise and we'll calculate your set!</div>
+                <div>Enter your estimated max for <%if(displayExercises[index][0].low === null){%>
+                    <%=displayExercises[index][0].high%>
+                    <%} else {%>
+                    <%=displayExercises[index][0].low%>
+                    <%}%> <%=unit%> of this exercise and we'll calculate your set!</div>
+
+                <%console.log(exercise.name)%>
+                <%console.log(displayExercises[index])%>
 
                 <%exercise.sets.forEach(function(set, index3){%>
                     

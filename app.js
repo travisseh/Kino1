@@ -28,7 +28,6 @@ const workout = require("./routes/workout")
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
-
 // seedPackages()
 
 //GLOBAL SETTINGS

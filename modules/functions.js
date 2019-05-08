@@ -148,12 +148,22 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
         break
 
       case "Standard Pyramid Tweaked":
-        if (i < templateSets.length -1) {
+        if (i === 0){
           displaySets.push(
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
               weight: lastSets[i].weight + weightIncrement
+            }
+          )
+        }
+        else if (i > 0 && i < templateSets.length - 1) {
+          console.log("templatesets length: " + templateSets.length)
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: displaySets[i-1].weight
             }
             )
         } else {
@@ -202,7 +212,7 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), 5)) 
+              weight: (displaySets[i-1].weight - round((displaySets[i-1].weight * .1), weightIncrement)) 
             }
             )
         } 

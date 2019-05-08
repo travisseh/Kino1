@@ -164,7 +164,7 @@ const goddess_toning = new Package (
                   name: "Lying Leg Raises",
                   videoLink: "https://my.kinobody.com/courses/66905/lectures/989806",
                   order: 4,
-                  instructions: ["10-20 reps per set.", "Rest 1 minute between sets."],
+                  instructions: ["10-20 reps per set.", "Rest 1 minute between sets.", "Add weight between feet once you can do 20 reps per set."],
                   notesFromCourse: [ "Lying leg raises and hanging knee raises will strengthen your entire core, from top to bottom.", "As well, you’ll build flexibility along the back of your legs. Leg raise variations also promote a strong low back."],
                   type: "Standard Pyramid",
                   weightIncrement: 5,
