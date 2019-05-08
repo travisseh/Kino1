@@ -45,33 +45,40 @@
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
 
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
-                    <h6>Sets</h6>
-                    <%exercise.sets.forEach(function(set, index4){%>
-                        <%const lastWeight3 = lastExercises[index].sets[index4].weight%>
-                        <%const lastReps3 = lastExercises[index].sets[index4].reps%>
-                        <%const lastNote = lastExercises[index].sets[index4].note%>
-                        <% const weight = displayExercises[index][index4].weight %>
+                        <h6>Sets</h6>
+                        <%exercise.sets.forEach(function(set, index4){%>
+                            <%const lastWeight3 = lastExercises[index].sets[index4].weight%>
+                            <%const lastReps3 = lastExercises[index].sets[index4].reps%>
+                            <%const lastNote = lastExercises[index].sets[index4].note%>
+                            <%let weight%>
+                            <%if (exercise.dropDown.length > 0){%>
+                                <%weight = exercise.dropDown[displayExercises[index][index4].weight]%>
+                            <%} else { weight = "at " + displayExercises[index][index4].weight + " lbs"}%>
 
-                        <p><button class="btn-list-number"><%=index4 + 1%></button>
-                            <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null){%>
-                                <%=lastReps3%> <%=unit%> at <%=weight%> lbs<%if (lastNote.length > 0){%>
-                                , <%=lastNote%>
-                                <%}%>
-                            <%} else if (displayExercises[index][index4].low === null) { %>
-                                <%=displayExercises[index][index4].high%> <%=unit%> at <%=weight%> lbs
-                            <% } else { %>
-                                <%=displayExercises[index][index4].low%> <%=unit%> at <%=weight%> lbs
-                            <% } %>
-                        </p>
-                    <%})%>
-                    <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null) {%>
-                        <div style="text-align: center;">
-                        <p class="diminished no-margin"><img src="/icons/checkMark.svg"> Completed - <a href="#" class="italic">Edit</a></p>
-                        </div>
-                    <%} else {%>
-                        <button class="my-btn btn-full-width my-btn-secondary waves-effect waves-orange">Start Exercise</button>
-                    <%}%>
+                            <p><button class="btn-list-number"><%=index4 + 1%></button>
+                                <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null){%>
+                                    <%=lastReps3%> <%=unit%> <%=weight%> <%if (lastNote.length > 0){%>
+                                    , <%=lastNote%>
+                                    <%}%>
+                                <%} else if (displayExercises[index][index4].low === null) { %>
+                                    <%=displayExercises[index][index4].high%> <%=unit%> <%=weight%> 
+                                <% } else { %>
+                                    <%=displayExercises[index][index4].low%> <%=unit%> <%=weight%> 
+                                <% } %>
+                            </p>
+                        <%})%>
+
+                        <!--If Completed in last 18 hours show Completed CheckMark-->
+                        <%if (hoursDifference != undefined && hoursDifference != null && hoursDifference < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null) {%>
+                            <div style="text-align: center;">
+                            <p class="diminished no-margin"><img src="/icons/checkMark.svg"> Completed - <a href="#" class="italic">Edit</a></p>
+                            </div>
+                        <%} else {%>
+                            <button class="my-btn btn-full-width my-btn-secondary waves-effect waves-orange">Start Exercise</button>
+                        <%}%>
                     </div>
+
+                    <!--FullExercise Modal-->
                     <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
                 </div>
             </div>
