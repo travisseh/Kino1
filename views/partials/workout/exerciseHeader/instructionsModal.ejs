@@ -7,7 +7,7 @@ aria-hidden="true">
         <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
         </img>
     </div>
-    <div class="modal-body">
+    <div class="modal-body modal-body-instructions">
         <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video <img class="external-link" src="/icons/ExternalLink.svg"></a></p>
         
         <!-- Handle all paragraphs -->
@@ -21,7 +21,7 @@ aria-hidden="true">
             <%})%>
         <%}%>
         <%#HANDLE IF NOTES FROM COURSE%> 
-        <%if (exercise.notesFromCourse != null | exercise.notesFromCourse != undefined){%>
+        <%if (exercise.notesFromCourse.length > 0){%>
             <h6>Notes From Course</h6>
             <%exercise.notesFromCourse.forEach(function(paragraph, index2){%>
                 <p><%=paragraph%></p>

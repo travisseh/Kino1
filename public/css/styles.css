@@ -279,6 +279,11 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
     margin: 0;
     background-color: white;
 }
+.modal-body-instructions {
+    margin: 1.875rem;
+    padding: 0;
+    background-color: white;
+}
 .x-circle {
     display: inline-block;
     border-radius: 1rem;
