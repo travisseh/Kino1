@@ -158,7 +158,6 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
           )
         }
         else if (i > 0 && i < templateSets.length - 1) {
-          console.log("templatesets length: " + templateSets.length)
           displaySets.push(
             {
               low: templateSets[i].low,
@@ -416,6 +415,8 @@ function NumberToLetter(number){
   })
   return letter
 }
+
+console.log("dirname: " + __dirname)
 
 
 module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber}
