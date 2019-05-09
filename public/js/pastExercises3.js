@@ -11,7 +11,7 @@ $(".viewPast2").on("click", function(){
     templateExerciseName.split(' ').join('_')
     console.log("exercise name: " + templateExerciseName)
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}/`, function(data){
         $(".past-exercises2").eq(exercise).html(function(){
             return "loading history..."
         })
@@ -60,7 +60,7 @@ $(".viewPast").on("click", function(){
     templateExerciseName.split(' ').join('_')
     console.log("exercise name: " + templateExerciseName)
 
-    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}`, function(data){
+    $.get(`${prodUrl}/workout/warrior_shredded/A/exercise/${templateExerciseName}/`, function(data){
         $(".modal-body.past-exercises").eq(exercise).html(function(){
             return "loading history..."
         })
