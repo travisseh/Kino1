@@ -107,11 +107,13 @@
 
   </div>
 
-<%}%> 
-
 <div class="container-fluid">
 
 <a href="/dashboard">Return to Dashboard</a>
+
+<%} else {%> 
+  <div class="container-fluid">
+<%}%>
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
