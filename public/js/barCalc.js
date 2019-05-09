@@ -153,7 +153,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-        return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight)
     })
 
     //Normal weight BarCalc
@@ -182,7 +182,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        return "<i class='fas fa-dumbbell text-muted'></i> " + barCalc2(lastWeight,currentWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight)
         })
   }
 

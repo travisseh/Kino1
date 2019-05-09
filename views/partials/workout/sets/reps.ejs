@@ -12,7 +12,7 @@
 <%}%> 
 
 <div class="inline-block my-counter-div">
-    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
+    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><img src="/icons/minus.svg"></button>
     
     <input type="number" inputmode="numeric" pattern="[0-9]*" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
     <%if (hoursDifference5 != undefined && hoursDifference5 != null && hoursDifference5 < 18 && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight != null && lastReps2 != undefined) {%>
@@ -24,5 +24,5 @@
     <% } %>
     name="reps[]" min="0" max="999">
     
-    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><i class="fal fa-plus"></i></button>
+    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><img src="/icons/plus.svg"></button>
 </div> <%=unit%>

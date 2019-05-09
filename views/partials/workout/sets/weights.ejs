@@ -31,7 +31,7 @@
             <% if (exercise.warmUps != undefined && exercise.warmUps != null) {hasWarmUps = 1} else {hasWarmUps = 0} %>    
 
                 <div class="inline-block my-counter-div">
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><i class="fal fa-minus"></i></button>
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><img src="/icons/minus.svg"></button>
                     
                     <input type="number" inputmode="numeric" pattern="[0-9]*" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-exercise="<%=index%>" data-has-warmups="<%=hasWarmUps%>" 
                     id="weight_<%=index%>_<%=i%>" name="weight[]" step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;"
@@ -40,7 +40,7 @@
                     <%} else {%>
                         value="<%= weight %>"
                     <%}%>>
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><i class="fal fa-plus"></i></button>
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><img src="/icons/plus.svg"></button>
                 </div> lbs 
 
             <% } %>

@@ -20,12 +20,12 @@
                         <h4>Max Weight</h4>
 
                         <div class="inline-block my-counter-div">
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><i class="fal fa-minus"></i></button>
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><img src="/icons/minus.svg"></button>
                             
                             <input type="number" inputmode="numeric" pattern="[0-9]*" class="my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
                             value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
                             
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><i class="fal fa-plus"></i></button>
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><img src="/icons/plus.svg"></button>
 
                         </div> lbs 
                         <p></p>
