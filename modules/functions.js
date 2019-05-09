@@ -416,7 +416,4 @@ function NumberToLetter(number){
   return letter
 }
 
-console.log("dirname: " + __dirname)
-
-
 module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber}

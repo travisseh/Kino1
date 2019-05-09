@@ -31,7 +31,7 @@ mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
 
 //GLOBAL SETTINGS
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -45,14 +45,6 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 mongoose.set("useCreateIndex", true)
-
-
-
-// app.use(function(req, res, next){
-//     res.locals.error = req.flash('error')
-//     res.locals.success = req.flash('success')
-// })
-
 
 
 //ROUTES
