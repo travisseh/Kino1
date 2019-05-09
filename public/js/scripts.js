@@ -13,7 +13,7 @@
 $(document).ready(function () {
 
 const localUrl = 'http://localhost:8080'
-const prodUrl = 'https://kinohelper.herokuapp.com'
+const prodUrl = 'https://kinohelper.com'
 
 //AUTO-SCROLL TO WHERE BUTTON WAS CLICKED 
 let scroll = localStorage.getItem('scroll-pos', 0)
