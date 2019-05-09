@@ -14,7 +14,7 @@
     <%hoursDifference7 = null%>
 <%}%> 
 
-<%if (lastReps != null && lastExercises[index].sets[1] != undefined && lastExercises[index].sets[1].weight !=null && lastExercises[index].sets[1].weight != undefined && hoursDifference7 != undefined && hoursDifference7 != null && hoursDifference7 >= 18){ %>
+<%if (lastReps != null && hoursDifference7 != (undefined || null) && hoursDifference7 < 18 && (lastExercises[index].sets[1] != (undefined || null) || exercise.name === "Hip Bridge Hold")){ %>
     <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
     <%=functions.optionMapper(exerciseName, lastWeight)%>
     <%} else {%>
