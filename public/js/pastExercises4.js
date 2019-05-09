@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 const localUrl = 'http://localhost:8080'
-const prodUrl = 'https://kinohelper.com'
+const prodUrl = 'https://www.kinohelper.com'
     
 $(".viewPast2").on("click", function(){
     //look up the last exercises
