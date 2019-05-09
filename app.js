@@ -31,8 +31,8 @@ mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
 
 //GLOBAL SETTINGS
-// app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
-app.use(express.static(path.join(__dirname, "public"), { maxAge: 30 }))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
+// app.use(express.static(path.join(__dirname, "public"), { maxAge: 30 }))
 // app.use(express.static(path.join(__dirname, "public")))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
