@@ -29,13 +29,16 @@ $(".viewPast2").on("click", function(){
         //open a div and fill it with content
         $(".past-exercises2").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
+                console.log("data is null or undefined")
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
+                console.log("found the proper exercise and data isn't null")
                 return `
                 ${data.map(function(el){
                     //ignore NUX generated exercise
+                    console.log(el.sets[1].weight)
                     if (el.sets[1].weight != null) {
-                        //make the date relative to now
+                    //make the date relative to now
                     const daysFromNow = moment(el.date).format('dddd, MMMM Do')
                     //return the date
                     return `<h6>${daysFromNow}</h6>
@@ -48,6 +51,8 @@ $(".viewPast2").on("click", function(){
                         return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
                     }).join('')}
                     <div class="spacer-div"></div>`
+                    } else {
+                        return '<p>No sets of this exericse have been recorded yet!</p>'
                     }
                 }).join('')}
             `  
