@@ -27,10 +27,11 @@ $(".viewPast2").on("click", function(){
     .done(function(data){
         //open a div and fill it with content
         $(".past-exercises2").eq(exercise).html(function(){
-            if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
-                return '<p>No sets of this exericse have been recorded yet!</p>'
-            } else {
-                return "<p>return worked</p>"
+            "<p>test</p>"
+            // if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
+            //     return '<p>No sets of this exericse have been recorded yet!</p>'
+            // } else {
+            //     return "<p>return worked</p>"
             //     return `
             //     ${data.map(function(el){
             //         //ignore NUX generated exercise
@@ -57,7 +58,7 @@ $(".viewPast2").on("click", function(){
             //         } 
             //     }).join('')}
             // ${console.log("stuff successfully joined")}`  
-            }
+            // }
         })
     })
 })
