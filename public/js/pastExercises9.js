@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-const localUrl = 'http://localhost:8080'
+const localUrl = 'http://localhost:8000'
 const prodUrl = 'https://www.kinohelper.com'
     
 $(".viewPast2").on("click", function(){
@@ -51,10 +51,11 @@ $(".viewPast2").on("click", function(){
                         console.log("weight: " + set.weight)
                         return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
                     }).join('')}
+                    ${console.log("thing was joined")}
                     <div class="spacer-div"></div>`
                     } 
                 }).join('')}
-            `  
+            ${console.log("stuff successfully joined")}`  
             }
         })
     })
