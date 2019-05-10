@@ -30,32 +30,33 @@ $(".viewPast2").on("click", function(){
             if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
-                return `
-                ${data.map(function(el){
-                    //ignore NUX generated exercise
-                    console.log(el.sets[1].weight)
-                    if (el.sets[1].weight != null) {
-                    //make the date relative to now
-                    const daysFromNow = moment(el.date).format('dddd, MMMM Do')
-                    console.log(daysFromNow)
-                    //return the date
-                    return `<h6>${daysFromNow}</h6>
-                    ${el.sets.map(function(set, i){
-                        //return each set
-                        let note = ""
-                        if (set.note != ("" || null || undefined)){
-                            note = `, ${set.note}`
-                        }
-                        console.log("note: " + note)
-                        console.log("reps: " + set.reps)
-                        console.log("weight: " + set.weight)
-                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
-                    }).join('')}
-                    ${console.log("thing was joined")}
-                    <div class="spacer-div"></div>`
-                    } 
-                }).join('')}
-            ${console.log("stuff successfully joined")}`  
+                return "<p>return worked</p>"
+            //     return `
+            //     ${data.map(function(el){
+            //         //ignore NUX generated exercise
+            //         console.log(el.sets[1].weight)
+            //         if (el.sets[1].weight != null) {
+            //         //make the date relative to now
+            //         const daysFromNow = moment(el.date).format('dddd, MMMM Do')
+            //         console.log(daysFromNow)
+            //         //return the date
+            //         return `<h6>${daysFromNow}</h6>
+            //         ${el.sets.map(function(set, i){
+            //             //return each set
+            //             let note = ""
+            //             if (set.note != ("" || null || undefined)){
+            //                 note = `, ${set.note}`
+            //             }
+            //             console.log("note: " + note)
+            //             console.log("reps: " + set.reps)
+            //             console.log("weight: " + set.weight)
+            //             return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
+            //         }).join('')}
+            //         ${console.log("thing was joined")}
+            //         <div class="spacer-div"></div>`
+            //         } 
+            //     }).join('')}
+            // ${console.log("stuff successfully joined")}`  
             }
         })
     })
