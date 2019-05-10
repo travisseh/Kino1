@@ -25,14 +25,11 @@ $(".viewPast2").on("click", function(){
         })
     })
     .done(function(data){
-        console.log("history loading done - starting to fill html")
         //open a div and fill it with content
         $(".past-exercises2").eq(exercise).html(function(){
             if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
-                console.log("data is null or undefined")
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
-                console.log("found the proper exercise and data isn't null")
                 return `
                 ${data.map(function(el){
                     //ignore NUX generated exercise
@@ -40,20 +37,22 @@ $(".viewPast2").on("click", function(){
                     if (el.sets[1].weight != null) {
                     //make the date relative to now
                     const daysFromNow = moment(el.date).format('dddd, MMMM Do')
+                    console.log(daysFromNow)
                     //return the date
                     return `<h6>${daysFromNow}</h6>
                     ${el.sets.map(function(set, i){
                         //return each set
                         let note = ""
-                        if (set.note != "" && set.note != null && set.note != undefined){
+                        if (set.note != ("" || null || undefined)){
                             note = `, ${set.note}`
                         }
+                        console.log("note: " + note)
+                        console.log("reps: " + set.reps)
+                        console.log("weight: " + set.weight)
                         return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
                     }).join('')}
                     <div class="spacer-div"></div>`
-                    } else {
-                        return '<p>No sets of this exericse have been recorded yet!</p>'
-                    }
+                    } 
                 }).join('')}
             `  
             }
