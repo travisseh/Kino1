@@ -214,11 +214,9 @@ $(document).ready(function () {
     updateWarmUps.call($(this), newValue, passBarCalcValues)
   })
 
-  //other events that should trigger an on-change
-  $(window).on("load", function(){
-      console.log("window loaded!")
-      $(".quantity").trigger("change")
-  })
+  //on page load/document ready trigger change so it's always there
+  $(".quantity").trigger("change")
+
   $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
   })

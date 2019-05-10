@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const ejs = require("ejs")
 var cors = require('cors')
 const app = express()
-const port = 8080
+const port = 8000
 const path = require("path")
 const flash = require('connect-flash')
 
@@ -32,9 +32,9 @@ mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
 
 //GLOBAL SETTINGS
-// app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 // app.use(express.static(path.join(__dirname, "public"), { maxAge: 30 }))
-app.use(express.static(path.join(__dirname, "public")))
+// app.use(express.static(path.join(__dirname, "public")))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
