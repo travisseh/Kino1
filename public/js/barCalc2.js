@@ -207,14 +207,16 @@ function updateWarmUps (newValue, callback) {
 //PASS VALUES TO BARCALC
 
 $(document).ready(function () {
-
+  console.log("document ready run!")
   $(".quantity").change(function(){
+    console.log("document changed - i.e. stuff happened")
     const newValue = $(this).val()
     updateWarmUps.call($(this), newValue, passBarCalcValues)
   })
 
   //other events that should trigger an on-change
   $(window).on("load", function(){
+      console.log("window loaded!")
       $(".quantity").trigger("change")
   })
   $(".weight-button").on("click", function(){
