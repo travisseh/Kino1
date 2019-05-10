@@ -9,6 +9,6 @@
     <%hoursDifference8 = null%>
 <%}%> 
 
-<%if (exercise.weightType === "bar" && hoursDifference8 != (undefined || null) && hoursDifference8 < 18 && (lastExercises[index].sets[1] != (undefined || null) || exercise.name === "Hip Bridge Hold")) { %>
+<%if (exercise.weightType === "bar" && hoursDifference8 != (undefined || null) && hoursDifference8 >= 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")) { %>
 <p class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"><img src="/icons/dumbbell.svg"></p>
 <%}%>

@@ -20,7 +20,7 @@
     <%hoursDifference2 = null%>
     <%}%>  
 
-    <%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+    <%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")) {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">

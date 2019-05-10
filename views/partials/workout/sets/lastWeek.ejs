@@ -14,18 +14,17 @@
     <%hoursDifference7 = null%>
 <%}%> 
 
-<%console.log(exercise.name)%>
-<%console.log(hoursDifference7)%>
-<%console.log(lastExercises[index].sets[1])%>
-<%console.log(lastExercises[index].sets[1].weight)%>
-<%console.log("last reps: " + lastReps)%>
+<%if (lastReps != null && hoursDifference7 != (undefined || null) && hoursDifference7 >= 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")){%>
+        <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at 
+            <%if (exercise.dropDown.length > 0){%>
+                <%=functions.optionMapper(exerciseName, lastWeight)%>
+            <%} else {%>
+                <%=lastWeight%>lbs
+            <%}%>
+            <%if (lastNote) {%>
+            , <%=lastNote%>
+            <%}%>
+        </p>
+    <%}%>
 
-<%if (hoursDifference7 != (undefined || null) && hoursDifference7 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold") && lastReps != null){ %>
-    <%console.log("true")%>
-    <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at <%if (exercise.dropDown.length > 0){ %>
-    <%=functions.optionMapper(exerciseName, lastWeight)%></p>
-    <%} else {%>
-    <%console.log("false")%>
-    <p><%=lastWeight%>lbs<%}%><% if (lastNote) {%>, <%=lastNote%><%}%>
-    </p>
-    <%} %>
+   
