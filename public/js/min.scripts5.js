@@ -16,7 +16,6 @@ $(document).on('hidden.bs.modal',function(event){if($('.modal:visible').length){
 if($('#askAboutMacro').data('ask-about-macro')===false){$('#askAboutMacro').modal('show')}
 $(".ask-about-macro-button").on("click",function(){$.post(`${prodUrl}/dashboard/`,function(err,data){if(err){console.log(err)}else{console.log("data: "+data)}})})
 $("#dismissCalTracks").on("click",function(){
-    console.log("dismiss clicked")
     $.post(`${prodUrl}/macroCalc/dismissCalTracks/`, function(err,data){
         if (err) {
             console.log(err)
