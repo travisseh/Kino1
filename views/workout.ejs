@@ -7,6 +7,8 @@
 <%#LOOP FOR OVER ALL EXERCISE%>
 <%exercises.forEach(function(exercise, index){%>
 
+<%console.log(exercise.name + " index: " + index)%>
+
 <%#CHANGE UNIT FOR SELECT EXERCISES%>
 <% let unit = "reps" %>  
 <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>

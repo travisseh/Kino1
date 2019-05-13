@@ -43,6 +43,10 @@
 
                     <%}%>
                 <%})%>
+                
+    <!--dumb div because history modal depends on looking up an array of past-exercise2 through jquery and it throws it off if it doesn't exist in the firstTimeExercise state-->
+    <div class="past-exercises2"></div>
+    <!--End dumb div-->
 
     <input type="hidden" name="isFirstTime" value="true">
     <input type="hidden" name="step" value="<%=exercise.weightIncrement%>">
