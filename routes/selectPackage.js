@@ -4,7 +4,7 @@ const User = require("../models/model").User
 const middleware = require("../middleware")
 const selectPackage = express.Router()
 
-selectPackage.get("/", middleware.isLoggedIn,function(req,res,next){
+selectPackage.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,next){
         Package.find({}, function(err, foundPackages){
             if (err) {
                 console.log(err)
@@ -13,6 +13,8 @@ selectPackage.get("/", middleware.isLoggedIn,function(req,res,next){
                     if (err){
                         console.log(err)
                     } else {
+                        console.log("User has access: ")
+                        console.log(req.user.hasAccess)
                         res.render("selectPackage", {packages: foundPackages, user: foundUser, success: req.flash('success'), error: req.flash('error')})
                     }
                 })

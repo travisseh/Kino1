@@ -17,6 +17,14 @@ function hasPackageSelected (req, res, next){
     
 }
 
+function hasAccess (req, res, next) {
+    if (req.user.hasAccess === (undefined || null || true)) {
+        return next()
+    } else {
+        res.redirect("/closedSignup")
+    }
+}
 
 
-module.exports = {isLoggedIn, hasPackageSelected}
+
+module.exports = {isLoggedIn, hasPackageSelected, hasAccess}

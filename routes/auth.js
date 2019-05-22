@@ -27,15 +27,33 @@ passport.use(new GoogleStrategy({
 },
 function(accessToken, refreshToken, profile, cb) {
 
-  User.findOrCreate({ 
-    googleId: profile.id,
-    email: profile.emails[0].value,
-    fname: profile.name.givenName,
-    lname: profile.name.familyName,
-    photoUrl: profile.photos[0].value
-  }, function (err, user) {
-    return cb(err, user);
-  });
+  // User.findOrCreate({ 
+  //   googleId: profile.id,
+  //   email: profile.emails[0].value,
+  //   fname: profile.name.givenName,
+  //   lname: profile.name.familyName,
+  //   photoUrl: profile.photos[0].value
+  // }, function (err, user) {
+  //   return cb(err, user);
+  // });
+  User.findOne({
+    googleId: profile.id
+  }, function(err, user){
+    if (user){
+      return cb(err,user)
+    } else {
+      User.create({
+        googleId: profile.id,
+        email: profile.emails[0].value,
+        fname: profile.name.givenName,
+        lname: profile.name.familyName,
+        photoUrl: profile.photos[0].value,
+        hasAccess: false
+      }, function(err, user){
+        return cb(err,user)
+      })
+    }
+  })
 }
 ));
 

@@ -167,7 +167,14 @@ const userSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Exercise"
       }
-    ]
+    ],
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    hasAccess: {
+        type: Boolean
+    }
   })
   
   userSchema.plugin(passportLocalMongoose)
