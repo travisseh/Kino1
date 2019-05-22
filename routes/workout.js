@@ -11,7 +11,7 @@ const workout = express.Router()
 
 
 
-workout.get("/:package/:workout", middleware.isLoggedIn, function(req, res, next){
+workout.get("/:package/:workout", middleware.isLoggedIn, middleware.hasAccess, function(req, res, next){
     //get each list of templatesets
   const packageUrl = req.params.package
   const nameShort = req.params.workout
