@@ -18,6 +18,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= package.name %> </h5>
           <p class="card-text"><%=package.description%></p>
+          <input type="hidden" name="packageName" value="<%=package.name%>">
           <button class="my-btn my-btn-secondary" type="submit" name="package_id" value="<%=package._id%>">Activate</button>
         </div>
       </div>

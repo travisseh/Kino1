@@ -162,6 +162,9 @@ const userSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Package"
     },
+    packageName: {
+        type: String,
+    },
     exercises: [
       {
         type: mongoose.Schema.Types.ObjectId,

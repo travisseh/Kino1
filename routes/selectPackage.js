@@ -13,8 +13,6 @@ selectPackage.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req
                     if (err){
                         console.log(err)
                     } else {
-                        console.log("User has access: ")
-                        console.log(req.user.hasAccess)
                         res.render("selectPackage", {packages: foundPackages, user: foundUser, success: req.flash('success'), error: req.flash('error')})
                     }
                 })
@@ -27,7 +25,9 @@ selectPackage.post("/", middleware.isLoggedIn,function(req, res, next){
     //return modal that asks for the product number from their receipt - if it hasn't been entered yet
     //flash success message
     const package_id = req.body.package_id
-    User.findOneAndUpdate({_id: req.user._id}, {selectedPackage: package_id}, function(err,raw){
+    const package_name = req.body.packageName
+    console.log("package name: " + package_name)
+    User.findOneAndUpdate({_id: req.user._id}, {selectedPackage: package_id, packageName: package_name}, function(err,raw){
         if(err){
             console.log(err)
         } else {

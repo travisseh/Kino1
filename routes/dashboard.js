@@ -8,10 +8,10 @@ const dashboard = express.Router()
 
 
 dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPackageSelected, function(req, res, next){
-    Package.findOne({_id: req.user.selectedPackage}, function(err, foundPackage){
+    Package.findOne({name: req.user.packageName}, function(err, foundPackage){
         if (err){
             console.log(err)
-        } else if (foundPackage === null) {
+        } else if (foundPackage === null || foundPackage === undefined) {
             res.redirect("/selectPackage") 
         } else {
             //Get the askedaboutMacro status
