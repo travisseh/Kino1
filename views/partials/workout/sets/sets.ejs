@@ -49,7 +49,8 @@
 
     <%})%>
 
-    
+    <%let edit = false %>
+    <%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {edit = true}%>
 
     <input type="hidden" name="isFirstTime" value="false">
     <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">
@@ -58,5 +59,16 @@
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">
     <input type="hidden" name="workout" value="<%= workout.nameShort %>">
     <input type="hidden" name="order" value="<%= exercise.order %>">
-    <button type="submit" class="my-btn my-btn-primary workout-button btn-full-width waves-effect waves-light"><%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>Save Edits<%} else {%>Save Exercise<%}%></button>
+    <button type="submit" class="my-btn my-btn-primary workout-button btn-full-width waves-effect waves-light" 
+        <%if (edit) {%>
+            onclick="amplitude.getInstance().logEvent('Exercise Edited')"
+        <%} else {%>
+            onclick="amplitude.getInstance().logEvent('Exercise Saved')"
+        <%}%>>
+        <%if (edit) {%>
+            Save Edits
+        <%} else {%>
+            Save Exercise
+        <%}%>
+    </button>
     </form>

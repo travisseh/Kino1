@@ -44,6 +44,11 @@
 
         $crisp.push(["set", "user:email", email]);
         $crisp.push(["set", "user:nickname", [fullName]]);
+
+        const identify = new amplitude.Identify()
+        identify.set('name', {'first': fname, 'last': lname})
+        identify.set('email', email)
+        amplitude.identify(identify)
     })
 </script>
 <%- include("partials/headerFooter/footerSimple.ejs") -%>

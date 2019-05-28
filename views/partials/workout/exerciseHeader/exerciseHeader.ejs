@@ -3,7 +3,7 @@
 </div>
 
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold"){ %>
-        <p class="inline-block" style="margin-top: -20px;"><a href="#" data-toggle="modal" data-target="#instructionsModal<%=index%>">Instructions</a></p>
+        <p class="inline-block" style="margin-top: -20px;"><a href="#" data-toggle="modal" data-target="#instructionsModal<%=index%>" onclick="amplitude.getInstance().logEvent('CreateSet Instructions Clicked')">Instructions</a></p>
 
         <%- include("./instructionsModal.ejs", {index: index, exercise: exercise}) -%>
     <%}%>

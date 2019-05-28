@@ -23,12 +23,10 @@
         aria-selected="true">Today</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="instructions-tab-just-<%=index%>" data-toggle="tab" href="#instructions-just-<%=index%>" role="tab" aria-controls="instructions-just"
-        aria-selected="false">Instructions</a>
+        <a class="nav-link" id="instructions-tab-just-<%=index%>" data-toggle="tab" href="#instructions-just-<%=index%>" role="tab" aria-controls="instructions-just" aria-selected="false" onclick="amplitude.getInstance().logEvent('Instructions Clicked')">Instructions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link viewPast2" data-exercise="<%=index%>" id="history-tab-just-<%=index%>" data-toggle="tab" href="#history-just-<%=index%>" role="tab" aria-controls="history-just"
-        aria-selected="false">History</a>
+        <a class="nav-link viewPast2" data-exercise="<%=index%>" id="history-tab-just-<%=index%>" data-toggle="tab" href="#history-just-<%=index%>" role="tab" aria-controls="history-just" aria-selected="false" onclick="amplitude.getInstance().logEvent('History Clicked')">History</a>
     </li>
 
 </ul>

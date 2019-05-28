@@ -50,6 +50,10 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 mongoose.set("useCreateIndex", true)
+app.use(function(req, res, next) {
+    res.locals.AMPLITUDE_API = process.env.AMPLITUDE_API;
+    next();
+});
 
 
 //ROUTES
