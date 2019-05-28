@@ -66,6 +66,12 @@ app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
 
+app.get("/dashTest", function(req, res, next){
+    const error = req.flash("error")
+    const success = req.flash("success")
+    res.render("dashTest", {success: success, error: error})
+})
+
 app.get("/test", function(req, res, next){
     const error = req.flash("error")
     const success = req.flash("success")
