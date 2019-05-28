@@ -34,7 +34,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPa
                             nextDayLastDate = new Date(foundExercise[0].date)
                             nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
                         }
-                        res.render("dashboard", {package: foundPackage, nextDayArray: nextDayArray, nextDayLastDate, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
+                        res.render("dashboard", {package: foundPackage, user: req.user, nextDayArray: nextDayArray, nextDayLastDate, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
                     })
                 }
             })  

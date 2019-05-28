@@ -45,8 +45,19 @@
 <br>
 <br>
 
-
+<div id="userInfo" data-email="<%=user.email%>" data-fname="<%=user.fname%>" data-lname="<%=user.lname%>"></div>
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
-<%- include("partials/headerFooter/footer.ejs") -%>
+<%- include("partials/headerFooter/footerScripts.ejs") -%>
+<script>
+    $(document).ready(function(){
+        const email = $("#userInfo").data("email")
+        console.log("email: " + email)
+        const fname = $("#userInfo").data("fname")
+        const lname = $("#userInfo").data("lname")
+
+        $crisp.push(["set", "user:email", email]);
+    })
+</script>
+<%- include("partials/headerFooter/footerSimple.ejs") -%>
