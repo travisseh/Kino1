@@ -177,6 +177,10 @@ const userSchema = new mongoose.Schema ({
     },
     hasAccess: {
         type: Boolean
+    },
+    barWeight: {
+        type: Number,
+        default: 45
     }
   })
   

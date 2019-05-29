@@ -78,7 +78,7 @@
                     </div>
 
                     <!--FullExercise Modal-->
-                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user}) -%>
                 </div>
             </div>
         </div>
@@ -88,6 +88,8 @@
 <%})%>
 
 </div>
+
+<div id="barWeight" data-bar-weight="<%=user.barWeight%>"></div>
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 

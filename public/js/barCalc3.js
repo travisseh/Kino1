@@ -101,8 +101,8 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     
   }
   
-  function barCalc2(previousWeight, displayWeight) {
-    const barWeight = 45
+  function barCalc2(previousWeight, displayWeight, barWeightInput) {
+    const barWeight = barWeightInput
     const weights = [90, 70, 50, 20, 10, 5]
     let currentWeightMinusBar = displayWeight - barWeight
     let lastWeightMinusBar = previousWeight - barWeight
@@ -134,6 +134,9 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
   }
 
   function passBarCalcValues () {
+    //lookup barWeight
+    const barWeight = $('#barWeight').data("bar-weight")
+    
     //warmup weight BarCalc
     $(".barCalcWarmUp").html(function(){
         //get id of barCalc
@@ -144,7 +147,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         let lastWeight
         //Handle if this is the first warmup
         if (newLastCharacter < 0) {
-            lastWeight = 45
+            lastWeight = barWeight
         } else {
             //find the corresponding lastweight from the warmup <p>
             const lastWarmUpId = ("warmup" + appendId + newLastCharacter)
@@ -153,7 +156,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight)
     })
 
     //Normal weight BarCalc
@@ -174,7 +177,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
                 lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
             } else {
                 //handle if there aren't any warm-ups
-                lastWeight = 45
+                lastWeight = barWeight
             }
         } else {
             const lastWeightId = ("weight" + appendId + newLastCharacter)
@@ -182,7 +185,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight)
         })
   }
 
@@ -207,9 +210,7 @@ function updateWarmUps (newValue, callback) {
 //PASS VALUES TO BARCALC
 
 $(document).ready(function () {
-  console.log("document ready run!")
   $(".quantity").change(function(){
-    console.log("document changed - i.e. stuff happened")
     const newValue = $(this).val()
     updateWarmUps.call($(this), newValue, passBarCalcValues)
   })
@@ -220,11 +221,6 @@ $(document).ready(function () {
   $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
   })
-
-
-
-
-
 
 //END JQUERY.READY
 });
