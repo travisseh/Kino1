@@ -1,0 +1,36 @@
+<%- include("partials/headerFooter/header.ejs") -%>
+
+<h1 class="white-text">Settings</h1>
+<div class="spacer-div"></div>
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="macro-header">Weights</h3>
+    <div class="spacer-div"></div>
+    <form action="/settings" method="POST">
+        <p><div class="inline-block" style="width: 100px;">Weight Unit:</div> <div class="inline-block" style="margin-left:20px;">Coming Soon! </div></p>
+        <p><div class="inline-block" style="width: 100px;">Bar Weight: </div> <input style="margin-left: 20px;" type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="barWeight" max="9999" required value="<%=user.barWeight%>"> lbs </p>
+      <div class="text-center"><button class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium" style="margin-top: 10px;" onclick="amplitude.getInstance().logEvent('Save Settings')">Save Settings</button></div>
+      
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="macro-header">Account</h3>
+    <div class="spacer-div"></div>
+      <p>You are currently logged in as <%=user.email%></p>
+        <div class="spacer-div"></div>
+      <div class="text-center"><a href="/logout" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium">Logout</a></div>
+      
+  </div>
+</div>
+
+
+
+<div class="container-fluid">
+
+<%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
+
+<%- include("partials/headerFooter/footer.ejs") -%>

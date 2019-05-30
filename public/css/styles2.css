@@ -138,7 +138,7 @@ ul {
     margin-bottom: 20px;
 }
 .my-btn {
-    border-radius: 0.625rem;
+    border-radius: 1.25rem;
     text-transform: capitalize;
     font-size: 1rem;
     padding: 0.625rem 1.25rem;
@@ -150,6 +150,10 @@ ul {
     width: 100%;
     max-width: 500px;
     margin: 10px 0;
+}
+.my-btn-medium {
+    padding-left: 60px;
+    padding-right: 60px;
 }
 .my-btn-primary {
     background: #fe8c00;  /* fallback for old browsers */

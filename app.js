@@ -27,6 +27,7 @@ const index = require("./routes/index")
 const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 const closedSignup = require("./routes/closedSignup")
+const settings = require("./routes/settings")
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
@@ -59,6 +60,7 @@ app.use(function(req, res, next) {
 //ROUTES
 app.use("/", index)
 app.use("/dashboard", dashboard)
+app.use("/settings", settings)
 app.use("/selectPackage", selectPackage)
 app.use("/macrocalc", macroCalc)
 app.use("/workout", workout)
