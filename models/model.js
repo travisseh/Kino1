@@ -135,6 +135,7 @@ const exerciseSchema = new mongoose.Schema({
         {
             reps: Number,
             weight: Number,
+            weightKg: Number,
             note: {
                 type: String,
                 maxlength: 140
@@ -181,6 +182,11 @@ const userSchema = new mongoose.Schema ({
     barWeight: {
         type: Number,
         default: 45
+    },
+    weightUnit: {
+        type: String,
+        default: "lbs",
+        enum: ["lbs", "kgs"]
     }
   })
   

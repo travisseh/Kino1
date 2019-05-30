@@ -3,13 +3,39 @@
 <h1 class="white-text">Settings</h1>
 <div class="spacer-div"></div>
 
-<div class="card">
+<div class="card not-active">
   <div class="card-body">
     <h3 class="macro-header">Weights</h3>
     <div class="spacer-div"></div>
-    <form action="/settings" method="POST">
-        <p><div class="inline-block" style="width: 100px;">Weight Unit:</div> <div class="inline-block" style="margin-left:20px;">Coming Soon! </div></p>
-        <p><div class="inline-block" style="width: 100px;">Bar Weight: </div> <input style="margin-left: 20px;" type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="barWeight" max="9999" required value="<%=user.barWeight%>"> lbs </p>
+    <form action="/settings" method="POST" id="settingsForm">
+        <p>
+          <div class="inline-block" style="width: 100px;">Weight Unit:
+          </div> 
+          <div class="inline-block" style="margin-left:20px;">
+            <div class="custom-control custom-radio inline-block">
+              <input type="radio" id="lbs" class="custom-control-input" name="weightUnit" value="lbs" 
+                <%if (user.weightUnit === "lbs"){%>
+                  checked
+                  <%}%>>
+              <label class="custom-control-label" for="lbs">Lbs</label>
+            </div>
+            <div class="custom-control custom-radio inline-block" style="margin-left: 20px;">
+              <input type="radio" id="kgs" class="custom-control-input" name="weightUnit" value="kgs"
+                <%if (user.weightUnit === "kgs"){%>
+                  checked
+                  <%}%>>
+              <label class="custom-control-label" for="kgs">Kgs</label>
+            </div>
+          </div>
+        </p>
+        <%let barWeight%>
+        <%if (user.weightUnit === "kgs"){%>
+          <% barWeight = functions.toKgs(user.barWeight) %>
+        <%} else {%>
+          <% barWeight = user.barWeight %>
+        <%}%> 
+        <%const barWeightlb = user.barWeight%>
+        <div><div class="inline-block" style="width: 100px;">Bar Weight: </div><input style="margin-left: 20px;" type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block" id="barWeightInput" name="barWeight" max="9999" required value="<%=barWeight%>"><div class="inline-block" id="barWeightLabel"><%=user.weightUnit%></div></div>
       <div class="text-center"><button class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium" style="margin-top: 10px;" onclick="amplitude.getInstance().logEvent('Save Settings')">Save Settings</button></div>
       
     </form>
@@ -33,4 +59,31 @@
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
-<%- include("partials/headerFooter/footer.ejs") -%>
+<%- include("partials/headerFooter/footerScripts.ejs") -%>
+<script>
+
+  function toKgs(number){
+  return round((number * 2.2046226218),1)
+  }
+
+  function toLbs(number){
+  return round((number / 2.2046226218),1)
+  }
+
+  function round(number, roundToNumber){
+    return Math.round(number/roundToNumber)*roundToNumber;
+  }
+  $(document).ready(function(){
+    $('#lbs').on('change checked', function(){
+      const barWeight = $('#barWeightInput').val() 
+      $('#barWeightLabel').text('lbs')
+      $('#barWeightInput').val(toLbs(barWeight))
+    })
+    $('#kgs').on('change checked', function(){
+      const barWeight = $('#barWeightInput').val() 
+      $('#barWeightLabel').text('kgs')
+      $('#barWeightInput').val(toKgs(barWeight))
+    })
+  })
+</script>
+<%- include("partials/headerFooter/footerSimple.ejs") -%>

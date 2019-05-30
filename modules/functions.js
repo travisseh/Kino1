@@ -416,4 +416,12 @@ function NumberToLetter(number){
   return letter
 }
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber}
+function toKgs(number){
+  return round((number * 2.2046226218),1)
+}
+
+function toLbs(number){
+  return round((number / 2.2046226218),1)
+}
+
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs}
