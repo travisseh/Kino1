@@ -2,16 +2,23 @@
 
 <h1 class="white-text">Macro Calculator</h1>
 
+<%let displayWeight%>
+<%if (user.weightUnit === "kgs"){%>
+  <% displayWeight = functions.toKgs(weight) %>
+<%} else {%>
+  <% displayWeight = weight %>
+<%}%> 
+
 <div class="card">
   <div class="card-body">
     <h3 class="macro-header">Enter Weight</h3>
     <form action="/macrocalc" method="POST">
-        <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="weight" max="9999" required placeholder="Ex: 187"> lbs
+        <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="weight" max="9999" required placeholder="Ex: 187"> <%=user.weightUnit%>
       <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange inline-block" style="float:right; margin-top: 4px;" onclick="amplitude.getInstance().logEvent('Macros Calculated')">Calculate</button>
       
     </form>
     <% if (weight != null) {%>
-    <p style="margin-top:10px; margin-bottom: 0;">Current weight: <%= weight%></p>
+    <p style="margin-top:10px; margin-bottom: 0;">Current weight: <%= displayWeight%></p>
     <%}%>
   </div>
 </div>

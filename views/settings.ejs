@@ -9,7 +9,7 @@
     <div class="spacer-div"></div>
     <form action="/settings" method="POST" id="settingsForm">
 
-        <%# include("partials/settings/weightUnit.ejs") %>
+        <%-include("partials/settings/weightUnit.ejs", {user: user, functions: functions})-%>
 
         <%let barWeight%>
         <%if (user.weightUnit === "kgs"){%>

@@ -2,6 +2,7 @@ const express = require("express")
 const BodyWeight = require("../models/model").BodyWeight
 const User = require("../models/model").User
 const middleware = require("../middleware")
+const functions = require("../modules/functions")
 const router = express.Router()
 
 router.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req, res, next){
@@ -11,9 +12,9 @@ router.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req, res, 
             console.log(err)
         } else {
             if (foundWeight != null) {
-                res.render("macroCalc", {weight: foundWeight.weight, dismissCalTracks: dismissCalTracks, success: req.flash('success'), error: req.flash('error')})
+                res.render("macroCalc", {user: req.user, functions: functions, weight: foundWeight.weight, dismissCalTracks: dismissCalTracks, success: req.flash('success'), error: req.flash('error')})
             } else {
-                res.render("macroCalc", {weight: null, success: req.flash('success'), error: req.flash('error')})
+                res.render("macroCalc", {user: req.user, functions: functions, weight: null, success: req.flash('success'), error: req.flash('error')})
             }
         }
     })
