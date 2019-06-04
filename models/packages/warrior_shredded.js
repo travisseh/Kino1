@@ -83,7 +83,7 @@ const warrior_shredded = new Package (
                   name: "Incline Dumbbell Curls",
                   videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
                   order: 2,
-                  instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs per dumbbell for reach additional set. Rest 3 minutes between each set."],
+                  instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs/2.5kgs per dumbbell for reach additional set. Rest 3 minutes between each set."],
                   type: "Reverse Pyramid",
                   weightIncrement: 5,
                   startWeight: 0,
