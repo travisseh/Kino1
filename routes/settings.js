@@ -12,7 +12,7 @@ settings.post("/", middleware.isLoggedIn,function(req, res, next){
     let barWeight = req.body.barWeight
     const weightUnit = req.body.weightUnit
     if (weightUnit === "kgs"){
-        barWeight = functions.toLbs(barWeight)
+        barWeight = functions.round(functions.toLbs(barWeight), 1)
     }
     User.findOneAndUpdate({_id: req.user._id}, {barWeight: barWeight, weightUnit: weightUnit}, function(err,raw){
         if(err){

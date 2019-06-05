@@ -21,7 +21,10 @@ router.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req, res, 
 })
 
 router.post("/", middleware.isLoggedIn,function(req, res, next){
-    const weight = req.body.weight
+    let weight = req.body.weight
+    if (req.user.weightUnit === "kgs"){
+        weight = functions.toLbs(weight)
+    }
     const newBodyWeight = new BodyWeight ({
         weight: weight,
         userId: req.user._id

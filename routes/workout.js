@@ -67,7 +67,10 @@ workout.get("/:package/:workout", middleware.isLoggedIn, middleware.hasAccess, f
 
   workout.post("/:package/:workout", middleware.isLoggedIn, function(req, res, next){
     const formReps = req.body.reps
-    const formWeight = req.body.weight
+    let formWeight = req.body.weight
+    if (req.user.weightUnit === "kgs"){
+      formWeight = formWeight.map(functions.toLbs)
+    }
     const formNotes = req.body.note
     const order = req.body.order
     const step = req.body.step
@@ -99,7 +102,10 @@ workout.get("/:package/:workout", middleware.isLoggedIn, middleware.hasAccess, f
 
   workout.post("/:package/:workout/edit", function (req, res, next){
     const formReps = req.body.reps
-    const formWeight = req.body.weight
+    let formWeight = req.body.weight
+    if (req.user.weightUnit === "kgs"){
+      formWeight = formWeight.map(functions.toLbs)
+    }
     const formNotes = req.body.note
     const order = req.body.order
     const step = req.body.step

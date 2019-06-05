@@ -6,6 +6,19 @@
                     <%=displayExercises[index][0].low%>
                     <%}%> <%=unit%> of this exercise and we'll calculate your set!</div>
 
+                <%#ACCOUNT FOR KG STUFF%>
+                <%let step = exercise.weightIncrement%>
+                <% if (user.weightUnit === "kgs"){%>
+                    <%step = exercise.weightIncrementKg %>
+                <% } %>
+
+                <%let startWeight = exercise.startWeight%>
+                <% if (user.weightUnit === "kgs"){%>
+                    <%startWeight = exercise.startWeightKg %>
+                <% } %>
+
+                <%console.log(exercise.name + " " + step + " " + startWeight)%>
+
                 <%exercise.sets.forEach(function(set, index3){%>
                     
                     <%#HANDLE VISIBLE INPUT%>
@@ -23,7 +36,7 @@
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius"><img src="/icons/minus.svg"></button>
                             
                             <input type="number" inputmode="numeric" pattern="[0-9]*" class="my-counter counter-input" data-set-weight="<%=index3%>" id="weight_<%=index%>_<%=index3%>" required
-                            value="<%=exercise.startWeight%>" name="weight[]"  step="<%=exercise.weightIncrement%>" min="<%=exercise.startWeight%>" max="9999">
+                            value="<%=startWeight%>" name="weight[]"  step="<%=step%>" min="<%=startWeight%>" max="9999">
                             
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius"><img src="/icons/plus.svg"></button>
 

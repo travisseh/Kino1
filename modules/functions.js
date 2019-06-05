@@ -417,11 +417,15 @@ function NumberToLetter(number){
 }
 
 function toKgs(number){
-  return round((number * 2.2046226218),1)
+  return round((number / 2.2046226218),.5)
 }
 
 function toLbs(number){
-  return round((number / 2.2046226218),1)
+  if (number === ''){
+    return ''
+  } else {
+    return round((number * 2.2046226218),.5)
+  }
 }
 
 module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs}
