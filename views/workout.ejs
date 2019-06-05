@@ -19,7 +19,7 @@
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit}) -%>
-                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit}) -%>
+                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit, user: user, functions: functions}) -%>
                 </div>
             </div>
         </div>
@@ -52,7 +52,9 @@
                             <%let weight%>
                             <%if (exercise.dropDown.length > 0){%>
                                 <%weight = exercise.dropDown[displayExercises[index][index4].weight]%>
-                            <%} else { weight = "at " + displayExercises[index][index4].weight + " lbs"}%>
+                            <%} else { %>
+                                <% weight = "at " + displayExercises[index][index4].weight + " " + user.weightUnit%>
+                            <%}%>
 
                             <p><button class="btn-list-number"><%=index4 + 1%></button>
                                 <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && (lastExercises[index].sets[1] != (undefined || null) || exercise.name === "Hip Bridge Hold")){%>
@@ -78,7 +80,7 @@
                     </div>
 
                     <!--FullExercise Modal-->
-                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user}) -%>
+                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user, functions: functions}) -%>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
             <%if (exercise.dropDown.length > 0){%>
                 <%=functions.optionMapper(exerciseName, lastWeight)%>
             <%} else {%>
-                <%=lastWeight%>lbs
+                <%=lastWeight%><%=user.weightUnit%>
             <%}%>
             <%if (lastNote) {%>
             , <%=lastNote%>

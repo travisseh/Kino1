@@ -52,9 +52,13 @@ const templateExerciseSchema = new mongoose.Schema({
     },
     weightIncrement: {
         type: Number,
-        enum: [5, 10, 15, 20, 25, 30]
+        enum: [2.5, 5, 10, 15, 20, 25, 30]
+    },
+    weightIncrementKg: {
+        type: Number
     },
     startWeight: Number,
+    startWeightKg: Number,
     weightType: 
         {
             type: String,

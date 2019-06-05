@@ -53,7 +53,7 @@ workout.get("/:package/:workout", middleware.isLoggedIn, middleware.hasAccess, f
                   
 
                   //render the page with all the above info
-                  res.render("workout", {success: req.flash('success'), error: req.flash('error'), exercises: exercises, user: req.user,lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
+                  res.render("workout", {success: req.flash('success'), error: req.flash('error'), exercises: exercises, user: req.user, functions: functions, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
       })
     }

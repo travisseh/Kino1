@@ -31,10 +31,10 @@
         <% const weight = displayExercises[index][i].weight %>
 
         <!-- Last Week -->   
-        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
     
         <!-- Bar Calculator -->   
-        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user}) -%>
+        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
             
         <!-- Reps -->   
         <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
@@ -42,7 +42,7 @@
         <br>
 
         <!-- Weights -->   
-        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
             
         <!-- Notes -->   
         <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
