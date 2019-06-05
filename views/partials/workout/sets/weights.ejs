@@ -44,7 +44,7 @@
                     
                     <input type="number" inputmode="numeric" pattern="[0-9]*" class="quantity my-counter counter-input" required data-set-weight="<%=i%>" data-exercise="<%=index%>" data-has-warmups="<%=hasWarmUps%>" 
                     id="weight_<%=index%>_<%=i%>" name="weight[]" step="<%=step%>" min="<%=exercise.startWeight%>" max="9999" style="text-align: center;"
-                    <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+                    <%if (editState) {%>
                         value="<%=value1%>" 
                     <%} else {%>
                         value="<%=value2%>"

@@ -11,15 +11,19 @@
 <% let unit = "reps" %>  
 <% if (exercise.name === "Plank Hold" | exercise.name === "Side Plank Hold" | exercise.name === "Hip Bridge Hold") {unit = "seconds"}%>
 
-<!--Calculate Hours Since Last Saved Workout-->
-<%let hoursDifference%>
+<!--Calculate edit state-->
+<%let hoursDifference = null%>
 <%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
     <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
     <%const now = Date.now()%>
     <%hoursDifference = Math.abs(lastCompletedDate - now)/36e5%>
-<%} else {%>
-    <%hoursDifference = null%>
-<%}%> 
+<%}%>
+
+<%let editState = false%>
+<%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+    <% editState = true %>
+<%}%>
+
 
     <!-- Handle if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold" && exercise.name != "Pushups"){ %>
@@ -28,8 +32,8 @@
             <div class="card-body">
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
-                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit, hoursDifference: hoursDifference}) -%>
-                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
+                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit, editState: editState}) -%>
+                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit, user: user, functions: functions, editState: editState}) -%>
                 </div>
             </div>
         </div>
@@ -43,7 +47,7 @@
             <div class="card-body">
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
-                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit, hoursDifference: hoursDifference}) -%>
+                    <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit, editState: editState}) -%>
 
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
                         <h6>Sets</h6>
@@ -59,7 +63,7 @@
                             <%}%>
 
                             <p><button class="btn-list-number"><%=index4 + 1%></button>
-                                <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && (lastExercises[index].sets[1] != (undefined || null) || exercise.name === "Hip Bridge Hold")){%>
+                                <%if (editState) {%>
                                     <%=lastReps3%> <%=unit%> <%=weight%> <%if (lastNote.length > 0){%>
                                     , <%=lastNote%>
                                     <%}%>
@@ -72,7 +76,7 @@
                         <%})%>
 
                         <!--If Completed in last 18 hours show Completed CheckMark-->
-                        <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+                        <%if (editState) {%>
                             <div style="text-align: center;">
                             <p class="diminished no-margin"><img src="/icons/checkMark.svg"> Completed - <a href="#" class="italic">Edit</a></p>
                             </div>
@@ -82,7 +86,7 @@
                     </div>
 
                     <!--FullExercise Modal-->
-                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user, functions: functions, hoursDifference: hoursDifference}) -%>
+                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
                 </div>
             </div>
         </div>

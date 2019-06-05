@@ -3,7 +3,7 @@
 <div>
 <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
 
-<%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+<%if (editState) {%>
     <h2 class="card-title white-text"><%= exercise.name %> - Edit</h2>
 <%} else {%>
     <h2 class="card-title white-text"><%= exercise.name %></h2>

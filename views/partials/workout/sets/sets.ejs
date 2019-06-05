@@ -1,7 +1,7 @@
 <!-- Sets -->   
 
     <!--Calculate Hours Since Last Saved Workout-->
-    <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")) {%>
+    <%if (editState) {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
@@ -12,26 +12,26 @@
         <% const weight = displayExercises[index][i].weight %>
 
         <!-- Last Week -->   
-        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
+        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
     
         <!-- Bar Calculator -->   
-        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
+        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
             
         <!-- Reps -->   
-        <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, hoursDifference: hoursDifference}) -%>
+        <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
                 
         <br>
 
         <!-- Weights -->   
-        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
+        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
             
         <!-- Notes -->   
-        <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, hoursDifference: hoursDifference}) -%>
+        <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
 
     <%})%>
 
     <%let edit = false %>
-    <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {edit = true}%>
+    <%if (editState) {edit = true}%>
 
     <input type="hidden" name="isFirstTime" value="false">
     <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">
