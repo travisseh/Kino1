@@ -1,3 +1,12 @@
+function round(number, roundToNumber)
+{
+    return Math.round(number/roundToNumber)*roundToNumber;
+}
+
+function toKgs(number){
+    return round((number / 2.2046226218),.5)
+  }
+
 $(document).ready(function () {
 
 const localUrl = 'http://localhost:8000'
@@ -23,6 +32,7 @@ $(".viewPast2").on("click", function(){
     .done(function(data){
         //open a div and fill it with content
         $(".past-exercises2").eq(exercise).html(function(){
+            const weightUnit = $("#weightUnit").val()
             if (data === null || data === undefined || data.length === 0 || data[0].sets[1].weight === null){
                 return '<p>No sets of this exericse have been recorded yet!</p>'
             } else {
@@ -40,7 +50,11 @@ $(".viewPast2").on("click", function(){
                         if (set.note != "" && set.note != null && set.note != undefined){
                             note = `, ${set.note}`
                         }
-                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${set.weight} lbs${note}</p>`
+                        let weight = set.weight
+                        if (weightUnit === "kgs"){
+                            weight = toKgs(weight)
+                        }
+                        return `<p><button class="btn-list-number">${i + 1}</button>   ${set.reps} reps at ${weight} ${weightUnit}${note}</p>`
                     }).join('')}
                     <div class="spacer-div"></div>`
                     } 
