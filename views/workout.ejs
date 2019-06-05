@@ -55,22 +55,29 @@
                             <%const lastWeight3 = lastExercises[index].sets[index4].weight%>
                             <%const lastReps3 = lastExercises[index].sets[index4].reps%>
                             <%const lastNote = lastExercises[index].sets[index4].note%>
-                            <%let weight%>
-                            <%if (exercise.dropDown.length > 0){%>
-                                <%weight = exercise.dropDown[displayExercises[index][index4].weight]%>
-                            <%} else { %>
-                                <% weight = "at " + displayExercises[index][index4].weight + " " + user.weightUnit%>
+                            
+                            <%let weight = displayExercises[index][index4].weight%>
+                            <%#HANDLE KGS %>
+                            <%if (user.weightUnit === "kgs"){%>
+                                <%weight = functions.round(functions.toKgs(displayExercises[index][index4].weight), exercise.weightIncrementKg) %>
                             <%}%>
+
+                            <%let weightUnit = "at " + weight + " " + user.weightUnit%>
+                            <%#HANDLE DROPDOWNS %>
+                            <%if (exercise.dropDown.length > 0){%>
+                                <%weightUnit = exercise.dropDown[displayExercises[index][index4].weight]%>
+                            <%}%>
+
 
                             <p><button class="btn-list-number"><%=index4 + 1%></button>
                                 <%if (editState) {%>
-                                    <%=lastReps3%> <%=unit%> <%=weight%> <%if (lastNote.length > 0){%>
+                                    <%=lastReps3%> <%=unit%> <%=weightUnit%> <%if (lastNote.length > 0){%>
                                     , <%=lastNote%>
                                     <%}%>
                                 <%} else if (displayExercises[index][index4].low === null) { %>
-                                    <%=displayExercises[index][index4].high%> <%=unit%> <%=weight%> 
+                                    <%=displayExercises[index][index4].high%> <%=unit%> <%=weightUnit%> 
                                 <% } else { %>
-                                    <%=displayExercises[index][index4].low%> <%=unit%> <%=weight%> 
+                                    <%=displayExercises[index][index4].low%> <%=unit%> <%=weightUnit%> 
                                 <% } %>
                             </p>
                         <%})%>
