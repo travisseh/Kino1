@@ -5,16 +5,7 @@
 <%const exerciseName = lastExercises[index]._id.name%>
 
 
-<%let hoursDifference7%>
-<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
-    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
-    <%const now7 = Date.now()%>
-    <%hoursDifference7 = Math.abs(lastCompletedDate - now7)/36e5%>
-<%} else {%>
-    <%hoursDifference7 = null%>
-<%}%> 
-
-<%if (lastReps != null && hoursDifference7 != (undefined || null) && hoursDifference7 >= 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")){%>
+<%if (lastReps != null && hoursDifference != (undefined || null) && hoursDifference >= 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")){%>
         <p class="text-muted">Last time: <%=lastReps%> <%=unit%> at 
             <%if (exercise.dropDown.length > 0){%>
                 <%=functions.optionMapper(exerciseName, lastWeight)%>

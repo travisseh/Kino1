@@ -1,16 +1,9 @@
-<%let hoursDifference4%>
-<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
-    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
-    <%const now4 = Date.now()%>
-    <%hoursDifference4 = Math.abs(lastCompletedDate - now4)/36e5%>
-<%} else {%>
-    <%hoursDifference4 = null%>
-<%}%> 
+ 
 
 <div>
 <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
 
-<%if (hoursDifference4 != (undefined || null) && hoursDifference4 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
+<%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {%>
     <h2 class="card-title white-text"><%= exercise.name %> - Edit</h2>
 <%} else {%>
     <h2 class="card-title white-text"><%= exercise.name %></h2>

@@ -1,26 +1,7 @@
 <!-- Sets -->   
 
-<%let hoursDifference6%>
-<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
-    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
-    <%const now6 = Date.now()%>
-    <%hoursDifference6 = Math.abs(lastCompletedDate - now6)/36e5%>
-<%} else {%>
-    <%hoursDifference6 = null%>
-<%}%> 
-
     <!--Calculate Hours Since Last Saved Workout-->
-
-    <%let hoursDifference2%>
-    <%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
-    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
-    <%const now2 = Date.now()%>
-    <%hoursDifference2 = Math.abs(lastCompletedDate - now2)/36e5%>
-    <%} else {%>
-    <%hoursDifference2 = null%>
-    <%}%>  
-
-    <%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")) {%>
+    <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null)) || exercise.name === "Hip Bridge Hold")) {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>/edit" method="POST">
     <%} else {%>
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
@@ -31,26 +12,26 @@
         <% const weight = displayExercises[index][i].weight %>
 
         <!-- Last Week -->   
-        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
+        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
     
         <!-- Bar Calculator -->   
-        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
+        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
             
         <!-- Reps -->   
-        <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+        <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, hoursDifference: hoursDifference}) -%>
                 
         <br>
 
         <!-- Weights -->   
-        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions}) -%>
+        <%- include("./weights.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, hoursDifference: hoursDifference}) -%>
             
         <!-- Notes -->   
-        <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight}) -%>
+        <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, hoursDifference: hoursDifference}) -%>
 
     <%})%>
 
     <%let edit = false %>
-    <%if (hoursDifference2 != (undefined || null) && hoursDifference2 < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {edit = true}%>
+    <%if (hoursDifference != (undefined || null) && hoursDifference < 18 && ((lastExercises[index].sets[1] != (undefined || null) && lastExercises[index].sets[1].weight != (undefined || null) ) || exercise.name === "Hip Bridge Hold")) {edit = true}%>
 
     <input type="hidden" name="isFirstTime" value="false">
     <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">

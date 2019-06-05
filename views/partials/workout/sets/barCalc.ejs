@@ -1,14 +1,5 @@
 <%#HANDLE BAR CALC IF BAR%>
 
-<%let hoursDifference8%>
-<%if (lastExercises[index].lastId != null && lastExercises[index].lastId != undefined) { %>
-    <%const lastCompletedDate = lastExercises[index].lastId.getTimestamp()%>
-    <%const now8 = Date.now()%>
-    <%hoursDifference8 = Math.abs(lastCompletedDate - now8)/36e5%>
-<%} else {%>
-    <%hoursDifference8 = null%>
-<%}%> 
-
 <%if (exercise.weightType === "bar") { %>
 <p class="text-muted barCalc" id="barCalc_<%=index%>_<%=i%>"><img src="/icons/dumbbell.svg"></p>
 
