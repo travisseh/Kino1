@@ -1,10 +1,13 @@
-
 //BARCALC LOGIC
 
 function round(number, roundToNumber)
 {
     return Math.round(number/roundToNumber)*roundToNumber;
 }
+
+function toKgs(number){
+    return round((number / 2.2046226218),.5)
+  }
 
 //Returns the array of recommended weights
 function weightCalc(weightMinusBar, holderArray, weightsArray){
@@ -101,9 +104,11 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     
   }
   
-  function barCalc2(previousWeight, displayWeight, barWeightInput) {
-    const barWeight = barWeightInput
-    const weights = [90, 70, 50, 20, 10, 5]
+  function barCalc2(previousWeight, displayWeight, barWeight, weightUnit) {
+    let weights = [90, 70, 50, 20, 10, 5]
+    if (weightUnit === "kgs"){
+      weights = [50, 40, 30, 20, 10, 5, 2.5]
+    } 
     let currentWeightMinusBar = displayWeight - barWeight
     let lastWeightMinusBar = previousWeight - barWeight
     let lastWeightsOutPut = []
@@ -111,19 +116,25 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     let currentWeights
     let lastWeights
     if (currentWeightMinusBar < 0){
-      currentWeights = [0,0,0,0,0,0]
+      if (weightUnit === "kgs"){
+        currentWeights = [0,0,0,0,0,0,0]
+      } else {
+        currentWeights = [0,0,0,0,0,0]
+      }
     } else {
       //do weightCalc on displayWeight
       currentWeights = weightCalc(currentWeightMinusBar,currentWeightsOutPut, weights)
     }
-    
     if (lastWeightMinusBar < 0){
-      lastWeights = [0,0,0,0,0,0]
+      if (weightUnit === "kgs"){
+        lastWeights = [0,0,0,0,0,0,0]
+      } else {
+        lastWeights = [0,0,0,0,0,0]
+      }
     } else {
       //do weightCalc on lastWeight
       lastWeights = weightCalc(lastWeightMinusBar, lastWeightsOutPut, weights)
     }
-    
     const finalResult = []
     for (let i = 0; i < weights.length; i++){
       finalResult.push(currentWeights[i] - lastWeights[i])
@@ -136,6 +147,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
   function passBarCalcValues () {
     //lookup barWeight
     const barWeight = $('#barWeight').data("bar-weight")
+    const weightUnit = $("#weightUnit").val()
     
     //warmup weight BarCalc
     $(".barCalcWarmUp").html(function(){
@@ -156,7 +168,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
-        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
     })
 
     //Normal weight BarCalc
@@ -185,7 +197,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
-        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight)
+        return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
         })
   }
 
