@@ -107,7 +107,12 @@
 
 </div>
 
-<div id="barWeight" data-bar-weight="<%=user.barWeight%>"></div>
+<%let barWeight = user.barWeight%>
+<%if (user.weightUnit === "kgs"){%>
+    <%barWeight = functions.toKgs(barWeight)%>
+<%}%>
+
+<div id="barWeight" data-bar-weight="<%=barWeight%>"></div>
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
