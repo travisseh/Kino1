@@ -232,7 +232,7 @@ $(document).ready(function () {
 
   $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
-    console.log($(this).data("weight-type"))
+    console.log("change")
   })
 
 //END JQUERY.READY

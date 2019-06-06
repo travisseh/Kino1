@@ -49,7 +49,7 @@
                     <%} else {%>
                         value="<%=value2%>"
                     <%}%>>
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect"><img src="/icons/plus.svg"></button>
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="weight-button my-counter after-radius waves-effect" data-weight-type="<%=exercise.weightType%>"><img src="/icons/plus.svg"></button>
                 </div> <%=user.weightUnit%> 
 
             <% } %>
