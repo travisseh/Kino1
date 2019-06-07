@@ -232,7 +232,15 @@ $(document).ready(function () {
 
   $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
-    console.log("change")
+    // if($(this).data("weight-type") === "dumbbells" && $("#weightUnit").val() === "kgs"){
+    //   if ($(this).prev().val() > 9 || $(this).next().val() > 9){
+    //     $(this).prev().attr("step", 2.5)
+    //     $(this).next().attr("step", 2.5)
+    //   } else if ($(this).prev().val() >= 0 || $(this).next().val() >= 0) {
+    //     $(this).prev().attr("step", 1)
+    //     $(this).next().attr("step", 1)
+    //   }
+    // }
   })
 
 //END JQUERY.READY
