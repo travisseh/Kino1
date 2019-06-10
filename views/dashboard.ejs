@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-lg">
-            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>'">
+            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>/<%=nextWorkout.phase%>'">
                 <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=nextWorkout.nameShort%>.jpeg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
@@ -30,7 +30,7 @@
         <div style="margin-left: 10px;"></div>
         <% package.workouts.forEach(function(workout, index){ %>
             <div class="col-md">
-                <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>'">
+                <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
                     <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>.jpeg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><%= workout.name %></h5>

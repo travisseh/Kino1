@@ -34,6 +34,7 @@
     <%if (editState) {edit = true}%>
 
     <input type="hidden" name="isFirstTime" value="false">
+    <input type="hidden" name="phase" value="<%=workout.phase%>">
     <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">

@@ -32,6 +32,8 @@ const settings = require("./routes/settings")
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
+const User = require("./models/model").User
+// User.updateOne({email: "travppatset@gmail.com"}, {$set: {phases: [1,1]}})
 
 //GLOBAL SETTINGS
 // app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))

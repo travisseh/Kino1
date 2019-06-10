@@ -12,6 +12,7 @@ const warrior_shredded = new Package (
       name: "Warrior Shredded",
       url: "warrior_shredded",
       description: "This program shows you how to build dense muscle tone, drop fat without hours of cardio, and how to do it while eating the foods you love",
+      phaseIndex: 0,
       active: true,
       purchased: true,
       workouts: [{
@@ -584,7 +585,7 @@ const warrior_shredded = new Package (
             {
                 name: "Incline Dumbbell Curls",
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
-                order: 2,
+                order: 3,
                 instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs/2.5kgs per dumbbell for reach additional set. Rest 3 minutes between each set."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
@@ -765,7 +766,7 @@ const warrior_shredded = new Package (
             {
                 name: "Leg Extensions",
                 videoLink: "https://www.youtube.com/watch?v=yR_LqZYSIgM",
-                order: 2,
+                order: 3,
                 instructions: [ "10-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
