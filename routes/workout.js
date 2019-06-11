@@ -11,12 +11,11 @@ const workout = express.Router()
 
 
 
-workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, res, next){
+workout.get("/:package/:workout", middleware.isLoggedIn, middleware.hasAccess, function(req, res, next){
     //get each list of templatesets
   const packageUrl = req.params.package
   const nameShort = req.params.workout
-  const phase = req.params.phase
-  Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: nameShort, phase: phase}}}, function(err, foundPackage){
+  Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: nameShort}}}, function(err, foundPackage){
     if (err) {
       console.log(err)
     } else {
@@ -33,22 +32,10 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
               console.log(err)
           } else {
               let lastExercises = []
-              console.log("             ")
-              console.log("exercises: ")
-              console.log(exercises)
-              console.log("             ")
-              console.log("foundExercises: ")
-              console.log(foundExercises)
               if (foundExercises.length != exercises.length){
                 functions.fillExercises(lastExercises, exercises, foundExercises, fakeLastExercise)
               } else {
                 lastExercises = foundExercises}
-                console.log("             ")
-                console.log("exercises: ")
-                console.log(exercises)
-                console.log("             ")
-                console.log("lastExercises: ")
-                console.log(lastExercises)
 
   //create displaySets from lastSets and templateSets
                   const displayExercises = []
@@ -56,10 +43,6 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
                   for (let i = 0; i < exercises.length; i++){
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
-                    console.log("           ")
-                    console.log(exercises[i].name + ":")
-                    console.log(templateSets)
-                    console.log(lastSets)
                     let type = exercises[i].type
                     let weightIncrement = exercises[i].weightIncrement
                     global.displaySets = []
@@ -91,7 +74,6 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     const formNotes = req.body.note
     const order = req.body.order
     const step = req.body.step
-    const phase = req.body.phase
     const isFirstTime = req.body.isFirstTime
     const sets = []
     const newFirstWeight = formWeight[0] - step
@@ -103,7 +85,6 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     const newExercise = new Exercise ({
       name: req.body.exerciseName,
       sets: sets,
-      phase: phase,
       order: order,
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
@@ -116,7 +97,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     } else {
       req.flash('success', 'Exercise Saved!')
     }
-    res.redirect(`/workout/${req.params.package}/${req.params.workout}/${phase}`)
+    res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
   })
 
   workout.post("/:package/:workout/edit", function (req, res, next){
@@ -148,7 +129,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
             console.log(err)
           } else {
             req.flash('success', 'Edits Saved!')
-            res.redirect(`/workout/${req.params.package}/${req.params.workout}/${req.body.phase}`)
+            res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
           }
         })
       }

@@ -13,7 +13,6 @@ const goddess_toning = new Package (
       active: false,
       purchased: false,
       description: "This programs shows you how to slim down to a low body fat while developing great-looking shape and muscle tone",
-      phaseIndex: 1,
       workouts: [{
           name: "A: Legs, Shoulders, Abs",
           nameShort: "A",
