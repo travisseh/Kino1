@@ -191,10 +191,6 @@ const userSchema = new mongoose.Schema ({
         type: String,
         default: "lbs",
         enum: ["lbs", "kgs"]
-    },
-    phases: {
-        warrior_shredded: Number,
-        goddess_toning: Number
     }
   })
   
