@@ -36,8 +36,8 @@ const User = require("./models/model").User
 // User.updateOne({email: "travppatset@gmail.com"}, {$set: {phases: [1,1]}})
 
 //GLOBAL SETTINGS
-// app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
-app.use(express.static(path.join(__dirname, "public"), { maxAge: 3 }))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
+// app.use(express.static(path.join(__dirname, "public"), { maxAge: 3 }))
 // app.use(express.static(path.join(__dirname, "public")))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({

@@ -82,9 +82,6 @@ const workoutSchema = new mongoose.Schema ({
         type: String,
         enum: ["A", "B", "C", "D", "A2", "B2", "C2", "A3", "B3", "C3"]
     },
-    phase: {
-        type: Number
-    },
     image: String,
     description: String,
     duration: Number,
@@ -130,9 +127,6 @@ const exerciseSchema = new mongoose.Schema({
     workout: {
         type: String,
         required: true
-    },
-    phase: {
-        type: Number
     },
     packageUrl: {
         type: String,
@@ -198,8 +192,7 @@ const userSchema = new mongoose.Schema ({
         type: String,
         default: "lbs",
         enum: ["lbs", "kgs"]
-    },
-    phases: [Number]
+    }
   })
   
   userSchema.plugin(passportLocalMongoose)
