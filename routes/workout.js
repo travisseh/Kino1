@@ -15,7 +15,10 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     //get each list of templatesets
   const packageUrl = req.params.package
   const nameShort = req.params.workout
-  const phase = req.params.phase
+  let phase = req.params.phase
+  console.log("phase: " + phase)
+  console.log("nameShort: " + nameShort)
+  console.log("package url: " + packageUrl)
   Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: nameShort, phase: phase}}}, function(err, foundPackage){
     if (err) {
       console.log(err)
@@ -25,7 +28,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
       
   //get each list of lastsets
       Exercise.aggregate([
-          {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort}},
+          {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort, phase: Number(phase)}},
           {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, lastId: {$last: "$_id"}}},
           {$sort: {"_id.order" : 1}}
       ]).exec(function (err, foundExercises){
@@ -33,22 +36,22 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
               console.log(err)
           } else {
               let lastExercises = []
-              console.log("             ")
-              console.log("exercises: ")
-              console.log(exercises)
-              console.log("             ")
-              console.log("foundExercises: ")
-              console.log(foundExercises)
+              // console.log("             ")
+              // console.log("exercises: ")
+              // console.log(exercises)
+              // console.log("             ")
+              // console.log("foundExercises: ")
+              // console.log(foundExercises)
               if (foundExercises.length != exercises.length){
                 functions.fillExercises(lastExercises, exercises, foundExercises, fakeLastExercise)
               } else {
                 lastExercises = foundExercises}
-                console.log("             ")
-                console.log("exercises: ")
-                console.log(exercises)
-                console.log("             ")
-                console.log("lastExercises: ")
-                console.log(lastExercises)
+                // console.log("             ")
+                // console.log("exercises: ")
+                // console.log(exercises)
+                // console.log("             ")
+                // console.log("lastExercises: ")
+                // console.log(lastExercises)
 
   //create displaySets from lastSets and templateSets
                   const displayExercises = []
@@ -56,10 +59,10 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
                   for (let i = 0; i < exercises.length; i++){
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
-                    console.log("           ")
-                    console.log(exercises[i].name + ":")
-                    console.log(templateSets)
-                    console.log(lastSets)
+                    // console.log("           ")
+                    // console.log(exercises[i].name + ":")
+                    // console.log(templateSets)
+                    // console.log(lastSets)
                     let type = exercises[i].type
                     let weightIncrement = exercises[i].weightIncrement
                     global.displaySets = []
