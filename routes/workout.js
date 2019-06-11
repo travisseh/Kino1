@@ -4,11 +4,8 @@ const Package = require("../models/model").Package
 const functions = require("../modules/functions")
 const middleware = require("../middleware")
 const fakeLastExercise = require("../modules/objects").fakeLastExercise
-const fakeLastExercises = require("../modules/objects").fakeLastExercises
 const exercise = require('./exercise')
 const workout = express.Router()
-
-
 
 
 workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, res, next){
@@ -16,53 +13,47 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
   const packageUrl = req.params.package
   const nameShort = req.params.workout
   let phase = req.params.phase
-  console.log("phase: " + phase)
-  console.log("nameShort: " + nameShort)
-  console.log("package url: " + packageUrl)
   Package.findOne({url: packageUrl}, {workouts: {$elemMatch: {nameShort: nameShort, phase: phase}}}, function(err, foundPackage){
     if (err) {
       console.log(err)
     } else {
       const exercises = JSON.parse(JSON.stringify(foundPackage.workouts[0].exercises))
       const workout = JSON.parse(JSON.stringify(foundPackage.workouts[0]))
-      
+  
+  //create array of exercise names to include in Exercise query below
+  const nameArray = []
+  exercises.forEach(function(exercise, i){
+    nameArray.push(exercise.name)
+  })
+
   //get each list of lastsets
       Exercise.aggregate([
-          {$match: {userId: req.user._id, packageUrl: packageUrl, workout: nameShort, phase: Number(phase)}},
+          {$match: {userId: req.user._id, packageUrl: packageUrl, name: {$in: nameArray}}},
           {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, lastId: {$last: "$_id"}}},
           {$sort: {"_id.order" : 1}}
       ]).exec(function (err, foundExercises){
           if (err) {
               console.log(err)
           } else {
+            //create lastExercises from foundExercises and make sure it's order is the same as exercises
               let lastExercises = []
-              // console.log("             ")
-              // console.log("exercises: ")
-              // console.log(exercises)
-              // console.log("             ")
-              // console.log("foundExercises: ")
-              // console.log(foundExercises)
-              if (foundExercises.length != exercises.length){
-                functions.fillExercises(lastExercises, exercises, foundExercises, fakeLastExercise)
-              } else {
-                lastExercises = foundExercises}
-                // console.log("             ")
-                // console.log("exercises: ")
-                // console.log(exercises)
-                // console.log("             ")
-                // console.log("lastExercises: ")
-                // console.log(lastExercises)
-
-  //create displaySets from lastSets and templateSets
+              let nameIndex = []
+              foundExercises.forEach(function(foundExercise,i){
+                nameIndex.push(foundExercise._id.name)
+              })
+              exercises.forEach(function(exercise, i){
+                const index = nameIndex.indexOf(exercise.name)
+                if (index === -1){
+                  lastExercises.push(fakeLastExercise)
+                } else {
+                  lastExercises.push(foundExercises[index])
+                }
+              })
+                //create displaySets from lastSets and templateSets
                   const displayExercises = []
-
                   for (let i = 0; i < exercises.length; i++){
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
-                    // console.log("           ")
-                    // console.log(exercises[i].name + ":")
-                    // console.log(templateSets)
-                    // console.log(lastSets)
                     let type = exercises[i].type
                     let weightIncrement = exercises[i].weightIncrement
                     global.displaySets = []
@@ -71,7 +62,6 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
                     displayExercises.push(displaySets)
                   }
                   
-
                   //render the page with all the above info
                   res.render("workout", {success: req.flash('success'), error: req.flash('error'), exercises: exercises, user: req.user, functions: functions, lastExercises: lastExercises, displayExercises: displayExercises, packageUrl: packageUrl, workout: workout, functions: functions})
           }
@@ -84,7 +74,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
 
 
 
-
+  //create route
   workout.post("/:package/:workout", middleware.isLoggedIn, function(req, res, next){
     const formReps = req.body.reps
     let formWeight = req.body.weight
@@ -122,6 +112,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     res.redirect(`/workout/${req.params.package}/${req.params.workout}/${phase}`)
   })
 
+  //Edit route
   workout.post("/:package/:workout/edit", function (req, res, next){
     const formReps = req.body.reps
     let formWeight = req.body.weight
