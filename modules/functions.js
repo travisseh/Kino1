@@ -432,4 +432,13 @@ function toLbs(number){
   }
 }
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs}
+function packagesToPhasesIndex (packageUrl) {
+  switch (packageUrl){
+    case "warrior_shredded":
+      return 0
+    case "goddess_toning":
+      return 1
+  }
+}
+
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs, packagesToPhasesIndex}

@@ -4,7 +4,12 @@
 
 <%- include("partials/dashboard/askAboutMacro.ejs") -%>
 
-<%const nextWorkout = package.workouts[nextDayArray[1]]%>
+<%let nextIndex = nextDayArray[1]%>
+<%if (user.phases[functions.packagesToPhasesIndex(package.url)] === 2) {%>
+    <%nextIndex = nextIndex + numberOfWorkouts + 1%>
+<%}%>
+
+<%const nextWorkout = package.workouts[nextIndex]%>
 <%#HANDLE IF NEXT WORKOUT EXISTS%>
 <%if (nextWorkout != undefined || nextWorkout != null){%>
     <h3 class="text-white">Next Workout</h3>
@@ -17,7 +22,6 @@
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
                     <p class="card-text"><%= nextWorkout.description %></p>
                     <p class="card-text">Duration: <%= nextWorkout.duration %> minutes</p>
-                    <p class="card-text relative-date" data-date="<%=nextDayLastDate%>"></p>
                 </div>
             </div>
         </div>
@@ -29,16 +33,18 @@
     <div class="horizontal-scroll" style="margin: -10px:">
         <div style="margin-left: 10px;"></div>
         <% package.workouts.forEach(function(workout, index){ %>
-            <div class="col-md">
-                <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
-                    <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= workout.name %></h5>
-                        <p class="card-text"><%= workout.description %></p>
-                        <p class="card-text">Duration: <%= workout.duration %> minutes</p>
+            <%if (workout.phase === user.phases[functions.packagesToPhasesIndex(package.url)]){%>
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
+                        <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>.jpeg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= workout.name %></h5>
+                            <p class="card-text"><%= workout.description %></p>
+                            <p class="card-text">Duration: <%= workout.duration %> minutes</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <%}%>
         <% }) %>
     </div>
 <div class="container-fluid">
