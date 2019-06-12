@@ -33,10 +33,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPa
                             nextDayLastDate = null
                         } else {
                             const currentDay = foundExercise[0].workout
-                            
                             let numberOfDaysOfPhase
-
-                            console.log(currentDay)
                             let counterArray = []
                             foundPackage.workouts.forEach(function(workout, i){
                                 if (workout.phase === phase){
@@ -44,9 +41,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPa
                                 }
                             })
                             numberOfWorkouts = counterArray.length -1
-                            console.log(numberOfWorkouts)
                             nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
-                            console.log(nextDayArray)
 
                         }
                         res.render("dashboard", {package: foundPackage, user: req.user, functions: functions, numberOfWorkouts: numberOfWorkouts, nextDayArray: nextDayArray, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})

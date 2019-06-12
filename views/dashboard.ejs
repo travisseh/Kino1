@@ -1,11 +1,31 @@
 <%- include("partials/headerFooter/header.ejs") -%>
 
-<h1 class="text-white"><%= package.name %> </h1>
+<%const phase = user.phases[functions.packagesToPhasesIndex(package.url)]%>
 
-<%- include("partials/dashboard/askAboutMacro.ejs") -%>
+<h1 class="text-white"><%= package.name %> </h1>
+<div>
+
+<p class="inline-block text-white" id="special" style="margin-top: -20px;"><a class="text-white" id="phaseSelect" href="#" data-toggle="modal" data-backdrop="false" data-target="#phaseModal" onclick="amplitude.getInstance().logEvent('Phase Selector Clicked')">Phase <%=phase%>  <img style="padding-bottom: 5px;" src="/icons/downSelect.svg"></a></p>
+<div class="spacer-div"></div>
+    <div class="modal special-modal phases-modal" id="phaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable phases-modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-body phases-modal-body">
+        <a><p class="waves-effect p-phases">Phase 1</p></a>
+        <a><p class="waves-effect p-phases">Phase 2</p></a>
+        <a><p class="waves-effect p-phases" style="margin-bottom: 0px;">Phase 3</p></a>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
 
 <%let nextIndex = nextDayArray[1]%>
-<%if (user.phases[functions.packagesToPhasesIndex(package.url)] === 2) {%>
+<%if (phase === 2) {%>
     <%nextIndex = nextIndex + numberOfWorkouts + 1%>
 <%}%>
 
@@ -33,7 +53,7 @@
     <div class="horizontal-scroll" style="margin: -10px:">
         <div style="margin-left: 10px;"></div>
         <% package.workouts.forEach(function(workout, index){ %>
-            <%if (workout.phase === user.phases[functions.packagesToPhasesIndex(package.url)]){%>
+            <%if (workout.phase === phase){%>
                 <div class="col-md">
                     <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
                         <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>.jpeg" alt="Card image cap">
@@ -58,8 +78,12 @@
 <%- include("partials/headerFooter/footerScripts.ejs") -%>
 <script>
     $(document).ready(function(){
+
+        // popovers Initialization
+        $(function () {
+        $('[data-toggle="popover"]').popover()
+        })
         const email = $("#userInfo").data("email")
-        console.log("email: " + email)
         const fname = $("#userInfo").data("fname")
         const lname = $("#userInfo").data("lname")
         const fullName = fname + " " + lname
@@ -71,6 +95,14 @@
         identify.set('name', {'first': fname, 'last': lname})
         identify.set('email', email)
         amplitude.identify(identify)
+
+        $("body").not($("h1")).click(function(event) {
+            //if you click on anything except the modal itself or the "open modal" link, close the modal
+            if (!$(event.target).is(".p-phases")){
+                $(".modal").removeClass("show").css("display", "none")
+                $("body").removeClass("modal-open")
+            }
+        });
 
     })
 </script>
