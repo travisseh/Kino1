@@ -9,6 +9,7 @@ const app = express()
 const port = 8000
 const path = require("path")
 const flash = require('connect-flash')
+const functions = require('./modules/functions')
 
     //DB
 const mongoose = require("mongoose")
@@ -69,6 +70,21 @@ app.use("/workout", workout)
 app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
+app.use("/:package/:phase", function(req, res, next){
+    const package = req.params.package
+    const phase = req.params.phase
+    const phaseIndex = functions.packagesToPhasesIndex(package)
+    User.findOne({_id: req.user._id}, function(err, foundUser){
+        if (err){
+            console.log(err)
+        } else {
+            foundUser.phases.splice(index,1,phase)
+            foundUser.save(function(){
+                res.send(foundUser)
+            })
+        }
+    })
+})
 
 app.get("/dashTest", function(req, res, next){
     const error = req.flash("error")

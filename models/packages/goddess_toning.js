@@ -20,6 +20,7 @@ const goddess_toning = new Package (
           image: "https://source.unsplash.com/DC5akQJyH4I/286x190",
           description: "This will focus on strengthening your legs with an emphasis on glutes, plus your shoulders",
           duration: 60,
+          phase: 1,
           exercises: [
               {
                   name: "Sumo Deadlift Squats",
@@ -254,6 +255,7 @@ const goddess_toning = new Package (
         image: "https://source.unsplash.com/QP84K2HuIMY/286x190",
         description: "This workout will improve your posture and strengthen your major upper body muscles.",
         duration: 60,
+        phase: 1,
         exercises: [
             {
                 name: "Incline Dumbbell Bench Press",
@@ -424,6 +426,7 @@ const goddess_toning = new Package (
         image: "https://source.unsplash.com/5UbIqV58CW8/286x190",
         description: "This will hit your legs and butt plus arms - making them firmer and more toned",
         duration: 60,
+        phase: 1,
         exercises: [
             {
                 name: "Goblet Box Squats",

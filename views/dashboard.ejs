@@ -2,26 +2,24 @@
 
 <%const phase = user.phases[functions.packagesToPhasesIndex(package.url)]%>
 
+<%if (package.url === "warrior_shredded"){%>
 <h1 class="text-white"><%= package.name %> </h1>
-<div>
+<div id="phaseInfo" data-package-url="<%=package.url%>"></div>
 
-<p class="inline-block text-white" id="special" style="margin-top: -20px;"><a class="text-white" id="phaseSelect" href="#" data-toggle="modal" data-backdrop="false" data-target="#phaseModal" onclick="amplitude.getInstance().logEvent('Phase Selector Clicked')">Phase <%=phase%>  <img style="padding-bottom: 5px;" src="/icons/downSelect.svg"></a></p>
-<div class="spacer-div"></div>
-    <div class="modal special-modal phases-modal" id="phaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable phases-modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-body phases-modal-body">
-        <a><p class="waves-effect p-phases">Phase 1</p></a>
-        <a><p class="waves-effect p-phases">Phase 2</p></a>
-        <a><p class="waves-effect p-phases" style="margin-bottom: 0px;">Phase 3</p></a>
+    <p class="inline-block text-white" id="special" style="margin-top: -20px;"><a class="text-white" id="phaseSelect" href="#" data-toggle="modal" data-backdrop="false" data-target="#phaseModal" onclick="amplitude.getInstance().logEvent('Phase Selector Clicked')">Phase <%=phase%>  <img style="padding-bottom: 5px;" src="/icons/downSelect.svg"></a></p>
+    <div class="spacer-div"></div>
+        <div class="modal special-modal phases-modal" id="phaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable phases-modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body phases-modal-body">
+                    <a><p class="waves-effect p-phases" data-phase="1">Phase 1</p></a>
+                    <a><p class="waves-effect p-phases" data-phase="2">Phase 2</p></a>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-</div>
-</div>
-</div>
-
-
+<%}%>
 
 
 <%let nextIndex = nextDayArray[1]%>
@@ -96,13 +94,24 @@ aria-hidden="true">
         identify.set('email', email)
         amplitude.identify(identify)
 
-        $("body").not($("h1")).click(function(event) {
+        $("body").click(function(event) {
             //if you click on anything except the modal itself or the "open modal" link, close the modal
             if (!$(event.target).is(".p-phases")){
                 $(".modal").removeClass("show").css("display", "none")
                 $("body").removeClass("modal-open")
             }
         });
+
+        $(".p-phases").click(function(event){
+            const phase = $(this).data("phase")
+            console.log("jqeury phase: " + phase)
+            const package = $('#phaseInfo').data('package-url')
+            console.log("jquery package: " + package)
+            $.post( `/${package}/${phase}`)
+                .done(function( data ) {
+                location.reload();
+            });
+        })
 
     })
 </script>
