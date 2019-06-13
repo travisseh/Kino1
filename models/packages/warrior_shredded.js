@@ -497,16 +497,16 @@ const warrior_shredded = new Package (
         exercises: [
             {
                 name: "Incline Dumbbell Bench Press",
-                videoLink: "https://my.kinobody.com/courses/66901/lectures/5059620",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589075",
                 order: 0,
-                instructions: [ "Set 1: 5-6 reps", "Set 2: 6-7 reps", "Set 3: 7-8 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
-                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline bench effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
+                instructions: [ "Set 1: 6-8 reps", "Set 2: 8-10 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline press effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
                 weightIncrementKg: 2,
                 startWeight: 0,
                 startWeightKg: 0,
-                weightType: "dumbbell",
+                weightType: "dumbbells",
                 pauseDuration: 150,
                 warmUps: [
                     {
@@ -531,7 +531,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Flat Barbell Bench Press",
-                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589076",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1590394",
                 order: 1,
                 instructions: [ "Set 1: 8-10 reps", "Set 2: 10-12 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
@@ -555,7 +555,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Weighted Chin-ups",
-                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5064558",
                 order: 2,
                 instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs/2.5kgs per dumbbell for reach additional set. Rest 3 minutes between each set."],
                 type: "Reverse Pyramid",
@@ -737,15 +737,15 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Hip Thrusts",
-                videoLink: "https://www.youtube.com/watch?v=yR_LqZYSIgM",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589146",
                 order: 2,
-                instructions: [ "10-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                instructions: [ "Set 1: 8-10 reps.", "Set 2: 10-12 reps.", "Set 3: 12-15 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
                 weightIncrementKg: 2,
                 startWeightKg: 0,
-                weightType: "cable",
+                weightType: "dumbbells",
                 pauseDuration: 150,
                 warmUps: [],
                 sets: [
@@ -765,7 +765,7 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Leg Extensions",
-                videoLink: "https://www.youtube.com/watch?v=yR_LqZYSIgM",
+                videoLink: "https://www.youtube.com/watch?v=YyvSfVjQeL0",
                 order: 3,
                 instructions: [ "10-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
@@ -806,14 +806,14 @@ const warrior_shredded = new Package (
                 name: "Incline Dumbbell Bench Press",
                 videoLink: "https://my.kinobody.com/courses/66901/lectures/5059620",
                 order: 0,
-                instructions: [ "Set 1: 5-6 reps", "Set 2: 6-7 reps", "Set 3: 7-8 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
-                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline bench effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
+                instructions: [ "Set 1: 6-8 reps", "Set 2: 8-10 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline press effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
                 weightIncrementKg: 2,
                 startWeight: 0,
                 startWeightKg: 0,
-                weightType: "dumbbell",
+                weightType: "dumbbells",
                 pauseDuration: 150,
                 warmUps: [
                     {
@@ -838,10 +838,9 @@ const warrior_shredded = new Package (
             },
             {
                 name: "Weighted Dips",
-                videoLink: "https://my.kinobody.com/courses/66901/lectures/5064558",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589077",
                 order: 1,
-                instructions: [ "6 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
-                notesFromCourse: [ "The weighted chinup is a fantastic movement for building your upper back, LATs and biceps and is superior to any other pulling exercise. If you can’t do chin ups yet, then start with the LAT pulldown machine with hands facing you. As you build strength and lean down, you will eventually be able to do a few bodyweight chinups. Gradually build up to eight unbroken reps before adding weight."],
+                instructions: [ "Set 1: 8-10 reps", "Set 2: 10-12 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
                 type: "Reverse Pyramid",
                 weightIncrement: 5,
                 startWeight: 0,
@@ -861,12 +860,12 @@ const warrior_shredded = new Package (
                 ],
                 sets: [
                   {
-                      low: 4,
-                      high: 6
+                      low: 8,
+                      high: 10
                   },
                   {
-                      low: 4,
-                      high: 6
+                      low: 10,
+                      high: 12
                   }
                 ]
             },
