@@ -104,10 +104,8 @@
 
         $(".p-phases").click(function(event){
             const phase = $(this).data("phase")
-            console.log("jqeury phase: " + phase)
             const package = $('#phaseInfo').data('package-url')
-            console.log("jquery package: " + package)
-            $.post( `/${package}/${phase}`)
+            $.post( `/changePhase/${package}/${phase}`)
                 .done(function( data ) {
                 location.reload();
             });

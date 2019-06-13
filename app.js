@@ -29,12 +29,11 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 const closedSignup = require("./routes/closedSignup")
 const settings = require("./routes/settings")
+const changePhase = require('./routes/changePhase')
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
-const User = require("./models/model").User
-// User.updateOne({email: "travppatset@gmail.com"}, {$set: {phases: [1,1]}})
 
 //GLOBAL SETTINGS
 // app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
@@ -70,21 +69,7 @@ app.use("/workout", workout)
 app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
-app.use("/:package/:phase", function(req, res, next){
-    const package = req.params.package
-    const phase = req.params.phase
-    const phaseIndex = functions.packagesToPhasesIndex(package)
-    User.findOne({_id: req.user._id}, function(err, foundUser){
-        if (err){
-            console.log(err)
-        } else {
-            foundUser.phases.splice(index,1,phase)
-            foundUser.save(function(){
-                res.send(foundUser)
-            })
-        }
-    })
-})
+app.use("/changePhase", changePhase)
 
 app.get("/dashTest", function(req, res, next){
     const error = req.flash("error")
