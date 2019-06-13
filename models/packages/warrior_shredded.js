@@ -16,7 +16,7 @@ const warrior_shredded = new Package (
       active: true,
       purchased: true,
       workouts: [{
-          name: "A: Chest and Shoulder",
+          name: "A: Chest & Shoulder",
           nameShort: "A",
           image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
           description: "5 workouts to strengthen chest and shoulders.",
@@ -322,7 +322,7 @@ const warrior_shredded = new Package (
         ]
       },
       {
-        name: "C: Tri's, Back, and Bi's",
+        name: "C: Tri's, Back, & Bi's",
         nameShort: "C",
         image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
         description: "5 workouts to strengthen your triceps, back, and biceps",
@@ -488,7 +488,7 @@ const warrior_shredded = new Package (
         ]
     },
     {
-        name: "A: Chest and Shoulder - 2",
+        name: "A: Chest & Shoulder",
         nameShort: "A",
         image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
         description: "5 workouts to strengthen chest and shoulders.",
@@ -650,7 +650,7 @@ const warrior_shredded = new Package (
         ]
     },
     {
-        name: "B: Legs & Bum - 2",
+        name: "B: Legs & Bum",
         nameShort: "B",
         image: "https://source.unsplash.com/WvDYdXDzkhs/286x190",
         description: "4 workouts to strengthen your legs and bum.",
@@ -795,7 +795,7 @@ const warrior_shredded = new Package (
         ]
       },
       {
-        name: "C: Tri's, Back, and Bi's - 2",
+        name: "C: Tri's, Back, & Bi's",
         nameShort: "C",
         image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
         description: "5 workouts to strengthen your triceps, back, and biceps",
