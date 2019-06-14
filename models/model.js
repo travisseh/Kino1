@@ -83,6 +83,7 @@ const workoutSchema = new mongoose.Schema ({
         enum: ["A", "B", "C", "D", "A2", "B2", "C2", "A3", "B3", "C3"]
     },
     image: String,
+    phase: Number,
     description: String,
     duration: Number,
     exercises: [templateExerciseSchema]
@@ -135,6 +136,7 @@ const exerciseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    phase: Number,
     sets: [
         {
             reps: Number,
@@ -187,6 +189,7 @@ const userSchema = new mongoose.Schema ({
         type: Number,
         default: 45
     },
+    phases: [Number],
     weightUnit: {
         type: String,
         default: "lbs",

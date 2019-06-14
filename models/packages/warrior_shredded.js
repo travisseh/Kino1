@@ -20,6 +20,7 @@ const warrior_shredded = new Package (
           image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
           description: "5 workouts to strengthen chest and shoulders.",
           duration: 60,
+          phase: 1,
           exercises: [
               {
                   name: "Incline Barbell Bench Press",
@@ -180,6 +181,7 @@ const warrior_shredded = new Package (
         image: "https://source.unsplash.com/WvDYdXDzkhs/286x190",
         description: "4 workouts to strengthen your legs and bum.",
         duration: 60,
+        phase: 1,
         exercises: [
             {
                 name: "Bulgarian Split Squats",
@@ -324,6 +326,7 @@ const warrior_shredded = new Package (
         image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
         description: "5 workouts to strengthen your triceps, back, and biceps",
         duration: 60,
+        phase: 1,
         exercises: [
             {
                 name: "Standing Barbell Press",
