@@ -151,6 +151,7 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
     
     //warmup weight BarCalc
     $(".barCalcWarmUp").html(function(){
+        console.log("warmups hit")
         //get id of barCalc
         const appendId = $(this).attr("id")
         .substring(7,10)
@@ -168,6 +169,8 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         //find the corresponding currenweight from warmup <p>
         const currentWarmUpId = ("warmup" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWarmUpId}`).data("weight")
+        console.log("currentWeight: ")
+        console.log(currentWeight)
         return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
     })
 
@@ -197,6 +200,8 @@ function weightCalc(weightMinusBar, holderArray, weightsArray){
         }
         const currentWeightId = ("weight" + appendId + lastCharacter)
         const currentWeight = $(`#${currentWeightId}`).val()
+        // console.log("currentWeight: ")
+        // console.log(currentWeight)
         return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
         })
   }
@@ -232,15 +237,7 @@ $(document).ready(function () {
 
   $(".weight-button").on("click", function(){
     $(".quantity").trigger("change")
-    // if($(this).data("weight-type") === "dumbbells" && $("#weightUnit").val() === "kgs"){
-    //   if ($(this).prev().val() > 9 || $(this).next().val() > 9){
-    //     $(this).prev().attr("step", 2.5)
-    //     $(this).next().attr("step", 2.5)
-    //   } else if ($(this).prev().val() >= 0 || $(this).next().val() >= 0) {
-    //     $(this).prev().attr("step", 1)
-    //     $(this).next().attr("step", 1)
-    //   }
-    // }
+
   })
 
 //END JQUERY.READY

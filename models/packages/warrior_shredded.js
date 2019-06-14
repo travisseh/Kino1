@@ -541,7 +541,16 @@ const warrior_shredded = new Package (
                 startWeightKg: 0,
                 weightType: "bar",
                 pauseDuration: 150,
-                warmUps: [],
+                warmUps: [
+                        {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 3
+                    }
+                ],
                 sets: [
                     {
                         low: 8,
