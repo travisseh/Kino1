@@ -84,6 +84,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     const formNotes = req.body.note
     const order = req.body.order
     const step = req.body.step
+    const phase = req.body.phase
     const isFirstTime = req.body.isFirstTime
     const sets = []
     const newFirstWeight = formWeight[0] - step
@@ -95,6 +96,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     const newExercise = new Exercise ({
       name: req.body.exerciseName,
       sets: sets,
+      phase: phase,
       order: order,
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
@@ -107,7 +109,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
     } else {
       req.flash('success', 'Exercise Saved!')
     }
-    res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
+    res.redirect(`/workout/${req.params.package}/${req.params.workout}/${phase}`)
   })
 
   //Edit route
@@ -140,7 +142,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
             console.log(err)
           } else {
             req.flash('success', 'Edits Saved!')
-            res.redirect(`/workout/${req.params.package}/${req.params.workout}`)
+            res.redirect(`/workout/${req.params.package}/${req.params.workout}/${req.body.phase}`)
           }
         })
       }
