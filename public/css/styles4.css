@@ -412,6 +412,25 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
     overflow: auto;
     overflow-y: auto;
 }
+
+/* phase selector select */
+
+
+.select-wrapper input.select-dropdown {
+    border-bottom: none;
+    width: 75px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1rem;
+}
+.select-wrapper span.caret {
+    font-size: 0rem;
+}
+.dropdown-content {
+    border-radius: .5rem;
+}
+
+
 .clickable {
     cursor: pointer;
 }
