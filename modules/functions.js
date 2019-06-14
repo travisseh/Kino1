@@ -110,7 +110,10 @@ function optionMapper(name, number){
 function checkSets (templateSets, lastSets) {
   const array = []
   templateSets.forEach(function(set, i){
-     if (lastSets[i].reps >= set.high) {
+    if (lastSets[i].reps === undefined){
+      lastSets[i].reps = null
+    } 
+    if (lastSets[i].reps >= set.high) {
          array.push(0)
      } else {
          array.push(1)
@@ -342,6 +345,7 @@ function fillExercises(lastExercisesArray,exercisesArray, foundExercisesArray, f
   })
   foundExercisesArray.forEach(function(foundExercise, i){
     lastExercisesArray.splice(foundExercise._id.order,1,foundExercise)
+    return lastExercisesArray
   })
 }
 

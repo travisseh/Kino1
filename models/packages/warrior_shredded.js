@@ -12,6 +12,7 @@ const warrior_shredded = new Package (
       name: "Warrior Shredded",
       url: "warrior_shredded",
       description: "This program shows you how to build dense muscle tone, drop fat without hours of cardio, and how to do it while eating the foods you love",
+      phaseIndex: 0,
       active: true,
       purchased: true,
       workouts: [{

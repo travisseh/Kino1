@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const findOrCreate = require('mongoose-findorcreate')
 const passportLocalMongoose = require("passport-local-mongoose")
-const workouts = ["Standing Barbell Press", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold", "Incline Dumbbell Bench Press", "Lat Pull Downs", "Pushups", "Cable Rows", "Goblet Box Squats", "Step-Ups", "Alternating Dumbbell Curls", "Hanging Knee Raises", "Side Plank Hold", "Hip Bridge Hold",]
+const workouts = ["Standing Barbell Press", "Weighted Dips", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Flat Barbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold", "Incline Dumbbell Bench Press", "Lat Pull Downs", "Pushups", "Cable Rows", "Goblet Box Squats", "Step-Ups", "Alternating Dumbbell Curls", "Hanging Knee Raises", "Side Plank Hold", "Hip Bridge Hold", "Hip Thrusts"]
 
 //BodyWeight
 const bodyWeightSchema = new mongoose.Schema ({
@@ -82,8 +82,10 @@ const workoutSchema = new mongoose.Schema ({
         type: String,
         enum: ["A", "B", "C", "D", "A2", "B2", "C2", "A3", "B3", "C3"]
     },
+    phase: {
+        type: Number
+    },
     image: String,
-    phase: Number,
     description: String,
     duration: Number,
     exercises: [templateExerciseSchema]
@@ -94,6 +96,7 @@ const Workout = mongoose.model("Workout", workoutSchema)
 const packageSchema = new mongoose.Schema ({
     name: String,
     url: String,
+    phaseIndex: Number,
     active: {
         type: Boolean
     },
@@ -128,6 +131,9 @@ const exerciseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phase: {
+        type: Number
+    },
     packageUrl: {
         type: String,
         require: true
@@ -136,7 +142,6 @@ const exerciseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    phase: Number,
     sets: [
         {
             reps: Number,
@@ -189,12 +194,12 @@ const userSchema = new mongoose.Schema ({
         type: Number,
         default: 45
     },
-    phases: [Number],
     weightUnit: {
         type: String,
         default: "lbs",
         enum: ["lbs", "kgs"]
-    }
+    },
+    phases: [Number]
   })
   
   userSchema.plugin(passportLocalMongoose)
