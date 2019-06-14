@@ -1,23 +1,46 @@
 <%- include("partials/headerFooter/header.ejs") -%>
 
-<h1 class="text-white"><%= package.name %> </h1>
+<%const phase = user.phases[functions.packagesToPhasesIndex(package.url)]%>
 
-<%- include("partials/dashboard/askAboutMacro.ejs") -%>
+<div id="phaseInfo" data-package-url="<%=package.url%>"></div>
 
-<%const nextWorkout = package.workouts[nextDayArray[1]]%>
+<%if (package.url === "warrior_shredded"){%>
+    <h1 class="text-white" style="margin-bottom:0px;"><%= package.name %> </h1>
+
+    <select class="mdb-select inline-block phases-select">
+    <option value="1" <%if(phase === 1){%>
+        selected
+        <%}%>>Phase 1</option>
+    <option value="2" <%if(phase === 2){%>
+        selected
+        <%}%>>Phase 2</option>
+    </select><img style="padding-bottom: 5px; display: inline; margin-left: -15px;" src="/icons/downSelect.svg">
+
+<%} else {%>
+    <h1 class="text-white"><%= package.name %> </h1>
+<%}%>
+
+<%let numberOfWorkouts1 = numberOfWorkouts%>
+<%if (numberOfWorkouts1 === undefined || numberOfWorkouts1 === null) {%>
+    <% numberOfWorkouts1 = -1 %>
+<%}%>
+<%let nextIndex = nextDayArray[1]%>
+<%if (phase === 2) {%>
+    <%nextIndex = nextIndex + numberOfWorkouts1 + 1%>
+<%}%>
+<%const nextWorkout = package.workouts[nextIndex]%>
 <%#HANDLE IF NEXT WORKOUT EXISTS%>
 <%if (nextWorkout != undefined || nextWorkout != null){%>
     <h3 class="text-white">Next Workout</h3>
 
     <div class="row">
         <div class="col-lg">
-            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>'">
-                <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=nextWorkout.nameShort%>.jpeg" alt="Card image cap">
+            <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>/<%=nextWorkout.phase%>'">
+                <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=nextWorkout.nameShort%>/<%=phase%>.jpeg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
                     <p class="card-text"><%= nextWorkout.description %></p>
                     <p class="card-text">Duration: <%= nextWorkout.duration %> minutes</p>
-                    <p class="card-text relative-date" data-date="<%=nextDayLastDate%>"></p>
                 </div>
             </div>
         </div>
@@ -29,16 +52,18 @@
     <div class="horizontal-scroll" style="margin: -10px:">
         <div style="margin-left: 10px;"></div>
         <% package.workouts.forEach(function(workout, index){ %>
-            <div class="col-md">
-                <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>'">
-                    <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= workout.name %></h5>
-                        <p class="card-text"><%= workout.description %></p>
-                        <p class="card-text">Duration: <%= workout.duration %> minutes</p>
+            <%if (workout.phase === phase){%>
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
+                        <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>/<%=phase%>.jpeg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= workout.name %></h5>
+                            <p class="card-text"><%= workout.description %></p>
+                            <p class="card-text">Duration: <%= workout.duration %> minutes</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <%}%>
         <% }) %>
     </div>
 <div class="container-fluid">
@@ -52,8 +77,12 @@
 <%- include("partials/headerFooter/footerScripts.ejs") -%>
 <script>
     $(document).ready(function(){
+
+        // popovers Initialization
+        $(function () {
+        $('[data-toggle="popover"]').popover()
+        })
         const email = $("#userInfo").data("email")
-        console.log("email: " + email)
         const fname = $("#userInfo").data("fname")
         const lname = $("#userInfo").data("lname")
         const fullName = fname + " " + lname
@@ -65,6 +94,32 @@
         identify.set('name', {'first': fname, 'last': lname})
         identify.set('email', email)
         amplitude.identify(identify)
+
+        $("body").click(function(event) {
+            //if you click on anything except the modal itself or the "open modal" link, close the modal
+            if (!$(event.target).is(".p-phases")){
+                $(".modal").removeClass("show").css("display", "none")
+                $("body").removeClass("modal-open")
+            }
+        });
+
+        $(".p-phases").click(function(event){
+            const phase = $(this).data("phase")
+            const package = $('#phaseInfo').data('package-url')
+            $.post( `/changePhase/${package}/${phase}`)
+                .done(function( data ) {
+                location.reload();
+            });
+        })
+
+        $(".mdb-select").change(function(event){
+            const phase = $(this).val()
+            const package = $('#phaseInfo').data('package-url')
+            $.post( `/changePhase/${package}/${phase}`)
+                .done(function( data ) {
+                location.reload();
+            });
+        })
 
     })
 </script>

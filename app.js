@@ -9,6 +9,7 @@ const app = express()
 const port = 8000
 const path = require("path")
 const flash = require('connect-flash')
+const functions = require('./modules/functions')
 
     //DB
 const mongoose = require("mongoose")
@@ -28,6 +29,7 @@ const macroCalc = require("./routes/macroCalc")
 const workout = require("./routes/workout")
 const closedSignup = require("./routes/closedSignup")
 const settings = require("./routes/settings")
+const changePhase = require('./routes/changePhase')
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
@@ -67,6 +69,7 @@ app.use("/workout", workout)
 app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
+app.use("/changePhase", changePhase)
 
 app.get("/dashTest", function(req, res, next){
     const error = req.flash("error")

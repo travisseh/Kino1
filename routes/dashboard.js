@@ -20,21 +20,31 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPa
                     console.log(err)
                 } else {
                     const askedAboutMacro = foundUser[0].askedAboutMacro
+                    
+                    const phase = req.user.phases[functions.packagesToPhasesIndex(foundPackage.url)]
 
-                    Exercise.find({userId: req.user._id}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
+                    Exercise.find({userId: req.user._id, phase: phase}).limit(10).sort({date:-1}).exec(function(err, foundExercise){
                         //get the last date for all
                         let nextDayArray
-                        let nextDayLastDate
+                        //take care of if this is the first time doing workouts with this package 
+                        let numberOfWorkouts
                         if (foundExercise[0] === null || foundExercise[0] === undefined){
                             nextDayArray = ["A", 0]
                             nextDayLastDate = null
                         } else {
                             const currentDay = foundExercise[0].workout
-                            const numberOfWorkouts = foundPackage.workouts.length -1
-                            nextDayLastDate = new Date(foundExercise[0].date)
+                            let numberOfDaysOfPhase
+                            let counterArray = []
+                            foundPackage.workouts.forEach(function(workout, i){
+                                if (workout.phase === phase){
+                                    counterArray.push(1)
+                                }
+                            })
+                            numberOfWorkouts = counterArray.length -1
                             nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
+
                         }
-                        res.render("dashboard", {package: foundPackage, user: req.user, nextDayArray: nextDayArray, nextDayLastDate, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
+                        res.render("dashboard", {package: foundPackage, user: req.user, functions: functions, numberOfWorkouts: numberOfWorkouts, nextDayArray: nextDayArray, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
                     })
                 }
             })  

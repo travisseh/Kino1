@@ -15,7 +15,7 @@ const warrior_shredded = new Package (
       active: true,
       purchased: true,
       workouts: [{
-          name: "A: Chest and Shoulder",
+          name: "A: Chest & Shoulder",
           nameShort: "A",
           image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
           description: "5 workouts to strengthen chest and shoulders.",
@@ -319,7 +319,7 @@ const warrior_shredded = new Package (
         ]
       },
       {
-        name: "C: Tri's, Back, and Bi's",
+        name: "C: Tri's, Back, & Bi's",
         nameShort: "C",
         image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
         description: "5 workouts to strengthen your triceps, back, and biceps",
@@ -482,7 +482,476 @@ const warrior_shredded = new Package (
               ]
             }
         ]
-    }]
+    },
+    {
+        name: "A: Chest & Shoulder",
+        nameShort: "A",
+        image: "https://source.unsplash.com/sAKQGX1Krs8/286x190",
+        description: "5 workouts to strengthen chest and shoulders.",
+        duration: 60,
+        phase: 2,
+        exercises: [
+            {
+                name: "Incline Dumbbell Bench Press",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589075",
+                order: 0,
+                instructions: [ "Set 1: 6-8 reps", "Set 2: 8-10 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline press effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 3
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 8,
+                        high: 10
+                    }
+                ]
+            },
+            {
+                name: "Flat Barbell Bench Press",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1590394",
+                order: 1,
+                instructions: [ "Set 1: 8-10 reps", "Set 2: 10-12 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "bar",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 10
+                    },
+                    {
+                        low: 10,
+                        high: 12
+                    }
+                ]
+            },
+            {
+                name: "Weighted Chin-ups",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5064558",
+                order: 2,
+                instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs/2.5kgs per dumbbell for reach additional set. Rest 3 minutes between each set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "barWeights",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 50,
+                        reps: 8
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    }
+                ]
+            },
+            {
+                name: "Incline Dumbbell Curls",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589113",
+                order: 3,
+                instructions: [ "6-8 reps per set", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 5lbs/2.5kgs per dumbbell for reach additional set. Rest 3 minutes between each set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 50,
+                        reps: 8
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    }
+                ]
+            },
+            {
+                name: "Lateral Raises",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1590520",
+                order: 4,
+                instructions: [ "Set 1: 12-15 reps.", "Set 2: 4-6 reps.", "Set 3: 4-6 reps.", "Set 4: 4-6 reps", "Rest Pause - 10 second rest between each."],
+                type: "Rest Pause",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightIncrementKg: 2,
+                  startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 10,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 12,
+                        high: 15
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    }
+                ]
+              }
+        ]
+    },
+    {
+        name: "B: Legs & Bum",
+        nameShort: "B",
+        image: "https://source.unsplash.com/WvDYdXDzkhs/286x190",
+        description: "4 workouts to strengthen your legs and bum.",
+        duration: 60,
+        phase: 2,
+        exercises: [
+            {
+                name: "Romanian Deadlifts",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589129",
+                order: 0,
+                instructions: ["6-8 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "This deadlift variation is my preferred version. It's safer on the lower back and does a great job developing the hamstrings, glutes and low back. In fact, if you want to build a great butt (which, I mean, who doesn't?), then this exercise should definitely be included in your routine."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightIncrementKg: 2,
+                startWeightKg: 0,
+                weightType: "bar",
+                pauseDuration: 150,
+                warmUps: [
+                  {
+                    percent: 60,
+                    reps: 5
+                  },
+                  {
+                    percent: 80,
+                    reps: 3
+                  }
+                ],
+                sets: [
+                  {
+                      low: 6,
+                      high: 8
+                  },
+                  {
+                      low: 6,
+                      high: 8
+                  },
+                  {
+                      low: 6,
+                      high: 8
+                  }
+                ]
+            },
+            {
+                name: "Bulgarian Split Squats",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589122",
+                order: 1,
+                instructions: [ "6-8 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "Of course, leg training is pivotal for a well-balanced physique. Two of my favorite movements are front squats and Bulgarian split squats. Both exercises do an amazing job at building strong thighs. Moreover, they both hit the VMO nicely (the teardrop muscle that develops well with training). This gives your legs more thickness near the knee, delivering an aesthetic muscle proportion.", 
+                
+                "If you prefer traditional back squats, you can opt for those instead."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightIncrementKg: 2,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 0,
+                        reps: 8
+                    },
+                    {
+                        percent: 50,
+                        reps: 6
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 6,
+                        high: 8
+                    }
+                ]
+            },
+            {
+                name: "Hip Thrusts",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589146",
+                order: 2,
+                instructions: [ "Set 1: 8-10 reps.", "Set 2: 10-12 reps.", "Set 3: 12-15 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightIncrementKg: 2,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 10
+                    },
+                    {
+                        low: 10,
+                        high: 12
+                    },
+                    {
+                        low: 12,
+                        high: 15
+                    }
+                ]
+            },
+            {
+                name: "Leg Extensions",
+                videoLink: "https://www.youtube.com/watch?v=YyvSfVjQeL0",
+                order: 3,
+                instructions: [ "10-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                startWeight: 10,
+                weightIncrementKg: 1,
+                startWeightKg: 0,
+                weightType: "cable",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 10,
+                        high: 12
+                    },
+                    {
+                        low: 10,
+                        high: 12
+                    },
+                    {
+                        low: 10,
+                        high: 12
+                    }
+                ]
+            },
+
+        ]
+      },
+      {
+        name: "C: Tri's, Back, & Bi's",
+        nameShort: "C",
+        image: "https://source.unsplash.com/WdoQio6HPVA/286x190",
+        description: "5 workouts to strengthen your triceps, back, and biceps",
+        duration: 60,
+        phase: 2,
+        exercises: [
+            {
+                name: "Incline Dumbbell Bench Press",
+                videoLink: "https://my.kinobody.com/courses/66901/lectures/5059620",
+                order: 0,
+                instructions: [ "Set 1: 6-8 reps", "Set 2: 8-10 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                notesFromCourse: [ "This exercise is critical for the warrior physique. The incline press effectively targets the chest, front deltoids and triceps. By performing the bench on an incline, you hit the upper chest harder than you would with a flat-bench press. This exercise develops a sculpted chest that looks like a plate of armor.", "A lot of people focus way too much on flat bench. They end up over-developing their lower pecs. This gives their chest a boob look. If you want to have a masculine chest, then focus more on the incline bench."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 150,
+                warmUps: [
+                    {
+                        percent: 60,
+                        reps: 5
+                    },
+                    {
+                        percent: 80,
+                        reps: 3
+                    }
+                ],
+                sets: [
+                    {
+                        low: 6,
+                        high: 8
+                    },
+                    {
+                        low: 8,
+                        high: 10
+                    }
+                ]
+            },
+            {
+                name: "Weighted Dips",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589077",
+                order: 1,
+                instructions: [ "Set 1: 8-10 reps", "Set 2: 10-12 reps", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                startWeight: 0,
+                weightIncrementKg: 2,
+                startWeightKg: 0,
+                weightType: "barWeights",
+                pauseDuration: 150,
+                warmUps: [
+                  {
+                    percent: 0,
+                    reps: 5
+                  },
+                  {
+                    percent: 50,
+                    reps: 3
+                  }
+                ],
+                sets: [
+                  {
+                      low: 8,
+                      high: 10
+                  },
+                  {
+                      low: 10,
+                      high: 12
+                  }
+                ]
+            },
+            {
+                name: "Seated Cable Rows",
+                videoLink: "https://www.youtube.com/watch?v=IzoCF_b3cIY",
+                order: 2,
+                instructions: [ "8-12 reps per set.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 20,
+                startWeight: 0,
+                weightIncrementKg: 10,
+                startWeightKg: 0,
+                weightType: "cable",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 10
+                    },
+                    {
+                        low: 8,
+                        high: 12
+                    }
+                ]
+            },
+            {
+                name: "Triceps Rope Pushdown",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1590659",
+                order: 3,
+                instructions: ["Set 1: 8-10 reps.", "Set 2: 10-12 reps.", "Set 3: 10-12 reps.", "Rest 2-3 minutes between sets.", "Reverse Pyramid - reduce weight by 10% for reach additional set."],
+                type: "Reverse Pyramid",
+                weightIncrement: 2.5,
+                startWeight: 2.5,
+                weightIncrementKg: 1,
+                startWeightKg: 0,
+                weightType: "rope",
+                pauseDuration: 150,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 8,
+                        high: 10
+                    },
+                    {
+                        low: 10,
+                        high: 12
+                    },
+                    {
+                      low: 10,
+                      high: 12
+                    }
+                ]
+            },
+            {
+                name: "Bent Over Flyes",
+                videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
+                order: 4,
+                instructions: ["Set 1: 12-15 reps", "Set 2: 4-6 reps", "Set 3: 4-6 reps", "Set 4: 4-6 reps", "Rest Pause - rest 10 seconds between sets."],
+                type: "Reverse Pyramid",
+                weightIncrement: 5,
+                weightIncrementKg: 2,
+                startWeight: 0,
+                startWeightKg: 0,
+                weightType: "dumbbells",
+                pauseDuration: 10,
+                warmUps: [],
+                sets: [
+                    {
+                        low: 12,
+                        high: 15
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    },
+                    {
+                        low: 4,
+                        high: 6
+                    }
+                ]
+            }
+        ]
+    }
+    ]
     }
   )
 
