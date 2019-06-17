@@ -30,7 +30,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
       Exercise.aggregate([
           {$match: {userId: req.user._id, packageUrl: packageUrl, name: {$in: nameArray}}},
           {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, lastId: {$last: "$_id"}}},
-          {$sort: {"_id.order" : 1}}
+          {$sort: {"lastId": -1}}
       ]).exec(function (err, foundExercises){
           if (err) {
               console.log(err)
@@ -57,7 +57,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
                     let type = exercises[i].type
                     let weightIncrement = exercises[i].weightIncrement
                     global.displaySets = []
-
+                    
                     functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
                     displayExercises.push(displaySets)
                   }

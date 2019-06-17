@@ -110,6 +110,14 @@ function optionMapper(name, number){
 function checkSets (templateSets, lastSets) {
   const array = []
   templateSets.forEach(function(set, i){
+    if (lastSets[i] === undefined){
+      lastSets[i] = {
+        _id: 000000000000000000000001,
+        reps: 0,
+        weight: 0,
+        note: ''
+      }
+    }
     if (lastSets[i].reps === undefined){
       lastSets[i].reps = null
     } 
