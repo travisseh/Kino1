@@ -15,7 +15,7 @@ aria-hidden="true">
                 <%- include("./warmups.ejs", {index: index, exercise: exercise, editState: editState}) -%>
 
                 <!-- Sets -->
-                <%- include("./sets/sets.ejs", {index: index, exercise: exercise, unit: unit, user: user, editState: editState, hoursDifference: hoursDifference}) -%>
+                <%- include("./sets/sets.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, user: user, editState: editState, hoursDifference: hoursDifference}) -%>
             </div>
             <div class="tab-pane fade" id="instructions-just-<%=index%>" role="tabpanel" aria-labelledby="home-tab-just">
                 <p><a href="<%=exercise.videoLink%>" target="_blank">Demo Video <img class="external-link" src="/icons/ExternalLink.svg"></a></p>

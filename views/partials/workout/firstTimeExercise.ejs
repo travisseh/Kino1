@@ -7,11 +7,6 @@
                     <%}%> <%=unit%> of this exercise and we'll calculate your set!</div>
 
                 <%#ACCOUNT FOR KG STUFF%>
-                <%let step = exercise.weightIncrement%>
-                <% if (user.weightUnit === "kgs"){%>
-                    <%step = exercise.weightIncrementKg %>
-                <% } %>
-
                 <%let startWeight = exercise.startWeight%>
                 <% if (user.weightUnit === "kgs"){%>
                     <%startWeight = exercise.startWeightKg %>

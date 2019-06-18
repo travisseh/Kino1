@@ -24,6 +24,14 @@
     <% editState = true %>
 <%}%>
 
+<%#ACCOUNT FOR KG STUFF%>
+<%let step = exercise.weightIncrement%>
+<%let startWeight = exercise.startWeight%>
+<% if (user.weightUnit === "kgs"){%>
+    <%step = exercise.weightIncrementKg %>
+    <%startWeight = exercise.startWeightKg%>
+<% } %>
+
 
     <!-- Handle if first time on exercise -->
     <%if (lastExercises[index].sets[0].reps === null && exercise.name != "Plank Hold" && exercise.name != "Side Plank Hold" && exercise.name != "Hip Bridge Hold" && exercise.name != "Pushups"){ %>
@@ -33,7 +41,7 @@
                 <div id="E<%=index%>">
                     <!-- Exercise Header -->
                     <%- include("partials/workout/exerciseHeader/exerciseHeader.ejs", {index: index, exercise: exercise, unit: unit, editState: editState}) -%>
-                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, exercise: exercise, unit: unit, user: user, functions: functions, editState: editState}) -%>
+                    <%- include("partials/workout/firstTimeExercise.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, user: user, functions: functions, editState: editState}) -%>
                 </div>
             </div>
         </div>
@@ -96,7 +104,7 @@
                     </div>
 
                     <!--FullExercise Modal-->
-                    <%- include("partials/workout/fullExercise.ejs", {index: index, exercise: exercise, unit: unit, user:user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
+                    <%- include("partials/workout/fullExercise.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, user:user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
                 </div>
             </div>
         </div>
