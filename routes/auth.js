@@ -40,6 +40,8 @@ function(accessToken, refreshToken, profile, cb) {
     googleId: profile.id
   }, function(err, user){
     if (user){
+      user.lastLogin = Date.now()
+      user.save()
       return cb(err,user)
     } else {
       User.create({

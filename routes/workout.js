@@ -101,7 +101,8 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, function(req, re
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
       workout: req.body.workout,
-      userId: req.user._id
+      userId: req.user._id,
+      isSetCreator: req.body.isSetCreator
     })
     newExercise.save()
     if (isFirstTime === 'true'){

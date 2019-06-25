@@ -142,6 +142,10 @@ const exerciseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    isSetCreator: {
+        default: false,
+        type: Boolean
+    },
     sets: [
         {
             reps: Number,
@@ -189,6 +193,9 @@ const userSchema = new mongoose.Schema ({
     },
     hasAccess: {
         type: Boolean
+    },
+    lastLogin: {
+        type: Date
     },
     barWeight: {
         type: Number,
