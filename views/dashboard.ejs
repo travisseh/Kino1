@@ -23,6 +23,8 @@
     <h1 class="text-white"><%= package.name %> </h1>
 <%}%>
 
+<%- include("partials/dashboard/askAboutMacro.ejs") -%>
+
 <%let numberOfWorkouts1 = numberOfWorkouts%>
 <%if (numberOfWorkouts1 === undefined || numberOfWorkouts1 === null) {%>
     <% numberOfWorkouts1 = -1 %>
