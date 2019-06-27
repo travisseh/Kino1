@@ -13,8 +13,15 @@ db.users.aggregate([
     {$project: {_id: 0, email: 1, exerciseCount: {$size: '$exercises'}, exercises: 1, }},
     {$match: {exerciseCount: {$gt: 30}}},
     {$unwind: '$exercises'},
-    {$group: {_id: '$email', allExercises: {$push: {name: '$exercises.name', date: '$exercises.date', weights:'$exercises.sets.weight'}}}},
+    {$group: {_id: '$email', allExercises: {$push: {name: '$exercises.name', date: '$exercises.date', totalWeights:{
+        $reduce: {
+            input:'$exercises.sets.weight',
+            initialValue: "",
+            in: {$sum: ['$$value', '$$this']}
+        }
+    }}}}},
     {$sort: {'_id.email': 1, 'allExercises.date': -1}},
-    {$project: {_id: 1, last30Exercises: {$slice: ['$allExercises', -31, 16]}}},
-    {$out: 'second15'}
+    {$project: {_id: 1, first15Exercises: {$slice: ['$allExercises', -31, 16]}, second15Exercises: {$slice: ['$allExercises', -15]}}}
 ]).pretty()
+
+
