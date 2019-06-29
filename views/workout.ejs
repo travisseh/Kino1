@@ -122,6 +122,49 @@
 
 <div id="barWeight" data-bar-weight="<%=barWeight%>"></div>
 
+<div class="modal fade special-modal" style="z-index:20000;" id="restTimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rest Timer</h5>
+        <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
+        </img>
+    </div>
+    <div class="modal-body modal-body-instructions">
+        <p><a href="#" target="_blank">Demo Video <img class="external-link" src="/icons/ExternalLink.svg"></a></p>
+        
+        <p>Test Test</p>
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="modal-two"></div>
+
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
-<%- include("partials/headerFooter/footerWorkout.ejs") -%>
+<%- include("partials/headerFooter/footerScripts.ejs") -%>
+<script>
+    $(document).ready(function(){
+        
+        $('.restTimer').click(function(){
+            $('.modal-two').css('display', 'inherit')
+        })
+        // $('.modal-two').click(function(){
+        //     $('.modal-two').css('display', 'none')
+        // })
+
+        $("#restTimerModal").on("hidden.bs.modal", function () {
+            $('.modal-two').css('display', 'none')
+        });
+
+        $(document).on('hidden.bs.modal', function (event) {
+            if ($('.modal:visible').length) {
+                $('body').addClass('modal-open');
+            }
+        });
+
+    })
+</script>
+<%- include("partials/headerFooter/footerSimple.ejs") -%>
