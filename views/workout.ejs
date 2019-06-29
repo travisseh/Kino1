@@ -149,14 +149,17 @@ aria-hidden="true">
     $(document).ready(function(){
         
         $('.restTimer').click(function(){
-            $('.modal-two').css('display', 'inherit')
+            // $('.modal-two').css('display', 'inherit')
+            $('.modal-two').fadeIn(400);
+
         })
         // $('.modal-two').click(function(){
         //     $('.modal-two').css('display', 'none')
         // })
 
-        $("#restTimerModal").on("hidden.bs.modal", function () {
-            $('.modal-two').css('display', 'none')
+        $("#restTimerModal").on("hide.bs.modal", function () {
+            $('.modal-two').fadeOut(400);
+            // $('.modal-two').css('display', 'none')
         });
 
         $(document).on('hidden.bs.modal', function (event) {
