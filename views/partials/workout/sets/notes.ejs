@@ -1,7 +1,7 @@
 <%#HANDLE NOTES%>
 <p>
     <a href="#" class="addNote"  id="addNote_<%=index%>_<%=i%>" onclick="amplitude.getInstance().logEvent('Add Note Clicked')">Add Note</a>
-    <a href="#" class="restTimer" style="margin-left: 20px;" data-toggle="modal" data-target="#restTimerModal">Start Rest Timer</a>
+    <a href="#" class="restTimer" style="margin-left: 20px;" data-pauseDuration="<%=exercise.pauseDuration%>" data-toggle="modal" data-target="#restTimerModal">Start Rest Timer</a>
 </p> 
 
 

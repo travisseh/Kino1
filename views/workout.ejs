@@ -131,10 +131,14 @@ aria-hidden="true">
         <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
         </img>
     </div>
-    <div class="modal-body modal-body-instructions">
-        <p><a href="#" target="_blank">Demo Video <img class="external-link" src="/icons/ExternalLink.svg"></a></p>
-        
-        <p>Test Test</p>
+    <div class="modal-body">
+        <div class="d-flex justify-content-center" style="margin-top:30px; margin-bottom: 30px;">
+            <p id="timerText" style="font-size: 64px;">60</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a type="button" id="restart" href="#" class="my-btn btn-link ask-about-macro-button">Restart</a>
+            <a type="button" href="#" class="my-btn my-btn-secondary ask-about-macro-button" data-dismiss="modal">End Timer</a>
+        </div>
     </div>
     </div>
 </div>
@@ -146,20 +150,40 @@ aria-hidden="true">
 
 <%- include("partials/headerFooter/footerScripts.ejs") -%>
 <script>
-    $(document).ready(function(){
+    let seconds = 60
+    let id
+
+    $(document).ready(function(id){
         
         $('.restTimer').click(function(){
-            // $('.modal-two').css('display', 'inherit')
             $('.modal-two').fadeIn(400);
-
+            id = setInterval(() => {
+                $('#timerText').text(seconds)
+                if (seconds === 0){
+                    clearInterval(id)
+                }
+                seconds--
+            }, 1000);
         })
-        // $('.modal-two').click(function(){
-        //     $('.modal-two').css('display', 'none')
-        // })
-
+        $('#restart').click(function(){
+            if (seconds === 0){
+                seconds = 60
+                id = setInterval(() => {
+                $('#timerText').text(seconds)
+                if (seconds === -1){
+                    clearInterval(id)
+                }
+                seconds--
+            }, 1000);
+            } else {
+                seconds = 60
+            }
+        })
         $("#restTimerModal").on("hide.bs.modal", function () {
+            clearInterval(id)
+            seconds = 60
+            $('#timerText').text(seconds)
             $('.modal-two').fadeOut(400);
-            // $('.modal-two').css('display', 'none')
         });
 
         $(document).on('hidden.bs.modal', function (event) {
