@@ -50,7 +50,7 @@ function(accessToken, refreshToken, profile, cb) {
         fname: profile.name.givenName,
         lname: profile.name.familyName,
         photoUrl: profile.photos[0].value,
-        hasAccess: false,
+        hasAccess: true,
         phases: [1,1]
       }, function(err, user){
         return cb(err,user)
