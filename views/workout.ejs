@@ -206,6 +206,11 @@ aria-hidden="true">
                     }
             }, 1000);
             } else {
+                let current = $('.overlayCircle')
+                let clone  = current.clone(true)
+                current.before(clone)
+                current.remove()
+
                 seconds = 59
                 minutes = 2
             }
