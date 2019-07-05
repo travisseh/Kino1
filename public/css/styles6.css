@@ -344,6 +344,28 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
     padding: 0;
     background-color: white;
 }
+
+svg {
+    /* position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px; */
+    /* transform: rotateY(-180deg) rotateZ(-90deg); */
+  }
+  
+  svg circle {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke: white;
+    fill: none;
+    animation: countdown 10s linear infinite forwards;
+  }
+
+
+
 .x-circle {
     display: inline-block;
     border-radius: 1rem;
