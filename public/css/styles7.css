@@ -346,13 +346,13 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
 }
   
   .overlayCircle {
-    stroke-dasharray: 710px;
+    stroke-dasharray: 715px;
     stroke-dashoffset: 0px;
     stroke-linecap: square;
     stroke-width: 8px;
     stroke:#fe8c00;
     fill: none;
-    animation: countdown 179s linear infinite forwards;
+    animation: countdown 180s linear forwards;
   }
 
   @keyframes countdown {
