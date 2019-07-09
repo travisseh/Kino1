@@ -3,27 +3,42 @@
     <%#WEIGHT FROM FIRST SET FOR WARMUP CALC%>
     <%const firstDisplayWeight = displayExercises[index][0].weight%>
 
+    <h4>Warm-ups</h4>
+    <div class="spacer-div"></div>
+
+
     <%exercise.warmUps.forEach(function(warmUp, ind){%>
-        
-        <h4>Warm-up <%= ind + 1 %></h4>
-        
-        <%#HANDLE BODY-WEIGHT WARMUPS%>
-        <% if (warmUp.percent === 0) { %> 
-            <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at bodyweight </p>
-        <% } else { %>
-            <%#DECLARE WEIGHT FOR EACH WARMUP%>
-            <% let weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
-            <%if (user.weightUnit === 'kgs'){%>
-                <%weight = functions.toKgs(weight)%>
-            <%}%>
+        <div style="display: flex;">
+            <div class="inline-block" style="margin-left: 10px;">
+                <button class="btn-list-number"><%=ind + 1%></button>
+            </div>
 
-            <%#SHOW NORMAL WARMUP WEIGHT%>
-            <p class="inline"><%= warmUp.reps %> reps at <div class="weightWarmUp warmup" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>" style="display: inline;" data-percent="<%=warmUp.percent%>" data-exercise="<%=index%>" data-warmup="<%=ind%>"><%= weight%></div> <%=user.weightUnit%></p> 
+            <div style="margin-left: 10px;" class="inline-block;">
+            <%#HANDLE BODY-WEIGHT WARMUPS%>
+            <% if (warmUp.percent === 0) { %> 
+                <p id="warmup_<%=index%>_<%=ind%>"><%= warmUp.reps %>  reps at bodyweight </p>
+            <% } else { %>
+                <%#DECLARE WEIGHT FOR EACH WARMUP%>
+                <% let weight = functions.round(firstDisplayWeight * (warmUp.percent/100),5) %>
+                <%if (user.weightUnit === 'kgs'){%>
+                    <%weight = functions.toKgs(weight)%>
+                <%}%>
 
-            <%#WARMUP BARCALC%>
-            <%if (exercise.weightType === "bar") { %>
-                <p class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></p>
-            <% } %>
-            
-        <%  } %>
+                <%#SHOW NORMAL WARMUP WEIGHT%>
+                <p class="inline"><%= warmUp.reps %> reps at <div class="weightWarmUp warmup" data-weight="<%=weight%>" id="warmup_<%=index%>_<%=ind%>" style="display: inline;" data-percent="<%=warmUp.percent%>" data-exercise="<%=index%>" data-warmup="<%=ind%>"><%= weight%></div> <%=user.weightUnit%></p> 
+
+                <%#WARMUP BARCALC%>
+                <%if (exercise.weightType === "bar") { %>
+                    <p class="text-muted barCalcWarmUp" id="barCalc_<%=index%>_<%=ind%>"></p>
+                <% } %>
+                
+            <%  } %>
+            </div>
+        </div>
+        <%if (ind === exercise.warmUps.length - 1){%>
+        
+        <%} else {%>
+            <div class="spacer-div"></div>
+        <%}%>
+
     <%})%>

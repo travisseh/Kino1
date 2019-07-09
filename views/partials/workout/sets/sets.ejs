@@ -7,26 +7,38 @@
         <form action="/workout/<%=packageUrl%>/<%=workout.nameShort%>" method="POST">
     <%}%>
     
+        <h4>Sets</h4>
+        <div class="spacer-div"></div>
+
+
     <%exercise.sets.forEach(function(set, i){%>
-        <h4>Set <%=i + 1%></h4>
-        <% const weight = displayExercises[index][i].weight %>
+        <div style="display:flex;">
+            <div class="inline-block" style="margin-left: 10px;">
+                <button type="button" class="btn-list-number"><%=i + 1%></button>
+            </div>
 
-        <!-- Last Week -->   
-        <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
-    
-        <!-- Bar Calculator -->   
-        <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
-            
-        <!-- Reps -->   
-        <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
-                
-        <br>
+            <div style="margin-left: 10px;" class="inline-block;">
+                <% const weight = displayExercises[index][i].weight %>
 
-        <!-- Weights -->   
-        <%- include("./weights.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
+                <!-- Last Week -->   
+                <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
             
-        <!-- Notes -->   
-        <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
+                <!-- Bar Calculator -->   
+                <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
+                    
+                <!-- Reps -->   
+                <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
+                        
+                <br>
+
+                <!-- Weights -->   
+                <%- include("./weights.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
+                    
+                <!-- Notes -->   
+                <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
+            </div>
+        </div>
+        <div class="spacer-div"></div>
 
     <%})%>
 
