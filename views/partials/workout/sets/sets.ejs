@@ -20,12 +20,6 @@
             <div style="margin-left: 10px;" class="inline-block;">
                 <% const weight = displayExercises[index][i].weight %>
 
-                <!-- Last Week -->   
-                <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
-            
-                <!-- Bar Calculator -->   
-                <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
-                    
                 <!-- Reps -->   
                 <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
                         
@@ -33,6 +27,12 @@
 
                 <!-- Weights -->   
                 <%- include("./weights.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
+
+                <!-- Last Week -->   
+                <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
+            
+                <!-- Bar Calculator -->   
+                <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
                     
                 <!-- Notes -->   
                 <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>

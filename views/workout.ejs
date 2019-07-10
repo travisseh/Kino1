@@ -402,7 +402,7 @@ aria-hidden="true">
                 const currentWeight = $(`#${currentWarmUpId}`).data("weight")
                 console.log("currentWeight: ")
                 console.log(currentWeight)
-                return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
+                return "<img src='/icons/dumbbell.svg'> " + " Bar: " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
             })
 
             //Normal weight BarCalc
@@ -418,16 +418,10 @@ aria-hidden="true">
                     //Handle if there are warmups and set it to the last warmup
                     if ($(".weightWarmUp").length > 0){
                         //traverse up to get the per workout div id - something like E0 or E1
-                        id = $(this).parent().parent().parent().attr("id")
+                        id = $(this).parent().parent().parent().parent().attr("id")
                         let testy = $(this).parent().parent().parent().parent().parent().parent()
-                        console.log("this")
-                        console.log($(this))
-                        console.log("id")
-                        console.log(id)
-                        console.log("testy")
-                        console.log(testy)
                         //traverse down and find the warmups if there are any
-                        lastWeight = $(`#${id}`).children(".weightWarmUp").last().data("weight")
+                        lastWeight = $(`#${id}`).find(".weightWarmUp").last().data("weight")
                     } else {
                         //handle if there aren't any warm-ups
                         lastWeight = barWeight
@@ -440,7 +434,7 @@ aria-hidden="true">
                 const currentWeight = $(`#${currentWeightId}`).val()
                 // console.log("currentWeight: ")
                 // console.log(currentWeight)
-                return "<img src='/icons/dumbbell.svg'> " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
+                return "<img src='/icons/dumbbell.svg'> " + " Bar: " + barCalc2(lastWeight,currentWeight, barWeight, weightUnit)
                 })
         }
 
