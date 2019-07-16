@@ -503,7 +503,7 @@ body.modal-open { /* make stop scrolling you to the top in modal*/
 
 @media screen and (max-height:800px) {
     #index-spacer {
-        height: 80px;
+        height: 60px;
     }
 }
 
