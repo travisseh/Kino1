@@ -21,21 +21,11 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-//   callbackURL: "http://localhost:8080/auth/google/kino1",
   callbackURL: process.env.GOOGLE_CALLBACK_URL,
   useProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb) {
 
-  // User.findOrCreate({ 
-  //   googleId: profile.id,
-  //   email: profile.emails[0].value,
-  //   fname: profile.name.givenName,
-  //   lname: profile.name.familyName,
-  //   photoUrl: profile.photos[0].value
-  // }, function (err, user) {
-  //   return cb(err, user);
-  // });
   User.findOne({
     googleId: profile.id
   }, function(err, user){
