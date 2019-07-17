@@ -1,5 +1,5 @@
 $(document).ready(function(){const localUrl='http://localhost:8000'
-const prodUrl='https://www.kinohelper.com'
+const prodUrl='https://www.lesswork.me'
 let scroll=localStorage.getItem('scroll-pos',0)
 let referrer=document.referrer
 let currentUrl=window.location.href

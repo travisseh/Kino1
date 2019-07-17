@@ -15,6 +15,10 @@ const warrior_shredded = new Package (
       phaseIndex: 0,
       active: true,
       purchased: true,
+      verifyQ: 'What is the first word below the video',
+      verifyLink: 'https://kinobody.teachable.com/courses/66901/lectures/4918556',
+      verifyLength: 7,
+      verifyWord: 'welcome',
       workouts: [{
           name: "A: Chest & Shoulder",
           nameShort: "A",

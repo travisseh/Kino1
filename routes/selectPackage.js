@@ -13,7 +13,7 @@ selectPackage.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req
                     if (err){
                         console.log(err)
                     } else {
-                        res.render("selectPackage", {packages: foundPackages, user: req.user, success: req.flash('success'), error: req.flash('error')})
+                        res.render("selectPackage", {ajaxUrl:process.env.AJAX_URL, packages: foundPackages, user: req.user, success: req.flash('success'), error: req.flash('error')})
                     }
                 })
             }

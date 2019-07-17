@@ -10,24 +10,56 @@
 <%}%>
 
 <div class="row">
-<%packages.forEach(function(package){ %>
+<%packages.forEach(function(package, index10){ %>
+    
     <%if (package.name != "Aggressive Fat Loss"){%>
-    <form action="/selectPackage" method="POST">
-    <div class="col-lg">
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= package.name %> </h5>
-          <p class="card-text"><%=package.description%></p>
-          <input type="hidden" name="packageName" value="<%=package.name%>">
-          <button class="my-btn my-btn-secondary" type="submit" name="package_id" value="<%=package._id%>">Activate</button>
+        <%let arrayNumber%>
+        <%if (package.url === 'warrior_shredded'){%>
+            <%arrayNumber = 0%>
+        <%} else if (package.url === 'goddess_toning'){%>
+            <%arrayNumber = 1%>
+        <%}%>
+        <form action="/selectPackage" method="POST">
+        <div class="col-lg">
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title"><%= package.name %> </h5>
+            <p class="card-text"><%=package.description%></p>
+            <input type="hidden" name="packageName" value="<%=package.name%>">
+            <button class="my-btn my-btn-secondary package" id="<%=package.url%>" data-verified="<%=user.verifiedPackages[arrayNumber]%>" data-verify-length="<%=package.verifyLength%>" data-package-url="<%=package.url%>" data-modal-name="verifiedCheck<%=index10%>" type="submit" name="package_id" value="<%=package._id%>">Activate</button>
+            </div>
         </div>
-      </div>
-    </div>
-    </form>
+        </div>
+        </form>
+
+
+        <div class="modal fade special-modal" style="z-index:20000;" id="verifiedCheck<%=index10%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Purchase Verification</h5>
+                    <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
+                    </img>
+                </div>
+                <div class="modal-body">
+                        <%console.log(package.verifyQ)%>
+                        <%console.log(package.verifyLink)%>
+                        <p>Quick question to verify you've purchased <%=package.name%>:</p>
+                        <p><%=package.verifyQ%> on this <a href="<%=package.verifyLink%>" target="_blank">Kinobody page</a>?</p>
+                    <div style="text-align:center; margin-top:10px;">
+                        <input type="text" class="main-input inline-block verifyInput"  name="weight" required placeholder="Enter <%=package.verifyLength%> letter word" style="width: 200px;">
+                    </div>  
+                </div>
+                </div>
+            </div>
+        </div>
     <%}%>
 
 <% }) %>
 </div>
+
+
 
 <div id="userInfo" data-email="<%=user.email%>" data-fname="<%=user.fname%>" data-lname="<%=user.lname%>"></div>
 
@@ -36,8 +68,55 @@
 <%- include("partials/headerFooter/footerScripts.ejs") -%>
 <script>
     $(document).ready(function(){
+        $('.package').click(function(){
+            const modalName = $(this).data('modal-name')
+            const selectedPackage = $(this)
+            const packageUrl = $(this).data('package-url')
+            if ($(this).data('verified') === false){
+                event.preventDefault();
+                $(`#${modalName}`).modal('show')
+                const verifyLength = $(this).data('verify-length')
+                $('.verifyInput').on('input',function(){
+                    let thisInput = $(this)
+                    let currentLength = $(this).val().length
+                    let currentInput = $(this).val()
+                    let errorLength = $('#inputError').length 
+                    if(currentLength === 0){
+                           $('#inputError').remove()
+                    }
+                    if(currentLength === verifyLength){
+                        if(errorLength > 0){
+                           $('#inputError').remove()
+                        }
+                        $.get(`<%=ajaxUrl%>/verify/${packageUrl}/${currentInput}`, function(data){
+                            thisInput.after(`<p id="inputError" class="text-muted" style="display:block">loading...</p>`)
+                        }).done(function(data){
+                            if (data === true){
+                                selectedPackage.data('verified','true')
+                                selectedPackage.trigger('click')
+                            } else if (data === false) {
+                                thisInput.after(`<p id="inputError" class="text-muted error" style="display:block">That wasn't the correct word - please try again</p>`)
+                            } else {
+                                thisInput.after(`<p id="inputError" class="text-muted error" style="display:block">An error occurred on the server, please try again</p>`)
+                            }
+                        })
+                    } else if (currentLength > verifyLength || currentLength < verifyLength){
+                       if(errorLength === 0 && currentLength > 0){
+                        $(this).after(`<p id="inputError" class="text-muted error">Please include exactly ${verifyLength} letters</p>`)
+                       }
+                    }
+                })
+            }
+        })
+        $('#closeModal').click(function(){
+            $('#verifiedCheck0').modal('hide')
+            $('#verifiedCheck1').modal('hide')
+        })
+
+
+
+
         const email = $("#userInfo").data("email")
-        console.log("email: " + email)
         const fname = $("#userInfo").data("fname")
         const lname = $("#userInfo").data("lname")
         const fullName = fname + " " + lname

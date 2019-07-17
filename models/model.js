@@ -104,6 +104,10 @@ const packageSchema = new mongoose.Schema ({
         type: Boolean
     },
     description: String,
+    verifyQ: String,
+    verifyLink: String,
+    verifyLength: Number,
+    verifyWord: String,
     workouts: [workoutSchema] 
 })
 const Package = mongoose.model("Package", packageSchema)
@@ -178,6 +182,7 @@ const userSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Package"
     },
+    verifiedPackages: [Boolean],
     packageName: {
         type: String,
     },

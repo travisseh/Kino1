@@ -41,7 +41,8 @@ function(accessToken, refreshToken, profile, cb) {
         lname: profile.name.familyName,
         photoUrl: profile.photos[0].value,
         hasAccess: true,
-        phases: [1,1]
+        phases: [1,1],
+        verifiedPackages: [false,false]
       }, function(err, user){
         return cb(err,user)
       })

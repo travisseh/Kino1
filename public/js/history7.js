@@ -10,7 +10,7 @@ function toKgs(number){
 $(document).ready(function () {
 
 const localUrl = 'http://localhost:8000'
-const prodUrl = 'https://www.kinohelper.com'
+const prodUrl = 'https://www.lesswork.me'
     
 $(".viewPast2").on("click", function(){
     //look up the last exercises

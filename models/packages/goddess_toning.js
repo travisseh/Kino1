@@ -14,6 +14,10 @@ const goddess_toning = new Package (
       purchased: false,
       description: "This programs shows you how to slim down to a low body fat while developing great-looking shape and muscle tone",
       phaseIndex: 1,
+      verifyQ: 'What is the fourth word below the video',
+      verifyLink: 'https://kinobody.teachable.com/courses/66905/lectures/4498828',
+      verifyLength: 7,
+      verifyWord: 'goddess',
       workouts: [{
           name: "A: Legs, Shoulders, Abs",
           nameShort: "A",

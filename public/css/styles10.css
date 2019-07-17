@@ -652,6 +652,11 @@ small {
     margin: 10px;
     margin-left: 0;
 }
+.error {
+    color: red !important;
+    display: block;
+}
+
 li {
     color: #C4C4C4;
 }
