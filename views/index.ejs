@@ -9,7 +9,7 @@
 
 <header class="v-header container-video">
   <div class="fullscreen-video-wrap">
-      <video autoplay loop muted playsinline id="vid">
+      <video autoplay muted loop playsinline>
         <source src="/video/kino3.mp4" type="video/mp4">
       </video>
   </div>
@@ -26,9 +26,5 @@
   </div>
 </header>
 
-<script>
-  document.getElementById('vid').play()
-  alert("hello") 
-</script>
 
 <%- include("partials/headerFooter/footer.ejs") -%>
