@@ -44,7 +44,7 @@ dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPa
                             nextDayArray = functions.nextDay(currentDay,numberOfWorkouts)
 
                         }
-                        res.render("dashboard", {package: foundPackage, user: req.user, functions: functions, numberOfWorkouts: numberOfWorkouts, nextDayArray: nextDayArray, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
+                        res.render("dashboard", {package: foundPackage, ajaxUrl: process.env.AJAX_URL, user: req.user, functions: functions, numberOfWorkouts: numberOfWorkouts, nextDayArray: nextDayArray, askedAboutMacro: askedAboutMacro, success: req.flash('success'), error: req.flash('error')})
                     })
                 }
             })  
