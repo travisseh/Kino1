@@ -38,14 +38,14 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Purchase Verification</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Verify <%=package.name%> Purchase</h5>
                     <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
                     </img>
                 </div>
                 <div class="modal-body">
                         <%console.log(package.verifyQ)%>
                         <%console.log(package.verifyLink)%>
-                        <p>Quick question to verify you've purchased <%=package.name%>:</p>
+                        <p>Please login to <a href="https://kinobody.com/" target="_blank">Kinobody.com</a> in a separate tab then answer the question below:</p>
                         <p><%=package.verifyQ%> on this <a href="<%=package.verifyLink%>" target="_blank">Kinobody page</a>?</p>
                     <div style="text-align:center; margin-top:10px;">
                         <input type="text" class="main-input inline-block verifyInput"  name="weight" required placeholder="Enter <%=package.verifyLength%> letter word" style="width: 200px;">
