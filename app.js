@@ -30,6 +30,7 @@ const workout = require("./routes/workout")
 const closedSignup = require("./routes/closedSignup")
 const settings = require("./routes/settings")
 const verify = require("./routes/verify")
+const subscribe = require("./routes/subscribe")
 const changePhase = require('./routes/changePhase')
 
 // DB CONNECTION
@@ -37,8 +38,8 @@ mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
 // seedPackages()
 
 //GLOBAL SETTINGS
-app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
-// app.use(express.static(path.join(__dirname, "public"), { maxAge: 3 }))
+// app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 3 }))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -70,6 +71,7 @@ app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
 app.use("/verify", verify)
+app.use("/subscribe", subscribe)
 app.use("/changePhase", changePhase)
 
 app.get("/dashTest", function(req, res, next){
