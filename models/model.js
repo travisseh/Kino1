@@ -211,6 +211,8 @@ const userSchema = new mongoose.Schema ({
         default: "lbs",
         enum: ["lbs", "kgs"]
     },
+    subscribed: Boolean,
+    canceled: Boolean,
     phases: [Number]
   })
   
