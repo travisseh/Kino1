@@ -93,11 +93,18 @@ app.get('/success', (req, res) =>{
     res.redirect('/dashboard')
 })
 
+
+//Stripe Stuff
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+const endpointSecret = process.env.STRIPE_SUBSCRIBE_SECRET;
+
 app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (request, response) => {
+    const sig = request.headers['stripe-signature'];
     let event;
+    console.log("this start of the event happened")
   
     try {
-      event = JSON.parse(request.body);
+      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
     }
     catch (err) {
       response.status(400).send(`Webhook Error: ${err.message}`);
@@ -105,8 +112,10 @@ app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (req
     User.updateOne({email: event.data.object.customer_email}, {subscribed: true}, function(err, result){
         if (err) {
             console.log(err)
+            response.status(500).send(`Server Error: ${err.message}`);
         } else {
             console.log(result)
+            console.log("this event happened")
         }
     })
   
@@ -117,7 +126,13 @@ app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (req
     response.json({received: true});
   });
 
-
+//   stripe.customers.retrieve(
+//     'cus_FUR3fhuRqWeGiB',
+//     function(err, customer) {
+//     //   console.log(customer)
+//       console.log(customer.email)
+//     }
+//   );
 
 
 // User.updateMany({}, {verifiedPackages: [true,true]}, function(err, result){
