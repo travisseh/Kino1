@@ -70,10 +70,10 @@
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: window.location.protocol + '//www.lesswork.me/success',
+      successUrl: '<%=ajaxUrl%>/success',
       cancelUrl: window.location.protocol + '//www.lesswork.me/canceled',
       customerEmail: '<%=user.email%>',
-      client_reference_id: '<%=user._id%>'
+      // client_reference_id: '<%=user._id%>'
     })
     .then(function (result) {
       if (result.error) {

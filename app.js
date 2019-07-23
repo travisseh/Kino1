@@ -14,6 +14,7 @@ const functions = require('./modules/functions')
     //DB
 const mongoose = require("mongoose")
 const seedPackages = require("./models/seed").seedPackages
+const User = require('./models/model').User
 
     //Auth
 const session = require('express-session')
@@ -30,6 +31,7 @@ const workout = require("./routes/workout")
 const closedSignup = require("./routes/closedSignup")
 const settings = require("./routes/settings")
 const verify = require("./routes/verify")
+const payment = require("./routes/payment")
 const subscribe = require("./routes/subscribe")
 const changePhase = require('./routes/changePhase')
 
@@ -71,6 +73,7 @@ app.use("/closedSignup", closedSignup)
 app.use("/auth/google", auth)
 app.use("/logout", logout)
 app.use("/verify", verify)
+// app.use("/payment", payment)
 app.use("/subscribe", subscribe)
 app.use("/changePhase", changePhase)
 
@@ -85,6 +88,34 @@ app.get("/test", function(req, res, next){
     const success = req.flash("success")
     res.render("test", {success: success, error: error})
 })
+
+app.get('/success', (req, res) =>{
+    res.redirect('/dashboard')
+})
+
+app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (request, response) => {
+    let event;
+  
+    try {
+      event = JSON.parse(request.body);
+    }
+    catch (err) {
+      response.status(400).send(`Webhook Error: ${err.message}`);
+    }
+    User.updateOne({email: event.data.object.customer_email}, {subscribed: true}, function(err, result){
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(result)
+        }
+    })
+  
+   console.log("email: ")
+   console.log(event.data.object.customer_email)
+  
+    // Return a response to acknowledge receipt of the event
+    response.json({received: true});
+  });
 
 
 
