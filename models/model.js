@@ -168,6 +168,12 @@ const userSchema = new mongoose.Schema ({
     email: String,
     fname: String,
     lname: String,
+    createdDate: {
+        type: Date,
+        default: Date.now
+    },
+    stripe_id: String,
+    stripe_subscription_id: String,
     googleId: String,
     photoUrl: String,
     askedAboutMacro: {

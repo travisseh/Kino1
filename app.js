@@ -93,6 +93,13 @@ app.get('/success', (req, res) =>{
     res.redirect('/dashboard')
 })
 
+// const moment = require('moment')
+
+// const todayMilliseconds = Date.now()
+
+// const formatted = moment(todayMilliseconds).format('dddd, MMMM Mo YYYY')
+// console.log(formatted)
+// console.log(todayMilliseconds)
 
 //Stripe Stuff
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
@@ -101,7 +108,6 @@ const endpointSecret = process.env.STRIPE_SUBSCRIBE_SECRET;
 app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (request, response) => {
     const sig = request.headers['stripe-signature'];
     let event;
-    console.log("this start of the event happened")
   
     try {
       event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
@@ -109,28 +115,47 @@ app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (req
     catch (err) {
       response.status(400).send(`Webhook Error: ${err.message}`);
     }
-    User.updateOne({email: event.data.object.customer_email}, {subscribed: true}, function(err, result){
+    User.updateOne({email: event.data.object.customer_email}, {subscribed: true, stripe_id: event.data.object.customer, stripe_subscription_id: event.data.object.subscription, canceled: false}, function(err, result){
         if (err) {
             console.log(err)
             response.status(500).send(`Server Error: ${err.message}`);
         } else {
             console.log(result)
-            console.log("this event happened")
         }
     })
-  
-   console.log("email: ")
-   console.log(event.data.object.customer_email)
-  
-    // Return a response to acknowledge receipt of the event
     response.json({received: true});
   });
 
-//   stripe.customers.retrieve(
-//     'cus_FUR3fhuRqWeGiB',
+
+app.post('/cancel', (req, res, next) => {
+    stripe.subscriptions.update(req.user.stripe_subscription_id, {cancel_at_period_end: true});
+    User.updateOne({email: req.user.email},{canceled:true}, (err, result)=>{
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(result)
+        }
+    })
+    res.redirect('/settings')
+})
+
+app.post('/resubscribe', (req, res, next) => {
+    stripe.subscriptions.update(req.user.stripe_subscription_id, {cancel_at_period_end: false});
+    User.updateOne({email: req.user.email}, {canceled: false}, (err, result)=>{
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(result)
+        }
+    })
+    res.redirect('/settings')
+})
+
+//   stripe.customers.list(
+//     {email:'travppatset@gmail.com'},
 //     function(err, customer) {
-//     //   console.log(customer)
-//       console.log(customer.email)
+//       console.log(customer)
+//       console.log(customer.data[0])
 //     }
 //   );
 

@@ -15,8 +15,6 @@ router.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (
       response.status(400).send(`Webhook Error: ${err.message}`);
     }
   
-   console.log(event)
-  
     // Return a response to acknowledge receipt of the event
     response.json({received: true});
   });

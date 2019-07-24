@@ -43,7 +43,8 @@ function(accessToken, refreshToken, profile, cb) {
         hasAccess: true,
         phases: [1,1],
         verifiedPackages: [false,false],
-        subscribed: false
+        subscribed: false,
+        canceled: false
       }, function(err, user){
         return cb(err,user)
       })

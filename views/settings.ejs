@@ -27,15 +27,68 @@
 
 <div class="card">
   <div class="card-body">
+    <h3 class="macro-header">Subscription</h3>
+    <div class="spacer-div"></div>
+    <%if (user.subscribed === false){%>
+      <p>You currently have <span style="font-weight:bold;"><%=daysLeft%> day<%if (daysLeft > 1){%>s<%}%></span> left of your free trial.</p>
+      <div class="spacer-div"></div>
+      <div class="text-center">
+        <a href="/subscribe" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium">View Subscription Plans</a>
+      </div>
+    <%} else if (user.subscribed === true && user.canceled === true){%>
+      <p>Your subscription has been <span style="font-weight:bold;">canceled</span> but you'll have access until <span style="font-weight: bold;"><%=endDate%></span>.</p>
+      <div class="spacer-div"></div>
+      <div class="text-center">
+        <form method="POST" action="/resubscribe">
+          <button href="/subscribe" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium">Re-Subscribe at $<%=amount%>/<%=interval%></button>
+        </form>
+      </div>
+    <%} else if (user.subscribed === true){%>
+      <p>You're currently subscribed at <span style="font-weight:bold;">$<%=amount%></span> per <span style="font-weight:bold;"><%=interval%></span></p>
+      <p>Your next payment will be on <span style="font-weight:bold;"><%=endDate%></span></p>
+      <div class="spacer-div"></div>
+      <div class="text-center">
+        <a href="#" class="btn-link" style="color: red; text-decoration:none;" data-toggle="modal" data-target="#cancelModal">Cancel Subscription</a>
+      </div>
+    <%}%>
+    </div>
+  </div>
+
+<div class="card">
+  <div class="card-body">
     <h3 class="macro-header">Account</h3>
     <div class="spacer-div"></div>
-      <p>You are currently logged in as <%=user.email%></p>
-        <div class="spacer-div"></div>
-      <div class="text-center"><a href="/logout" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium">Logout</a></div>
-      
+      <p>You are currently logged in as <span style="font-weight:bold;"><%=user.email%></span></p>
+      <div class="spacer-div"></div>
+      <div class="text-center">
+        <a href="/logout" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium">Logout</a>
+      </div>
+    </div>
   </div>
-</div>
 
+
+//modal
+<div class="modal fade special-modal" style="z-index:20000;" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancel Subscription</h5>
+                    <img src="/icons/Close.svg" class="close" data-dismiss="modal" aria-label="Close">
+                    </img>
+                </div>
+                <div class="modal-body">
+                        <p>It's a little selfish but could you summarize why you're cancelling in two words?</p>
+                    <div style="text-align:center; margin-top:10px;">
+                        <form method="POST" action="/cancel">
+                        <input type="text" class="main-input inline-block verifyInput"  name="weight" required placeholder="Two word reason" style="width: 200px; margin-top:10px;">
+                        <button type="submit" class="my-btn my-btn-secondary waves-effect waves-orange my-btn-medium" style="margin-top: 10px;">Finalize Cancellation</button>
+                        </form>
+                    </div>  
+                </div>
+                </div>
+            </div>
+        </div>
 
 
 <div class="container-fluid">
