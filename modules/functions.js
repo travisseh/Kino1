@@ -449,4 +449,31 @@ function packagesToPhasesIndex (packageUrl) {
   }
 }
 
-module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs, packagesToPhasesIndex}
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const suffixes = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th']
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var day = days[a.getDay()];
+  var date = a.getDate();
+  const arrayDate = date.toString().split("").map(Number)
+  const selectedNumberFromDate = arrayDate.length -1
+  const dateSuffix = suffixes[arrayDate[selectedNumberFromDate] -1]
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = `${day} ${month} ${date}${dateSuffix}, ${year}`
+  return time;
+}
+
+function daysLeft(initialDate, days){
+  const oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  const today = Date.now()
+  const daysSinceInitial = Math.floor(Math.abs((initialDate.getTime() - today)/(oneDay)))
+  const daysLeft = days - daysSinceInitial
+  return daysLeft
+}
+
+module.exports = {setsCreator, round, displaySetsCreator, determineSetIncrease, increaseWeight, sumArray, checkSets, fillExercises, optionMapper, secondsToMinutes, nextDay, letterToNumber, toKgs, toLbs, packagesToPhasesIndex, timeConverter, daysLeft}

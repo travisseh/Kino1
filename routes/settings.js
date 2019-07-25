@@ -8,12 +8,9 @@ const moment = require('moment')
 
 
 settings.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,next){
-    const oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
     const createdDate = req.user.createdDate
-    const today = Date.now()
-    const daysSinceCreated = Math.floor(Math.abs((createdDate.getTime() - today)/(oneDay)));
     const freeTrialLength = 7
-    const daysLeft = freeTrialLength - daysSinceCreated
+    const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
 
     stripe.customers.retrieve(
         req.user.stripe_id,
@@ -21,27 +18,9 @@ settings.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,
           if (err){
               console.log(err)
           }
-          const endDateMilli = customer.subscriptions.data[0].current_period_end
 
-        function timeConverter(UNIX_timestamp){
-            var a = new Date(UNIX_timestamp * 1000);
-            var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const suffixes = ['st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th']
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var day = days[a.getDay()];
-            var date = a.getDate();
-            const arrayDate = date.toString().split("").map(Number)
-            const selectedNumberFromDate = arrayDate.length -1
-            const dateSuffix = suffixes[arrayDate[selectedNumberFromDate] -1]
-            var hour = a.getHours();
-            var min = a.getMinutes();
-            var sec = a.getSeconds();
-            var time = `${day} ${month} ${date}${dateSuffix}, ${year}`
-            return time;
-          }
-          const endDate = timeConverter(endDateMilli)
+          const endDateMilli = customer.subscriptions.data[0].current_period_end
+          const endDate = functions.timeConverter(endDateMilli)
           const amount = customer.subscriptions.data[0].plan.amount/100
           const interval = customer.subscriptions.data[0].plan.interval
 

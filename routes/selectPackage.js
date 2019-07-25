@@ -4,7 +4,7 @@ const User = require("../models/model").User
 const middleware = require("../middleware")
 const selectPackage = express.Router()
 
-selectPackage.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,next){
+selectPackage.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.trialExpired, function(req,res,next){
         Package.find({}, function(err, foundPackages){
             if (err) {
                 console.log(err)

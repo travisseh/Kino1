@@ -1,4 +1,4 @@
-
+const functions = require('../modules/functions')
 
 function isLoggedIn(req, res, next){
     if (req.isAuthenticated()){
@@ -25,6 +25,21 @@ function hasAccess (req, res, next) {
     }
 }
 
+function trialExpired (req, res, next){
+    if (req.user.subscribed === true){
+        return next()
+    } else {
+        const createdDate = req.user.createdDate
+        const freeTrialLength = 7
+        const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
+        if (daysLeft <= 0){
+            res.redirect('/subscribe')
+        } else {
+            return next()
+        }
+    }
+}
 
 
-module.exports = {isLoggedIn, hasPackageSelected, hasAccess}
+
+module.exports = {isLoggedIn, hasPackageSelected, hasAccess, trialExpired}

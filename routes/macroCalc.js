@@ -5,7 +5,7 @@ const middleware = require("../middleware")
 const functions = require("../modules/functions")
 const router = express.Router()
 
-router.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req, res, next){
+router.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.trialExpired, function(req, res, next){
     BodyWeight.findOne({userId: req.user._id}).sort('-date').exec(function(err, foundWeight){
         const dismissCalTracks = req.user.dismissCalTracks
         if (err){

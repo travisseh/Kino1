@@ -7,7 +7,7 @@ const functions = require("../modules/functions")
 const dashboard = express.Router()
 
 
-dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.hasPackageSelected, function(req, res, next){
+dashboard.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.trialExpired, middleware.hasPackageSelected, function(req, res, next){
     Package.findOne({name: req.user.packageName}, function(err, foundPackage){
         if (err){
             console.log(err)
