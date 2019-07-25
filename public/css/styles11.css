@@ -1,4 +1,10 @@
 
+:root {
+    --gradient: linear-gradient(to right, var(--main-orange), #f83600 );
+    --webkit-gradient: -webkit-linear-gradient(to right, var(--main-orange), #f83600);
+    --main-orange: #fe8c00;
+}
+
 .row-centered {
     text-align: center;
 }
@@ -67,7 +73,7 @@ li a {
 
 
 a {
-    color: #fe8c00;
+    color: var(--main-orange);
 }
 .italic {
     font-style: italic;
@@ -145,9 +151,9 @@ ul {
     padding-right: 60px;
 }
 .my-btn-primary {
-    background: #fe8c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fe8c00, #f83600 );
+    background: var(--main-orange);  /* fallback for old browsers */
+    background: var(--webkit-gradient);  /* Chrome 10-25, Safari 5.1-6 */
+    background: var(--gradient);
     border: none;
     color: #FFFFFF;
     box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.1), 0px -1px 10px rgba(0, 0, 0, 0.05);
@@ -159,10 +165,10 @@ ul {
 }
 .my-btn-secondary {
     background: transparent !important;
-    color: #fe8c00;  /* fallback for old browsers */
-    color: -webkit-linear-gradient(to right, #fe8c00, #f83600);  /* Chrome 10-25, Safari 5.1-6 */
-    color: linear-gradient(to right, #fe8c00, #f83600 );
-    border: 1px solid #fe8c00;
+    color: var(--main-orange);  /* fallback for old browsers */
+    color: var(--webkit-gradient);  /* Chrome 10-25, Safari 5.1-6 */
+    color: var(--gradient);
+    border: 1px solid var(--main-orange);
     box-shadow: none;
     -webkit-box-shadow: none;
 }
@@ -191,14 +197,14 @@ ul {
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #fe8c00;
-    background-color: #fe8c00;
+    border-color: var(--main-orange);
+    background-color: var(--main-orange);
 }
 
 .custom-control-input:not(:disabled):active~.custom-control-label::before {
     color: #fff;
-    background-color: #fe8c00;
-    border-color: #fe8c00;
+    background-color: var(--main-orange);
+    border-color: var(--main-orange);
 }
 
 .spacer-div {
@@ -262,9 +268,9 @@ h3 {
     padding: 1.875rem;
     padding-bottom: 0;
     margin: 0;
-    background: #fe8c00;  
-    background: -webkit-linear-gradient(to right, #fe8c00, #f83600);  
-    background: linear-gradient(to right, #fe8c00, #f83600 ); 
+    background: var(--main-orange);  
+    background: -webkit-linear-gradient(to right, var(--main-orange), #f83600);  
+    background: linear-gradient(to right, var(--main-orange), #f83600 ); 
     z-index: 10;
 }
 .modal { 
@@ -307,7 +313,7 @@ stroke-dasharray: 715px;
 stroke-dashoffset: 0px;
 stroke-linecap: square;
 stroke-width: 8px;
-stroke:#fe8c00;
+stroke:var(--main-orange);
 fill: none;
 animation: countdown 180s linear forwards;
 }
@@ -530,6 +536,38 @@ animation: countdown 180s linear forwards;
 }
 /* End Video Stuff */
 
+/* Stuff for index.ejs */
+.flex {
+    display: flexbox;
+    flex-direction: column;
+}
+.flex-contain {
+    display: flexbox;
+    flex-wrap: wrap;
+}
+/* End Stuff for index.ejs */
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 60px 60px 60px;
+    grid-row-gap: 30px;
+}
+.column1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin-right: 60px;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.column2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
 
 
