@@ -565,11 +565,31 @@ animation: countdown 180s linear forwards;
     grid-column-end: 3;
     justify-self: left;
 }
+.grid-subscribe {
+    grid-template-rows: 16px 16px 16px 16px 16px 16px;
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
 p.column2 {
     margin-bottom: 0px;
 }
 
+.orange-check {
+    fill: var(--main-orange);
+    height: 15px;
+}
+
+.macro-header {
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 
 .col-centered {
