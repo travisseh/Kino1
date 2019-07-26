@@ -576,6 +576,29 @@ animation: countdown 180s linear forwards;
     margin-left: 20px;
     margin-right: 20px;
 }
+.grid-testimonial {
+    display: grid;
+    margin: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+}
+.testimonial-text {
+    grid-row: span 2;
+    grid-column: span 3;
+}
+.testimonial-picture {
+    grid-row: span 1;
+    grid-column: span 1;
+}
+.testimonial-name {
+    align-self: left;
+    grid-row: span 1;
+    grid-column: span 2;
+}
 
 p.column2 {
     margin-bottom: 0px;
