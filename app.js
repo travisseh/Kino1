@@ -90,16 +90,9 @@ app.get("/test", function(req, res, next){
 })
 
 app.get('/success', (req, res) =>{
+    req.flash('success', "You've successfully subscribed!")    
     res.redirect('/dashboard')
 })
-
-// const moment = require('moment')
-
-// const todayMilliseconds = Date.now()
-
-// const formatted = moment(todayMilliseconds).format('dddd, MMMM Mo YYYY')
-// console.log(formatted)
-// console.log(todayMilliseconds)
 
 //Stripe Stuff
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
@@ -136,6 +129,7 @@ app.post('/cancel', (req, res, next) => {
             console.log(result)
         }
     })
+    req.flash('success', 'Subscription canceled')
     res.redirect('/settings')
 })
 
@@ -148,6 +142,7 @@ app.post('/resubscribe', (req, res, next) => {
             console.log(result)
         }
     })
+    req.flash('success', "You've successfully re-subscribed!")
     res.redirect('/settings')
 })
 

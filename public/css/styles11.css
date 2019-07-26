@@ -165,9 +165,7 @@ ul {
 }
 .my-btn-secondary {
     background: transparent !important;
-    color: var(--main-orange);  /* fallback for old browsers */
-    color: var(--webkit-gradient);  /* Chrome 10-25, Safari 5.1-6 */
-    color: var(--gradient);
+    color: var(--main-orange); 
     border: 1px solid var(--main-orange);
     box-shadow: none;
     -webkit-box-shadow: none;

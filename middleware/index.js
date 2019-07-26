@@ -26,17 +26,19 @@ function hasAccess (req, res, next) {
 }
 
 function trialExpired (req, res, next){
+    const createdDate = req.user.createdDate
+    const freeTrialLength = 7
+    const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
     if (req.user.subscribed === true){
         return next()
+    } else if (daysLeft <= 0 && req.user.canceled === true) {
+        req.flash('error', 'Your subscription has expired! Subscribe below to start using again.')
+        res.redirect('/subscribe')
+    } else if (daysLeft <= 0) {
+        req.flash('error', 'Sorry, your free trial has expired! Subscribe below to start using again.')
+        res.redirect('/subscribe')
     } else {
-        const createdDate = req.user.createdDate
-        const freeTrialLength = 7
-        const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
-        if (daysLeft <= 0){
-            res.redirect('/subscribe')
-        } else {
-            return next()
-        }
+        return next()
     }
 }
 
