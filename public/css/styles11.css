@@ -609,6 +609,15 @@ p.column2 {
     height: 15px;
 }
 
+#topGoogleSignIn {
+    color: #fff;
+}
+
+/* #topGoogleSignIn:active {
+    color: var(--main-orange);
+} */
+
+
 .macro-header {
     margin-top: 10px;
     margin-left: 10px;
