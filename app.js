@@ -119,6 +119,28 @@ app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (req
     response.json({received: true});
   });
 
+  const cancelSecret = process.env.STRIPE_CANCEL_SECRET;
+app.post('/payment/canceled', bodyParser.raw({type: 'application/json'}), (request, response) => {
+    const sig = request.headers['stripe-signature'];
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(request.body, sig, cancelSecret);
+    }
+    catch (err) {
+        response.status(400).send(`Webhook Error: ${err.message}`);
+    }
+    User.updateOne({stripe_id: event.data.object.customer}, {subscribed: false}, function(err, result){
+        if (err) {
+            console.log(err)
+            response.status(500).send(`Server Error: ${err.message}`);
+        } else {
+            console.log(result)
+        }
+    })
+    response.json({received: true});
+});
+
 
 app.post('/cancel', (req, res, next) => {
     stripe.subscriptions.update(req.user.stripe_subscription_id, {cancel_at_period_end: true});
