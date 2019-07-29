@@ -70,7 +70,7 @@
 <script>
 
   $(document).ready(function(){
-    var stripe = Stripe('pk_test_0wq0jlvLlsB7enXvETbXMJj300jmVL9jEW');
+    var stripe = Stripe('<%=stripePublicKey%>');
 
     var checkoutButton = document.getElementById('checkout-button');
   checkoutButton.addEventListener('click', function () {
