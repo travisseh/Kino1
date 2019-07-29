@@ -42,7 +42,7 @@
         <div class="col-lg">
             <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=nextWorkout.nameShort%>/<%=phase%>'">
                 <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=nextWorkout.nameShort%>/<%=phase%>.jpeg" alt="Card image cap">
-                <div class="card-body">
+                <div class="card-body" style="margin: 0px;">
                     <h5 class="card-title"><%= nextWorkout.name %></h5>
                     <p class="card-text"><%= nextWorkout.description %></p>
                     <p class="card-text">Duration: <%= nextWorkout.duration %> minutes</p>
@@ -61,7 +61,7 @@
                 <div class="col-md">
                     <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
                         <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>/<%=phase%>.jpeg" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body" style="margin: 0px;">
                             <h5 class="card-title"><%= workout.name %></h5>
                             <p class="card-text"><%= workout.description %></p>
                             <p class="card-text">Duration: <%= workout.duration %> minutes</p>

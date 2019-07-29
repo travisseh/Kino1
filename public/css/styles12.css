@@ -98,6 +98,9 @@ h1 h2 h3 h4 h5 h6 {
     font-weight: 700 !important;
     font-size: 1.3125rem;
 }
+.card-body {
+    margin: 10px;
+}
 .card-title {
     margin-right: 20px;
     font-size: 1.5rem;
@@ -620,7 +623,7 @@ p.column2 {
 
 .macro-header {
     margin-top: 10px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 
