@@ -96,6 +96,8 @@ app.get('/success', (req, res) =>{
 
 //Stripe Stuff
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+console.log("stripe api key:")
+console.log(process.env.STRIPE_API_KEY)
 const endpointSecret = process.env.STRIPE_SUBSCRIBE_SECRET;
 
 app.post('/payment/subscribed', bodyParser.raw({type: 'application/json'}), (request, response) => {
