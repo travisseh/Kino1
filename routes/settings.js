@@ -12,21 +12,28 @@ settings.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,
     const freeTrialLength = 7
     const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
 
-    stripe.customers.retrieve(
-        req.user.stripe_id,
-        function(err, customer) {
-          if (err){
-              console.log(err)
-          }
-
-          const endDateMilli = customer.subscriptions.data[0].current_period_end
-          const endDate = functions.timeConverter(endDateMilli)
-          const amount = customer.subscriptions.data[0].plan.amount/100
-          const interval = customer.subscriptions.data[0].plan.interval
-
-          res.render("settings", {user: req.user, endDate: endDate, amount: amount, interval:interval, daysLeft: daysLeft, functions: functions, success: req.flash('success'), error: req.flash('error')})
-        }
-      );
+    if (req.user.subscribed === true){
+        stripe.customers.retrieve(
+            req.user.stripe_id,
+            function(err, customer) {
+              if (err){
+                  console.log(err)
+              }
+    
+              const endDateMilli = customer.subscriptions.data[0].current_period_end
+              const endDate = functions.timeConverter(endDateMilli)
+              const amount = customer.subscriptions.data[0].plan.amount/100
+              const interval = customer.subscriptions.data[0].plan.interval
+    
+              res.render("settings", {user: req.user, endDate: endDate, amount: amount, interval:interval, daysLeft: daysLeft, functions: functions, success: req.flash('success'), error: req.flash('error')})
+            }
+          );
+    } else {
+        const endDate = null
+        const amount = null
+        const interval = null
+        res.render("settings", {user: req.user, endDate: endDate, amount: amount, interval:interval, daysLeft: daysLeft, functions: functions, success: req.flash('success'), error: req.flash('error')})
+    }
 })
 
 settings.post("/", middleware.isLoggedIn,function(req, res, next){
