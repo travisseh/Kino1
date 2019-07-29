@@ -19,7 +19,7 @@
     <div class="text-center">
         <p><span style="font-size: 36px; vertical-align: 40%; margin-right:5px;">$</span><span id="dollar" style="font-size: 72px;">2</span><span style="font-size: 14px; color:#7D7D7D">/month</span></p>
           <p style="font-size: 12px; color:#7D7D7D;">Cancel anytime</p>
-          <button class="my-btn my-btn-primary waves-effect waves-orange my-btn-medium" style="margin-top: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px -1px 8px rgba(0, 0, 0, 0.05);" onclick="amplitude.getInstance().logEvent('Subscribe')" id="checkout-button" data-plan="plan_FT0oIfLxzOxF9m"
+          <button class="my-btn my-btn-primary waves-effect waves-orange my-btn-medium" style="margin-top: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px -1px 8px rgba(0, 0, 0, 0.05);" onclick="amplitude.getInstance().logEvent('Subscribe')" id="checkout-button" data-plan="<%=stripeAnnualPlan%>"
   role="link">Subscribe</button>
          
     </div>
@@ -43,19 +43,7 @@
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <div class="grid-testimonial">
-        <p class="testimonial-text" style="font-size: 20px;"><span style="font-size:30px;">“</span>  Trust me when I say this - it is amazing and one of the best workout trackers I have used  <span style="font-size:30px;">“</span></p>
-        <img src="/images/testimonial1.png" class="testimonial-picture">
-        <div class="testimonial-name">
-          <p class="column2" style="font-weight: 700; margin-bottom:10px;">Blaine Anderson</p>
-          <p class="column2" style="font-size: 12px; color: #888383;">Gained 20 lbs of muscle on Warrior Shredded</p>
-        </div>
-    </div>
-    <div class="spacer-div"></div>
-  </div>
-</div>
+
 
 <div id="error-message"></div>
 
@@ -104,11 +92,11 @@
     })
     $('#monthly').on('click',function(){
         $('#dollar').after('<span id="cents" style="font-size:36px;">.50</span>')
-        $('#checkout-button').data('plan','plan_FT0d71193ygpEr')
+        $('#checkout-button').data('plan','<%=stripeMonthlyPlan%>')
     })
     $('#annual').on('click',function(){
         $('#cents').remove()
-        $('#checkout-button').data('plan','plan_FT0oIfLxzOxF9m')
+        $('#checkout-button').data('plan','<%=stripeAnnualPlan%>')
     })
   })
 </script>
