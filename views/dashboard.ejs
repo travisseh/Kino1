@@ -4,19 +4,15 @@
 
 <div id="phaseInfo" data-package-url="<%=package.url%>"></div>
 
-<%if (package.url === "warrior_shredded"){%>
+<%if (package.phases > 1){%>
     <h1 class="text-white" style="margin-bottom:0px;"><%= package.name %> </h1>
 
     <select class="mdb-select inline-block phases-select">
-    <option value="1" <%if(phase === 1){%>
+    <%for (let i = 1; i <= package.phases; i++){%>
+        <option value="i" <%if(phase === i){%>
         selected
-        <%}%>>Phase 1</option>
-    <option value="2" <%if(phase === 2){%>
-        selected
-        <%}%>>Phase 2</option>
-    <option value="3" <%if(phase === 3){%>
-        selected
-        <%}%>>Phase 3</option>
+        <%}%>>Phase <%=i%></option>
+    <%}%>
     </select><img style="padding-bottom: 5px; display: inline; margin-left: -15px;" src="/icons/downSelect.svg">
 
 <%} else {%>
