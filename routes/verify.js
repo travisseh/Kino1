@@ -19,6 +19,8 @@ router.get('/:packageUrl/:keyWord', middleware.isLoggedIn, function(req, res, ne
                 position = 0
             } else if (packageUrl === 'goddess_toning'){
                 position = 1
+            } else if (packageUrl === 'greek_god'){
+                position = 2
             }
             User.findOne({_id: req.user._id}, function(err, foundUser){
                 foundUser.verifiedPackages.splice(position,1,true)

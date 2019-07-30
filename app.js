@@ -177,13 +177,6 @@ app.post('/resubscribe', (req, res, next) => {
 //   );
 
 
-// User.updateMany({}, {verifiedPackages: [true,true]}, function(err, result){
-//     console.log(result)
-//     User.findOne({email:"travppatset@gmail.com"}, function(err, foundUser){
-//         console.log(foundUser)
-//     })
-// })
-
 // app.get("*", function(req, res, next){
 //   res.redirect("/")
 // })

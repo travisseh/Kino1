@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const findOrCreate = require('mongoose-findorcreate')
 const passportLocalMongoose = require("passport-local-mongoose")
-const workouts = ["Front Squats", "Weighted Pull-ups", "Reverse Lunges", "Standing Barbell Press", "Weighted Dips", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Flat Barbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold", "Incline Dumbbell Bench Press", "Lat Pull Downs", "Pushups", "Cable Rows", "Goblet Box Squats", "Step-Ups", "Alternating Dumbbell Curls", "Hanging Knee Raises", "Side Plank Hold", "Hip Bridge Hold", "Hip Thrusts"]
+const workouts = ["Front Squats", "Weighted Pull-ups", "Reverse Lunges", "Standing Barbell Press", "Weighted Dips", "Weighted Chin-ups", "Seated Cable Rows", "Triceps Rope Pushdown", "Lateral Raises", "Incline Barbell Bench Press", "Flat Dumbbell Bench Press", "Flat Barbell Bench Press", "Incline Dumbbell Curls", "Rope Hammer Curls", "Bent Over Flyes", "Bulgarian Split Squats", "Romanian Deadlifts", "Leg Extensions", "Hanging Weighted Knee Raises", "Sumo Deadlift Squats", "Dumbbell Forward Lunges", "Seated Dumbbell Shoulder Press", "Lateral Raises", "Lying Leg Raises", "Plank Hold", "Hip Bridge Hold", "Incline Dumbbell Bench Press", "Lat Pull Downs", "Pushups", "Cable Rows", "Goblet Box Squats", "Step-Ups", "Alternating Dumbbell Curls", "Hanging Knee Raises", "Side Plank Hold", "Hip Bridge Hold", "Hip Thrusts", "Incline Hammer Curls","Dumbbell Romanian Deadlifts", "Face Pulls", "One-Arm Overhead Triceps Extensions", "Dumbbell Upright Rows", "Side-to-Side Knee Ups", "Barbell Box Squat", "Single-Leg Romanian Deadlift", "Seated Bent-Over Flyes"]
 
 //BodyWeight
 const bodyWeightSchema = new mongoose.Schema ({
@@ -44,7 +44,7 @@ const templateExerciseSchema = new mongoose.Schema({
     notesFromCourse: [String],
     type: {
         type: String,
-        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold", "Standard Pyramid Tweaked"]
+        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold", "Standard Pyramid Tweaked","Kino Rep"]
     },
     pauseDuration: {
         type: Number,

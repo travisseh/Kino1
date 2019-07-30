@@ -1412,7 +1412,7 @@ const warrior_shredded = new Package (
                 videoLink: "https://my.kinobody.com/courses/108654/lectures/1589088",
                 order: 4,
                 instructions: ["Set 1: 12-15 reps", "Set 2: 4-6 reps", "Set 3: 4-6 reps", "Set 4: 4-6 reps", "Rest Pause - rest 10 seconds between sets."],
-                type: "Reverse Pyramid",
+                type: "Rest Pause",
                 weightIncrement: 5,
                 weightIncrementKg: 2,
                 startWeight: 0,

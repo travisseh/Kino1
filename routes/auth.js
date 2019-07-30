@@ -42,7 +42,7 @@ function(accessToken, refreshToken, profile, cb) {
         photoUrl: profile.photos[0].value,
         hasAccess: true,
         phases: [1,1],
-        verifiedPackages: [false,false],
+        verifiedPackages: [false,false,false],
         subscribed: false,
         canceled: false
       }, function(err, user){
