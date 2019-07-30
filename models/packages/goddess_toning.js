@@ -18,6 +18,8 @@ const goddess_toning = new Package (
       verifyLink: 'https://kinobody.teachable.com/courses/66905/lectures/4498828',
       verifyLength: 7,
       verifyWord: 'goddess',
+      phases: 1,
+      bonusPhase: false,
       workouts: [{
           name: "A: Legs, Shoulders, Abs",
           nameShort: "A",

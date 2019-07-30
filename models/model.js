@@ -108,6 +108,8 @@ const packageSchema = new mongoose.Schema ({
     verifyLink: String,
     verifyLength: Number,
     verifyWord: String,
+    phases: Number,
+    bonusPhase: Boolean,
     workouts: [workoutSchema] 
 })
 const Package = mongoose.model("Package", packageSchema)
