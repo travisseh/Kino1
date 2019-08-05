@@ -9,9 +9,11 @@ const TemplateExercise = require("./model").TemplateExercise
 const TemplateWarmUp = require("./model").TemplateWarmUp
 const TemplateSet = require("./model").TemplateSet
 const goddess_toning = require("./packages/goddess_toning")
-const createGodessToning = require("./packages/goddess_toning").createGodessToning
+const createGoddessToning = require("./packages/goddess_toning").createGoddessToning
 const warrior_shredded = require("./packages/warrior_shredded")
 const createWarriorShredded = require("./packages/warrior_shredded").createWarriorShredded
+const createGreekGod = require("./packages/greek_god").createGreekGod
+const greek_god = require("./packages/greek_god")
 const createAFL = require("./packages/aggressive_fat_loss_").createAFL
 const aggressive_fat_loss = require("./packages/aggressive_fat_loss_").aggressive_fat_loss
 
@@ -57,15 +59,17 @@ function seedPackages(){
                         console.log (err)
                     }
                     if (result) {
-                        createGodessToning()
+                        createGoddessToning()
                         createWarriorShredded()
                         createAFL()
+                        createGreekGod()
                     }
                 })
             } else {
-                createGodessToning()
+                createGoddessToning()
                 createWarriorShredded()
                 createAFL()
+                createGreekGod()
             }
         }
     })

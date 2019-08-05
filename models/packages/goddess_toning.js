@@ -647,7 +647,7 @@ const goddess_toning = new Package (
 
 
 
-function createGodessToning(){
+function createGoddessToning(){
       Package.create(goddess_toning,function(err){
       if (err){
           console.log(err)
@@ -656,4 +656,4 @@ function createGodessToning(){
 }
 
 
-  module.exports = {goddess_toning, createGodessToning}
+  module.exports = {goddess_toning, createGoddessToning}
