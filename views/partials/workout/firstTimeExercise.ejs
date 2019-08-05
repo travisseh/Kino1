@@ -20,6 +20,8 @@
                         <%#HIDDEN INPUTS%>
                         <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
                         <input type="hidden" name="note[]">
+                        <input type="hidden" name="exerciseType" value="<%=exercise.type%>">
+                        <input type="hidden" name="weightIncrement" value="<%=exercise.weightIncrement%>">
 
                         <%#WEIGHT BUTTON%>
                         <p></p>
@@ -46,6 +48,13 @@
 
                         <%#NOTES%>
                         <input type="hidden" name="note[]">
+                        
+                        <%#EXERCISE TYPE%>
+                        <input type="hidden" name="exerciseType" value="<%=exercise.type%>">
+
+                        <%#WEIGHT INCREMENT%>
+                        <input type="hidden" name="weightIncrement" value="<%=exercise.weightIncrement%>">
+
 
                     <%}%>
                 <%})%>

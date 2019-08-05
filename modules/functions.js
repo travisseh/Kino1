@@ -208,6 +208,26 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
         } 
         break
 
+      case "Kino Rep":
+        if (i === 0){
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: lastSets[i].weight + weightIncrement
+            }
+          )
+        } else if (i > 0) {
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: (displaySets[i-1].weight + round((displaySets[i-1].weight * .1), weightIncrement))
+            }
+          )
+        }
+        break
+
       case "Reverse Pyramid":
         if (i === 0) {
           displaySets.push(
@@ -216,7 +236,7 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
               high: templateSets[i].high,
               weight: lastSets[i].weight + weightIncrement
             }
-            )
+          )
         } else if (i > 0) {
           displaySets.push(
             {
