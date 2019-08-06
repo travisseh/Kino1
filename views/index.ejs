@@ -8,7 +8,8 @@
       <a href="/auth/google" id="topGoogleSignIn" class="button logo-text" style="z-index: 100; margin-left: 10px; margin-top:10px; font-size: 14px; cursor:default;" onclick="amplitude.getInstance().logEvent('Login Clicked')">Sign in with Google</a>
 </nav>
 
-<header class="v-header container-video">
+
+<div class="v-header container-video">
   <div class="fullscreen-video-wrap">
       <video autoplay muted loop playsinline>
         <source src="/video/kino3.mp4" type="video/mp4">
@@ -19,14 +20,14 @@
       <div class="card-body">
           <h4 class="card-title">Spend less effort tracking your KinoBody workouts</h4>
           <p class="card-text">Try free for 7 days</p>
-          <a href="/auth/google" role="button" class="btn btn-gplus" onclick="amplitude.getInstance().logEvent('Login Clicked')"><i class="fab fa-google"></i>  Sign in with Google</a>
+          <a href="/auth/google" role="button" class="btn btn-gplus" id="button2" onclick="amplitude.getInstance().logEvent('Login Clicked')"><i class="fab fa-google"></i>  Sign in with Google</a>
           <p class="card-text" style="font-size:12px; margin-top:20px;">No card required. $2/month thereafter.</p>
           <div class="spacer-div" id="index-spacer"></div>
           <p class="card-text" style="font-size: 14px;">*Not affiliated with Kinobody LLC*</p>
           <p class="card-text" style="font-size: 14px;"> Available for Warrior Shredded and Goddess Toning programs</p>
       </div>
   </div>
-</header>
+</div>
 
 <div style="margin-top:-50px;">
   <div class="container-fluid">
