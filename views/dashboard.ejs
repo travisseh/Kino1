@@ -9,7 +9,7 @@
 
     <select class="mdb-select inline-block phases-select">
     <%for (let i = 1; i <= package.phases; i++){%>
-        <option value="i" <%if(phase === i){%>
+        <option value="<%=i%>" <%if(phase === i){%>
         selected
         <%}%>>Phase <%=i%></option>
     <%}%>
@@ -54,6 +54,7 @@
         <div style="margin-left: 10px;"></div>
         <% package.workouts.forEach(function(workout, index){ %>
             <%if (workout.phase === phase){%>
+            <%console.log("after")%>
                 <div class="col-md">
                     <div class="card" style="width: 18rem;" onclick="location.href='/workout/<%=package.url%>/<%=workout.nameShort%>/<%=workout.phase%>'">
                         <img class="card-img-top" src="/images/cardImages/<%=package.url%>/<%=workout.nameShort%>/<%=phase%>.jpeg" alt="Card image cap">

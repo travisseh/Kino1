@@ -466,6 +466,8 @@ function packagesToPhasesIndex (packageUrl) {
       return 0
     case "goddess_toning":
       return 1
+    case "greek_god":
+      return 2
   }
 }
 
