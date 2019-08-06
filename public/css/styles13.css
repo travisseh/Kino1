@@ -460,6 +460,9 @@ animation: countdown 180s linear forwards;
     align-items: center;
     color: #fff;
 }
+
+
+
 .container-video {
     max-width: 960px;
     padding-left: 1rem;
@@ -545,6 +548,19 @@ animation: countdown 180s linear forwards;
 .flex-contain {
     display: flexbox;
     flex-wrap: wrap;
+}
+
+.index-nav-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.index-column1 {
+    justify-self: right;
+}
+
+.index-columns2 {
+    justify-self: left;
 }
 /* End Stuff for index.ejs */
 
@@ -874,6 +890,14 @@ box-sizing: border-box;
     margin-left: 0px;
 }
 
+
+@media screen and (min-width: 991px) {
+    #topGoogleSignIn {
+        position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
 
 
 
