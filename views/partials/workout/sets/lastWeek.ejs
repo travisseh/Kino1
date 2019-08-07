@@ -1,10 +1,7 @@
 <%#HANDLE LAST WEEKS SETS%>
-<%let lastWeight = lastExercises[index].sets[i].weight%>
 <%if (user.weightUnit === 'kgs'){%>
 <%lastWeight = functions.toKgs(lastWeight)%>
 <%}%>
-<%const lastReps = lastExercises[index].sets[i].reps%>
-<%const lastNote = lastExercises[index].sets[i].note%>
 <%const exerciseName = lastExercises[index]._id.name%>
 
 

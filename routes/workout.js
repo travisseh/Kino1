@@ -28,7 +28,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, middleware.trial
 
   //get each list of lastsets
       Exercise.aggregate([
-          {$match: {userId: req.user._id, packageUrl: packageUrl, name: {$in: nameArray}}},
+          {$match: {userId: req.user._id, name: {$in: nameArray}}},
           {$group: {_id: {order: "$order", name: "$name"}, sets: {$last: "$sets"}, lastId: {$last: "$_id"}}},
           {$sort: {"lastId": -1}}
       ]).exec(function (err, foundExercises){
@@ -55,10 +55,12 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, middleware.trial
                     let templateSets = exercises[i].sets
                     let lastSets = lastExercises[i].sets
                     let type = exercises[i].type
+                    let previousType = lastExercises.type
+                    console.log(previousType)
                     let weightIncrement = exercises[i].weightIncrement
                     global.displaySets = []
                     
-                    functions.displaySetsCreator(templateSets, lastSets, type, weightIncrement)
+                    functions.displaySetsCreator(templateSets, lastSets, type, previousType, weightIncrement)
                     displayExercises.push(displaySets)
                   }
                   
@@ -86,6 +88,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, middleware.trial
     const step = req.body.step
     const phase = req.body.phase
     const isFirstTime = req.body.isFirstTime
+    const type = req.body.type
     const sets = []
     const newFirstWeight = formWeight[0] - step
     if (isFirstTime === 'true'){
@@ -104,6 +107,7 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, middleware.trial
       sets: sets,
       phase: phase,
       order: order,
+      type: type,
       templateExercise: [req.body.templateId],
       packageUrl: req.body.packageUrl,
       workout: req.body.workout,

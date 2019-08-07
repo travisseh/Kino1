@@ -1,13 +1,12 @@
 <%#HANDLE REPS%>    
 
-<%const lastReps2 = lastExercises[index].sets[i].reps%>
 
 <div class="inline-block my-counter-div">
     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="weight-button my-counter before-radius waves-effect"><img src="/icons/minus.svg"></button>
     
     <input type="number" inputmode="numeric" pattern="[0-9]*" class="my-counter counter-input" required id="reps_<%=index%>_<%=i%>"
-    <%if (editState && lastReps2 != undefined)  {%>
-        value="<%=lastReps2%>"
+    <%if (editState && lastReps != undefined)  {%>
+        value="<%=lastReps%>"
     <% } else if (displayExercises[index][i].low === null) { %>
         value="<%=displayExercises[index][i].high%>"
     <% } else { %>

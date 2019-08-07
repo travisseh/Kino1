@@ -107,7 +107,10 @@ function optionMapper(name, number){
 
 
     //Displaysets Creator
-function checkSets (templateSets, lastSets) {
+function checkSets (templateSets, lastSets, type, previousType) {
+  if (type === "Kino Rep" && previousType !== "Kino Rep"){
+    return true
+  }
   const array = []
   templateSets.forEach(function(set, i){
     if (lastSets[i] === undefined){
@@ -134,7 +137,7 @@ function checkSets (templateSets, lastSets) {
   }
 }
 
-function increaseWeight (templateSets, lastSets, type, weightIncrement) {
+function increaseWeight (templateSets, lastSets, type, previousType, weightIncrement) {
   for (let i = 0; i < templateSets.length; i++){
     
     switch (type) {
@@ -209,7 +212,15 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
         break
 
       case "Kino Rep":
-        if (i === 0){
+        if (i === 0 && previousType !== "Kino Rep"){
+          displaySets.push(
+            {
+              low: templateSets[i].low,
+              high: templateSets[i].high,
+              weight: round(lastSets[i].weight * (1-lastSets.length/10), weightIncrement)
+            }
+          )
+        } else if (i === 0){
           displaySets.push(
             {
               low: templateSets[i].low,
@@ -218,11 +229,15 @@ function increaseWeight (templateSets, lastSets, type, weightIncrement) {
             }
           )
         } else if (i > 0) {
+          let weight = round(displaySets[i-1].weight * .1, weightIncrement)
+          if (weight < weightIncrement){
+            weight = weightIncrement
+          }
           displaySets.push(
             {
               low: templateSets[i].low,
               high: templateSets[i].high,
-              weight: (displaySets[i-1].weight + round((displaySets[i-1].weight * .1), weightIncrement))
+              weight: (displaySets[i-1].weight + weight)
             }
           )
         }
@@ -358,9 +373,9 @@ function determineSetIncrease (templateSets, lastSets, type) {
   }
 }
 
-function displaySetsCreator(templateSets, lastSets, type, weightIncrement) {
-  if (checkSets(templateSets,lastSets)){
-  increaseWeight(templateSets, lastSets, type, weightIncrement)
+function displaySetsCreator(templateSets, lastSets, type, previousType, weightIncrement) {
+  if (checkSets(templateSets,lastSets, type, previousType)){
+  increaseWeight(templateSets, lastSets, type, previousType, weightIncrement)
   } else {
   determineSetIncrease(templateSets, lastSets, type)
   }

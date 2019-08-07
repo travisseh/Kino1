@@ -60,15 +60,24 @@
                     <div class="clickable" data-toggle="modal" data-target="#fullExerciseModal<%=index%>" data-backdrop="static" data-keyboard="false">
                         <h6>Sets</h6>
                         <%exercise.sets.forEach(function(set, index4){%>
-                            <%const lastReps3 = lastExercises[index].sets[index4].reps%>
-                            <%const lastNote = lastExercises[index].sets[index4].note%>
-                            
-                            <%let lastWeight3 = lastExercises[index].sets[index4].weight%>
+                            <% let lastReps %>
+                            <% let lastNote %>
+                            <% let lastWeight %>
+
+                            <%if (lastExercises[index].sets[index4] !== undefined){%>
+                                <% lastReps = lastExercises[index].sets[index4].reps%>
+                                <% lastNote = lastExercises[index].sets[index4].note%>
+                                <% lastWeight = lastExercises[index].sets[index4].weight%>
+                            <%} else {%>
+                                <% lastReps = 0 %>
+                                <% lastNote = "" %>
+                                <% lastWeight = 0 %>
+                            <%}%>
                             <%let weight = displayExercises[index][index4].weight%>
                             <%#HANDLE KGS %>
                             <%if (user.weightUnit === "kgs"){%>
                                 <%weight = functions.round(functions.toKgs(displayExercises[index][index4].weight), exercise.weightIncrementKg) %>
-                                <%lastWeight3 = functions.round(functions.toKgs(lastExercises[index].sets[index4].weight), exercise.weightIncrementKg) %>
+                                <%lastWeight = functions.round(functions.toKgs(lastExercises[index].sets[index4].weight), exercise.weightIncrementKg) %>
                             <%}%>
 
                             <%let weightSentence = "at " + weight + " " + user.weightUnit%>
@@ -82,7 +91,7 @@
 
                             <p><button class="btn-list-number"><%=index4 + 1%></button>
                                 <%if (editState) {%>
-                                    <%=lastReps3%> <%=unit%> <%=weightSentence2%> <%if (lastNote.length > 0){%>
+                                    <%=lastReps%> <%=unit%> <%=weightSentence2%> <%if (lastNote.length > 0){%>
                                     , <%=lastNote%>
                                     <%}%>
                                 <%} else if (displayExercises[index][index4].low === null) { %>

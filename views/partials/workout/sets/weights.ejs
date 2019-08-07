@@ -1,7 +1,6 @@
 
 <%#HANDLE WEIGHTS%>
 
-<%const lastWeight2 = lastExercises[index].sets[i].weight%>
             
             <%#HANDLE DROPDOWN OPTIONS%>
             <% if (exercise.dropDown.length > 0){ %>
@@ -25,10 +24,10 @@
             <%let value1%>
             <%let value2%>
             <%if (user.weightUnit === 'kgs'){%>
-                <%value1 = functions.round(functions.toKgs(lastWeight2), step)%>
+                <%value1 = functions.round(functions.toKgs(lastWeight), step)%>
                 <%value2 = functions.round(functions.toKgs(weight), step)%>
             <%}else{%>
-                <% value1 = lastWeight2%>
+                <% value1 = lastWeight%>
                 <% value2 = weight%>
             <%}%>
 

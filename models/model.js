@@ -129,6 +129,10 @@ const exerciseSchema = new mongoose.Schema({
         enum: workouts,
         required: true
     },
+    type: {
+        type: String,
+        enum: ["Reverse Pyramid", "Standard Pyramid", "Rest Pause", "Hold", "Standard Pyramid Tweaked","Kino Rep"]
+    },
     order: {
         type: Number,
         required: true

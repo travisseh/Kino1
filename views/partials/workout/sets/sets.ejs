@@ -12,6 +12,20 @@
 
 
     <%exercise.sets.forEach(function(set, i){%>
+        <% let lastReps %>
+        <% let lastNote %>
+        <% let lastWeight %>
+
+        <%if (lastExercises[index].sets[i] !== undefined){%>
+            <% lastReps = lastExercises[index].sets[i].reps%>
+            <% lastNote = lastExercises[index].sets[i].note%>
+            <% lastWeight = lastExercises[index].sets[i].weight%>
+        <%} else {%>
+            <% lastReps = 0 %>
+            <% lastNote = "" %>
+            <% lastWeight = 0 %>
+        <%}%>
+        
         <div style="display:flex;">
             <div class="inline-block" style="margin-left: 10px;">
                 <button type="button" class="btn-list-number"><%=i + 1%></button>
@@ -21,21 +35,21 @@
                 <% const weight = displayExercises[index][i].weight %>
 
                 <!-- Reps -->   
-                <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
+                <%- include("./reps.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState, lastReps}) -%>
                         
                 <br>
 
                 <!-- Weights -->   
-                <%- include("./weights.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
+                <%- include("./weights.ejs", {index: index, step: step, startWeight: startWeight, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, lastWeight:lastWeight}) -%>
 
                 <!-- Last Week -->   
-                <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference}) -%>
+                <%- include("./lastWeek.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState, hoursDifference: hoursDifference, lastReps: lastReps, lastWeight: lastWeight, lastNote: lastNote}) -%>
             
                 <!-- Bar Calculator -->   
                 <%- include("./barCalc.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, user: user, functions: functions, editState: editState}) -%>
                     
                 <!-- Notes -->   
-                <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState}) -%>
+                <%- include("./notes.ejs", {index: index, exercise: exercise, unit: unit, i:i, weight: weight, editState: editState, lastNote: lastNote}) -%>
             </div>
         </div>
         <div class="spacer-div"></div>
@@ -46,6 +60,7 @@
     <%if (editState) {edit = true}%>
 
     <input type="hidden" name="isFirstTime" value="false">
+    <input type="hidden" name="type" value="<%= exercise.type %>">
     <input type="hidden" name="phase" value="<%=workout.phase%>">
     <input type="hidden" name="lastId" value="<%=lastExercises[index].lastId%>">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
