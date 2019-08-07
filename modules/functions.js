@@ -296,7 +296,7 @@ function increaseWeight (templateSets, lastSets, type, previousType, weightIncre
   }
 }
 
-function determineSetIncrease (templateSets, lastSets, type) {
+function determineSetIncrease (templateSets, lastSets, type, weightIncrement) {
   for (let i = 0; i < templateSets.length; i ++) {
     if (lastSets[i].reps === null){
         //account for standard pyramid as the else and then reverse and standard tweaked as their own - and turn it into a function at the end
@@ -345,6 +345,18 @@ function determineSetIncrease (templateSets, lastSets, type) {
             }
             )
         }
+    } else if (lastSets[i].weight === 0 && lastSets[i].reps === 0) { 
+        let weight = round(displaySets[i-1].weight * .1, weightIncrement)
+        if (weight < weightIncrement){
+          weight = weightIncrement
+        }
+        displaySets.push(
+          {
+            low: templateSets[i].low,
+            high: templateSets[i].high,
+            weight: displaySets[i-1].weight - weight
+          }
+          )
     } else if (lastSets[i].reps >= templateSets[i].high) {
       displaySets.push(
         {
@@ -377,7 +389,7 @@ function displaySetsCreator(templateSets, lastSets, type, previousType, weightIn
   if (checkSets(templateSets,lastSets, type, previousType)){
   increaseWeight(templateSets, lastSets, type, previousType, weightIncrement)
   } else {
-  determineSetIncrease(templateSets, lastSets, type)
+  determineSetIncrease(templateSets, lastSets, type, weightIncrement)
   }
 }
 

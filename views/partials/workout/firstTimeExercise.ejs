@@ -21,7 +21,8 @@
                         <input type="hidden" name="reps[]" value="<%=exercise.sets[index3].high%>">
                         <input type="hidden" name="note[]">
                         <input type="hidden" name="exerciseType" value="<%=exercise.type%>">
-                        <input type="hidden" name="weightIncrement" value="<%=exercise.weightIncrement%>">
+                        <input type="hidden" name="isFirstTime" value="true">
+
 
                         <%#WEIGHT BUTTON%>
                         <p></p>
@@ -66,6 +67,7 @@
     <input type="hidden" name="isSetCreator" value="true">
     <input type="hidden" name="phase" value="<%=workout.phase%>">
     <input type="hidden" name="step" value="<%=exercise.weightIncrement%>">
+    <input type="hidden" name="type" value="<%= exercise.type %>">
     <input type="hidden" name="exerciseName" value="<%= exercise.name %>">
     <input data-exercise="<%=index%>" type="hidden" name="templateId" value="<%= exercise._id %>">
     <input type="hidden" name="packageUrl" value="<%= packageUrl %>">

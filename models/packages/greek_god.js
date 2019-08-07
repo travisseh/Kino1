@@ -19,7 +19,7 @@ const greek_god = new Package (
       verifyLink: 'https://kinobody.teachable.com/courses/66902/lectures/1122305',
       verifyLength: 7,
       verifyWord: 'rapidly',
-      phases: 8,
+      phases: 3,
       bonusPhase: true,
       workouts: [
         {

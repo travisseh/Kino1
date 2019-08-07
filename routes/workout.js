@@ -92,12 +92,10 @@ workout.get("/:package/:workout/:phase", middleware.isLoggedIn, middleware.trial
     const sets = []
     const newFirstWeight = formWeight[0] - step
     if (isFirstTime === 'true'){
-      const weightIncrement = req.body.weightIncrement
-
       formWeight.splice(0, 1, newFirstWeight)
       if (req.body.exerciseType === "Kino Rep"){
         let formWeightElements = formWeight.length -1  
-        formWeight[0] = functions.round(formWeight[0] * (1-formWeightElements/10), weightIncrement)
+        formWeight[0] = functions.round(formWeight[0] * (1-formWeightElements/10), step)
       }
     }
     functions.setsCreator(sets, formReps, formWeight, formNotes)
