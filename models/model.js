@@ -241,9 +241,9 @@ const userSchema = new mongoose.Schema ({
     canceled: Boolean,
     phases: [Number],
     greekGodProtocol: {
-        type: String,
-        default: "Lean Bulk Protocol",
-        enum: ["Lean Bulk Protocol", "Modified Lean Bulk Protocol", "Recomposition Protocol"]
+        type: Number,
+        default: 1,
+        enum: [1, 2, 3]
     }
   })
   

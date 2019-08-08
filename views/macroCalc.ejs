@@ -2,6 +2,22 @@
 
 <h1 class="white-text">Macro Calculator</h1>
 
+<% if (user.packageName === "Greek God"){ %>
+  <div class="special">
+    <select class="mdb-select inline-block protocol-select">
+      <option value="1" <%if(user.greekGodProtocol === 1 || user.greekGodProtocol === undefined){%>
+          selected
+          <%}%>>Lean Bulk Protocol</option>
+      <option value="2" <%if(user.greekGodProtocol === 2){%>
+          selected
+          <%}%>>Modified Lean Bulk</option>
+      <option value="3" <%if(user.greekGodProtocol === 3){%>
+          selected
+          <%}%>>Recomposition Protocol</option>
+      </select><img style="padding-bottom: 5px; display: inline; margin-left: -5px;" src="/icons/downSelect.svg">
+  </div>
+<% } %> 
+
 <%let displayWeight%>
 <%if (user.weightUnit === "kgs"){%>
   <% displayWeight = functions.toKgs(weight) %>
@@ -147,35 +163,21 @@
   <div class="container-fluid">
 <%}%>
 
+<div id="userInfo" data-email="<%=user.email%>" data-fname="<%=user.fname%>" data-lname="<%=user.lname%>" data-package-name="<%=user.packageName%>"></div>
+
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
 <%- include("partials/headerFooter/footerScripts.ejs") -%>
 <script>
-    $(document).ready(function(){
+  $(document).ready(function(){
 
-        <%- include("partials/headerFooter/standardScripts.ejs") -%>
+      <%- include("partials/headerFooter/standardScripts.ejs") -%>
 
-        $("body").click(function(event) {
-            //if you click on anything except the modal itself or the "open modal" link, close the modal
-            if (!$(event.target).is(".p-phases")){
-                $(".modal").removeClass("show").css("display", "none")
-                $("body").removeClass("modal-open")
-            }
-        });
 
-        $(".p-phases").click(function(event){
-            const phase = $(this).data("phase")
-            const package = $('#phaseInfo').data('package-url')
-            $.post( `/changePhase/${package}/${phase}`)
-                .done(function( data ) {
-                location.reload();
-            });
-        })
-
-        $(".mdb-select").change(function(event){
-            const phase = $(this).val()
-            const package = $('#phaseInfo').data('package-url')
-            $.post( `/changePhase/${package}/${phase}`)
+      $(".mdb-select").change(function(event){
+            const protocol = $(this).val()
+            const packageName = $('#userInfo').data('package-name')
+            $.post( `/changeProtocol/${packageName}/${protocol}`)
                 .done(function( data ) {
                 location.reload();
             });
@@ -183,4 +185,5 @@
 
     })
 </script>
+
 <%- include("partials/headerFooter/footerSimple.ejs") -%>

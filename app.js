@@ -34,6 +34,7 @@ const verify = require("./routes/verify")
 const payment = require("./routes/payment")
 const subscribe = require("./routes/subscribe")
 const changePhase = require('./routes/changePhase')
+const changeProtocol = require('./routes/changeProtocol')
 
 // DB CONNECTION
 mongoose.connect(process.env.DB_PATH, {useNewUrlParser: true})
@@ -76,6 +77,7 @@ app.use("/verify", verify)
 // app.use("/payment", payment)
 app.use("/subscribe", subscribe)
 app.use("/changePhase", changePhase)
+app.use("/changeProtocol", changeProtocol)
 
 app.get("/dashTest", function(req, res, next){
     const error = req.flash("error")

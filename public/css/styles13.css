@@ -391,6 +391,7 @@ animation: countdown 180s linear forwards;
 /* phase selector select */
 
 
+
 .select-wrapper input.select-dropdown {
     border-bottom: none;
     width: 75px;
@@ -398,6 +399,10 @@ animation: countdown 180s linear forwards;
     font-weight: 300;
     font-size: 1rem;
 }
+.special .select-wrapper input.select-dropdown {
+    width: 145px;
+}
+
 .select-wrapper span.caret {
     font-size: 0rem;
 }
@@ -931,4 +936,6 @@ box-sizing: border-box;
   }
 
 
-
+.w-100 {
+    width: initial !important;
+}
