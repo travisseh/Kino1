@@ -1,0 +1,16 @@
+        $(function () {
+        $('[data-toggle="popover"]').popover()
+        })
+        //crisp stuff
+        const email = $("#userInfo").data("email")
+        const fname = $("#userInfo").data("fname")
+        const lname = $("#userInfo").data("lname")
+        const fullName = fname + " " + lname
+
+        $crisp.push(["set", "user:email", email]);
+        $crisp.push(["set", "user:nickname", [fullName]])
+
+        const identify = new amplitude.Identify()
+        identify.set('name', {'first': fname, 'last': lname})
+        identify.set('email', email)
+        amplitude.identify(identify)
