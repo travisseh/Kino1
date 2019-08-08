@@ -17,6 +17,20 @@ const bodyWeightSchema = new mongoose.Schema ({
 })
 const BodyWeight = mongoose.model("BodyWeight", bodyWeightSchema)
 
+//GoalWeight
+const goalWeightSchema = new mongoose.Schema ({
+    weight: Number,
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+})
+const GoalWeight = mongoose.model("GoalWeight", goalWeightSchema)
+
 //TemplateWarmUp
 const templateWarmUpsSchema = new mongoose.Schema({
     percent: Number,
@@ -225,7 +239,12 @@ const userSchema = new mongoose.Schema ({
     },
     subscribed: Boolean,
     canceled: Boolean,
-    phases: [Number]
+    phases: [Number],
+    greekGodProtocol: {
+        type: String,
+        default: "Lean Bulk Protocol",
+        enum: ["Lean Bulk Protocol", "Modified Lean Bulk Protocol", "Recomposition Protocol"]
+    }
   })
   
   userSchema.plugin(passportLocalMongoose)
