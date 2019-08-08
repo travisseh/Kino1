@@ -19,10 +19,13 @@
 <% } %> 
 
 <%let displayWeight%>
+<%let displayGoalWeight%>
 <%if (user.weightUnit === "kgs"){%>
   <% displayWeight = functions.toKgs(weight) %>
+  <% displayGoalWeight = functions.toKgs(goalWeight) %>
 <%} else {%>
   <% displayWeight = weight %>
+  <% displayGoalWeight = goalWeight %>
 <%}%> 
 
 <div class="card">
@@ -45,7 +48,7 @@
             <span class="macro-c-1"> Goal bodyweight:  </span>
             <span class="macro-c-2">
               <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="goalWeight" max="9999" required <%if (goalWeight !== null) {%>
-                value="<%=goalWeight%>"
+                value="<%=displayGoalWeight%>"
               <%} else {%>
                 placeholder="ex: 187"
             <%}%>
