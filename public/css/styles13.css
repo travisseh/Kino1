@@ -619,6 +619,37 @@ animation: countdown 180s linear forwards;
     grid-column: span 2;
 }
 
+
+.macro-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    /* grid-row-gap: 40px; */
+    /* grid-column-gap: 60px; */
+    justify-items: center;
+    align-items: center;
+    /* margin-bottom: 10px; */
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+}
+.macro-c-1{
+    justify-self: left;
+    grid-column: span 1;
+    padding-left: 10px;
+}
+.macro-c-2{
+    align-self: center;
+    grid-column: span 1;
+}
+.macro-c-3{
+    grid-column: span 2;
+    /* align-self: center; */
+    margin-top: 20px;
+}
+.macro-c-filler {
+
+}
+
 p.column2 {
     margin-bottom: 0px;
 }

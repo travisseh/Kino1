@@ -11,15 +11,35 @@
 
 <div class="card">
   <div class="card-body">
-    <h3 class="macro-header">Enter Weight</h3>
-    <form action="/macrocalc" method="POST">
-        <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="weight" max="9999" required placeholder="Ex: 187"> <%=user.weightUnit%>
-      <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange inline-block" style="float:right; margin-top: 4px;" onclick="amplitude.getInstance().logEvent('Macros Calculated')">Calculate</button>
-      
-    </form>
-    <% if (weight != null) {%>
-    <p style="margin-top:10px; margin-bottom: 0;">Current weight: <%= displayWeight%></p>
-    <%}%>
+    <h3 class="macro-header">Enter Bodyweight<%if(user.packageName === "Greek God"){%>s
+      <%}%>
+      </h3>
+    <div>
+      <form action="/macrocalc" method="POST" class="macro-grid">
+          <span class="macro-c-1">Current bodyweight:  </span>
+          <span class="macro-c-2">
+            <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="weight" max="9999" required <%if (weight != null) {%>
+              value="<%=displayWeight%>"
+            <%} else {%>
+              placeholder="ex: 187"
+            <%}%>
+          > <%=user.weightUnit%>
+          </span>
+          <% if (user.packageName === "Greek God"){ %>
+            <span class="macro-c-1"> Goal bodyweight:  </span>
+            <span class="macro-c-2">
+              <input type="number" inputmode="numeric" pattern="[0-9]*" class="main-input inline-block"  name="weight" max="9999" required <%if (weight != null) {%>
+                value="<%=displayWeight%>"
+              <%} else {%>
+                placeholder="ex: 187"
+            <%}%>
+          > <%=user.weightUnit%>
+            </span>
+          <% } %> 
+        <button class="my-btn btn-m my-btn-secondary waves-effect waves-orange inline-block macro-c-3" onclick="amplitude.getInstance().logEvent('Macros Calculated')">Calculate Macros</button>
+      </form>
+    </div>
+    
   </div>
 </div>
 
@@ -129,4 +149,38 @@
 
 <%- include("partials/headerFooter/largeScreenOverlay.ejs") -%>
 
-<%- include("partials/headerFooter/footer.ejs") -%>
+<%- include("partials/headerFooter/footerScripts.ejs") -%>
+<script>
+    $(document).ready(function(){
+
+        <%- include("partials/headerFooter/standardScripts.ejs") -%>
+
+        $("body").click(function(event) {
+            //if you click on anything except the modal itself or the "open modal" link, close the modal
+            if (!$(event.target).is(".p-phases")){
+                $(".modal").removeClass("show").css("display", "none")
+                $("body").removeClass("modal-open")
+            }
+        });
+
+        $(".p-phases").click(function(event){
+            const phase = $(this).data("phase")
+            const package = $('#phaseInfo').data('package-url')
+            $.post( `/changePhase/${package}/${phase}`)
+                .done(function( data ) {
+                location.reload();
+            });
+        })
+
+        $(".mdb-select").change(function(event){
+            const phase = $(this).val()
+            const package = $('#phaseInfo').data('package-url')
+            $.post( `/changePhase/${package}/${phase}`)
+                .done(function( data ) {
+                location.reload();
+            });
+        })
+
+    })
+</script>
+<%- include("partials/headerFooter/footerSimple.ejs") -%>
