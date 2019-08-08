@@ -254,4 +254,4 @@ const userSchema = new mongoose.Schema ({
 
 
 //EXPORTS
-module.exports = {Exercise, BodyWeight, Package, Workout, TemplateExercise, TemplateWarmUp, TemplateSet, User}
+module.exports = {Exercise, BodyWeight, GoalWeight, Package, Workout, TemplateExercise, TemplateWarmUp, TemplateSet, User}

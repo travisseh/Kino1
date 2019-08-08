@@ -1,5 +1,6 @@
 const express = require("express")
 const BodyWeight = require("../models/model").BodyWeight
+const GoalWeight = require("../models/model").GoalWeight
 const User = require("../models/model").User
 const middleware = require("../middleware")
 const functions = require("../modules/functions")
@@ -11,27 +12,58 @@ router.get("/", middleware.isLoggedIn, middleware.hasAccess, middleware.trialExp
         if (err){
             console.log(err)
         } else {
-            if (foundWeight != null) {
-                res.render("macroCalc", {user: req.user, functions: functions, weight: foundWeight.weight, dismissCalTracks: dismissCalTracks, success: req.flash('success'), error: req.flash('error')})
-            } else {
-                res.render("macroCalc", {user: req.user, functions: functions, weight: null, success: req.flash('success'), error: req.flash('error')})
-            }
+            GoalWeight.findOne({userId: req.user._id}).sort('-date').exec((err, foundGoalWeight)=>{
+                if (err){
+                    console.log(err)
+                } else {
+                    let weight = null
+                    let goalWeight = null
+                    if (foundWeight !== null){
+                        weight = foundWeight.weight
+                    }
+                    if (foundGoalWeight !== null){
+                        goalWeight = foundGoalWeight.weight
+                    }
+                    res.render("macroCalc", {user: req.user, functions: functions, weight: weight, goalWeight: goalWeight, dismissCalTracks: dismissCalTracks, success: req.flash('success'), error: req.flash('error')})
+                }
+            })
         }
     })
 })
 
 router.post("/", middleware.isLoggedIn,function(req, res, next){
     let weight = req.body.weight
+    let goalWeight = req.body.goalWeight
     if (req.user.weightUnit === "kgs"){
         weight = functions.toLbs(weight)
+        goalWeight = functions.toLbs(goalWeight)
     }
     const newBodyWeight = new BodyWeight ({
         weight: weight,
         userId: req.user._id
     })
+    const newGoalBodyWeight = new GoalWeight ({
+        weight: goalWeight,
+        userId: req.user._id
+    })
     newBodyWeight.save()
-    req.flash("success", "Weight saved!")
-    res.redirect("/macroCalc")
+        .then(()=>{
+            newGoalBodyWeight.save()
+            .then(()=>{
+                req.flash("success", "Weights saved!")
+                res.redirect("/macroCalc")
+            })
+            .catch(()=>{
+                console.log("error saving goalWeight")
+                req.flash("error", "There was an error saving goal weight :(")
+                res.redirect("/macroCalc")
+            })
+        })
+        .catch(()=>{
+            console.log("error saving bodyWeight")
+            req.flash("error", "There was an error saving bodyweight :(")
+            res.redirect("/macroCalc")
+        })
 })
 
 //Update askedAboutMacro Status
