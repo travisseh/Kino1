@@ -62,23 +62,24 @@
   </div>
 </div>
 
-<% const stableCals = weight * 15 %> 
-<% const deficitCals = weight * 12 %> 
-<% const dailyProtein = (deficitCals * .27)/4  %> 
-<% const dailyCarbs = (deficitCals * .4)/4 %> 
-<% const dailyFats = (deficitCals * .33)/9 %> 
-<% const perMealProtein = dailyProtein/3 %> 
-<% const perMealCarbs = dailyCarbs/3 %> 
-<% const perMealFats = dailyFats/3 %> 
 
 
-<% if (weight != null) { %>
 
-  
+<% if (weight !== null) { %>
 
 </div>
 
-  <div class="horizontal-scroll minus-twenty-top">
+<%if (user.packageName === "Warrior Shredded" || user.packageName === "Goddess Toning"){%>
+    <% const stableCals = weight * 15 %> 
+    <% const deficitCals = weight * 12 %> 
+    <% const dailyProtein = (deficitCals * .27)/4  %> 
+    <% const dailyCarbs = (deficitCals * .4)/4 %> 
+    <% const dailyFats = (deficitCals * .33)/9 %> 
+    <% const perMealProtein = dailyProtein/3 %> 
+    <% const perMealCarbs = dailyCarbs/3 %> 
+    <% const perMealFats = dailyFats/3 %> 
+
+    <div class="horizontal-scroll minus-twenty-top">
     <div style="margin-left: 10px;"></div>
 
     <!-- Card -->
@@ -136,7 +137,95 @@
 
   </div>
 
+
+<%} else if (user.packageName === "Greek God" && weight !== null && goalWeight !== null) {%>
+    <% const stableCals = weight * 15 %> 
+    <% const deficitCals = weight * 12 %> 
+    <% const dailyProtein = (deficitCals * .27)/4  %> 
+    <% const dailyCarbs = (deficitCals * .4)/4 %> 
+    <% const dailyFats = (deficitCals * .33)/9 %> 
+    <% const perMealProtein = dailyProtein/3 %> 
+    <% const perMealCarbs = dailyCarbs/3 %> 
+    <% const perMealFats = dailyFats/3 %> 
+
+  <div class="horizontal-scroll minus-twenty-top" style="margin-bottom: 20px;">
+    <div style="margin-left: 10px;"></div>
+
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Rest Day Calories</h4>
+            <p class="chart-nmbr-lg"><%=deficitCals.toLocaleString('en')%></p>
+          <p class="chart-subtext no-margin-bottom">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Rest Day Macros</h4>
+              <div>
+                  <p class="chart-text">Protein:</p>
+                  <p class="chart-text chart-text-right"><%= dailyProtein.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Carbs</p>
+                  <p class="chart-text chart-text-right"><%= dailyCarbs.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Fats</p>
+                  <p class="chart-text chart-text-right"><%= dailyFats.toFixed(0)%> g</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="horizontal-scroll minus-twenty-top">
+    <div style="margin-left: 10px;"></div>
+
+     <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Lift Day Calories</h4>
+            <p class="chart-nmbr-lg"><%=deficitCals.toLocaleString('en')%></p>
+          <p class="chart-subtext no-margin-bottom">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="col-md">
+      <div class="card chart-card">
+        <div class="card-body">
+          <h4 class="report-tile-title">Lift Day Macros</h4>
+              <div>
+                  <p class="chart-text">Protein:</p>
+                  <p class="chart-text chart-text-right"><%= dailyProtein.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Carbs</p>
+                  <p class="chart-text chart-text-right"><%= dailyCarbs.toFixed(0)%> g</p>
+              </div>
+              <div>
+                  <p class="chart-text">Fats</p>
+                  <p class="chart-text chart-text-right"><%= dailyFats.toFixed(0)%> g</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%}%>
+
+  
+
 <div class="container-fluid" style="padding-top:0px; margin-top: -10px;">
+
 
 <%if (dismissCalTracks === undefined || dismissCalTracks === false){%>
       <div class="card" id="calTracks">

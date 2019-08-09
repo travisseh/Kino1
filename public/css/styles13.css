@@ -410,6 +410,10 @@ animation: countdown 180s linear forwards;
     border-radius: .5rem;
 }
 
+.col-md {
+    padding-right: 10px;
+    padding-left: 10px;
+}
 
 .clickable {
     cursor: pointer;
