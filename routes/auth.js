@@ -44,7 +44,8 @@ function(accessToken, refreshToken, profile, cb) {
         phases: [1,1],
         verifiedPackages: [false,false,false],
         subscribed: false,
-        canceled: false
+        canceled: false,
+        greekGodProtocol: 1
       }, function(err, user){
         return cb(err,user)
       })
