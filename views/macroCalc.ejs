@@ -139,14 +139,23 @@
 
 
 <%} else if (user.packageName === "Greek God" && weight !== null && goalWeight !== null) {%>
-    <% const stableCals = weight * 15 %> 
-    <% const deficitCals = weight * 12 %> 
-    <% const dailyProtein = (deficitCals * .27)/4  %> 
-    <% const dailyCarbs = (deficitCals * .4)/4 %> 
-    <% const dailyFats = (deficitCals * .33)/9 %> 
-    <% const perMealProtein = dailyProtein/3 %> 
-    <% const perMealCarbs = dailyCarbs/3 %> 
-    <% const perMealFats = dailyFats/3 %> 
+    <% let maintenanceCals = weight * 15%>
+    <% let restCals = maintenanceCals + 100%>
+    <% let liftCals = maintenanceCals + 500%>
+    <% if (user.greekGodProtocol === 2) { %>
+      <% restCals = maintenanceCals -100 %>
+    <% } else if (user.greekGodProtocol === 3) { %>
+      <% restCals = maintenanceCals - 300 %>
+      <% liftCals = maintenanceCals + 400%>
+    <% } %>
+    <% let protein = goalWeight %>
+    <% if (goalWeight - weight > 15) {%>
+        <% protein = weight + 15 %>
+    <% } %> 
+    <% let restFat = (restCals * .25)/9 %>
+    <% let liftFat = (liftCals * .25)/9 %>
+    <% let restCarbs = (restCals - ((protein * 4) + (restFat * 9)))/4 %>
+    <% let liftCarbs = (liftCals - ((protein * 4) + (liftFat * 9)))/4 %>
 
   <div class="horizontal-scroll minus-twenty-top" style="margin-bottom: 20px;">
     <div style="margin-left: 10px;"></div>
@@ -156,8 +165,8 @@
       <div class="card chart-card">
         <div class="card-body">
           <h4 class="report-tile-title">Rest Day Calories</h4>
-            <p class="chart-nmbr-lg"><%=deficitCals.toLocaleString('en')%></p>
-          <p class="chart-subtext no-margin-bottom">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
+            <p class="chart-nmbr-lg"><%=restCals.toLocaleString('en', {maximumFractionDigits: 0})%></p>
+          <p class="chart-subtext no-margin-bottom">Based on <%=maintenanceCals.toLocaleString('en', {maximumFractionDigits: 0})%> maintenance calories</p>
         </div>
       </div>
     </div>
@@ -169,15 +178,15 @@
           <h4 class="report-tile-title">Rest Day Macros</h4>
               <div>
                   <p class="chart-text">Protein:</p>
-                  <p class="chart-text chart-text-right"><%= dailyProtein.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= protein.toFixed(0)%> g</p>
               </div>
               <div>
                   <p class="chart-text">Carbs</p>
-                  <p class="chart-text chart-text-right"><%= dailyCarbs.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= restCarbs.toFixed(0)%> g</p>
               </div>
               <div>
                   <p class="chart-text">Fats</p>
-                  <p class="chart-text chart-text-right"><%= dailyFats.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= restFat.toFixed(0)%> g</p>
               </div>
         </div>
       </div>
@@ -192,8 +201,8 @@
       <div class="card chart-card">
         <div class="card-body">
           <h4 class="report-tile-title">Lift Day Calories</h4>
-            <p class="chart-nmbr-lg"><%=deficitCals.toLocaleString('en')%></p>
-          <p class="chart-subtext no-margin-bottom">Based on <%=stableCals.toLocaleString('en')%> stable calories</p>
+            <p class="chart-nmbr-lg"><%=liftCals.toLocaleString('en', {maximumFractionDigits: 0})%></p>
+          <p class="chart-subtext no-margin-bottom">Based on <%=maintenanceCals.toLocaleString('en', {maximumFractionDigits: 0})%> maintenance calories</p>
         </div>
       </div>
     </div>
@@ -205,15 +214,15 @@
           <h4 class="report-tile-title">Lift Day Macros</h4>
               <div>
                   <p class="chart-text">Protein:</p>
-                  <p class="chart-text chart-text-right"><%= dailyProtein.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= protein.toFixed(0)%> g</p>
               </div>
               <div>
                   <p class="chart-text">Carbs</p>
-                  <p class="chart-text chart-text-right"><%= dailyCarbs.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= liftCarbs.toFixed(0)%> g</p>
               </div>
               <div>
                   <p class="chart-text">Fats</p>
-                  <p class="chart-text chart-text-right"><%= dailyFats.toFixed(0)%> g</p>
+                  <p class="chart-text chart-text-right"><%= liftFat.toFixed(0)%> g</p>
               </div>
         </div>
       </div>
