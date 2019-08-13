@@ -12,7 +12,7 @@ settings.get("/", middleware.isLoggedIn, middleware.hasAccess, function(req,res,
     const freeTrialLength = 7
     const daysLeft = functions.daysLeft(createdDate, freeTrialLength)
 
-    if (req.user.subscribed === true){
+    if (req.user.subscribed === true && req.user.stripe_id){
         stripe.customers.retrieve(
             req.user.stripe_id,
             function(err, customer) {
